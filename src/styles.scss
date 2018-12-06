@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// CSS reset
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+html {
+    font-size: 14px;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+ul, li {
+    list-style: none;
+}
+
+
+// 主题相关
+.theme-primary {
+    background: #c2185b;
+    color: #fff;
+}
+
+// 布局
+.flex-spacer {
+    flex: 1;
+}
+
+
+
+.m-y-1 {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.m-y-2 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

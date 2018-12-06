@@ -80,8 +80,8 @@
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "favicon.ico",
+              "./assets"
             ]
           }
         },
