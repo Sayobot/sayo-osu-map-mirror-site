@@ -1,0 +1,77 @@
+<div class="main">
+    <div class="map-wrapper">
+        <div class="seach-wrapper">
+            <mat-form-field>
+                <input matInput placeholder="在这里输入sid/bid/官网Url可以直接下载">
+            </mat-form-field>
+            <button mat-button>
+                <mat-icon>vertical_align_bottom</mat-icon>
+            </button>
+        </div>
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    最新map
+                </ng-template>
+                <div class="map-content">
+                    <mat-grid-list cols="8" rowHeight="1365:767" gutterSize="0">
+                        <mat-grid-tile *ngFor="let map of newMap">
+                            <img [src]="map" (click)="opneMapDetail()">
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    热门map
+                </ng-template>
+                <div class="map-content">
+                    <mat-grid-list cols="8" rowHeight="1365:767" gutterSize="0">
+                        <mat-grid-tile *ngFor="let map of newMap" (click)="opneMapDetail()">
+                            <img [src]="map">
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+
+    <div class="info-wrapper">
+        <mat-card class="m-y-2 support-sayobot">
+            <mat-card-header>
+                <mat-card-title>救救小夜！</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                ${{total}}/${{target}}
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="m-y-2 announce-wrapper">
+            <mat-card-header>
+                <mat-card-title>公告栏</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-nav-list>
+                    <a mat-list-item *ngFor="let item of announce; let indes = index">
+                        {{item.summary}}
+                    </a>
+                </mat-nav-list>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="m-y-2 news-wrapper">
+            <mat-card-header>
+                <mat-card-title>最近新闻</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-nav-list>
+                    <a mat-list-item *ngFor="let item of news; let indes = index">
+                        {{item.summary}}
+                    </a>
+                </mat-nav-list>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>
