@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-
-// 弹窗模板组件
-import { AboutDialogComponent } from "../dialog/about-dialog/about-dialog.component";
-import { HelpDialogComponent } from "../dialog/help-dialog/help-dialog.component";
-import { SupportSayobotComponent } from "../dialog/support-sayobot/support-sayobot.component";
-
+import { DialogService } from '../../core';
 
 @Component({
     selector: 'home-header',
@@ -15,34 +9,21 @@ import { SupportSayobotComponent } from "../dialog/support-sayobot/support-sayob
 export class HomeHeaderComponent implements OnInit {
 
     constructor(
-        public dialog: MatDialog
+        public dialog: DialogService
     ) { }
 
     ngOnInit() {
     }
 
     // 打开支持小夜的弹窗
-    openSupprotDialog() {
-        let supportDilog = this.dialog.open(SupportSayobotComponent, {
-            maxHeight: '96%',
-            width: '600px',
-        });
-    }
+    openSupprotDialog = () => this.dialog.supprot();
 
     // 打开帮助弹窗
-    openHelpDialg() {
-        let helpDialog = this.dialog.open(HelpDialogComponent, {
-            height: '400px',
-            width: '600px',
-        });
-    }
+    openHelpDialg = () => this.dialog.help();
 
     // 打开关于小夜的弹窗
-    openAboutDialog() {
-        let aboutDialg = this.dialog.open(AboutDialogComponent, {
-            height: '400px',
-            width: '600px',
-        });
-    }
+    openAboutDialog = () => this.dialog.about();
 
+    // 打开更新日志的弹窗
+    openUpdateLog = () => this.dialog.updateLog();
 }

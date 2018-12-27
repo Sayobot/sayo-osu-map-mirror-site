@@ -1,6 +1,7 @@
 // @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
 // CSS reset
 * {
     box-sizing: border-box;
@@ -14,6 +15,15 @@ html {
 
 body {
     overflow: hidden;
+    -moz-user-select: none;
+    /*火狐*/
+    -webkit-user-select: none;
+    /*webkit浏览器*/
+    -ms-user-select: none;
+    /*IE10*/
+    -khtml-user-select: none;
+    /*早期浏览器*/
+    user-select: none;
 }
 
 html {
@@ -24,9 +34,12 @@ img {
     width: 100%;
     max-width: 100%;
 }
-ul, li {
+
+ul,
+li {
     list-style: none;
 }
+
 
 
 // 主题相关
@@ -42,6 +55,7 @@ ul, li {
 
 
 
+
 .m-y-1 {
     margin-top: 4px;
     margin-bottom: 4px;
@@ -50,4 +64,50 @@ ul, li {
 .m-y-2 {
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+.m-b-2 {
+    margin-bottom: 8px;
+}
+
+// 自定义滚轮
+.customer-scroll {
+    overflow: auto;
+}
+
+//滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等
+.customer-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+//滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果
+.customer-scroll::-webkit-scrollbar-button {
+    display: none;
+}
+
+// 外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果
+.customer-scroll::-webkit-scrollbar-track {
+    display: none;
+}
+
+//内层轨道，滚动条中间部分
+.customer-scroll::-webkit-scrollbar-track-piece {
+    background: #eee;
+}
+
+//滚动条里面可以拖动的那部分
+.customer-scroll::-webkit-scrollbar-thumb {
+    background: #cc5a5a;
+    border-radius: 5px;
+}
+
+//边角
+.customer-scroll::-webkit-scrollbar-corner {
+    display: none;
+}
+
+//定义右下角拖动块的样式
+.customer-scroll::-webkit-resizer {
+    display: none;
 }
