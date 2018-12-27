@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-
-// 弹窗模板组件
-import { MapDetailComponent } from "../dialog/map-detail/map-detail.component";
-
+import { DialogService, ApiService } from '../../core';
 
 @Component({
     selector: 'home-main',
@@ -12,30 +8,12 @@ import { MapDetailComponent } from "../dialog/map-detail/map-detail.component";
 })
 export class HomeMainComponent implements OnInit {
     newMap: Array<any> = [
-        'assets/img/home/1.jpg',
-        'assets/img/home/2.jpg',
-        'assets/img/home/3.jpg',
-        'assets/img/home/4.jpg',
-        'assets/img/home/5.jpg',
-        'assets/img/home/6.jpg',
-        'assets/img/home/7.jpg',
-        'assets/img/home/8.jpg',
-        'assets/img/home/9.jpg',
-        'assets/img/home/10.jpg',
-        'assets/img/home/11.jpg',
-        'assets/img/home/12.jpg',
-        'assets/img/home/13.jpg',
-        'assets/img/home/14.jpg',
-        'assets/img/home/15.jpg',
-        'assets/img/home/16.jpg',
-        'assets/img/home/17.jpg',
-        'assets/img/home/18.jpg',
-        'assets/img/home/19.jpg',
-        'assets/img/home/20.jpg',
-    ]
+
+    ];
 
     target: number = 1000;
     total: number = 666;
+    totalWidth: string = Math.floor((this.total / this.target) * 100) + '%';
 
     announce: Array<any> = [
         // {
@@ -65,97 +43,27 @@ export class HomeMainComponent implements OnInit {
     ];
 
     news: Array<any> = [
-        {
-            summary: '老狼出轨，竟欲何为！',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '男人看了会沉默！女人看了会流泪！',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '什么？这个事情你还知道？',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '震惊！cookie居然是个...',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '鲁迅说过: 小夜下载站是最好的下载站',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '鲁迅：没有，不是我说的',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '老狼出轨，竟欲何为！',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '男人看了会沉默！女人看了会流泪！',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '什么？这个事情你还知道？',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '震惊！cookie居然是个...',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '鲁迅说过: 小夜下载站是最好的下载站',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-        {
-            summary: '鲁迅：没有，不是我说的',
-            content: '阿凡达撒范德萨发达撒范德萨发',
-            importance: 0,
-            img: []
-        },
-    ]
+
+    ];
 
     constructor(
-        public dialog: MatDialog
+        public dialog: DialogService,
+        public apiService: ApiService
     ) { }
 
     ngOnInit() {
     }
 
-    opneMapDetail(id) {
-        let mapDetail = this.dialog.open(
-            MapDetailComponent, {
-                data: {
-                    id: 66666,
-                    title: '铺面名称',
-                    leavel: '铺面难度'
-                }
-            }
-        );
-    }
+    opneMapDetail = id => this.dialog.mapDetail();
 
+    openNotFoundMap = () => this.dialog.notFoundMap();
+
+    downloadMap() {
+        // this.http.get('/assets/mock.json').subscribe(detail => {
+        //     if(detail.success)
+        // });
+        // https://osu.sayobot.cn/osu.php?s=1
+        // 1228那天后支持 https://txy1.sayobot.cn/d/osz/1
+        // this.openNotFoundMap();
+    }
 }

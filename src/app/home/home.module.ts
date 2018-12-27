@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OwnMaterialModule } from "../own-material/own-material.module";
+import { OwnMaterialModule } from '../core';
 
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -12,6 +12,8 @@ import { SupportSayobotComponent } from './dialog/support-sayobot/support-sayobo
 import { HelpDialogComponent } from './dialog/help-dialog/help-dialog.component';
 import { AboutDialogComponent } from './dialog/about-dialog/about-dialog.component';
 import { MapDetailComponent } from './dialog/map-detail/map-detail.component';
+import { NotFoundMapDialogComponent } from './dialog/not-found-map-dialog/not-found-map-dialog.component';
+import { UpdateLogDialogComponent } from './dialog/update-log-dialog/update-log-dialog.component';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { MapDetailComponent } from './dialog/map-detail/map-detail.component';
         SupportSayobotComponent,
         HelpDialogComponent,
         AboutDialogComponent,
-        MapDetailComponent
+        MapDetailComponent,
+        NotFoundMapDialogComponent,
+        UpdateLogDialogComponent
     ],
     declarations: [
         HomeListComponent,
@@ -33,6 +37,8 @@ import { MapDetailComponent } from './dialog/map-detail/map-detail.component';
         SupportSayobotComponent,
         HelpDialogComponent,
         AboutDialogComponent,
-        MapDetailComponent]
+        MapDetailComponent,
+        NotFoundMapDialogComponent,
+        UpdateLogDialogComponent]
 })
 export class HomeModule { }

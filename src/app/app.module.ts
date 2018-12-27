@@ -1,26 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-// angular-material相关
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { OwnMaterialModule } from "./own-material/own-material.module";
+
+
+import { CoreModule } from './core';
+import { SharedModule } from './shared';
 
 // 组件
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NotFoundPageComponent } from "./components/not-found-page/not-found-page.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        NotFoundPageComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        OwnMaterialModule,
-        AppRoutingModule
+        CommonModule,
+        AppRoutingModule,
+        CoreModule,
+        HttpClientModule,
+        SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]
