@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
 
@@ -23,7 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
         AppRoutingModule,
         CoreModule,
         HttpClientModule,
-        SharedModule
+        SharedModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

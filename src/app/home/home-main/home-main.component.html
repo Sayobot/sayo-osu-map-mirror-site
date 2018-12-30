@@ -2,13 +2,13 @@
     <div class="map-wrapper">
         <div class="seach-wrapper">
             <mat-form-field>
-                <input matInput placeholder="在这里输入sid/bid/官网Url可以直接下载" #download>
+                <input matInput #download placeholder="在这里输入点什么……" (keyup.enter)="search(download.value)">
             </mat-form-field>
-            <button mat-button (click)="downloadMap(download.value)">
-                <mat-icon>vertical_align_bottom</mat-icon>
+            <button mat-button (click)="search(download.value)">
+                <mat-icon>search</mat-icon>
             </button>
         </div>
-        <mat-tab-group>
+        <mat-tab-group [(selectedIndex)]="tabIndex">
             <mat-tab>
                 <ng-template mat-tab-label>
                     最新map
@@ -16,10 +16,12 @@
                 <div class="map-content customer-scroll">
                     <div>
                         <mat-grid-list cols="4" rowHeight="900:250" gutterSize="0">
-                            <mat-grid-tile *ngFor="let map of newMap">
-                                <img [src]="map" (click)="opneMapDetail()">
+                            <mat-grid-tile *ngFor="let map of apiService.newMap">
+                                <img [src]="'https://assets.ppy.sh/beatmaps/'+ map.sid +'/covers/cover.jpg?295843639'"
+                                    (click)="opneMapDetail(map.sid)">
                             </mat-grid-tile>
                         </mat-grid-list>
+                        <button mat-button class="getMore-btn" *ngIf="apiService.newEndId !== 0" (click)="getNewMore()">点击查看更多</button>
                     </div>
                 </div>
             </mat-tab>
@@ -29,10 +31,29 @@
                 </ng-template>
                 <div class="map-content">
                     <mat-grid-list cols="4" rowHeight="900:250" gutterSize="0">
-                        <mat-grid-tile *ngFor="let map of newMap" (click)="opneMapDetail()">
-                            <img [src]="map">
+                        <mat-grid-tile *ngFor="let map of apiService.hotMap" (click)="opneMapDetail(map.sid)">
+                            <img [src]="'https://assets.ppy.sh/beatmaps/'+ map.sid +'/covers/cover.jpg?295843639'">
                         </mat-grid-tile>
                     </mat-grid-list>
+                    <button mat-button class="getMore-btn" *ngIf="apiService.hotEndId !== 0" (click)="getHotMore()">点击查看更多</button>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    搜索结果
+                </ng-template>
+                <div class="map-content" *ngIf="apiService.searchMap">
+                    <mat-grid-list cols="4" rowHeight="900:250" gutterSize="0">
+                        <mat-grid-tile *ngFor="let map of apiService.searchMap" (click)="opneMapDetail(map.sid)">
+                            <img [src]="'https://assets.ppy.sh/beatmaps/'+ map.sid +'/covers/cover.jpg?295843639'">
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <button mat-button class="getMore-btn" *ngIf="apiService.searchEndId !== 0" (click)="getSearchMore()">点击查看更多</button>
+                </div>
+
+                <div class="map-content" *ngIf="!apiService.searchMap">
+                    没有任何任容哦~检查一下搜索的内容对不对！或者没有找到符合的图呢~
                 </div>
             </mat-tab>
         </mat-tab-group>
@@ -43,13 +64,13 @@
         <mat-card class="m-b-2 support-sayobot">
             <mat-card-header>
                 <mat-card-title>当前捐助进度条</mat-card-title>
-                <mat-card-subtitle>点击上方导航的支持来捐助小夜，数据日更</mat-card-subtitle>
+                <mat-card-subtitle>点击上方导航的支持来捐助小夜</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <div class="progress-bg">
-                    <div class="progress-bar" [ngStyle]="{'width': totalWidth}"></div>
-                    <span class="progress-percent">{{totalWidth}}</span>
-                    <span class="support">${{total}}/${{target}}</span>
+                    <div class="progress-bar" [ngStyle]="{'width': apiService.totalWidth}"></div>
+                    <span class="progress-percent">{{apiService.totalWidth}}</span>
+                    <span class="support">${{apiService.support.total}}/${{apiService.support.target}}</span>
                 </div>
             </mat-card-content>
         </mat-card>
@@ -59,26 +80,11 @@
                 <mat-card-title>公告栏</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <p>2018年12月28日,小夜的首页终于上线啦！同时今天还是小夜诞生一周年！恭喜小夜！</p>
-                <!-- <mat-nav-list>
-                    <a mat-list-item *ngFor="let item of announce; let indes = index">
-                        {{item.summary}}
-                    </a>
-                </mat-nav-list> -->
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card class="m-y-2 news-wrapper">
-            <mat-card-header>
-                <mat-card-title>最近新闻</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                开发中......
-                <!-- <mat-nav-list>
-                    <a mat-list-item *ngFor="let item of news; let indes = index">
-                        {{item.summary}}
-                    </a>
-                </mat-nav-list> -->
+                <h2>{{apiService.public.summary}}</h2>
+                <p>{{apiService.public.content}}</p>
+                <div *ngFor="let item of apiService.public.img">
+                    <img [src]="item.url" alt="">
+                </div>
             </mat-card-content>
         </mat-card>
 

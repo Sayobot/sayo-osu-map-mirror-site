@@ -1,4 +1,11 @@
 <div>
-    <h1>这个损失扩大飞机看到拉萨解放开绿灯撒经防空雷达撒副书记放得开了撒娇费德勒撒娇放得开</h1>
-    <img src="assets/img/home/1.jpg" alt="">
+    <img [src]="imgUrl" alt="">
+    <h1>{{mapDetail.title}}</h1>
+    <span>artist：{{mapDetail.artist}}&nbsp;</span>
+    <span>creator：{{mapDetail.creator}}&nbsp;</span>
+    <span>Star: {{mapDetail.version}}</span>
+
+    <div mat-dialog-actions>
+        <button mat-raised-button color="accent" (click)="onDownLoad()">Download</button>
+    </div>
 </div>
