@@ -3,7 +3,7 @@
     height: 100%;
     width: 100%;
     background: #ececec;
-    padding: 2em 2em 1em;
+    padding: 2em 7em 1em;
 
     .map-wrapper {
         position: relative;
@@ -59,6 +59,7 @@
             border-radius: 10px;
             background: #ff4081;
             animation: flicker 1s infinite ease-in-out;
+            border-radius: 10px;
         }
 
         .support {
@@ -77,6 +78,9 @@
     }
 }
 
+.getMore-btn {
+    width: 100%;
+}
 
 // 闪烁动画
 @keyframes flicker {

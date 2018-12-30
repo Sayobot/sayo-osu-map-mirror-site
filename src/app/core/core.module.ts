@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OwnMaterialModule } from './module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 // 组件导入
@@ -19,7 +22,8 @@ import {
     imports: [
         CommonModule,
         FormsModule,
-        OwnMaterialModule
+        OwnMaterialModule,
+        HttpClientModule
     ],
     entryComponents: [
         SupportSayobotComponent,

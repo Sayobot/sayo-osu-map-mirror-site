@@ -56,15 +56,14 @@ export class DialogService {
     }
 
     // 铺面详情
-    mapDetail() {
+    mapDetail(id, detail) {
         const mapDetail = this.dialog.open(
             MapDetailComponent, {
                 maxWidth: '96vw',
                 maxHeight: '90vh',
                 data: {
-                    id: 66666,
-                    title: '铺面名称',
-                    leavel: '铺面难度'
+                    id: id,
+                    content: detail
                 }
             }
         );
