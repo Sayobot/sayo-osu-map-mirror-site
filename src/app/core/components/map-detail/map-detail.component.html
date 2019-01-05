@@ -1,11 +1,22 @@
-<div>
-    <img [src]="imgUrl" alt="">
-    <h1>{{mapDetail.title}}</h1>
-    <span>artist：{{mapDetail.artist}}&nbsp;</span>
-    <span>creator：{{mapDetail.creator}}&nbsp;</span>
-    <span>Star: {{mapDetail.version}}</span>
-
-    <div mat-dialog-actions>
-        <button mat-raised-button color="accent" (click)="onDownLoad()">Download</button>
+<div class="map-detail">
+    <div class="img-box">
+        <img [src]="imgUrl" alt="">
+        i
     </div>
+
+    <div class="detail">
+        <dl class="info">
+            <dt><h1>{{mapDetail.title}}</h1></dt>
+            <dd><span>artist：</span>{{mapDetail.artist}}</dd>
+            <dd><span>creator：</span>{{mapDetail.creator}}</dd>
+            <dd><span>Star: </span>{{mapDetail.version}}</dd>
+        </dl>
+
+        <div class="actions">
+            <button mat-raised-button color="accent" (click)="playPart()" disabled>试听(开发中...)</button>
+            <button mat-raised-button color="accent" (click)="playComplete()" disabled>完整歌曲(开发中...)</button>
+            <button mat-raised-button color="accent" (click)="onDownLoad()">下载</button>
+    </div>
+
+
 </div>
