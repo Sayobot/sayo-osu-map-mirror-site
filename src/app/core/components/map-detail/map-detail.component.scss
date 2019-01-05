@@ -1,0 +1,29 @@
+.map-detail {
+
+    .img-box {
+        position: relative;
+
+    }
+
+    .detail {
+        padding: 1em;
+
+        .info {
+            dd {
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .actions {
+            margin: .5em 0;
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+                margin: 0 .5em;
+            }
+        }
+    }
+}

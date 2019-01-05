@@ -47,7 +47,7 @@ export class ApiService {
 
     // 获得最新图
     getNewMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=200&1=${this.newEndId}&2=2`).toPromise().then((res: any) => {
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=100&1=${this.newEndId}&2=2`).toPromise().then((res: any) => {
             if (res.status === 0) {
                 const maps = res.data.filter(item => {
                     return item.order !== 0;
@@ -64,7 +64,7 @@ export class ApiService {
 
     // 获得热门图
     getHotMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=200&1=${this.hotEndId}&2=1`).toPromise().then((res: any) => {
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=50&1=${this.hotEndId}&2=1`).toPromise().then((res: any) => {
             if (res.status === 0) {
                 const maps = res.data.filter(item => {
                     return item.order !== 0;
@@ -82,26 +82,35 @@ export class ApiService {
         this.searchEndId = 0;
         this.searchMap = [];
         this.searchKey = url;
-        this.getSearchInfo();
+        if (this.searchKey.match(/[\d]/ig)) {
+            this.getSearchInfo();
+        } else {
+            this.getSearchList();
+        }
     }
 
+    // 获取单个搜索信息
     getSearchInfo() {
         this.http.get(`https://api.sayobot.cn/beatmapinfo?2=${this.searchKey}`).toPromise().then((res: any) => {
             if (res.status === 0) {
+                const detail = res.data[0];
+                const id = detail.sid;
+                for (const key in detail) {
+                    if (detail.hasOwnProperty(key)) {
+                        this.detail[key] = detail[key];
+                    }
+                }
 
-                const maps = res.data.filter(item => {
-                    return item.order !== 0;
-                });
-
-                maps.forEach(element => this.searchMap.push(element));
+                this.dialog.mapDetail(id, detail);
             }
         }).catch(() => {
             this.getSearchList();
         });
     }
 
+    // 获取搜索列表
     getSearchList() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=200&1=${this.searchEndId}&2=4&3=${this.searchKey}`)
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=100&1=${this.searchEndId}&2=4&3=${this.searchKey}`)
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {

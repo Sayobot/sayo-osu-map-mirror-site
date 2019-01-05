@@ -1,6 +1,5 @@
 // @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 // CSS reset
 * {
@@ -34,12 +33,20 @@ img {
     width: 100%;
     max-width: 100%;
 }
+// 去除图片造成的文字空隙
+.img-box {
+    font-size: 0;
+}
+
 
 ul,
 li {
     list-style: none;
 }
 
+dl, dt, dd {
+    margin: 0;
+}
 
 // 主题相关
 .theme-primary {
@@ -52,6 +59,10 @@ li {
     flex: 1;
 }
 
+// 去除所有弹窗内边距
+.mat-dialog-container {
+    padding: 0 !important;
+}
 
 
 

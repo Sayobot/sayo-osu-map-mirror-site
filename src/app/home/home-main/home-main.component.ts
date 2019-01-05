@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./home-main.component.scss']
 })
 export class HomeMainComponent implements OnInit {
-    tabIndex: number;
-    url: string;
+    tabIndex: number;       // tab选项卡当前选中的下标，双向绑定
+    searchKey: string;      // 搜搜关键字
 
     constructor(
         public dialog: DialogService,
@@ -22,7 +22,6 @@ export class HomeMainComponent implements OnInit {
         this.apiService.getSupport();
         this.apiService.getMapList();
         this.apiService.getNewsList();
-
     }
 
     opneMapDetail = id => {
@@ -33,26 +32,24 @@ export class HomeMainComponent implements OnInit {
     openNotFoundMap = () => this.dialog.notFoundMap();
 
     search(str) {
-        this.url = str.replace(/["\s]/ig, '');
-        if( this.url !== '') {
-            this.apiService.getSearch(this.url);
+        this.searchKey = str.replace(/["]/ig, '').replace(/(^\s*)|(\s*$)/ig, '');
+        if (this.searchKey !== '') {
+            this.apiService.getSearch(this.searchKey);
             this.tabIndex = 3;
         } else {
             this.dialog.notFoundMap();
         }
     }
 
-    getHotMore() {
-        this.apiService.getHotMap();
-    }
+    getHotMore = () => this.apiService.getHotMap();
 
-    getNewMore() {
-        this.apiService.getNewMap();
-    }
+    getNewMore = () => this.apiService.getNewMap();
 
-    getSearchMore() {
-        this.apiService.getSearchList();
-    }
+    getSearchMore = () =>  this.apiService.getSearchList();
+
+
+    // setImgUrl = sid => `https://txy1.sayobot.cn/beatmaps/${sid}/covers/cover.jpg`;
+    setImgUrl = sid => `https://assets.ppy.sh/beatmaps/${sid}/covers/cover.jpg?295843639`;
 }
 
 

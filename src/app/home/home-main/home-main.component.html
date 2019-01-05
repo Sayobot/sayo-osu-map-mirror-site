@@ -13,12 +13,20 @@
                 <ng-template mat-tab-label>
                     最新map
                 </ng-template>
-                <div class="map-content customer-scroll">
+                <div class="map-content">
                     <div>
-                        <mat-grid-list cols="4" rowHeight="900:250" gutterSize="0">
-                            <mat-grid-tile *ngFor="let map of apiService.newMap">
-                                <img [src]="'https://assets.ppy.sh/beatmaps/'+ map.sid +'/covers/cover.jpg?295843639'"
-                                    (click)="opneMapDetail(map.sid)">
+                        <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
+                            <mat-grid-tile *ngFor="let map of apiService.newMap" (click)="opneMapDetail(map.sid)">
+                                <div class="map-summary">
+                                    <img [src]="setImgUrl(map.sid)">
+                                    <dl>
+                                        <dt>
+                                            <h3>{{map.title}}</h3>
+                                        </dt>
+                                        <dd>artist：{{map.artist}}</dd>
+                                        <dd>creator：{{map.creator}}</dd>
+                                    </dl>
+                                </div>
                             </mat-grid-tile>
                         </mat-grid-list>
                         <button mat-button class="getMore-btn" *ngIf="apiService.newEndId !== 0" (click)="getNewMore()">点击查看更多</button>
@@ -30,9 +38,18 @@
                     热门map
                 </ng-template>
                 <div class="map-content">
-                    <mat-grid-list cols="4" rowHeight="900:250" gutterSize="0">
+                    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
                         <mat-grid-tile *ngFor="let map of apiService.hotMap" (click)="opneMapDetail(map.sid)">
-                            <img [src]="'https://assets.ppy.sh/beatmaps/'+ map.sid +'/covers/cover.jpg?295843639'">
+                            <div class="map-summary">
+                                <img [src]="setImgUrl(map.sid)">
+                                <dl>
+                                    <dt>
+                                        <h3>{{map.title}}</h3>
+                                    </dt>
+                                    <dd>artist：{{map.artist}}</dd>
+                                    <dd>creator：{{map.creator}}</dd>
+                                </dl>
+                            </div>
                         </mat-grid-tile>
                     </mat-grid-list>
                     <button mat-button class="getMore-btn" *ngIf="apiService.hotEndId !== 0" (click)="getHotMore()">点击查看更多</button>
@@ -44,9 +61,18 @@
                     搜索结果
                 </ng-template>
                 <div class="map-content" *ngIf="apiService.searchMap">
-                    <mat-grid-list cols="4" rowHeight="900:250" gutterSize="0">
+                    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
                         <mat-grid-tile *ngFor="let map of apiService.searchMap" (click)="opneMapDetail(map.sid)">
-                            <img [src]="'https://assets.ppy.sh/beatmaps/'+ map.sid +'/covers/cover.jpg?295843639'">
+                            <div class="map-summary">
+                                <img [src]="setImgUrl(map.sid)">
+                                <dl>
+                                    <dt>
+                                        <h3>{{map.title}}</h3>
+                                    </dt>
+                                    <dd>artist：{{map.artist}}</dd>
+                                    <dd>creator：{{map.creator}}</dd>
+                                </dl>
+                            </div>
                         </mat-grid-tile>
                     </mat-grid-list>
                     <button mat-button class="getMore-btn" *ngIf="apiService.searchEndId !== 0" (click)="getSearchMore()">点击查看更多</button>
