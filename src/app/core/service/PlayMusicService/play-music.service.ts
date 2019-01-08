@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PlayMusicService {
 
-  constructor() { }
+    musicEl = new Audio();
+    valume: number;
+
+    constructor() { }
+
+    setMusicInfo() {
+
+    }
+
+    play = () => this.musicEl.play();
+
+    pause = () => this.musicEl.pause();
+
+    setSrc = src => this.musicEl.src = src;
+
 }

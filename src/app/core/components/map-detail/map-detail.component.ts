@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { PlayMusicService } from '../../service/PlayMusicService';
 
 @Component({
     selector: 'app-map-detail',
@@ -10,6 +11,11 @@ export class MapDetailComponent implements OnInit {
 
     mapDetail: any;
     imgUrl;
+
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private musicBox: PlayMusicService
+    ) { }
 
     // 点击下载事件
     onDownLoad() {
@@ -30,7 +36,8 @@ export class MapDetailComponent implements OnInit {
 
     // 试听歌曲
     playPart() {
-        console.log('播放了试听片段');
+        this.musicBox.setSrc(`https://txy1.sayobot.cn/audio/${this.mapDetail.sid}.mp3`);
+        this.musicBox.play();
     }
 
     // 播放完整音乐
@@ -38,15 +45,12 @@ export class MapDetailComponent implements OnInit {
         console.log('播放了完整的音乐');
     }
 
-    constructor(
-        @Inject(MAT_DIALOG_DATA) public data: any,
-    ) { }
 
     ngOnInit() {
         this.mapDetail = this.data.content;
 
         // this.imgUrl = `https://txy1.sayobot.cn/beatmaps/${this.data.id}/covers/cover.jpg`;
-        this.imgUrl = `https://assets.ppy.sh/beatmaps/${this.data.id}/covers/cover.jpg?295843639`;
+        this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
     }
 
 }
