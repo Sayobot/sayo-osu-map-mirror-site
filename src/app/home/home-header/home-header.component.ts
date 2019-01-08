@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../core';
+import { DialogService } from '../../core/service/DialogService';
 
 @Component({
     selector: 'home-header',

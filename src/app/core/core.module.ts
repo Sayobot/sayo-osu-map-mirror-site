@@ -18,6 +18,7 @@ import {
     NotFoundPageComponent
 } from './components';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -40,7 +41,7 @@ import {
         NotFoundMapDialogComponent,
         SupportSayobotComponent,
         UpdateLogDialogComponent,
-        NotFoundPageComponent
+        NotFoundPageComponent,
     ],
     exports: [
         NotFoundPageComponent

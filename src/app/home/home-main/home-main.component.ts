@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService, ApiService } from '../../core';
+import { DialogService } from '../../core/service/DialogService';
+import { ApiService } from '../../core/service/ApiService';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -45,11 +46,10 @@ export class HomeMainComponent implements OnInit {
 
     getNewMore = () => this.apiService.getNewMap();
 
-    getSearchMore = () =>  this.apiService.getSearchList();
-
+    getSearchMore = () => this.apiService.getSearchList();
 
     // setImgUrl = sid => `https://txy1.sayobot.cn/beatmaps/${sid}/covers/cover.jpg`;
-    setImgUrl = sid => `https://assets.ppy.sh/beatmaps/${sid}/covers/cover.jpg?295843639`;
+    setImgUrl = sid => `https://cdn.sayobot.cn:25225/beatmaps/${sid}/covers/cover.jpg?0`;
 }
 
 
