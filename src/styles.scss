@@ -1,9 +1,39 @@
 // @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
 // CSS reset
 * {
     box-sizing: border-box;
+}
+
+// 浏览器滚动条样式
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-button {
+    display: none;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-track-piece {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #808080;
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-corner {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-resizer {
+    background: #ffffff;
 }
 
 body,
@@ -33,18 +63,20 @@ img {
     width: 100%;
     max-width: 100%;
 }
+
 // 去除图片造成的文字空隙
 .img-box {
     font-size: 0;
 }
-
 
 ul,
 li {
     list-style: none;
 }
 
-dl, dt, dd {
+dl,
+dt,
+dd {
     margin: 0;
 }
 
@@ -63,8 +95,6 @@ dl, dt, dd {
 .mat-dialog-container {
     padding: 0 !important;
 }
-
-
 
 .m-y-1 {
     margin-top: 4px;
