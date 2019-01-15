@@ -14,7 +14,8 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: '**', component: NotFoundPageComponent
+        path: '**',
+        component: NotFoundPageComponent
     }
 
 ];

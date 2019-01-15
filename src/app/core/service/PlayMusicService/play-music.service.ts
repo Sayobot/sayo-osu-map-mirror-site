@@ -6,12 +6,9 @@ import { Injectable } from '@angular/core';
 export class PlayMusicService {
 
     musicEl = new Audio();
-    valume: number;
 
-    constructor() { }
-
-    setMusicInfo() {
-
+    constructor() {
+        this.musicEl.preload = 'metadata';
     }
 
     play = () => this.musicEl.play();
