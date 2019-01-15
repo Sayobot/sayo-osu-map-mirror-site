@@ -5,12 +5,12 @@ import { NotFoundPageComponent } from './core';
 
 const routes: Routes = [
     {
-        path: 'home',
+        path: '',
         loadChildren: './home/home.module#HomeModule'
     },
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '',
         pathMatch: 'full'
     },
     {
