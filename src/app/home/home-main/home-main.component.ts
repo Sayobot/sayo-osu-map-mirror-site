@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { DialogService, ApiService } from '../../core/service/';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +18,8 @@ export class HomeMainComponent implements OnInit {
         public dialog: DialogService,
         public apiService: ApiService,
         public http: HttpClient,
-        public activeRoute: ActivatedRoute
+        public activeRoute: ActivatedRoute,
+        public router: Router
     ) {
 
     }
@@ -57,11 +58,14 @@ export class HomeMainComponent implements OnInit {
     onTabChange() {
         if (this.tabIndex === 0 && this.apiService.newMap.length === 0) {
             this.apiService.getNewMap();
+            this.router.navigate(['']);
         }
 
         if (this.tabIndex === 1 && this.apiService.hotMap.length === 0) {
             this.apiService.getHotMap();
+            this.router.navigate(['']);
         }
+
     }
 
     getHotMore = () => this.apiService.getHotMap();
