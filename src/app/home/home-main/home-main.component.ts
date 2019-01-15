@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../core/service/DialogService';
-import { ApiService } from '../../core/service/ApiService';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { DialogService, ApiService } from '../../core/service/';
+
 
 
 @Component({
@@ -16,12 +17,23 @@ export class HomeMainComponent implements OnInit {
     constructor(
         public dialog: DialogService,
         public apiService: ApiService,
-        public http: HttpClient
-    ) { }
+        public http: HttpClient,
+        public activeRoute: ActivatedRoute
+    ) {
+
+    }
 
     ngOnInit() {
+        this.activeRoute
+            .queryParams
+            .subscribe(params => {
+                if (params.search) {
+                    this.search(params.search);
+                } else {
+                    this.apiService.getMapList();
+                }
+            });
         this.apiService.getSupport();
-        this.apiService.getMapList();
         this.apiService.getNewsList();
     }
 
@@ -39,6 +51,16 @@ export class HomeMainComponent implements OnInit {
             this.tabIndex = 3;
         } else {
             this.dialog.notFoundMap();
+        }
+    }
+
+    onTabChange() {
+        if (this.tabIndex === 0 && this.apiService.newMap.length === 0) {
+            this.apiService.getNewMap();
+        }
+
+        if (this.tabIndex === 1 && this.apiService.hotMap.length === 0) {
+            this.apiService.getHotMap();
         }
     }
 

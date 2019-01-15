@@ -1,19 +1,23 @@
-<div class="map-detail">
+<div class="map-detail" *ngIf="mapDetail">
     <div class="img-box">
         <img [src]="imgUrl" alt="">
     </div>
 
     <div class="detail">
         <dl class="info">
-            <dt><h1>{{mapDetail.title}}</h1></dt>
+            <dt>
+                <h1>{{mapDetail.title}}</h1>
+            </dt>
             <dd><span>artist：</span>{{mapDetail.artist}}</dd>
             <dd><span>creator：</span>{{mapDetail.creator}}</dd>
             <dd><span>Star: </span>{{mapDetail.version}}</dd>
         </dl>
 
         <div class="actions">
-            <button mat-raised-button color="accent" (click)="playPart()" disabled>试听(开发中...)</button>
+            <button mat-raised-button color="accent" *ngIf="musicTime && time !== 0" disabled>{{time}}s</button>
+            <button mat-raised-button color="accent" *ngIf="!musicTime || time === 0" (click)="playPart()">试听</button>
             <button mat-raised-button color="accent" (click)="playComplete()" disabled>完整歌曲(开发中...)</button>
             <button mat-raised-button color="accent" (click)="onDownLoad()">下载</button>
+        </div>
     </div>
 </div>

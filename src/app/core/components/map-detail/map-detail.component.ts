@@ -10,7 +10,10 @@ import { PlayMusicService } from '../../service/PlayMusicService';
 export class MapDetailComponent implements OnInit {
 
     mapDetail: any;
-    imgUrl;
+    imgUrl: string;
+    time: any;
+
+    musicTime: any;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -36,8 +39,14 @@ export class MapDetailComponent implements OnInit {
 
     // 试听歌曲
     playPart() {
-        this.musicBox.setSrc(`https://txy1.sayobot.cn/audio/${this.mapDetail.sid}.mp3`);
         this.musicBox.play();
+        this.time = Math.floor(this.musicBox.musicEl.duration) - Math.floor(this.musicBox.musicEl.currentTime);
+        this.musicTime = setInterval(() => {
+            this.time = Math.floor(this.musicBox.musicEl.duration) - Math.floor(this.musicBox.musicEl.currentTime) - 1;
+            if (this.time === 0) {
+                clearInterval(this.musicTime);
+            }
+        }, 1000);
     }
 
     // 播放完整音乐
@@ -45,12 +54,10 @@ export class MapDetailComponent implements OnInit {
         console.log('播放了完整的音乐');
     }
 
-
     ngOnInit() {
+        this.imgUrl = `https://txy1.sayobot.cn/beatmaps/${this.data.id}/covers/cover.jpg`;
         this.mapDetail = this.data.content;
-
-        // this.imgUrl = `https://txy1.sayobot.cn/beatmaps/${this.data.id}/covers/cover.jpg`;
-        this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
+        this.musicBox.setSrc(`https://cdn.sayobot.cn:25225/preview/${this.data.id}.mp3`);
     }
 
 }
