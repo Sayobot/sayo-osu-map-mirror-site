@@ -36,10 +36,7 @@ export class HomeMainComponent implements OnInit {
         this.apiService.getNewsList();
     }
 
-    opneMapDetail = id => {
-        this.apiService.getMapDetail(id);
-        this.dialog.mapDetail(id, this.apiService.detail);
-    }
+    opneMapDetail = id => this.apiService.getMapDetail(id);
 
     openNotFoundMap = () => this.dialog.notFoundMap();
 

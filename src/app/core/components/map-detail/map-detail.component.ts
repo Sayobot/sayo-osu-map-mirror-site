@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { PlayMusicService } from '../../service/PlayMusicService';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-map-detail',
@@ -8,6 +9,11 @@ import { PlayMusicService } from '../../service/PlayMusicService';
     styleUrls: ['./map-detail.component.scss']
 })
 export class MapDetailComponent implements OnInit {
+
+    mapUrl = 'https://osu.sayobot.cn/osu.php?s=';
+    mapUrlV2 = 'https://txy1.sayobot.cn/download/osz/';
+    mapUnVedio = 'https://txy1.sayobot.cn/download/osz/novideo/';
+    addMapUrl = 'https://sayo.sayobot.cn/add/';
 
     mapDetail: any;
     imgUrl: string;
@@ -17,23 +23,13 @@ export class MapDetailComponent implements OnInit {
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
-        private musicBox: PlayMusicService
+        private musicBox: PlayMusicService,
+        public http: HttpClient
     ) { }
 
     // 点击下载事件
-    onDownLoad() {
-        // https://txy1.sayobot.cn/d/osz/1
-        this.downloadFile(`https://osu.sayobot.cn/osu.php?s=${this.mapDetail.sid}`);
-    }
-
-    // 下载V2
-    onDownLoadV2() {
-        this.downloadFile(`https://txy1.sayobot.cn/download/osz/${this.mapDetail.sid}`);
-    }
-
-    // 不带视频下载
-    onDownLoadUnVedio() {
-        this.downloadFile(`https://txy1.sayobot.cn/download/osz/novideo/${this.mapDetail.sid}`);
+    onDownLoad(url) {
+        this.downloadFile(`${url}${this.mapDetail.sid}`);
     }
 
     // 文件下载功能
@@ -42,7 +38,6 @@ export class MapDetailComponent implements OnInit {
         a.style.display = 'none';
         document.body.appendChild(a);
         a.href = url;
-        // a.setAttribute('download', sid);
         a.click();
         document.body.removeChild(a);
     }
@@ -62,6 +57,11 @@ export class MapDetailComponent implements OnInit {
     // 播放完整音乐
     playComplete() {
         console.log('播放了完整的音乐');
+    }
+
+    // 添加铺面到服务器
+    addMap(sid) {
+
     }
 
     ngOnInit() {

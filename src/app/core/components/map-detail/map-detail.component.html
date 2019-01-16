@@ -17,9 +17,9 @@
             <button mat-raised-button color="accent" *ngIf="musicTime && time !== 0" disabled>{{time}}s</button>
             <button mat-raised-button color="accent" *ngIf="!musicTime || time === 0" (click)="playPart()">试听</button>
             <button mat-raised-button color="accent" (click)="playComplete()" disabled>完整歌曲(开发中...)</button>
-            <button mat-raised-button color="accent" (click)="onDownLoad()">下载</button>
-            <button mat-raised-button color="accent" (click)="onDownLoadV2()">下载V2(试用)</button>
-            <button mat-raised-button color="accent" (click)="onDownLoadUnVedio()">下载-不带视频(试用)</button>
+            <button mat-raised-button color="accent" (click)="onDownLoad(mapUrl)">下载</button>
+            <button mat-raised-button color="accent" (click)="onDownLoad(mapUrlV2)">下载V2(试用)</button>
+            <button mat-raised-button color="accent" (click)="onDownLoad(mapUrlUnvedio)">下载-不带视频(试用)</button>
         </div>
     </div>
 </div>
