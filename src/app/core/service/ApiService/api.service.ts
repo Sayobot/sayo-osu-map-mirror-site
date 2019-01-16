@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from '../DialogService';
+import { CommonFnService } from '../CommonFnService';
 
 @Injectable({
     providedIn: 'root'
@@ -12,17 +13,22 @@ export class ApiService {
     hotMap: Array<any> = [];
     hotEndId = 0;
     support: any = {};
-    totalWidth: any = '0%';
+    totalWidth = '0%';
     detail: any = {};
     public: any = {};
 
+    // 搜索铺面相关变量
     searchMap: Array<any> = [];
     searchEndId = 0;
     searchKey: string;
 
+    // 去除重复用到的set结构
+    removeMap: Set<string> = new Set();
+
     constructor(
         public http: HttpClient,
-        public dialog: DialogService
+        public dialog: DialogService,
+        public commonFn: CommonFnService
     ) { }
 
     // 铺面详情
@@ -30,11 +36,7 @@ export class ApiService {
         this.http.get(`https://api.sayobot.cn/beatmapinfo?1=${id}`).toPromise().then((res: any) => {
             if (res.status === 0) {
                 const detail = res.data[0];
-                for (const key in detail) {
-                    if (detail.hasOwnProperty(key)) {
-                        this.detail[key] = detail[key];
-                    }
-                }
+                this.detail = this.commonFn.jsonDeepCopy(detail);
             }
         });
     }
@@ -47,34 +49,28 @@ export class ApiService {
 
     // 获得最新图
     getNewMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=100&1=${this.newEndId}&2=2`).toPromise().then((res: any) => {
-            if (res.status === 0) {
-                const maps = res.data.filter(item => {
-                    return item.order !== 0;
-                });
-
-                maps.forEach(element => {
-                    this.newMap.push(element);
-                });
-
-                this.newEndId = res.endid;
-            }
-        });
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=100&1=${this.newEndId}&2=2`)
+            .toPromise()
+            .then((res: any) => {
+                if (res.status === 0) {
+                    const maps = res.data.filter(item => item.order !== 0);
+                    this.removeRepeatMap(maps, this.newMap);
+                    this.newEndId = res.endid;
+                }
+            });
     }
 
     // 获得热门图
     getHotMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=50&1=${this.hotEndId}&2=1`).toPromise().then((res: any) => {
-            if (res.status === 0) {
-                const maps = res.data.filter(item => {
-                    return item.order !== 0;
-                });
-                maps.forEach(element => {
-                    this.hotMap.push(element);
-                });
-                this.hotEndId = res.endid;
-            }
-        });
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=50&1=${this.hotEndId}&2=1`)
+            .toPromise()
+            .then((res: any) => {
+                if (res.status === 0) {
+                    const maps = res.data.filter(item => item.order !== 0);
+                    this.removeRepeatMap(maps, this.hotMap);
+                    this.hotEndId = res.endid;
+                }
+            });
     }
 
     // 获取搜索结果
@@ -95,12 +91,7 @@ export class ApiService {
             if (res.status === 0) {
                 const detail = res.data[0];
                 const id = detail.sid;
-                for (const key in detail) {
-                    if (detail.hasOwnProperty(key)) {
-                        this.detail[key] = detail[key];
-                    }
-                }
-
+                this.detail = this.commonFn.jsonDeepCopy(detail);
                 this.dialog.mapDetail(id, detail);
             }
         }).catch(() => {
@@ -114,12 +105,8 @@ export class ApiService {
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data.filter(item => {
-                        return item.order !== 0;
-                    });
-
-                    maps.forEach(element => this.searchMap.push(element));
-
+                    const maps = res.data.filter(item => item.order !== 0);
+                    this.removeRepeatMap(maps, this.searchMap);
                     this.searchEndId = res.endid;
                 } else {
                     this.dialog.notFoundMap();
@@ -131,11 +118,7 @@ export class ApiService {
     getSupport() {
         this.http.get('https://api.sayobot.cn/support').toPromise().then((res: any) => {
             if (res.data) {
-                for (const key in res.data) {
-                    if (res.data.hasOwnProperty(key)) {
-                        this.support[key] = res.data[key];
-                    }
-                }
+                this.support = this.commonFn.jsonDeepCopy(res.data);
                 const percentage = res.data.total / res.data.target;
                 const num = percentage > 100 ? 100 : percentage;
                 this.totalWidth = Math.floor(num * 100) + '%';
@@ -145,15 +128,19 @@ export class ApiService {
 
     // 新闻列表
     getNewsList() {
-        this.http.get(`https://api.sayobot.cn/notice`).toPromise().then((res: any) => {
-            for (const key in res.data) {
-                if (res.data.hasOwnProperty(key)) {
-                    this.public[key] = res.data[key];
-                }
-            }
-        });
+        this.http.get(`https://api.sayobot.cn/notice`)
+            .toPromise()
+            .then((res: any) => this.public = this.commonFn.jsonDeepCopy(res.data));
     }
 
-
-
+    // 去除重复铺面
+    removeRepeatMap(maps, target) {
+        maps.forEach(element => {
+            if (!this.removeMap.has(element.sid)) {
+                target.push(element);
+                this.removeMap.add(element.sid);
+            }
+        });
+        this.removeMap.clear();
+    }
 }
