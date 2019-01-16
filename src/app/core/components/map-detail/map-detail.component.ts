@@ -23,16 +23,26 @@ export class MapDetailComponent implements OnInit {
     // 点击下载事件
     onDownLoad() {
         // https://txy1.sayobot.cn/d/osz/1
-        this.downloadFile(`https://osu.sayobot.cn/osu.php?s=${this.mapDetail.sid}`, this.mapDetail.sid);
+        this.downloadFile(`https://osu.sayobot.cn/osu.php?s=${this.mapDetail.sid}`);
+    }
+
+    // 下载V2
+    onDownLoadV2() {
+        this.downloadFile(`https://txy1.sayobot.cn/download/osz/${this.mapDetail.sid}`);
+    }
+
+    // 不带视频下载
+    onDownLoadUnVedio() {
+        this.downloadFile(`https://txy1.sayobot.cn/download/osz/novideo/${this.mapDetail.sid}`);
     }
 
     // 文件下载功能
-    downloadFile(url, sid) {
+    downloadFile(url) {
         const a = document.createElement('a');
         a.style.display = 'none';
         document.body.appendChild(a);
         a.href = url;
-        a.setAttribute('download', sid);
+        // a.setAttribute('download', sid);
         a.click();
         document.body.removeChild(a);
     }

@@ -20,9 +20,7 @@ export class HomeMainComponent implements OnInit {
         public http: HttpClient,
         public activeRoute: ActivatedRoute,
         public router: Router
-    ) {
-
-    }
+    ) { }
 
     ngOnInit() {
         this.activeRoute
@@ -67,6 +65,7 @@ export class HomeMainComponent implements OnInit {
         }
 
     }
+
 
     getHotMore = () => this.apiService.getHotMap();
 
