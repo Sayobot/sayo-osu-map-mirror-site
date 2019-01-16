@@ -33,12 +33,15 @@ export class ApiService {
 
     // 铺面详情
     getMapDetail(id) {
-        this.http.get(`https://api.sayobot.cn/beatmapinfo?1=${id}`).toPromise().then((res: any) => {
-            if (res.status === 0) {
-                const detail = res.data[0];
-                this.detail = this.commonFn.jsonDeepCopy(detail);
-            }
-        });
+        return this.http.get(`https://api.sayobot.cn/beatmapinfo?1=${id}`)
+            .toPromise()
+            .then((res: any) => {
+                if (res.status === 0) {
+                    const detail = res.data[0];
+                    this.detail = this.commonFn.jsonDeepCopy(detail);
+                    this.dialog.mapDetail(id, this.detail);
+                }
+            });
     }
 
     // 铺面列表
