@@ -1,5 +1,30 @@
 <!doctype html>
 <html lang="en">
+<style>
+body,html {
+    padding: 0;
+    margin: 0;
+}
+#load {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, .7);
+}
+#load img {
+        width: 128px;
+        height: 128px;
+}
+</style>
 
 <head>
     <meta charset="utf-8">
@@ -17,8 +42,23 @@
 <link rel="stylesheet" href="styles.9635c3ea2a4f0cfd99ef.css"></head>
 
 <body>
+    <!-- 解决某些浏览器加载过慢 -->
+    <div id="load">
+        <img src="./assets/img/common/app-loading.png" alt="加载中">
+        <h1>第一次加载可能比较慢，推荐您使用chrome，firefox等浏览器访问。</h1>
+    </div>
+
+
     <app-root></app-root>
     <noscript>Loding...</noscript>
-<script type="text/javascript" src="runtime.3354c46fd5a01d379884.js"></script><script type="text/javascript" src="polyfills.f6ae3e8b63939c618130.js"></script><script type="text/javascript" src="main.bfa7d0df66a637ab6732.js"></script></body>
+<script type="text/javascript" src="runtime.cbf9bbc3a44483f21899.js"></script><script type="text/javascript" src="polyfills.f6ae3e8b63939c618130.js"></script><script type="text/javascript" src="main.63d792c9c467d5f5ab5c.js"></script></body>
+
+<script>
+    window.onload = function () {
+        const load = document.getElementById('load');
+        load.parentNode.removeChild(load);
+    }
+
+</script>
 
 </html>
