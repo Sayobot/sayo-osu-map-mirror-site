@@ -56,7 +56,7 @@ export class ApiService {
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data.filter(item => item.order !== 0);
+                    const maps = res.data;
                     this.removeRepeatMap(maps, this.newMap);
                     this.newEndId = res.endid;
                 }

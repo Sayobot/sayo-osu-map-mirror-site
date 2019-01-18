@@ -23,6 +23,13 @@
 
             button {
                 margin: 0 .5em;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    height: 16px;
+                    width: 16px;
+                }
             }
         }
     }
