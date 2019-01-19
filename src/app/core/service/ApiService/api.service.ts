@@ -23,7 +23,9 @@ export class ApiService {
     searchKey: string;
 
     // 去除重复用到的set结构
-    removeMap: Set<string> = new Set();
+    removeNewMap: Set<string> = new Set();
+    removeHotMap: Set<string> = new Set();
+    removeSearchMap: Set<string> = new Set();
 
     constructor(
         public http: HttpClient,
@@ -57,7 +59,7 @@ export class ApiService {
             .then((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
-                    this.removeRepeatMap(maps, this.newMap);
+                    this.removeRepeatMap(maps, this.newMap, this.removeNewMap);
                     this.newEndId = res.endid;
                 }
             });
@@ -69,8 +71,8 @@ export class ApiService {
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data.filter(item => item.order !== 0);
-                    this.removeRepeatMap(maps, this.hotMap);
+                    const maps = res.data;
+                    this.removeRepeatMap(maps, this.hotMap, this.removeHotMap);
                     this.hotEndId = res.endid;
                 }
             });
@@ -108,8 +110,8 @@ export class ApiService {
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data.filter(item => item.order !== 0);
-                    this.removeRepeatMap(maps, this.searchMap);
+                    const maps = res.data;
+                    this.removeRepeatMap(maps, this.searchMap, this.removeSearchMap);
                     this.searchEndId = res.endid;
                 } else {
                     this.dialog.notFoundMap();
@@ -137,13 +139,12 @@ export class ApiService {
     }
 
     // 去除重复铺面
-    removeRepeatMap(maps, target) {
+    removeRepeatMap(maps, target, removeSet) {
         maps.forEach(element => {
-            if (!this.removeMap.has(element.sid)) {
+            if (!removeSet.has(element.sid)) {
                 target.push(element);
-                this.removeMap.add(element.sid);
+                removeSet.add(element.sid);
             }
         });
-        this.removeMap.clear();
     }
 }
