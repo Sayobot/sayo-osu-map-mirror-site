@@ -96,7 +96,7 @@
                 <div class="progress-bg">
                     <div class="progress-bar" [ngStyle]="{'width': apiService.totalWidth}"></div>
                     <span class="progress-percent">{{apiService.totalWidth}}</span>
-                    <span class="support">${{apiService.support.total}}/${{apiService.support.target}}</span>
+                    <span class="support">RMB {{apiService.support.total}}/RMB {{apiService.support.target}}</span>
                 </div>
             </mat-card-content>
         </mat-card>
