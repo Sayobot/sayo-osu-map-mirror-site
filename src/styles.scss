@@ -1,40 +1,10 @@
-// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './app/core/theme/scrollbar';      // 滚动条
+@import './app/core/theme/dialog';         // 弹窗
 
 // CSS reset
 * {
     box-sizing: border-box;
-}
-
-// 浏览器滚动条样式
-*::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-*::-webkit-scrollbar-button {
-    display: none;
-}
-
-*::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-
-*::-webkit-scrollbar-track-piece {
-    background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-    background: #808080;
-    border-radius: 4px;
-}
-
-*::-webkit-scrollbar-corner {
-    background: #ffffff;
-}
-
-*::-webkit-scrollbar-resizer {
-    background: #ffffff;
 }
 
 body,
@@ -65,10 +35,6 @@ img {
     max-width: 100%;
 }
 
-// 去除图片造成的文字空隙
-.img-box {
-    font-size: 0;
-}
 
 ul,
 li {
@@ -81,20 +47,14 @@ dd {
     margin: 0;
 }
 
-// 主题相关
-.theme-primary {
-    background: #c2185b;
-    color: #fff;
-}
-
 // 布局
 .flex-spacer {
     flex: 1;
 }
 
-// 去除所有弹窗内边距
-.mat-dialog-container {
-    padding: 0 !important;
+// 去除图片造成的文字空隙
+.img-box {
+    font-size: 0;
 }
 
 .m-y-1 {
@@ -110,47 +70,3 @@ dd {
 .m-b-2 {
     margin-bottom: 8px;
 }
-
-// 自定义滚轮
-.customer-scroll {
-    overflow: auto;
-}
-
-//滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等
-.customer-scroll::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-//滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果
-.customer-scroll::-webkit-scrollbar-button {
-    display: none;
-}
-
-// 外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果
-.customer-scroll::-webkit-scrollbar-track {
-    display: none;
-}
-
-//内层轨道，滚动条中间部分
-.customer-scroll::-webkit-scrollbar-track-piece {
-    background: #eee;
-}
-
-//滚动条里面可以拖动的那部分
-.customer-scroll::-webkit-scrollbar-thumb {
-    background: #cc5a5a;
-    border-radius: 5px;
-}
-
-//边角
-.customer-scroll::-webkit-scrollbar-corner {
-    display: none;
-}
-
-//定义右下角拖动块的样式
-.customer-scroll::-webkit-resizer {
-    display: none;
-}
-
-

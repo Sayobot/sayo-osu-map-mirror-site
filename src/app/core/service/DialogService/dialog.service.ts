@@ -51,14 +51,22 @@ export class DialogService {
     }
 
     // 未找到
-    notFoundMap() {
-        const notFoundMap = this.dialog.open(NotFoundMapDialogComponent);
+    notFoundMap(str) {
+        const notFoundMap = this.dialog.open(
+            NotFoundMapDialogComponent,
+            {
+                data: {
+                    key: str,
+                }
+            }
+        );
     }
 
     // 铺面详情
     mapDetail(id, detail) {
         const mapDetail = this.dialog.open(
             MapDetailComponent, {
+                panelClass: 'no-padding-dialog',
                 maxWidth: '96vw',
                 maxHeight: '90vh',
                 data: {

@@ -38,15 +38,13 @@ export class HomeMainComponent implements OnInit {
 
     opneMapDetail = id => this.apiService.getMapDetail(id);
 
-    openNotFoundMap = () => this.dialog.notFoundMap();
-
     search(str) {
         this.searchKey = str.replace(/["]/ig, '').replace(/(^\s*)|(\s*$)/ig, '');
         if (this.searchKey !== '') {
             this.apiService.getSearch(this.searchKey);
             this.tabIndex = 3;
         } else {
-            this.dialog.notFoundMap();
+            this.dialog.notFoundMap(str);
         }
     }
 
