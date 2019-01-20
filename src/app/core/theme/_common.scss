@@ -3,3 +3,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@mixin box-model($m: 0, $p: 0, $b: 1px solid #000, $s: border-box) {
+    margin: $m;
+    padding: $p;
+    border: $b;
+    box-sizing: $s;
+}

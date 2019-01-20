@@ -22,11 +22,6 @@ export class ApiService {
     searchEndId = 0;
     searchKey: string;
 
-    // 去除重复用到的set结构
-    removeNewMap: Set<string> = new Set();
-    removeHotMap: Set<string> = new Set();
-    removeSearchMap: Set<string> = new Set();
-
     constructor(
         public http: HttpClient,
         public dialog: DialogService,
@@ -59,7 +54,7 @@ export class ApiService {
             .then((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
-                    this.removeRepeatMap(maps, this.newMap, this.removeNewMap);
+                    maps.forEach(element => this.newMap.push(element));
                     this.newEndId = res.endid;
                 }
             });
@@ -72,17 +67,17 @@ export class ApiService {
             .then((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
-                    this.removeRepeatMap(maps, this.hotMap, this.removeHotMap);
+                    maps.forEach(element => this.hotMap.push(element));
                     this.hotEndId = res.endid;
                 }
             });
     }
 
     // 获取搜索结果
-    getSearch(url) {
+    getSearch(key) {
         this.searchEndId = 0;
         this.searchMap = [];
-        this.searchKey = url;
+        this.searchKey = key;
         if (this.searchKey.match(/[\d]/ig)) {
             this.getSearchInfo();
         } else {
@@ -99,8 +94,9 @@ export class ApiService {
                 this.detail = this.commonFn.jsonDeepCopy(detail);
                 this.dialog.mapDetail(id, detail);
             }
-        }).catch(() => {
-            this.getSearchList();
+            if (res.status === -1) {
+                this.getSearchList();
+            }
         });
     }
 
@@ -111,10 +107,10 @@ export class ApiService {
             .then((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
-                    this.removeRepeatMap(maps, this.searchMap, this.removeSearchMap);
+                    maps.forEach(element => this.searchMap.push(element));
                     this.searchEndId = res.endid;
                 } else {
-                    this.dialog.notFoundMap();
+                    this.dialog.notFoundMap(this.searchKey);
                 }
             });
     }
@@ -138,13 +134,4 @@ export class ApiService {
             .then((res: any) => this.public = this.commonFn.jsonDeepCopy(res.data));
     }
 
-    // 去除重复铺面
-    removeRepeatMap(maps, target, removeSet) {
-        maps.forEach(element => {
-            if (!removeSet.has(element.sid)) {
-                target.push(element);
-                removeSet.add(element.sid);
-            }
-        });
-    }
 }
