@@ -21,33 +21,41 @@ export class DialogService {
     ) { }
 
     supprot() {
-        const supportDilog = this.dialog.open(SupportSayobotComponent, {
-            maxHeight: '96%',
-            width: '600px',
-        });
+        const supportDilog = this.dialog.open(
+            SupportSayobotComponent, {
+                maxHeight: '96%',
+                width: '600px',
+            });
     }
 
     // 打开帮助弹窗
     help() {
-        const helpDialog = this.dialog.open(HelpDialogComponent);
+        const helpDialog = this.dialog.open(
+            HelpDialogComponent, {
+                maxWidth: '40vw'
+            }
+        );
     }
 
     // 打开关于小夜的弹窗
     about() {
-        const aboutDialg = this.dialog.open(AboutDialogComponent, {
-            maxHeight: '90vh',
-            height: '90vh',
-            maxWidth: '600px'
-        });
+        const aboutDialg = this.dialog.open(
+            AboutDialogComponent, {
+                maxHeight: '90vh',
+                height: '90vh',
+                maxWidth: '600px'
+            });
     }
 
     // 打开更新日志的弹窗
     updateLog() {
-        const UpdateLog = this.dialog.open(UpdateLogDialogComponent, {
-            maxHeight: '90vh',
-            height: '70vh',
-            maxWidth: '600px'
-        });
+        const UpdateLog = this.dialog.open(
+            UpdateLogDialogComponent,
+            {
+                maxHeight: '90vh',
+                height: '70vh',
+                maxWidth: '600px'
+            });
     }
 
     // 未找到

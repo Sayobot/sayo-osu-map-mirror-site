@@ -1,0 +1,14 @@
+@mixin flex-layout($x: center, $y: center) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+}
+
+// 盒子模型
+@mixin box-model($m: 0, $p: 0, $b: 1px solid #000, $s: border-box, $w: 100%) {
+    margin: $m;
+    padding: $p;
+    border: $b;
+    box-sizing: $s;
+    width: $w;
+}
