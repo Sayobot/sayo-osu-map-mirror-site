@@ -15,7 +15,7 @@ export class HomeHeaderComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        if (this.local.getItem('isShow') === 'false') {
+        if (!this.local.getItem('isShow') || this.local.getItem('isShow') === 'false') {
             setTimeout(() => {
                 this.openHelpDialg();
             }, 500);
