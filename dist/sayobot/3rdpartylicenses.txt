@@ -320,6 +320,10 @@ THE SOFTWARE.
 MIT
 MIT
 
+@angular/forms@6.1.10
+MIT
+MIT
+
 @angular/platform-browser@6.1.10
 MIT
 MIT
@@ -349,10 +353,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 @angular/router@6.1.10
-MIT
-MIT
-
-@angular/forms@6.1.10
 MIT
 MIT
 
