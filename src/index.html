@@ -1,44 +1,16 @@
 <!doctype html>
 <html lang="en">
-<style>
-body,html {
-    padding: 0;
-    margin: 0;
-}
-#load {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    background: rgba(0, 0, 0, .7);
-}
-#load img {
-        width: 128px;
-        height: 128px;
-}
-</style>
 
 <head>
     <meta charset="utf-8">
-    <title>Sayobot</title>
+    <title>Sayobot - osu! Beatmap mirror | osu! 地图镜像站</title>
     <base href="/">
-
+    <meta name="description" content="Sayobot.cn是全球最大、地图存储量最多(超过2000GB)的第三方osu!镜像站，致力于为广大玩家提供osu!周边的服务，包括但不限于osu!地图的搜索下载、提供osu!外设(小键盘和数位板)、图包&皮肤分享/下载、osu! QQ机器人等。">
+    <meta name="keyword" content="osu!，osu! Beatmap mirror，大陆，国内，镜像，加速，下载，高速，急速，光速，BloodCat，血猫，osu.ppy.sh，osu.sayobot.cn，bloodcat.com/osu，inso，inso.link，小夜，_BlackC，SoulDee">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!-- 引入angular-material图标 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- 引入字体 -->
-    <!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
-        rel="stylesheet" type="text/css"> -->
 </head>
 
 <body>
@@ -48,17 +20,15 @@ body,html {
         <h1>第一次加载可能比较慢，推荐您使用chrome，firefox等浏览器访问。</h1>
     </div>
 
-
     <app-root></app-root>
     <noscript>Loding...</noscript>
 </body>
 
 <script>
-    window.onload = function () {
+    document.addEventListener("DOMContentLoaded", () => {
         const load = document.getElementById('load');
         load.parentNode.removeChild(load);
-    }
-
+    });
 </script>
 
 </html>

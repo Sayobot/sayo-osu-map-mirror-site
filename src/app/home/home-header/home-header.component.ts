@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '../../core/service/DialogService';
+import { LocalStorageService } from '../../core/service/LocalStorage';
 
 @Component({
     selector: 'home-header',
@@ -9,10 +10,16 @@ import { DialogService } from '../../core/service/DialogService';
 export class HomeHeaderComponent implements OnInit {
 
     constructor(
-        public dialog: DialogService
+        public dialog: DialogService,
+        public local: LocalStorageService
     ) { }
 
     ngOnInit() {
+        if (this.local.getItem('isShow') === 'false') {
+            setTimeout(() => {
+                this.openHelpDialg();
+            }, 500);
+        }
     }
 
     // 打开支持小夜的弹窗

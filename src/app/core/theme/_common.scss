@@ -1,12 +1,27 @@
+@import './link';       // 跳转链接样式
+@import './position';   // 定位布局
+
 @mixin text-one-line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-@mixin box-model($m: 0, $p: 0, $b: 1px solid #000, $s: border-box) {
-    margin: $m;
-    padding: $p;
-    border: $b;
-    box-sizing: $s;
+
+
+// 禁用文字选中 none | text
+@mixin text-no-select($isSelet: none) {
+    -moz-user-select: $isSelet;
+    -webkit-user-select: $isSelet;
+    -ms-user-select: $isSelet;
+    -khtml-user-select: $isSelet;
+    user-select: $isSelet;
+}
+
+// 高亮关键文字
+.high-light-text {
+    @include text-no-select(text);
+    font-weight: lighter;
+    border-bottom: 2px solid #000;
+    padding: 0 .5em;
 }
