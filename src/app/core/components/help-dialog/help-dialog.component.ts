@@ -17,7 +17,6 @@ export class HelpDialogComponent implements OnInit {
     }
 
     statusChange() {
-        console.log(this.checked);
         const key = String(this.checked);
         this.local.setItem('isShow', key);
     }
