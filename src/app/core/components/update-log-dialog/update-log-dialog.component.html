@@ -1,6 +1,25 @@
 <h2>更新日志</h2>
 
-<mat-accordion displayMode="flat">
+<mat-accordion displayMode="flat" *ngIf="updataList">
+
+
+    <!--                          web下载站更新                        -->
+    <mat-expansion-panel *ngFor="let updata of updataList">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{updata.time}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="content-box">
+            <mat-list>
+                <mat-list-item *ngFor="let item of updata.detail">{{item}}</mat-list-item>
+            </mat-list>
+        </div>
+    </mat-expansion-panel>
+
+    <!--                          sayobot更新                           -->
+
+
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>

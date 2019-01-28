@@ -91,7 +91,6 @@ export class MapDetailComponent implements OnInit {
     ngOnInit() {
         this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
         this.mapDetail = this.data.content;
-        this.musicBox.setSrc(`https://cdn.sayobot.cn:25225/preview/${this.data.id}.mp3`);
+        this.musicBox.setSrc(`https://cdnx.sayobot.cn:25225/preview/${this.data.id}.mp3`);
     }
-
 }
