@@ -13,31 +13,28 @@
                 <ng-template mat-tab-label>
                     最新map
                 </ng-template>
-                <div class="map-content">
-                    <div>
-                        <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
-                            <mat-grid-tile *ngFor="let map of apiService.newMap" (click)="opneMapDetail(map.sid)">
-                                <div class="map-summary">
-                                    <img [src]="setImgUrl(map.sid)">
-                                    <dl>
-                                        <dt>
-                                            <h3>{{map.title}}</h3>
-                                        </dt>
-                                        <dd>artist：{{map.artist}}</dd>
-                                        <dd>creator：{{map.creator}}</dd>
-                                    </dl>
-                                </div>
-                            </mat-grid-tile>
-                        </mat-grid-list>
-                        <button mat-button class="getMore-btn" *ngIf="apiService.newEndId !== 0" (click)="getNewMore()">点击查看更多</button>
-                    </div>
+                <div class="map-content" id="new-map-scroll">
+                    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
+                        <mat-grid-tile *ngFor="let map of apiService.newMap" (click)="opneMapDetail(map.sid)">
+                            <div class="map-summary">
+                                <img [src]="setImgUrl(map.sid)">
+                                <dl>
+                                    <dt>
+                                        <h3>{{map.title}}</h3>
+                                    </dt>
+                                    <dd>artist：{{map.artist}}</dd>
+                                    <dd>creator：{{map.creator}}</dd>
+                                </dl>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
                 </div>
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
                     热门map
                 </ng-template>
-                <div class="map-content">
+                <div class="map-content" id="hot-map-scroll">
                     <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
                         <mat-grid-tile *ngFor="let map of apiService.hotMap" (click)="opneMapDetail(map.sid)">
                             <div class="map-summary">
@@ -52,7 +49,6 @@
                             </div>
                         </mat-grid-tile>
                     </mat-grid-list>
-                    <button mat-button class="getMore-btn" *ngIf="apiService.hotEndId !== 0" (click)="getHotMore()">点击查看更多</button>
                 </div>
             </mat-tab>
 
@@ -60,7 +56,7 @@
                 <ng-template mat-tab-label>
                     搜索结果
                 </ng-template>
-                <div class="map-content" *ngIf="apiService.searchMap">
+                <div class="map-content" id="search-map-scroll" *ngIf="apiService.searchMap">
                     <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
                         <mat-grid-tile *ngFor="let map of apiService.searchMap" (click)="opneMapDetail(map.sid)">
                             <div class="map-summary">
@@ -75,7 +71,6 @@
                             </div>
                         </mat-grid-tile>
                     </mat-grid-list>
-                    <button mat-button class="getMore-btn" *ngIf="apiService.searchEndId !== 0" (click)="getSearchMore()">点击查看更多</button>
                 </div>
 
                 <div class="map-content" *ngIf="!apiService.searchMap">
