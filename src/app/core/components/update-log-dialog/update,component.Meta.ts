@@ -2,6 +2,11 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-01-30',
+        detail: [
+            '[ ✔ ] 图片的滚动懒加载',
+        ]
+    }, {
         time: '2019-01-28',
         detail: [
             '由于页面作者工作忙加上过于沙雕',
