@@ -3,3 +3,23 @@
     <img src="assets/img/home/pay-zhifubao.jpg" alt="支付宝">
     <img src="assets/img/home/pay-weixin.png" alt="微信收钱">
 </div>
+
+<ul *ngIf="supportData">
+    <li *ngFor="let support of supportData">
+        <h3>{{support.title}}</h3>
+        <ul *ngIf="support.detail" class="detail">
+            <li class="table-header">
+                <span>Name</span>
+                <span>RMB</span>
+                <span>Time</span>
+                <span>From</span>
+            </li>
+            <li *ngFor="let item of support.detail" class="table-body">
+                <span class="name">{{item.id}}</span>
+                <span>{{item.money}}</span>
+                <span>{{item.time}}</span>
+                <span>{{isFrom(item.type)}}</span>
+            </li>
+        </ul>
+    </li>
+</ul>

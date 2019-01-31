@@ -2,9 +2,10 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
-        time: '2019-01-30',
+        time: '2019-01-31',
         detail: [
             '[ ✔ ] 图片的滚动懒加载',
+            '[ ✔ ] 投喂支持列表',
         ]
     }, {
         time: '2019-01-28',

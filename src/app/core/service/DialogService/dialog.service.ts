@@ -23,6 +23,7 @@ export class DialogService {
     supprot() {
         const supportDilog = this.dialog.open(
             SupportSayobotComponent, {
+                height: '96%',
                 maxHeight: '96%',
                 width: '600px',
             });
