@@ -28,6 +28,7 @@
                             </div>
                         </mat-grid-tile>
                     </mat-grid-list>
+                    <button mat-raised-button (click)="getNewMore()" class="getMore-btn">点击加载更多</button>
                 </div>
             </mat-tab>
             <mat-tab>
@@ -49,6 +50,7 @@
                             </div>
                         </mat-grid-tile>
                     </mat-grid-list>
+                    <button mat-raised-button (click)="getHotMore()" class="getMore-btn">点击加载更多</button>
                 </div>
             </mat-tab>
 
@@ -71,6 +73,7 @@
                             </div>
                         </mat-grid-tile>
                     </mat-grid-list>
+                    <button mat-raised-button (click)="getSearchMore()" class="getMore-btn">点击加载更多</button>
                 </div>
 
                 <div class="map-content" *ngIf="!apiService.searchMap">
