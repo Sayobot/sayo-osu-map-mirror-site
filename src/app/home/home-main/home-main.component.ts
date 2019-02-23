@@ -67,9 +67,9 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
             const height = target.scrollTop;
             if (boxHeight - height < 1000 && boxHeight - height > 0) {
                 switch (index) {
-                    case 0: this.getNewMore(); break;
-                    case 1: this.getHotMore(); break;
-                    case 2: this.getSearchMore(); break;
+                    case 0: this.apiService.newEndId !== 0 ? this.getNewMore() : console.log('已经到底啦！'); break;
+                    case 1: this.apiService.hotEndId !== 0 ? this.getHotMore() : console.log('已经到底啦！'); break;
+                    case 2: this.apiService.searchEndId !== 0 ? this.getSearchMore() : console.log('已经到底啦！'); break;
                     default:
                         break;
                 }
