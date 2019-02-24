@@ -19,7 +19,7 @@
             right: 15px;
             top: 5px;
             z-index: 10;
-            width: 25vw;
+            width: 50%;
         }
 
         mat-tab-group {
@@ -36,17 +36,4 @@
     }
 }
 
-// 闪烁动画
-@keyframes flicker {
-    0% {
-        box-shadow: 0 0 0px 5px #ddd;
-    }
 
-    50% {
-        box-shadow: 0 0 5px 0px #a5a5a5;
-    }
-
-    100% {
-        box-shadow: 0 0 0px 5px #ddd;
-    }
-}

@@ -1,5 +1,5 @@
 .seach-wrapper {
-
+    position: relative;
 
     .search-input {
         border: 3px solid #717171;
@@ -17,8 +17,36 @@
 
     .search-button {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 8px;
         right: 10px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    mat-card-header {
+        position: relative;
+        .close-options {
+            position: absolute;
+            right: 10px;
+        }
+    }
+
+    .options {
+        font-size: 12px;
+
+        .option {
+            margin: 5px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            label {
+                font-weight: 700;
+                font-size: 14px;
+            }
+        }
+
+        mat-checkbox {
+            margin: 0 3px;
+        }
     }
 }

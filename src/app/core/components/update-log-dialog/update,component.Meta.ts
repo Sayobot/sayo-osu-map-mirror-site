@@ -2,9 +2,10 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
-        time: '2019-02-23',
+        time: '2019-02-24',
         detail: [
             '[ ✔ ] 修复搜索 TAB 结果重复加载',
+            '[ ✔ ] 搜索功能强化，UI调整',
         ]
     },
     {

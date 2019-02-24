@@ -34,3 +34,18 @@
         transform: translate(0, -50%);
     }
 }
+
+// 闪烁动画
+@keyframes flicker {
+    0% {
+        box-shadow: 0 0 0px 5px #ddd;
+    }
+
+    50% {
+        box-shadow: 0 0 5px 0px #a5a5a5;
+    }
+
+    100% {
+        box-shadow: 0 0 0px 5px #ddd;
+    }
+}
