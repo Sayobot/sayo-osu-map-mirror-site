@@ -25,13 +25,13 @@
 
 
             <button mat-raised-button color="accent" (click)="onDownLoad(mapUrl)" [disabled]="isMapDownload">
-                <span *ngIf="!isMapDownload">下载</span>
+                <span *ngIf="!isMapDownload">下载(备用)</span>
                 <img *ngIf="isMapDownload" src="assets/img/common/loading.gif">
             </button>
 
 
             <button mat-raised-button color="accent" (click)="onDownLoad(mapUrlV2)" [disabled]="isMapDownload">
-                <span *ngIf="!isMapDownload">下载V2(试用)</span>
+                <span *ngIf="!isMapDownload">下载</span>
                 <img *ngIf="isMapDownload" src="assets/img/common/loading.gif">
             </button>
 
