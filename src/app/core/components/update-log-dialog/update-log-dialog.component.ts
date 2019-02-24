@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { META } from './update,component.Meta';
+import { META } from './update,component.meta';
 
 @Component({
     selector: 'app-update-log-dialog',

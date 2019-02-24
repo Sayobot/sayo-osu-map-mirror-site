@@ -1,116 +1,23 @@
 <div class="main">
     <div class="map-wrapper">
-        <div class="seach-wrapper">
-            <mat-form-field>
-                <input matInput #download placeholder="在这里输入点什么……" (keyup.enter)="search(download.value)">
-            </mat-form-field>
-            <button mat-button (click)="search(download.value)">
-                <mat-icon>search</mat-icon>
-            </button>
-        </div>
+        <search-input (searchChange)="onSearch()"></search-input>
         <mat-tab-group [(selectedIndex)]="tabIndex" (selectedTabChange)="onTabChange()">
             <mat-tab>
-                <ng-template mat-tab-label>
-                    最新map
-                </ng-template>
-                <div class="map-content" id="new-map-scroll">
-                    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
-                        <mat-grid-tile *ngFor="let map of apiService.newMap" (click)="opneMapDetail(map.sid)">
-                            <div class="map-summary">
-                                <img [src]="setImgUrl(map.sid)">
-                                <dl>
-                                    <dt>
-                                        <h3>{{map.title}}</h3>
-                                    </dt>
-                                    <dd>artist：{{map.artist}}</dd>
-                                    <dd>creator：{{map.creator}}</dd>
-                                </dl>
-                            </div>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                    <button mat-raised-button (click)="getNewMore()" class="getMore-btn">点击加载更多</button>
-                </div>
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    热门map
-                </ng-template>
-                <div class="map-content" id="hot-map-scroll">
-                    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
-                        <mat-grid-tile *ngFor="let map of apiService.hotMap" (click)="opneMapDetail(map.sid)">
-                            <div class="map-summary">
-                                <img [src]="setImgUrl(map.sid)">
-                                <dl>
-                                    <dt>
-                                        <h3>{{map.title}}</h3>
-                                    </dt>
-                                    <dd>artist：{{map.artist}}</dd>
-                                    <dd>creator：{{map.creator}}</dd>
-                                </dl>
-                            </div>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                    <button mat-raised-button (click)="getHotMore()" class="getMore-btn">点击加载更多</button>
-                </div>
+                <ng-template mat-tab-label>最新map</ng-template>
+                <new-maps></new-maps>
             </mat-tab>
 
             <mat-tab>
-                <ng-template mat-tab-label>
-                    搜索结果
-                </ng-template>
-                <div class="map-content" id="search-map-scroll" *ngIf="apiService.searchMap">
-                    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
-                        <mat-grid-tile *ngFor="let map of apiService.searchMap" (click)="opneMapDetail(map.sid)">
-                            <div class="map-summary">
-                                <img [src]="setImgUrl(map.sid)">
-                                <dl>
-                                    <dt>
-                                        <h3>{{map.title}}</h3>
-                                    </dt>
-                                    <dd>artist：{{map.artist}}</dd>
-                                    <dd>creator：{{map.creator}}</dd>
-                                </dl>
-                            </div>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                    <button mat-raised-button (click)="getSearchMore()" class="getMore-btn">点击加载更多</button>
-                </div>
+                <ng-template mat-tab-label>热门map</ng-template>
+                <hot-maps></hot-maps>
+            </mat-tab>
+            <mat-tab>
 
-                <div class="map-content" *ngIf="!apiService.searchMap">
-                    没有任何任容哦~检查一下搜索的内容对不对！或者没有找到符合的图呢~
-                </div>
+                <ng-template mat-tab-label>搜索结果</ng-template>
+                <search-maps></search-maps>
             </mat-tab>
         </mat-tab-group>
     </div>
 
-
-    <div class="info-wrapper">
-        <mat-card class="m-b-2 support-sayobot">
-            <mat-card-header>
-                <mat-card-title>当前捐助进度条</mat-card-title>
-                <mat-card-subtitle>点击上方导航的支持来捐助小夜</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <div class="progress-bg">
-                    <div class="progress-bar" [ngStyle]="{'width': apiService.totalWidth}"></div>
-                    <span class="progress-percent">{{apiService.totalWidth}}</span>
-                    <span class="support">RMB {{apiService.support.total}}/RMB {{apiService.support.target}}</span>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card class="m-y-2 announce-wrapper">
-            <mat-card-header>
-                <mat-card-title>公告栏</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <h2>{{apiService.public.summary}}</h2>
-                <p>{{apiService.public.content}}</p>
-                <div *ngFor="let item of apiService.public.img">
-                    <img [src]="item.url" alt="">
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-    </div>
+    <info-cards></info-cards>
 </div>

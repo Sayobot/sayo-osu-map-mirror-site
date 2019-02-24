@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CommonFnService } from '../CommonFnService';
+import { CommonFnService } from 'app/core/service/CommonFnService';
 
 @Injectable({
     providedIn: 'root'

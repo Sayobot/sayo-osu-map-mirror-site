@@ -1,0 +1,24 @@
+.seach-wrapper {
+
+
+    .search-input {
+        border: 3px solid #717171;
+        border-radius: 12px;
+        height: 38px;
+        padding-left: 2em;
+        outline: none;
+        width: 100%;
+        transition: all 0.3s;
+
+        &:focus {
+            border-color: #000000;
+        }
+    }
+
+    .search-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+    }
+}

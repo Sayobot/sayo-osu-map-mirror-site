@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NotFoundPageComponent } from './core';
+import { NotFoundPageComponent } from 'app/core';
 
 const routes: Routes = [
     {

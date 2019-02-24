@@ -1,0 +1,28 @@
+<div class="info-wrapper">
+    <mat-card class="m-b-2 support-sayobot">
+        <mat-card-header>
+            <mat-card-title>当前捐助进度条</mat-card-title>
+            <mat-card-subtitle>点击上方导航的支持来捐助小夜</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="progress-bg">
+                <div class="progress-bar" [ngStyle]="{'width': apiService.totalWidth}"></div>
+                <span class="progress-percent">{{apiService.totalWidth}}</span>
+                <span class="support">RMB {{apiService.support.total}}/RMB {{apiService.support.target}}</span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="m-y-2 announce-wrapper">
+        <mat-card-header>
+            <mat-card-title>公告栏</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h2>{{apiService.public.summary}}</h2>
+            <p>{{apiService.public.content}}</p>
+            <div *ngFor="let item of apiService.public.img">
+                <img [src]="item.url" alt="">
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

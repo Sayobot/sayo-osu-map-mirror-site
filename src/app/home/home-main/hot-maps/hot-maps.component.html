@@ -1,0 +1,17 @@
+<div class="map-content" id="hot-map-scroll">
+    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
+        <mat-grid-tile *ngFor="let map of apiService.hotMap" (click)="opneMapDetail(map.sid)">
+            <div class="map-summary">
+                <img [src]="setImgUrl(map.sid)">
+                <dl>
+                    <dt>
+                        <h3>{{map.title}}</h3>
+                    </dt>
+                    <dd>artist：{{map.artist}}</dd>
+                    <dd>creator：{{map.creator}}</dd>
+                </dl>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-raised-button (click)="getHotMore()" class="getMore-btn">点击加载更多</button>
+</div>

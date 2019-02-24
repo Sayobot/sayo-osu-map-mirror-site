@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import * as META from './home.meta';
+import { InfoCardsComponent } from './home-main/info-cards/info-cards.component';
 
 @NgModule({
     imports: [
@@ -9,6 +10,6 @@ import * as META from './home.meta';
     ],
     entryComponents: [
     ],
-    declarations: [META.COMPONENTS]
+    declarations: [META.COMPONENTS, InfoCardsComponent]
 })
 export class HomeModule { }
