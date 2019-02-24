@@ -1,12 +1,18 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { DialogService, ApiService } from '../../core/service/';
+import { DialogService } from 'app/core/service/DialogService';
+import { ApiService } from 'app/core/service/ApiService';
+import { SearchService } from 'app/core/service/Search';
 import { Router } from '@angular/router';
 
 import { ElementRef } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+
+import { NewMapsComponent } from './new-maps';
+import { HotMapsComponent } from './hot-maps';
+import { SearchMapsComponent } from './search-maps';
 
 @Component({
     selector: 'home-main',
@@ -18,9 +24,14 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
     searchKey: string;      // 搜搜关键字
     scrollSub: any;         // 订阅
 
+    @ViewChild(NewMapsComponent) private newMaps: NewMapsComponent;
+    @ViewChild(HotMapsComponent) private hotMaps: HotMapsComponent;
+    @ViewChild(SearchMapsComponent) private searchMaps: SearchMapsComponent;
+
     constructor(
         public dialog: DialogService,
         public apiService: ApiService,
+        public search: SearchService,
         public http: HttpClient,
         public activeRoute: ActivatedRoute,
         public router: Router,
@@ -32,14 +43,14 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
             .queryParams
             .subscribe(params => {
                 if (params.search) {
-                    this.search(params.search);
+                    this.search.getSearch(params.search);
+                    this.onSearch();
                 } else {
                     this.apiService.getMapList();
                 }
             });
         this.apiService.getSupport();
         this.apiService.getNewsList();
-
     }
 
     ngAfterViewInit() {
@@ -67,9 +78,9 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
             const height = target.scrollTop;
             if (boxHeight - height < 1000 && boxHeight - height > 0) {
                 switch (index) {
-                    case 0: this.apiService.newEndId !== 0 ? this.getNewMore() : console.log('已经到底啦！'); break;
-                    case 1: this.apiService.hotEndId !== 0 ? this.getHotMore() : console.log('已经到底啦！'); break;
-                    case 2: this.apiService.searchEndId !== 0 ? this.getSearchMore() : console.log('已经到底啦！'); break;
+                    case 0: this.apiService.newEndId !== 0 ? this.newMaps.getNewMore() : console.log('已经到底啦！'); break;
+                    case 1: this.apiService.hotEndId !== 0 ? this.hotMaps.getHotMore() : console.log('已经到底啦！'); break;
+                    case 2: this.search.searchEndId !== 0 ? this.searchMaps.getSearchMore() : console.log('已经到底啦！'); break;
                     default:
                         break;
                 }
@@ -77,19 +88,8 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
         });
     }
 
-    // 打开详情
-    opneMapDetail = id => this.apiService.getMapDetail(id);
-
     // 搜索map
-    search(str) {
-        this.searchKey = str.replace(/["]/ig, '').replace(/(^\s*)|(\s*$)/ig, '');
-        if (this.searchKey !== '') {
-            this.apiService.getSearch(this.searchKey);
-            this.tabIndex = 3;
-        } else {
-            this.dialog.notFoundMap(str);
-        }
-    }
+    onSearch = () => this.tabIndex = 3;
 
     // tab选项卡改变
     onTabChange() {
@@ -109,14 +109,7 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
 
     }
 
-    // 获取更多铺面
-    getHotMore = () => this.apiService.getHotMap();
-    getNewMore = () => this.apiService.getNewMap();
-    getSearchMore = () => this.apiService.getSearchList();
 
-    // 设置图片
-    // setImgUrl = sid => `https://txy1.sayobot.cn/beatmaps/${sid}/covers/cover.jpg`;
-    setImgUrl = sid => `https://cdn.sayobot.cn:25225/beatmaps/${sid}/covers/cover.jpg?0`;
 }
 
 

@@ -5,7 +5,7 @@
     height: 100%;
     width: 100%;
     background: #ececec;
-    padding: 4em 7em 1em;
+    padding: 1.5em 7em 1em;
 
     .map-wrapper {
         position: relative;
@@ -13,100 +13,26 @@
         flex: 1;
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+
+        search-input {
+            position: absolute;
+            right: 15px;
+            top: 5px;
+            z-index: 10;
+            width: 25vw;
+        }
+
         mat-tab-group {
             overflow: auto;
             height: 100%;
-
-            .map-content {
-                mat-grid-tile {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    box-shadow: 0 1px 2px 0 #888888;
-                    border-radius: 5px;
-                }
-
-                img {
-                    cursor: pointer;
-                }
-            }
-        }
-
-        .seach-wrapper {
-            position: absolute;
-            right: 0;
-            top: -50px;
-            z-index: 10;
-
-            mat-form-field {
-                width: 15vw;
-            }
         }
     }
 
-    .info-wrapper {
+    info-cards {
         overflow: auto;
         height: 100%;
-        flex: 0 0 400px;
+        flex: 0 0 20vw;
         padding-left: 2em;
-
-        &>mat-card {
-            min-height: 200px;
-        }
-
-        .progress-bg {
-            position: relative;
-            height: 50px;
-            border-radius: 10px;
-            box-shadow: inset 0 0 10px #ccc;
-            font-family: Arial, sans-serif;
-            font-weight: 600;
-        }
-
-        .progress-bar {
-            height: 50px;
-            border-radius: 10px;
-            background: #ff4081;
-            animation: flicker 1s infinite ease-in-out;
-            border-radius: 10px;
-        }
-
-        .support {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translate(0, -50%);
-        }
-
-        .progress-percent {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translate(0, -50%);
-        }
-    }
-}
-
-.getMore-btn {
-    width: 100%;
-}
-
-.map-summary {
-    width: 100%;
-    dl {
-        padding: 0 .5em;
-        dt {
-            font-size: .8em;
-            h3 {
-                margin: 5px 0;
-                @include text-one-line;
-            }
-        }
-        dd {
-            @include text-one-line;
-            font-size: .65em;
-            margin: 0;
-        }
     }
 }
 

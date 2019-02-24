@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CoreModule } from './core';
-import { SharedModule } from './shared';
+import { CoreModule } from 'app/core';
+import { SharedModule } from 'app/shared';
 
 // 组件
 import { AppComponent } from './app.component';

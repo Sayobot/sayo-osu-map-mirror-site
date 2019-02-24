@@ -1,0 +1,20 @@
+<div class="map-content" id="search-map-scroll" *ngIf="search.searchMap">
+    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
+        <mat-grid-tile *ngFor="let map of search.searchMap" (click)="opneMapDetail(map.sid)">
+            <div class="map-summary">
+                <img [src]="setImgUrl(map.sid)">
+                <dl>
+                    <dt>
+                        <h3>{{map.title}}</h3>
+                    </dt>
+                    <dd>artist：{{map.artist}}</dd>
+                    <dd>creator：{{map.creator}}</dd>
+                </dl>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-raised-button (click)="getSearchMore()" class="getMore-btn">点击加载更多</button>
+</div>
+<div class="map-content" *ngIf="!search.searchMap">
+    没有任何任容哦~检查一下搜索的内容对不对！或者没有找到符合的图呢~
+</div>

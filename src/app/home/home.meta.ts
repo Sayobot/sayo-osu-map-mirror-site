@@ -3,10 +3,15 @@ import { Routes } from '@angular/router';
 import { OwnMaterialModule } from '../core';
 import { CommonModule } from '@angular/common';
 
-import { HomeListComponent } from './home-list/home-list.component';
-import { HomeHeaderComponent } from './home-header/home-header.component';
-import { HomeFooterComponent } from './home-footer/home-footer.component';
-import { HomeMainComponent } from './home-main/home-main.component';
+import { HomeListComponent } from './home-list';
+import { HomeHeaderComponent } from './home-header';
+import { HomeFooterComponent } from './home-footer';
+import { HomeMainComponent } from './home-main';
+
+import { SearchInputComponent } from './home-main/search-input';
+import { HotMapsComponent } from './home-main/hot-maps';
+import { NewMapsComponent } from './home-main/new-maps';
+import { SearchMapsComponent } from './home-main/search-maps';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeListComponent }
@@ -21,5 +26,9 @@ export const COMPONENTS = [
     HomeListComponent,
     HomeHeaderComponent,
     HomeFooterComponent,
-    HomeMainComponent
+    HomeMainComponent,
+    SearchInputComponent,
+    HotMapsComponent,
+    NewMapsComponent,
+    SearchMapsComponent
 ];

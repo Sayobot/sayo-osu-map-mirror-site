@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { PlayMusicService } from '../../service/PlayMusicService';
+import { PlayMusicService } from 'app/core/service/PlayMusicService';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
