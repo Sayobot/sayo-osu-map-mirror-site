@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService} from 'app/core/service/DialogService';
+import { DialogService } from 'app/core/service/DialogService';
 import { ApiService } from 'app/core/service/ApiService';
 import { SearchService } from 'app/core/service/Search';
 
@@ -25,5 +25,8 @@ export class SearchMapsComponent implements OnInit {
     // 设置图片
     setImgUrl = sid => `https://cdn.sayobot.cn:25225/beatmaps/${sid}/covers/cover.jpg?0`;
 
-    getSearchMore = () => this.search.getSearchList();
+    getSearchMore() {
+        this.search.searchKey ? this.search.getSearch(this.search.searchKey) : this.dialog.notFoundMap('你没有输入内容啊！');
+    }
+
 }

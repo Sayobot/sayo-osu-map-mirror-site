@@ -1,4 +1,24 @@
 <div class="seach-wrapper">
-    <input type="text" class="search-input" #download placeholder="在这里输入点什么……" (keyup.enter)="onSearch(download.value)">
+    <input type="text" class="search-input" #download placeholder="在这里输入点什么……" (keyup.enter)="onSearch(download.value)"
+        (focus)="showOptions()">
     <mat-icon (click)="onSearch(download.value)" class="search-button">search</mat-icon>
+
+    <mat-card *ngIf="isShow">
+        <mat-card-header>
+            <h3>过滤选项</h3>
+            <button mat-stroked-button class="close-options" (click)="hideOptions()">X</button>
+        </mat-card-header>
+        <mat-card-content>
+            <ul class="options">
+                <li *ngFor="let options of filterOptions" class="option">
+                    <label>{{options.title}}：</label>
+                    <mat-checkbox *ngFor="let option of options.options" [(checked)]="option.select" (change)="isSelect($event, option)">{{option.title}}</mat-checkbox>
+                </li>
+            </ul>
+        </mat-card-content>
+        <mat-card-actions align="center">
+            <button mat-raised-button (click)="onSearch(download.value)">搜索</button>
+            <button mat-raised-button (click)="resetOptions()">重置</button>
+        </mat-card-actions>
+    </mat-card>
 </div>

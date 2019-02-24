@@ -8,6 +8,5 @@ export class CommonFnService {
     constructor() { }
 
     // json浅拷贝
-    jsonDeepCopy = (item) => JSON.parse(JSON.stringify(item));
-
+    jsonDeepCopy = item => JSON.parse(JSON.stringify(item));
 }
