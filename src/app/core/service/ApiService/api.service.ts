@@ -17,6 +17,8 @@ export class ApiService {
     detail: any = {};
     public: any = {};
 
+    DETAIL_URL = 'https://api.sayobot.cn/v2/beatmapinfo?';
+
     constructor(
         public http: HttpClient,
         public dialog: DialogService,
@@ -25,11 +27,11 @@ export class ApiService {
 
     // 铺面详情
     getMapDetail(id) {
-        return this.http.get(`https://api.sayobot.cn/beatmapinfo?1=${id}`)
+        this.http.get(`${this.DETAIL_URL}0=${id}`)
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
-                    const detail = res.data[0];
+                    const detail = res.data;
                     this.detail = this.commonFn.jsonDeepCopy(detail);
                     this.dialog.mapDetail(id, this.detail);
                 }
