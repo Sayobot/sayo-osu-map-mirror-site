@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DialogService} from 'app/core/service/DialogService';
+import { DialogService } from 'app/core/service/DialogService';
 import { ApiService } from 'app/core/service/ApiService';
 import { SearchService } from 'app/core/service/Search';
 import { OPTIONS } from './search-input.meta';
@@ -21,12 +21,8 @@ export class SearchInputComponent implements OnInit {
     // 搜索map
     onSearch(str) {
         this.searchKey = str.replace(/["]/ig, '').replace(/(^\s*)|(\s*$)/ig, '');
-        if (this.searchKey !== '') {
-            this.search.getSearch(this.searchKey);
-            this.searchChange.emit(this.searchKey);
-        } else {
-            this.dialog.notFoundMap(str);
-        }
+        this.search.getSearch(this.searchKey);
+        this.searchChange.emit(this.searchKey);
         this.hideOptions();
     }
 
