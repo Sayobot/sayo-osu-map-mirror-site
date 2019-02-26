@@ -22,5 +22,5 @@
             </div>
         </mat-grid-tile>
     </mat-grid-list>
-    <button *ngIf="search.searchMap.length > 0" mat-raised-button (click)="getSearchMore()" class="getMore-btn">点击加载更多</button>
+    <button *ngIf="search.searchMap.length > 0 && search.searchEndId !== 0" mat-raised-button (click)="getSearchMore()" class="getMore-btn">点击加载更多</button>
 </div>

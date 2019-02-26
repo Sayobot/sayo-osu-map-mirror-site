@@ -25,6 +25,6 @@ export class SearchMapsComponent implements OnInit {
     // 设置图片
     setImgUrl = sid => `https://cdn.sayobot.cn:25225/beatmaps/${sid}/covers/cover.jpg?0`;
 
-    getSearchMore = () => this.search.getSearch(this.search.searchKey);
+    getSearchMore = () => this.search.getSearchList();
 
 }
