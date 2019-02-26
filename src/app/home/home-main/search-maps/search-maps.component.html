@@ -8,19 +8,11 @@
     搜索耗时<span>{{search.time_cost}}</span>ms</div>
 
 <div class="map-content" id="search-map-scroll" *ngIf="search.searchMap">
-    <mat-grid-list cols="4" gutterSize=".3em" rowHeight="900: 480">
+    <mat-grid-list [cols]="cols" gutterSize=".3em" rowHeight="900: 480">
         <mat-grid-tile *ngFor="let map of search.searchMap" (click)="opneMapDetail(map.sid)">
-            <div class="map-summary">
-                <img [src]="setImgUrl(map.sid)">
-                <dl>
-                    <dt>
-                        <h3>{{map.title}}</h3>
-                    </dt>
-                    <dd>artist：{{map.artist}}</dd>
-                    <dd>creator：{{map.creator}}</dd>
-                </dl>
-            </div>
+            <preview-card [preview]="map"></preview-card>
         </mat-grid-tile>
     </mat-grid-list>
-    <button *ngIf="search.searchMap.length > 0 && search.searchEndId !== 0" mat-raised-button (click)="getSearchMore()" class="getMore-btn">点击加载更多</button>
+    <button *ngIf="search.searchMap.length > 0 && search.searchEndId !== 0" mat-raised-button (click)="getSearchMore()"
+        class="getMore-btn">点击加载更多</button>
 </div>

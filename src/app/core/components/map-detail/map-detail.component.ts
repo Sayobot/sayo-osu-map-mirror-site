@@ -83,11 +83,6 @@ export class MapDetailComponent implements OnInit {
         console.log('播放了完整的音乐');
     }
 
-    // 添加铺面到服务器
-    addMap(sid) {
-
-    }
-
     ngOnInit() {
         this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
         this.mapDetail = this.data.content;

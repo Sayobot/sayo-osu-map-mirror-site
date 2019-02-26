@@ -7,7 +7,6 @@ import { CommonFnService } from 'app/core/service/CommonFnService';
     providedIn: 'root'
 })
 export class SearchService {
-
     // 搜索铺面相关变量
     searchMap: Array<any> = [];
     searchEndId = 0;
@@ -59,16 +58,15 @@ export class SearchService {
 
     // 获取搜索列表
     getSearchList() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=100&1=${this.searchEndId}&2=4&3=${this.searchKey}${this.params}`)
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=20&1=${this.searchEndId}&2=4&3=${this.searchKey}${this.params}`)
             .toPromise()
             .then((res: any) => {
+                console.log(res);
+
                 if (res.status === 0) {
                     const maps = res.data;
                     maps.forEach(element => this.searchMap.push(element));
-                    if (this.searchEndId === 0) {
-                        this.setResInfo(res);
-                    }
-
+                    this.setResInfo(res);
                 } else {
                     this.dialog.notFoundMap(this.searchKey);
                 }
@@ -76,14 +74,16 @@ export class SearchService {
     }
 
     setResInfo(data) {
-        this.searchEndId = data.endid;
-        this.match_artist = data.match_artist_results;
-        this.match_creator = data.match_creator_results;
-        this.match_tags = data.match_tags_results;
-        this.match_title = data.match_title_results;
-        this.match_version = data.match_version_results;
-        this.results_count = data.results;
-        this.time_cost = data.time_cost;
+        if (data.time_cost >= 0) {
+            this.searchEndId = data.endid;
+            this.match_artist = data.match_artist_results;
+            this.match_creator = data.match_creator_results;
+            this.match_tags = data.match_tags_results;
+            this.match_title = data.match_title_results;
+            this.match_version = data.match_version_results;
+            this.results_count = data.results;
+            this.time_cost = data.time_cost;
+        }
     }
 
 }

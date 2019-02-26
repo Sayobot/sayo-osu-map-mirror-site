@@ -12,6 +12,9 @@ import { SearchInputComponent } from './home-main/search-input';
 import { HotMapsComponent } from './home-main/hot-maps';
 import { NewMapsComponent } from './home-main/new-maps';
 import { SearchMapsComponent } from './home-main/search-maps';
+import { InfoCardsComponent } from './home-main/info-cards';
+import { PreviewCardComponent } from './home-main/preview-card';
+import { DetailCardComponent } from './home-main/detail-card';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeListComponent }
@@ -30,5 +33,8 @@ export const COMPONENTS = [
     SearchInputComponent,
     HotMapsComponent,
     NewMapsComponent,
-    SearchMapsComponent
+    SearchMapsComponent,
+    InfoCardsComponent,
+    PreviewCardComponent,
+    DetailCardComponent
 ];

@@ -2,6 +2,12 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-02-26',
+        detail: [
+            '[ ✔ ] 铺面预览低分辨率适配',
+        ]
+    },
+    {
         time: '2019-02-24',
         detail: [
             '[ ✔ ] 修复搜索 TAB 结果重复加载',
