@@ -32,10 +32,9 @@ export class SearchService {
 
     // 获取搜索结果
     getSearch(key) {
-        if (key !== this.searchKey) {
-            this.resetSearch(key);
-        }
-
+        this.searchEndId = 0;
+        this.searchMap = [];
+        this.searchKey = key;
         this.searchKey.match(/[\d]/ig) ? this.getSearchInfo() : this.getSearchList();
     }
 
@@ -87,9 +86,4 @@ export class SearchService {
         this.time_cost = data.time_cost;
     }
 
-    resetSearch(key) {
-        this.searchEndId = 0;
-        this.searchMap = [];
-        this.searchKey = key;
-    }
 }
