@@ -7,6 +7,7 @@ import { CommonFnService } from 'app/core/service/CommonFnService';
     providedIn: 'root'
 })
 export class ApiService {
+    LIMIT = 20;
 
     newMap: Array<any> = [];
     newEndId = 0;
@@ -46,7 +47,7 @@ export class ApiService {
 
     // 获得最新图
     getNewMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=100&1=${this.newEndId}&2=2`)
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=${this.LIMIT}&1=${this.newEndId}&2=2`)
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
@@ -59,7 +60,7 @@ export class ApiService {
 
     // 获得热门图
     getHotMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=50&1=${this.hotEndId}&2=1`)
+        this.http.get(`https://api.sayobot.cn/beatmaplist?0=${this.LIMIT}&1=${this.hotEndId}&2=1`)
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {

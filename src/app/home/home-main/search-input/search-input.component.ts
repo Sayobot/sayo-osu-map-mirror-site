@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DialogService } from 'app/core/service/DialogService';
 import { ApiService } from 'app/core/service/ApiService';
 import { SearchService } from 'app/core/service/Search';
 import { OPTIONS } from './search-input.meta';
@@ -17,6 +16,11 @@ export class SearchInputComponent implements OnInit {
 
 
     @Output() searchChange: EventEmitter<string> = new EventEmitter();
+
+    constructor(
+        public apiService: ApiService,
+        public search: SearchService,
+    ) { }
 
     // 搜索map
     onSearch(str) {
@@ -52,12 +56,6 @@ export class SearchInputComponent implements OnInit {
 
     showOptions = () => this.isShow = true;
     hideOptions = () => this.isShow = false;
-
-    constructor(
-        public dialog: DialogService,
-        public apiService: ApiService,
-        public search: SearchService,
-    ) { }
 
     ngOnInit() {
         this.getFilterOptions();

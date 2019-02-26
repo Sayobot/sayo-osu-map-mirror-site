@@ -1,0 +1,24 @@
+@import '../../../core/theme/common';
+
+.map-summary {
+    width: 100%;
+
+    dl {
+        padding: 0 .5em;
+
+        dt {
+            font-size: .8em;
+
+            h3 {
+                margin: 5px 0;
+                @include text-one-line;
+            }
+        }
+
+        dd {
+            @include text-one-line;
+            font-size: .65em;
+            margin: 0;
+        }
+    }
+}
