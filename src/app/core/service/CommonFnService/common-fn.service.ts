@@ -9,4 +9,5 @@ export class CommonFnService {
 
     // json浅拷贝
     jsonDeepCopy = item => JSON.parse(JSON.stringify(item));
+
 }

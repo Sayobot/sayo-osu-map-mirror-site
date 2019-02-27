@@ -36,7 +36,7 @@ export class MapDetailComponent implements OnInit {
     ) { }
 
     // 点击下载事件
-    onDownLoad(url) {
+    onDownLoad(url: string) {
         this.downloadFile(`${url}${this.mapDetail.sid}`);
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
@@ -46,7 +46,7 @@ export class MapDetailComponent implements OnInit {
     }
 
     // 点击下载不带视频的事件
-    onUnvedioDownload(url) {
+    onUnvedioDownload(url: string) {
         this.downloadFile(`${url}${this.mapDetail.sid}`);
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
@@ -56,7 +56,7 @@ export class MapDetailComponent implements OnInit {
     }
 
     // 文件下载功能
-    downloadFile(url) {
+    downloadFile(url: string) {
         const a = document.createElement('a');
         a.style.display = 'none';
         document.body.appendChild(a);

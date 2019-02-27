@@ -46,9 +46,6 @@ export class SearchMapsComponent implements OnInit {
     // 打开详情
     opneMapDetail = id => this.apiService.getMapDetail(id);
 
-    // 设置图片
-    setImgUrl = sid => `https://cdn.sayobot.cn:25225/beatmaps/${sid}/covers/cover.jpg?0`;
-
     getSearchMore = () => this.search.getSearchList();
 
 }

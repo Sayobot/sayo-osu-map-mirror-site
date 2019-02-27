@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'app/core/service/ApiService';
 import { SearchService } from 'app/core/service/Search';
-import { OPTIONS } from './search-input.meta';
+import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
+import { Option } from './class/option';
+import { MatCheckbox } from '@angular/material';
 
 @Component({
     selector: 'search-input',
@@ -23,7 +25,7 @@ export class SearchInputComponent implements OnInit {
     ) { }
 
     // 搜索map
-    onSearch(str) {
+    onSearch(str: string) {
         this.searchKey = str.replace(/["]/ig, '').replace(/(^\s*)|(\s*$)/ig, '');
         this.search.getSearch(this.searchKey);
         this.searchChange.emit(this.searchKey);
@@ -31,25 +33,25 @@ export class SearchInputComponent implements OnInit {
     }
 
     getFilterOptions() {
-        const arr = Object.keys(OPTIONS);
-        arr.forEach(value => {
-            const options = new Options(OPTIONS[value]);
+        const arr = Object.keys(OPTIONS_META);
+        arr.forEach((value: string) => {
+            const options = new Options(OPTIONS_META[value]);
             this.filterOptions.push(options);
         });
     }
 
-    isSelect(event, option) {
+    isSelect(event: MatCheckbox, option: Option) {
         option.isSelect(event.checked);
         this.changeOptions();
     }
 
     resetOptions() {
-        this.filterOptions.forEach(options => options.reset());
+        this.filterOptions.forEach((options: Options) => options.reset());
         this.changeOptions();
     }
 
     changeOptions() {
-        const arr = this.filterOptions.map(options => `&${options.key}`);
+        const arr = this.filterOptions.map((options: Options) => `&${options.key}`);
         const param = arr.join('');
         this.search.setParams(param);
     }

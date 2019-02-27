@@ -1,4 +1,4 @@
-export const OPTIONS = {
+export const OPTIONS_META = {
     mode: {
         title: '模式',
         value: '5=',
