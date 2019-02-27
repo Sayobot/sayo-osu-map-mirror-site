@@ -43,9 +43,6 @@ export class NewMapsComponent implements OnInit {
         }
     }
 
-    // 打开详情
-    opneMapDetail = id => this.apiService.getMapDetail(id);
-
     getNewMore = () => this.apiService.getNewMap();
 
 }

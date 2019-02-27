@@ -27,7 +27,7 @@ export class ApiService {
     ) { }
 
     // 铺面详情
-    getMapDetail(id) {
+    getMapDetail(id: number) {
         this.http.get(`${this.DETAIL_URL}0=${id}`)
             .toPromise()
             .then((res: any) => {
