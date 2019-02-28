@@ -13,6 +13,8 @@ export class SearchService {
     searchKey: string;
     params = '';                        // 字段
 
+
+
     // 匹配量
     match_artist: number;
     match_creator: number;
@@ -46,7 +48,7 @@ export class SearchService {
             .toPromise()
             .then((res: any) => {
                 if (res.status === 0) {
-                    const detail = res.data[0];
+                    const detail = res.data;
                     const id = detail.sid;
                     this.dialog.mapDetail(id, detail);
                 }
@@ -61,8 +63,6 @@ export class SearchService {
         this.http.get(`https://api.sayobot.cn/beatmaplist?0=20&1=${this.searchEndId}&2=4&3=${this.searchKey}${this.params}`)
             .toPromise()
             .then((res: any) => {
-                console.log(res);
-
                 if (res.status === 0) {
                     const maps = res.data;
                     maps.forEach(element => this.searchMap.push(element));
@@ -74,8 +74,8 @@ export class SearchService {
     }
 
     setResInfo(data) {
+        this.searchEndId = data.endid;
         if (data.time_cost >= 0) {
-            this.searchEndId = data.endid;
             this.match_artist = data.match_artist_results;
             this.match_creator = data.match_creator_results;
             this.match_tags = data.match_tags_results;
