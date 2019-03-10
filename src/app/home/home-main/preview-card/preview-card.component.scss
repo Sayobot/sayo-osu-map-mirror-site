@@ -1,11 +1,79 @@
-@import '../../../core/theme/common';
+@import '../home_main';
 
 .map-summary {
     width: 100%;
+    position: relative;
+
+    .pre-img {
+        cursor: pointer;
+        filter: brightness(1);
+        transition: all .3s;
+        &:hover {
+            filter: brightness(0.7);
+        }
+    }
+
+    .status {
+        position: absolute;
+        left: .5rem;
+        top: .5rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: .5rem;
+        padding: .15rem .5rem;
+        color: #fff;
+        z-index: 1;
+        font-size: 0.6em;
+        i {
+            font-size: 16px;
+        }
+    }
+
+    .player-count {
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        border-radius: 50%;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        @include font-icon(13px);
+        i {
+            font-size: 16px;
+        }
+    }
+
+    .favorite-count {
+        position: absolute;
+        right: .5rem;
+        top: 2rem;
+        border-radius: 50%;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        @include font-icon(13px);
+    }
+
+    .music-icon {
+        position: absolute;
+        cursor: pointer;
+        bottom: 5px;
+        right: 2.5rem;
+        @include font-icon();
+        z-index: 1;
+    }
+
+    .down-icon {
+        position: absolute;
+        cursor: pointer;
+        bottom: 5px;
+        right: 1rem;
+        z-index: 1;
+        @include font-icon();
+    }
 
     dl {
         padding: 0 .5em;
-
+        margin-bottom: 5px;
         dt {
             font-size: .8em;
 
@@ -21,4 +89,30 @@
             margin: 0;
         }
     }
+}
+
+.modes {
+    display: flex;
+}
+
+.mode-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.std {
+    background: url('/src/assets/img/common/mode_std.png');
+}
+
+.taiko {
+    background: url('/src/assets/img/common/mode_taiko.png');
+}
+
+.catch {
+    background: url('/src/assets/img/common/mode_catch.png');
+}
+
+.mania {
+    background: url('/src/assets/img/common/mode_mania.png');
 }

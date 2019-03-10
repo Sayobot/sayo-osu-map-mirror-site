@@ -1,5 +1,5 @@
-@import './link';       // 跳转链接样式
-@import './position';   // 定位布局
+@import './link'; // 跳转链接样式
+@import './position'; // 定位布局
 
 @mixin text-one-line {
     overflow: hidden;
@@ -16,6 +16,17 @@
     -ms-user-select: $isSelet;
     -khtml-user-select: $isSelet;
     user-select: $isSelet;
+}
+
+// 字体图标
+@mixin font-icon($size: 16px) {
+    font-size: $size;
+
+    i {
+        font-size: $size;
+        height: $size;
+        width: $size;
+    }
 }
 
 // 高亮关键文字

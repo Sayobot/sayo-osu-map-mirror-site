@@ -43,10 +43,5 @@ export class HotMapsComponent implements OnInit {
         }
     }
 
-    // 打开详情
-    opneMapDetail(id: number) {
-        this.apiService.getMapDetail(id);
-    }
-
     getHotMore = () => this.apiService.getHotMap();
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
-import { HttpClient } from '@angular/common/http';
+import { DownloadService } from 'app/core/service/Download';
 
 @Component({
     selector: 'app-map-detail',
@@ -32,12 +32,12 @@ export class MapDetailComponent implements OnInit {
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         private musicBox: PlayMusicService,
-        public http: HttpClient
+        private download: DownloadService
     ) { }
 
     // 点击下载事件
     onDownLoad(url: string) {
-        this.downloadFile(`${url}${this.mapDetail.sid}`);
+        this.download.downloadFile(`${url}${this.mapDetail.sid}`);
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
             this.isMapDownload = false;
@@ -47,22 +47,12 @@ export class MapDetailComponent implements OnInit {
 
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
-        this.downloadFile(`${url}${this.mapDetail.sid}`);
+        this.download.downloadFile(this.mapDetail.sid);
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
             this.isMapUnvedioDownload = false;
             clearTimeout(this.mapUnvedioTimer);
         }, 15000);
-    }
-
-    // 文件下载功能
-    downloadFile(url: string) {
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.href = url;
-        a.click();
-        document.body.removeChild(a);
     }
 
     // 试听歌曲
@@ -86,6 +76,6 @@ export class MapDetailComponent implements OnInit {
     ngOnInit() {
         this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
         this.mapDetail = this.data.content;
-        this.musicBox.setSrc(`https://cdnx.sayobot.cn:25225/preview/${this.data.id}.mp3`);
+        this.musicBox.setSrc(this.data.id);
     }
 }

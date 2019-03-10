@@ -43,9 +43,6 @@ export class SearchMapsComponent implements OnInit {
         }
     }
 
-    // 打开详情
-    opneMapDetail = id => this.apiService.getMapDetail(id);
-
     getSearchMore = () => this.search.getSearchList();
 
 }

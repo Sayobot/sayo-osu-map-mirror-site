@@ -9,7 +9,7 @@
 
 <div class="map-content" id="search-map-scroll" *ngIf="search.searchMap">
     <mat-grid-list [cols]="cols" gutterSize=".3em" rowHeight="900: 480">
-        <mat-grid-tile *ngFor="let map of search.searchMap" (click)="opneMapDetail(map.sid)">
+        <mat-grid-tile *ngFor="let map of search.searchMap">
             <preview-card [preview]="map"></preview-card>
         </mat-grid-tile>
     </mat-grid-list>
