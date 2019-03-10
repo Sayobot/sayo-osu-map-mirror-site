@@ -1,6 +1,6 @@
 <div class="map-content" id="hot-map-scroll">
     <mat-grid-list [cols]="cols" gutterSize=".3em" rowHeight="900: 480">
-        <mat-grid-tile *ngFor="let map of apiService.hotMap" (click)="opneMapDetail(map.sid)">
+        <mat-grid-tile *ngFor="let map of apiService.hotMap">
             <preview-card [preview]="map"></preview-card>
         </mat-grid-tile>
     </mat-grid-list>

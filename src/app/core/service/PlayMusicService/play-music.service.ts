@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class PlayMusicService {
-
+    sid: number;
     musicEl = new Audio();
 
     constructor() {
@@ -15,6 +15,8 @@ export class PlayMusicService {
 
     pause = () => this.musicEl.pause();
 
-    setSrc = src => this.musicEl.src = src;
-
+    setSrc(sid: number) {
+        this.sid = sid;
+        this.musicEl.src = `https://cdnx.sayobot.cn:25225/preview/${this.sid}.mp3`;
+    }
 }

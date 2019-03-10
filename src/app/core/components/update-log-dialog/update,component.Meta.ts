@@ -2,6 +2,13 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-03-10',
+        detail: [
+            '[ ✔ ] 丰富预览图功能',
+            '[ ✔ ] 预览图列表可以直接播放和下载',
+        ]
+    },
+    {
         time: '2019-02-26',
         detail: [
             '[ ✔ ] 铺面预览低分辨率适配',
