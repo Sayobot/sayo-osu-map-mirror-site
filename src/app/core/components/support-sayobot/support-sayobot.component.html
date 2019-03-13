@@ -6,7 +6,7 @@
 
 <ul *ngIf="supportData">
     <li *ngFor="let support of supportData">
-        <h3>{{support.title}}</h3>
+        <h3>{{support?.title}}</h3>
         <ul *ngIf="support.detail" class="detail">
             <li class="table-header">
                 <span>Name</span>
@@ -16,9 +16,9 @@
             </li>
             <li *ngFor="let item of support.detail" class="table-body">
                 <span class="name">{{item.id}}</span>
-                <span>{{item.money}}</span>
-                <span>{{item.time}}</span>
-                <span>{{isFrom(item.type)}}</span>
+                <span>{{item?.money}}</span>
+                <span>{{item?.time}}</span>
+                <span>{{isFrom(item?.type)}}</span>
             </li>
         </ul>
     </li>

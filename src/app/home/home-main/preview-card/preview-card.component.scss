@@ -1,6 +1,7 @@
 @import '../home_main';
 
 .map-summary {
+    @include text-no-select();
     width: 100%;
     position: relative;
 
@@ -102,17 +103,17 @@
 }
 
 .std {
-    background: url('/src/assets/img/common/mode_std.png');
+    background: url('/assets/img/common/mode_std.png');
 }
 
 .taiko {
-    background: url('/src/assets/img/common/mode_taiko.png');
+    background: url('/assets/img/common/mode_taiko.png');
 }
 
 .catch {
-    background: url('/src/assets/img/common/mode_catch.png');
+    background: url('/assets/img/common/mode_catch.png');
 }
 
 .mania {
-    background: url('/src/assets/img/common/mode_mania.png');
+    background: url('/assets/img/common/mode_mania.png');
 }
