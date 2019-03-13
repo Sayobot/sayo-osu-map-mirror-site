@@ -13,7 +13,7 @@ export class SearchService {
     searchKey: string;
     params = '';                        // 字段
 
-
+    limit_count = '20';
 
     // 匹配量
     match_artist: number;
@@ -25,6 +25,7 @@ export class SearchService {
     time_cost: number;
 
     DETAIL_URL = 'https://api.sayobot.cn/v2/beatmapinfo?';
+    MAP_LIST_URL = 'https://api.sayobot.cn/beatmaplist';
 
     constructor(
         public http: HttpClient,
@@ -44,9 +45,13 @@ export class SearchService {
 
     // 获取单个搜索信息
     getSearchInfo() {
-        this.http.get(`${this.DETAIL_URL}0=${this.searchKey}`)
-            .toPromise()
-            .then((res: any) => {
+        const OPTIONS = {
+            params: {
+                0: `${this.searchKey}`,
+            }
+        };
+        this.http.get(this.DETAIL_URL, OPTIONS)
+            .subscribe((res: any) => {
                 if (res.status === 0) {
                     const detail = res.data;
                     const id = detail.sid;
@@ -60,9 +65,17 @@ export class SearchService {
 
     // 获取搜索列表
     getSearchList() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=20&1=${this.searchEndId}&2=4&3=${this.searchKey}${this.params}`)
-            .toPromise()
-            .then((res: any) => {
+        const OPTIONS = {
+            params: {
+                0: this.limit_count,
+                1: this.searchEndId.toString(),
+                2: '4',
+                3: `${this.searchKey}${this.params}`,
+            }
+        };
+
+        this.http.get(this.MAP_LIST_URL, OPTIONS)
+            .subscribe((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
                     maps.forEach(element => this.searchMap.push(element));
@@ -73,7 +86,7 @@ export class SearchService {
             });
     }
 
-    setResInfo(data) {
+    setResInfo(data: any) {
         this.searchEndId = data.endid;
         if (data.time_cost >= 0) {
             this.match_artist = data.match_artist_results;

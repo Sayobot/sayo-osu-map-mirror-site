@@ -21,8 +21,7 @@ export class SupportSayobotComponent implements OnInit {
     // 获取支持者月份列表
     getSupportList() {
         this.http.get(`https://api.sayobot.cn/static/supportlist`)
-            .toPromise()
-            .then((res: any) => {
+            .subscribe((res: any) => {
                 this.supportData = res.data;
                 this.getSupportDetail();
             });
@@ -32,12 +31,13 @@ export class SupportSayobotComponent implements OnInit {
     getSupportDetail() {
         this.supportData.forEach(element => {
             this.http.get(element.link)
-                .toPromise()
-                .then((res: any) => {
-                    const arr = res.data.sort((a, b) => {
-                        return b.money - a.money;
-                    })
-                    element['detail'] = arr;
+                .subscribe((res: any) => {
+                    if (res.data) {
+                        const arr = res.data.sort((a, b) => {
+                            return b.money - a.money;
+                        });
+                        element['detail'] = arr;
+                    }
                 });
         });
     }

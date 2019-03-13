@@ -70,7 +70,7 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
     // 绑定滚动事件
     setEventScroll(target, box, index) {
         this.scrollSub = fromEvent(target, 'scroll').pipe(
-            debounceTime(100)
+            debounceTime(16)
         );
 
         this.scrollSub.subscribe(res => {

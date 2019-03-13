@@ -18,7 +18,10 @@ export class ApiService {
     detail: any = {};
     public: any = {};
 
-    DETAIL_URL = 'https://api.sayobot.cn/v2/beatmapinfo?';
+    DETAIL_URL = 'https://api.sayobot.cn/v2/beatmapinfo';
+    MAP_LIST_URL = 'https://api.sayobot.cn/beatmaplist';
+    SUPPORT_URL = 'https://api.sayobot.cn/support';
+    NOTICE_URL = 'https://api.sayobot.cn/notice';
 
     constructor(
         public http: HttpClient,
@@ -28,12 +31,15 @@ export class ApiService {
 
     // 铺面详情
     getMapDetail(id: number) {
-        this.http.get(`${this.DETAIL_URL}0=${id}`)
-            .toPromise()
-            .then((res: any) => {
+        const OPTIONS = {
+            params: {
+                0: id.toString(),
+            }
+        };
+        this.http.get(this.DETAIL_URL, OPTIONS)
+            .subscribe((res: any) => {
                 if (res.status === 0) {
-                    const detail = res.data;
-                    this.detail = this.commonFn.jsonDeepCopy(detail);
+                    this.detail = res.data;
                     this.dialog.mapDetail(id, this.detail);
                 }
             });
@@ -47,9 +53,15 @@ export class ApiService {
 
     // 获得最新图
     getNewMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=${this.LIMIT}&1=${this.newEndId}&2=2`)
-            .toPromise()
-            .then((res: any) => {
+        const OPTIONS = {
+            params: {
+                0: this.LIMIT.toString(),
+                1: this.newEndId.toString(),
+                2: '2'
+            }
+        };
+        this.http.get(this.MAP_LIST_URL, OPTIONS)
+            .subscribe((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
                     maps.forEach(element => this.newMap.push(element));
@@ -60,9 +72,15 @@ export class ApiService {
 
     // 获得热门图
     getHotMap() {
-        this.http.get(`https://api.sayobot.cn/beatmaplist?0=${this.LIMIT}&1=${this.hotEndId}&2=1`)
-            .toPromise()
-            .then((res: any) => {
+        const OPTIONS = {
+            params: {
+                0: this.LIMIT.toString(),
+                1: this.hotEndId.toString(),
+                2: '1'
+            }
+        };
+        this.http.get(this.MAP_LIST_URL, OPTIONS)
+            .subscribe((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
                     maps.forEach(element => this.hotMap.push(element));
@@ -73,9 +91,9 @@ export class ApiService {
 
     // 获取支持详情
     getSupport() {
-        this.http.get('https://api.sayobot.cn/support').toPromise().then((res: any) => {
+        this.http.get(this.SUPPORT_URL).toPromise().then((res: any) => {
             if (res.data) {
-                this.support = this.commonFn.jsonDeepCopy(res.data);
+                this.support = res.data;
                 const percentage = res.data.total / res.data.target;
                 const num = percentage > 100 ? 100 : percentage;
                 this.totalWidth = Math.floor(num * 100) + '%';
@@ -85,9 +103,8 @@ export class ApiService {
 
     // 新闻列表
     getNewsList() {
-        this.http.get(`https://api.sayobot.cn/notice`)
-            .toPromise()
-            .then((res: any) => this.public = this.commonFn.jsonDeepCopy(res.data));
+        this.http.get(this.NOTICE_URL)
+            .subscribe((res: any) => this.public = res.data);
     }
 
 }
