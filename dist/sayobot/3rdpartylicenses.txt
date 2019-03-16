@@ -82,6 +82,8 @@ THE SOFTWARE.
 
 @angular/material/list
 
+@angular/material/menu
+
 @angular/material/snack-bar
 
 @angular/material/tabs
