@@ -2,6 +2,13 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-03-16',
+        detail: [
+            '[ ✔ ] 右上角增加设置按钮',
+            '[ ✔ ] 增加线路切换',
+        ]
+    },
+    {
         time: '2019-03-10',
         detail: [
             '[ ✔ ] 丰富预览图功能',
