@@ -32,6 +32,7 @@ export class Options {
     }
 
     get key() {
-        return this.value + (this._key === 0 ? 65535 : this._key);
+        const key = this._key === 0 ? 65535 : this._key;
+        return [this.value, key];
     }
 }

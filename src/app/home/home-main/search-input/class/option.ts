@@ -12,7 +12,7 @@ export class Option {
         this.parent = parent;
     }
 
-    isSelect(status) {
+    isSelect(status: boolean) {
         this.select = status;
         this.parent.onOptionChange();
     }
