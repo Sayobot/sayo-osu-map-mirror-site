@@ -14,11 +14,11 @@
             <i class="mania mode-icon" *ngIf="preview.modes >= 8"></i>
         </div>
     </dl>
-    <span class="player-count">{{preview.order}}&nbsp;<i class="material-icons">play_circle_outline</i></span>
-    <span class="favorite-count">{{preview.favourite_count}}&nbsp;<i class="material-icons">favorite_border</i></span>
+    <span class="player-count">{{preview.order}}&nbsp;<i class="material-icons"><img src="/assets/img/icon/play_circle.png"></i></span>
+    <span class="favorite-count">{{preview.favourite_count}}&nbsp;<i class="material-icons"><img src="/assets/img/icon/favorite.png"></i></span>
     <span [ngSwitch]="isPlay()" class="music-icon">
-        <i *ngSwitchCase="false" class="material-icons" (click)="play()">play_arrow</i>
-        <i *ngSwitchCase="true" class="material-icons" (click)="pause()">pause</i>
+        <i *ngSwitchCase="false" class="material-icons" (click)="play()"><img src="/assets/img/icon/play_arrow_black.png"></i>
+        <i *ngSwitchCase="true" class="material-icons" (click)="pause()"><img src="/assets/img/icon/pause_black.png"></i>
     </span>
-    <span class="down-icon"><i class="material-icons" (click)="onDownLoad(mapUrlV2)">cloud_download</i></span>
+    <span class="down-icon"><i class="material-icons" (click)="onDownLoad(mapUrlV2)"><img src="/assets/img/icon/cloud_download.png"></i></span>
 </div>

@@ -70,9 +70,11 @@ export class SearchService {
                 0: this.limit_count,
                 1: this.searchEndId.toString(),
                 2: '4',
-                3: `${this.searchKey}${this.params}`,
+                3: this.searchKey,
             }
         };
+        Object.assign(OPTIONS.params, this.params);
+        console.log(OPTIONS.params)
 
         this.http.get(this.MAP_LIST_URL, OPTIONS)
             .subscribe((res: any) => {

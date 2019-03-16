@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'app/core/service/ApiService';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
 import { DownloadService } from 'app/core/service/Download';
+import { ServerMangeService } from 'app/core/service/ServerMange';
 
 @Component({
     selector: 'preview-card',
@@ -17,7 +18,8 @@ export class PreviewCardComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private musicBox: PlayMusicService,
-        private download: DownloadService
+        private download: DownloadService,
+        public serverMange: ServerMangeService
     ) { }
 
     ngOnInit() {
@@ -61,6 +63,6 @@ export class PreviewCardComponent implements OnInit {
     }
 
     onDownLoad(url: string) {
-        this.download.downloadFile(`${url}${this.preview.sid}`);
+        this.download.downloadFile(`${url}${this.preview.sid}?server=${this.serverMange.currentServer}`);
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
 import { DownloadService } from 'app/core/service/Download';
+import { ServerMangeService } from 'app/core/service/ServerMange';
 
 @Component({
     selector: 'app-map-detail',
@@ -32,12 +33,13 @@ export class MapDetailComponent implements OnInit {
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         private musicBox: PlayMusicService,
-        private download: DownloadService
+        private download: DownloadService,
+        public serverMange: ServerMangeService
     ) { }
 
     // 点击下载事件
     onDownLoad(url: string) {
-        this.download.downloadFile(`${url}${this.mapDetail.sid}`);
+        this.download.downloadFile(`${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`);
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
             this.isMapDownload = false;
