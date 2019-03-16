@@ -3,9 +3,26 @@
         <span class="title">This Sayobot's Home</span>
         <span class="flex-spacer"></span>
         <button mat-raised-button disabled style="color: #000">图包分享计划(开发中...)</button>
-        <button mat-button (click)="openSupprotDialog()">支持</button>
-        <button mat-button (click)="openHelpDialg()">帮助</button>
-        <button mat-button (click)="openAboutDialog()">关于</button>
-        <button mat-button (click)="openUpdateLog()">更新日志</button>
+        <button mat-button (click)="dialog.supprot()">支持</button>
+        <button mat-button (click)="dialog.updateLog()">更新日志</button>
+        <button mat-button [matMenuTriggerFor]="appMenu">设置</button>
     </mat-toolbar-row>
 </mat-toolbar>
+
+<mat-menu #appMenu="matMenu">
+    <button mat-menu-item (click)="dialog.help()">帮助</button>
+    <button mat-menu-item (click)="dialog.about()">关于</button>
+    <button mat-menu-item [matMenuTriggerFor]="lineMenu">切换线路</button>
+</mat-menu>
+
+
+<mat-menu #lineMenu="matMenu">
+    <button mat-menu-item *ngFor="let server of serverMange.serveList" (click)="serverMange.changeServer(server.server)">
+        <mat-icon>
+            <ng-container *ngIf="server.isSelect">
+                <img src="/assets/img/icon/done.png">
+            </ng-container>
+        </mat-icon>
+        {{server.name}}
+    </button>
+</mat-menu>
