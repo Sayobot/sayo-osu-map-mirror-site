@@ -18,11 +18,13 @@
             <mat-card-title>公告栏</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <h2>{{apiService.public.summary}}</h2>
-            <p>{{apiService.public.content}}</p>
-            <div *ngFor="let item of apiService.public.img">
-                <img [src]="item.url" alt="">
-            </div>
+            <ng-container *ngIf="apiService.public as public">
+                <h2>{{public.summary}}</h2>
+                <pre>{{public.content}}</pre>
+                <div *ngFor="let item of public.img">
+                    <img [src]="item.url" alt="">
+                </div>
+            </ng-container>
         </mat-card-content>
     </mat-card>
 </div>
