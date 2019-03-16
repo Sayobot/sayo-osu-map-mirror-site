@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'app/core/service/DialogService';
 import { LocalStorageService } from 'app/core/service/LocalStorage';
+import { ServerMangeService } from 'app/core/service/ServerMange';
 
 @Component({
     selector: 'home-header',
@@ -11,26 +12,16 @@ export class HomeHeaderComponent implements OnInit {
 
     constructor(
         public dialog: DialogService,
-        public local: LocalStorageService
+        public local: LocalStorageService,
+        public serverMange: ServerMangeService
     ) { }
 
     ngOnInit() {
         if (!this.local.getItem('isShow') || this.local.getItem('isShow') === 'false') {
             setTimeout(() => {
-                this.openHelpDialg();
+                this.dialog.help();
             }, 500);
         }
     }
 
-    // 打开支持小夜的弹窗
-    openSupprotDialog = () => this.dialog.supprot();
-
-    // 打开帮助弹窗
-    openHelpDialg = () => this.dialog.help();
-
-    // 打开关于小夜的弹窗
-    openAboutDialog = () => this.dialog.about();
-
-    // 打开更新日志的弹窗
-    openUpdateLog = () => this.dialog.updateLog();
 }
