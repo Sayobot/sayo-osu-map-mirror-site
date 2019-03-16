@@ -1,7 +1,7 @@
 <div class="seach-wrapper">
     <input type="text" class="search-input" #download placeholder="在这里输入点什么……" (keyup.enter)="onSearch(download.value)"
         (focus)="showOptions()">
-    <mat-icon (click)="onSearch(download.value)" class="search-button">search</mat-icon>
+    <mat-icon (click)="onSearch(download.value)" class="search-button"><img src="/assets/img/icon/search.png"></mat-icon>
 
     <mat-card *ngIf="isShow">
         <mat-card-header>

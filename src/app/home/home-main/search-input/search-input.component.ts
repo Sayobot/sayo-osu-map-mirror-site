@@ -5,6 +5,7 @@ import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
 import { Option } from './class/option';
 import { MatCheckbox } from '@angular/material';
+import { CommonFnService } from 'app/core/service/CommonFnService';
 
 @Component({
     selector: 'search-input',
@@ -22,6 +23,7 @@ export class SearchInputComponent implements OnInit {
     constructor(
         public apiService: ApiService,
         public search: SearchService,
+        private common: CommonFnService
     ) { }
 
     // 搜索map
@@ -51,9 +53,9 @@ export class SearchInputComponent implements OnInit {
     }
 
     changeOptions() {
-        const arr = this.filterOptions.map((options: Options) => `&${options.key}`);
-        const param = arr.join('');
-        this.search.setParams(param);
+        const arr = this.filterOptions.map((options: Options) => options.key);
+        const params = this.common.fromEntries(arr);
+        this.search.setParams(params);
     }
 
     showOptions = () => this.isShow = true;

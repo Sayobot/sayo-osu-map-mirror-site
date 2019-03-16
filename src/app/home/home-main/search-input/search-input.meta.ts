@@ -1,7 +1,7 @@
 export const OPTIONS_META = {
     mode: {
         title: '模式',
-        value: '5=',
+        value: '5',
         options: [
             {
                 title: 'STD',
@@ -20,7 +20,7 @@ export const OPTIONS_META = {
     },
     ststus: {
         title: '状态',
-        value: '6=',
+        value: '6',
         options: [
             {
                 title: 'Ranked & Approved',
@@ -42,7 +42,7 @@ export const OPTIONS_META = {
     },
     subType: {
         title: '范围',
-        value: '4=',
+        value: '4',
         options: [
             {
                 title: '标题',
@@ -67,9 +67,12 @@ export const OPTIONS_META = {
     },
     classify: {
         title: '分类',
-        value: '7=',
+        value: '7',
         options: [
             {
+                title: 'any',
+                key: 1
+            }, {
                 title: '尚未指定',
                 key: 2
             }, {
@@ -101,40 +104,43 @@ export const OPTIONS_META = {
     },
     language: {
         title: '语言',
-        value: '8=',
+        value: '8',
         options: [
             {
+                title: 'any',
+                key: 1
+            }, {
                 title: '其他',
                 key: 2
             }, {
                 title: '英语',
                 key: 4
             }, {
-                title: '汉语',
+                title: '日语',
                 key: 8
             }, {
-                title: '法语',
+                title: '中文',
                 key: 16
             }, {
-                title: '德语',
+                title: '器乐',
                 key: 32
             }, {
-                title: '意大利语',
+                title: '韩语',
                 key: 64
             }, {
-                title: '日语',
+                title: '法语',
                 key: 128
             }, {
-                title: '韩语',
+                title: '德语',
                 key: 256
             }, {
-                title: '西班牙语',
+                title: '瑞典语',
                 key: 512
             }, {
-                title: '瑞典语',
+                title: '西班牙语',
                 key: 1024
             }, {
-                title: '器乐',
+                title: '意大利语',
                 key: 2048
             }
         ]
