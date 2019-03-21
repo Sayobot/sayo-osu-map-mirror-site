@@ -2,6 +2,12 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-03-20',
+        detail: [
+            '[ ✔ ] 修复模式显示错误',
+        ]
+    },
+    {
         time: '2019-03-16',
         detail: [
             '[ ✔ ] 右上角增加设置按钮',

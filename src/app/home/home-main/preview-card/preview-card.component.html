@@ -8,17 +8,23 @@
         <dd>Artist：{{preview.artist}}</dd>
         <dd>Creator：{{preview.creator}}</dd>
         <div class="modes">
-            <i class="std mode-icon" *ngIf="preview.modes >= 1"></i>
-            <i class="taiko mode-icon" *ngIf="preview.modes >= 2"></i>
-            <i class="catch mode-icon" *ngIf="preview.modes >= 4"></i>
-            <i class="mania mode-icon" *ngIf="preview.modes >= 8"></i>
+            <i class="std mode-icon" *ngIf="showSTD(preview.modes)"></i>
+            <i class="taiko mode-icon" *ngIf="showTaiko(preview.modes)"></i>
+            <i class="catch mode-icon" *ngIf="showCatch(preview.modes)"></i>
+            <i class="mania mode-icon" *ngIf="showMania(preview.modes)"></i>
         </div>
     </dl>
-    <span class="player-count">{{preview.order}}&nbsp;<i class="material-icons"><img src="/assets/img/icon/play_circle.png"></i></span>
-    <span class="favorite-count">{{preview.favourite_count}}&nbsp;<i class="material-icons"><img src="/assets/img/icon/favorite.png"></i></span>
+    <span class="player-count">{{preview.order}}&nbsp;<i class="material-icons"><img
+                src="/assets/img/icon/play_circle.png"></i></span>
+    <span class="favorite-count">{{preview.favourite_count}}&nbsp;<i class="material-icons"><img
+                src="/assets/img/icon/favorite.png"></i></span>
     <span [ngSwitch]="isPlay()" class="music-icon">
-        <i *ngSwitchCase="false" class="material-icons" (click)="play()"><img src="/assets/img/icon/play_arrow_black.png"></i>
-        <i *ngSwitchCase="true" class="material-icons" (click)="pause()"><img src="/assets/img/icon/pause_black.png"></i>
+        <i *ngSwitchCase="false" class="material-icons" (click)="play()"><img
+                src="/assets/img/icon/play_arrow_black.png"></i>
+        <i *ngSwitchCase="true" class="material-icons" (click)="pause()"><img
+                src="/assets/img/icon/pause_black.png"></i>
     </span>
-    <span class="down-icon"><i class="material-icons" (click)="onDownLoad(mapUrlV2)"><img src="/assets/img/icon/cloud_download.png"></i></span>
+    <span class="down-icon"><i class="material-icons" (click)="onDownLoad(mapUrlV2)"><img
+                src="/assets/img/icon/cloud_download.png"></i></span>
 </div>
+

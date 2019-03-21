@@ -65,4 +65,23 @@ export class PreviewCardComponent implements OnInit {
     onDownLoad(url: string) {
         this.download.downloadFile(`${url}${this.preview.sid}?server=${this.serverMange.currentServer}`);
     }
+
+    showSTD(modes: number) {
+        const std = [1, 3, 5, 7, 9, 11, 13, 15];
+        return std.includes(modes);
+    }
+
+    showTaiko(modes: number) {
+        const std = [2, 3, 6, 7, 10, 11, 14, 15];
+        return std.includes(modes);
+    }
+
+    showCatch(modes: number) {
+        const catchs = [4, 5, 6, 7, 12, 13, 14, 15];
+        return catchs.includes(modes);
+    }
+
+    showMania(modes: number) {
+        return modes >= 8;
+    }
 }
