@@ -24,7 +24,7 @@ export class HotMapsComponent implements OnInit {
     ngOnInit() {
         this.doc = document;
         const docResize = fromEvent(window, 'resize').pipe(
-            debounceTime(300),
+            debounceTime(1000),
         );
         docResize.subscribe(() => this.changeSize());
         this.changeSize();

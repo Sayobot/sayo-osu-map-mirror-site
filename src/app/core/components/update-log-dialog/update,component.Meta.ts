@@ -2,6 +2,12 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-03-26',
+        detail: [
+            '[ ✔ ] 详情图添加分享按钮，可以分享好听的歌曲给小伙伴啦',
+        ]
+    },
+    {
         time: '2019-03-20',
         detail: [
             '[ ✔ ] 修复模式显示错误',

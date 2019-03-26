@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
+import { ClipboardService } from 'app/core/service/Clipboard';
 import { DownloadService } from 'app/core/service/Download';
 import { ServerMangeService } from 'app/core/service/ServerMange';
 
@@ -34,7 +35,8 @@ export class MapDetailComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: any,
         private musicBox: PlayMusicService,
         private download: DownloadService,
-        public serverMange: ServerMangeService
+        public serverMange: ServerMangeService,
+        private clipBoard: ClipboardService
     ) { }
 
     // 点击下载事件
@@ -80,4 +82,10 @@ export class MapDetailComponent implements OnInit {
         this.mapDetail = this.data.content;
         this.musicBox.setSrc(this.data.id);
     }
+
+    shared() {
+        const url = `https://sayobot.cn/?search=${this.data.id}`;
+        this.clipBoard.write(url);
+    }
+
 }
