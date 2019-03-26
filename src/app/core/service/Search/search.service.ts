@@ -74,7 +74,6 @@ export class SearchService {
             }
         };
         Object.assign(OPTIONS.params, this.params);
-        console.log(OPTIONS.params)
 
         this.http.get(this.MAP_LIST_URL, OPTIONS)
             .subscribe((res: any) => {

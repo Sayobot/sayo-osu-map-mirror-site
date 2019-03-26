@@ -36,10 +36,13 @@
             </button>
 
 
-            <button mat-raised-button color="accent" (click)="onUnvedioDownload(mapUnVedio)" [disabled]="isMapUnvedioDownload">
+            <button mat-raised-button color="accent" (click)="onUnvedioDownload(mapUnVedio)"
+                [disabled]="isMapUnvedioDownload">
                 <span *ngIf="!isMapUnvedioDownload">下载-不带视频(试用)</span>
                 <img *ngIf="isMapUnvedioDownload" src="assets/img/common/loading.gif">
             </button>
+
+            <button mat-raised-button color="accent" (click)="shared()">分享</button>
         </div>
     </div>
 </div>

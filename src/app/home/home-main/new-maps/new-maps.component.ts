@@ -24,13 +24,13 @@ export class NewMapsComponent implements OnInit {
     ngOnInit() {
         this.doc = document;
         const docResize = fromEvent(window, 'resize').pipe(
-            debounceTime(300),
+            debounceTime(1000),
         );
-        docResize.subscribe(() => this.setCols());
-        this.setCols();
+        docResize.subscribe(() => this.changeSize());
+        this.changeSize();
     }
 
-    setCols() {
+    changeSize() {
         const width = this.doc.documentElement.clientWidth;
         if (width > 1600) {
             this.cols = 4;

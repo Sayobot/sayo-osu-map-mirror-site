@@ -70,13 +70,13 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
     // 绑定滚动事件
     setEventScroll(target, box, index) {
         this.scrollSub = fromEvent(target, 'scroll').pipe(
-            debounceTime(16)
+            debounceTime(1000)
         );
 
         this.scrollSub.subscribe(res => {
-            const boxHeight = box.clientHeight;
-            const height = target.scrollTop;
-            if (boxHeight - height < 1000 && boxHeight - height > 0) {
+            const { bottom } = box.getBoundingClientRect();
+
+            if (bottom < 1000 && bottom > 0) {
                 switch (index) {
                     case 0: this.apiService.newEndId !== 0 ? this.newMaps.getNewMore() : console.log('已经到底啦！'); break;
                     case 1: this.apiService.hotEndId !== 0 ? this.hotMaps.getHotMore() : console.log('已经到底啦！'); break;
@@ -85,6 +85,7 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
                         break;
                 }
             }
+
         });
     }
 
