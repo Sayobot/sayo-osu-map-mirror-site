@@ -78,6 +78,15 @@ html {
     margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
 #load {
     display: flex;
     flex-direction: column;
@@ -101,4 +110,10 @@ html {
 
 pre {
     white-space: pre-wrap;
+}
+
+
+.tags .mat-chip-list-wrapper {
+    justify-content: flex-end;
+    flex-flow: wrap-reverse;
 }

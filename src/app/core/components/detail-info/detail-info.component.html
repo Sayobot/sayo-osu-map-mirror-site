@@ -1,0 +1,52 @@
+<h1>{{detail.title}}</h1>
+<div class="items">
+    <div class="item">
+        <label class="label">Creater：</label>
+        <span class="content" *ngIf="detail.creator else noData">{{detail.creator}}</span>
+    </div>
+
+    <div class="item">
+        <label class="label">BPM：</label>
+        <span class="content" *ngIf="detail.bpm else noData">{{detail.bpm}}</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Genre：</label>
+        <span class="content" *ngIf="detail.genre else noData">{{getGenre(detail.genre)}}</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Artist：</label>
+        <span class="content" *ngIf="detail.artist else noData">{{detail.artist}}</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Length：</label>
+        <span class="content">--</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Language：</label>
+        <span class="content" *ngIf="detail.language else noData">{{getLanguage(detail.language)}}</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Source：</label>
+        <span class="content" *ngIf="detail.source else noData">{{detail.source}}</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Max Combo：</label>
+        <span class="content">--</span>
+    </div>
+
+    <div class="item">
+        <label class="label">Upload time：</label>
+        <span class="content" *ngIf="detail.approved_date else noData">{{getDate(detail.last_update)}}</span>
+    </div>
+</div>
+
+
+<ng-template #noData>
+    <span class="content">--</span>
+</ng-template>

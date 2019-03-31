@@ -1,17 +1,16 @@
 <div class="map-detail" *ngIf="mapDetail">
+
     <div class="img-box">
+        <span class="status">{{getStatus() | uppercase}}</span>
+        <span class="sid-float">SID : {{data.id}}</span>
+        <map-tags [content]="mapDetail.tags"></map-tags>
         <img [src]="imgUrl" alt="">
+        <difficulty-table></difficulty-table>
     </div>
 
     <div class="detail">
-        <dl class="info">
-            <dt>
-                <h1>{{mapDetail.title}}</h1>
-            </dt>
-            <dd><span>artist：</span>{{mapDetail.artist}}</dd>
-            <dd><span>creator：</span>{{mapDetail.creator}}</dd>
-            <dd><span>Star: </span>{{mapDetail.version}}</dd>
-        </dl>
+        <detail-info [detail]="mapDetail"></detail-info>
+        <map-detail-radar-chart></map-detail-radar-chart>
 
         <div class="actions">
             <button mat-raised-button color="accent" *ngIf="musicTimer" disabled>

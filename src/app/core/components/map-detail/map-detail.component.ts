@@ -59,6 +59,20 @@ export class MapDetailComponent implements OnInit {
         }, 15000);
     }
 
+    getStatus() {
+        let statu: string;
+        switch (this.mapDetail.approved) {
+            case 4: statu = 'loved'; break;
+            case 3: statu = 'qualified'; break;
+            case 2: statu = 'approved'; break;
+            case 1: statu = 'ranked'; break;
+            case 0: statu = 'pending'; break;
+            case -1: statu = 'WIP'; break;
+            case -2: statu = 'graveyard'; break;
+        }
+        return statu;
+    }
+
     // 试听歌曲
     playPart() {
         this.musicBox.play();
