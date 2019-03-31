@@ -1,50 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { OwnMaterialModule } from './module';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-
-
-
-// 组件导入
-import {
-    AboutDialogComponent,
-    HelpDialogComponent,
-    MapDetailComponent,
-    NotFoundMapDialogComponent,
-    SupportSayobotComponent,
-    UpdateLogDialogComponent,
-    NotFoundPageComponent
-} from './components';
-
+import * as META from './core.meta';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        OwnMaterialModule,
-        HttpClientModule
-    ],
-    entryComponents: [
-        SupportSayobotComponent,
-        HelpDialogComponent,
-        AboutDialogComponent,
-        MapDetailComponent,
-        NotFoundMapDialogComponent,
-        UpdateLogDialogComponent
-    ],
-    declarations: [
-        AboutDialogComponent,
-        HelpDialogComponent,
-        MapDetailComponent,
-        NotFoundMapDialogComponent,
-        SupportSayobotComponent,
-        UpdateLogDialogComponent,
-        NotFoundPageComponent,
-    ],
-    exports: [
-        NotFoundPageComponent
+    imports: [...META.MODULES],
+    entryComponents: [...META.DIALOGS],
+    declarations: [...META.COMPONENTS],
+    exports: [...META.DIALOGS, ...META.COMPONENTS
     ]
 })
+
 export class CoreModule { }

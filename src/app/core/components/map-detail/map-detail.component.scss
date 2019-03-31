@@ -1,31 +1,34 @@
+@import '../../theme/common';
+
 .map-detail {
 
     .img-box {
         position: relative;
+        font-size: 0.6em;
 
+        .status {
+            @include float-label(2.2rem);
+        }
+
+        .sid-float {
+            @include float-label();
+        }
     }
 
     .detail {
         padding: 1em;
 
-        .info {
-            dd {
-                span {
-                    font-weight: 700;
-                }
-            }
-        }
-
         .actions {
-            margin: .5em 0;
+            margin: 1rem 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
 
             button {
                 margin: 0 .5em;
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
+
                 img {
                     height: 16px;
                     width: 16px;

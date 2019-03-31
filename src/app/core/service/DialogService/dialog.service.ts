@@ -9,7 +9,7 @@ import {
     NotFoundMapDialogComponent,
     SupportSayobotComponent,
     UpdateLogDialogComponent
-} from '../../components';
+} from 'app/core/components';
 
 @Injectable({
     providedIn: 'root'
@@ -76,8 +76,8 @@ export class DialogService {
         const mapDetail = this.dialog.open(
             MapDetailComponent, {
                 panelClass: 'no-padding-dialog',
-                maxWidth: '96vw',
-                maxHeight: '90vh',
+                maxWidth: '100vw',
+                maxHeight: '100vh',
                 data: {
                     id: id,
                     content: detail

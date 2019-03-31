@@ -1,0 +1,19 @@
+@import '../../theme/common';
+
+.tags {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+
+}
+
+.mat-chip.mat-standard-chip {
+    background-color: rgba(0, 0, 0, .42);
+    color: rgba(210, 210, 210, 0.87);
+}
+
+mat-chip {
+    cursor: pointer;
+}
