@@ -20,7 +20,6 @@ import { SearchMapsComponent } from './search-maps';
     styleUrls: ['./home-main.component.scss']
 })
 export class HomeMainComponent implements OnInit, AfterViewInit {
-    tabIndex: number;       // tab选项卡当前选中的下标，双向绑定
     searchKey: string;      // 搜搜关键字
     scrollSub: any;         // 订阅
 
@@ -90,7 +89,7 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
     }
 
     // 搜索map
-    onSearch = () => this.tabIndex = 3;
+    onSearch = () => this.search.onSearch();
 
     // tab选项卡改变
     onTabChange() {
@@ -98,12 +97,12 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.setMainBox();
         }, 600);
-        if (this.tabIndex === 0 && this.apiService.newMap.length === 0) {
+        if (this.search.tabIndex === 0 && this.apiService.newMap.length === 0) {
             this.apiService.getNewMap();
             this.router.navigate(['']);
         }
 
-        if (this.tabIndex === 1 && this.apiService.hotMap.length === 0) {
+        if (this.search.tabIndex === 1 && this.apiService.hotMap.length === 0) {
             this.apiService.getHotMap();
             this.router.navigate(['']);
         }

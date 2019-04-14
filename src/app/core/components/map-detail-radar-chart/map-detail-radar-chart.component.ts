@@ -1,54 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 declare const echarts: any;
-
-const radar_option = {
-    tooltip: {},
-    radar: {
-        name: {
-            textStyle: {
-                color: '#fff',
-                backgroundColor: '#999',
-                borderRadius: 3,
-                padding: [3, 5]
-            }
-        },
-        indicator: [
-            { name: 'AR', max: 10 },
-            { name: 'CS', max: 10 },
-            { name: 'HP', max: 10 },
-            { name: 'OD', max: 10 },
-            { name: 'AIM', max: 10 },
-        ]
-    },
-    series: [{
-        name: '预算 vs 开销（Budget vs spending）',
-        type: 'radar',
-        areaStyle: { normal: {} },
-        data: [
-            {
-                value: [1, 2, 3, 4, 5],
-                name: '难度1'
-            }
-        ]
-    }]
-};
-
-const curve_option = {
-    xAxis: {
-        type: 'category',
-        data: []
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [1, 1, 2, 3, 4, 3, 3, 4, 3, 3, 5, 4, 3, 4, 3, 3, 3, 5, 5, 3, 4, 2, 3, 4, 1
-            , 4, 4, 3, 4, 5, 2, 3, 4, 4, 3, 3, 3, 4, 4, 4, 5, 5, 3, 1, 2, 4, 5, 1, 1, 1, 1,
-            1, 1, 2, 3, 4, 3, 3, 4, 3, 3, 5, 4, 3, 4, 3, 3, 3, 5, 5, 3, 4, 2, 3, 4, 1
-            , 4, 4, 3, 4, 5, 2, 3, 4, 4, 3, 3, 3, 4, 4, 4, 5, 5, 3, 1, 2, 4, 5, 1, 1, 1, 1],
-        type: 'line',
-    }]
-};
+import { radar_option, curve_option } from './models';
 
 @Component({
     selector: 'map-detail-radar-chart',
@@ -57,6 +9,17 @@ const curve_option = {
 })
 export class MapDetailRadarChartComponent implements OnInit {
 
+    private _mapData: any;
+
+    @Input()
+    set mapData(detail) {
+        this._mapData = detail;
+        if (this.radarEchart && this.curveEchart) {
+            this.updateRadarOptionValue();
+            this.updateCurveOptionData();
+        }
+    }
+
     radarEchart: any;
     curveEchart: any;
 
@@ -64,10 +27,25 @@ export class MapDetailRadarChartComponent implements OnInit {
 
     ngOnInit() {
         this.radarEchart = echarts.init(document.getElementById('map-detail-radar-echart'));
-        this.radarEchart.setOption(radar_option);
-
         this.curveEchart = echarts.init(document.getElementById('map-detail-curve-echart'));
-        this.curveEchart.setOption(curve_option);
+
+        this.updateRadarOptionValue();
+        this.updateCurveOptionData();
     }
 
+    updateRadarOptionValue() {
+        const mapdata = this._mapData;
+        const data = [
+            mapdata.AR, mapdata.CS, mapdata.HP,
+            mapdata.OD, mapdata.aim
+        ];
+        radar_option.series[0].data[0].value = data;
+        this.radarEchart.setOption(radar_option);
+    }
+
+    updateCurveOptionData() {
+        const mapdata = this._mapData;
+        curve_option.series[0].data = mapdata.strain_aim.split('');
+        this.curveEchart.setOption(curve_option);
+    }
 }
