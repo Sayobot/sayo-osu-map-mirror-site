@@ -10,6 +10,7 @@ import { Language, Genre } from './detail-info.meta';
 export class DetailInfoComponent implements OnInit {
 
     @Input() detail: any;
+    @Input() info: any;
 
     constructor() { }
 

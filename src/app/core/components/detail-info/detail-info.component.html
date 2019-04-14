@@ -22,7 +22,7 @@
 
     <div class="item">
         <label class="label">Length：</label>
-        <span class="content">--</span>
+        <span class="content" *ngIf="info.length else noData">{{info.length}}</span>
     </div>
 
     <div class="item">
@@ -37,7 +37,7 @@
 
     <div class="item">
         <label class="label">Max Combo：</label>
-        <span class="content">--</span>
+        <span class="content" *ngIf="info.maxcombo else noData">{{info?.maxcombo}}</span>
     </div>
 
     <div class="item">
