@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
 import { ClipboardService } from 'app/core/service/Clipboard';
 import { DownloadService } from 'app/core/service/Download';
@@ -21,6 +21,7 @@ export class MapDetailComponent implements OnInit {
     mapDetail: any;     // 铺面详情
     imgUrl: string;     // 图片链接
     parttime: any;      // 试听剩余时间
+    detailInfo: any;
 
     // 下载状态
     isMapDownload = false;          // 是否正在下载
@@ -36,7 +37,8 @@ export class MapDetailComponent implements OnInit {
         private musicBox: PlayMusicService,
         private download: DownloadService,
         public serverMange: ServerMangeService,
-        private clipBoard: ClipboardService
+        private clipBoard: ClipboardService,
+        private detailDialog: MatDialogRef<MapDetailComponent>
     ) { }
 
     // 点击下载事件
@@ -57,6 +59,14 @@ export class MapDetailComponent implements OnInit {
             this.isMapUnvedioDownload = false;
             clearTimeout(this.mapUnvedioTimer);
         }, 15000);
+    }
+
+    difficultChange(index: number) {
+        this.detailInfo = this.mapDetail.bid_data[index];
+    }
+
+    onTagSearch() {
+        this.detailDialog.close();
     }
 
     getStatus() {
@@ -95,6 +105,8 @@ export class MapDetailComponent implements OnInit {
         this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
         this.mapDetail = this.data.content;
         this.musicBox.setSrc(this.data.id);
+
+        this.detailInfo = this.mapDetail.bid_data[0];
     }
 
     shared() {

@@ -1,7 +1,7 @@
 <div class="main">
     <div class="map-wrapper">
         <search-input (searchChange)="onSearch()"></search-input>
-        <mat-tab-group [(selectedIndex)]="tabIndex" (selectedTabChange)="onTabChange()">
+        <mat-tab-group [(selectedIndex)]="search.tabIndex" (selectedTabChange)="onTabChange()">
             <mat-tab>
                 <ng-template mat-tab-label>最新map</ng-template>
                 <new-maps></new-maps>
