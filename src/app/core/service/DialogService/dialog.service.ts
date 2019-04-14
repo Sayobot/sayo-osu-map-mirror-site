@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-// 组件导入
-import {
-    AboutDialogComponent,
-    HelpDialogComponent,
-    MapDetailComponent,
-    NotFoundMapDialogComponent,
-    SupportSayobotComponent,
-    UpdateLogDialogComponent
-} from 'app/core/components';
+import { AboutDialogComponent } from '../../components/about-dialog';
+import { HelpDialogComponent } from '../../components/help-dialog';
+import { MapDetailComponent } from '../../components/map-detail';
+import { NotFoundMapDialogComponent } from '../../components/not-found-map-dialog';
+import { SupportSayobotComponent } from '../../components/support-sayobot';
+import { UpdateLogDialogComponent } from '../../components/update-log-dialog';
 
 @Injectable({
     providedIn: 'root'

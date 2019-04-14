@@ -7,6 +7,8 @@ import { CommonFnService } from 'app/core/service/CommonFnService';
     providedIn: 'root'
 })
 export class SearchService {
+    tabIndex = 0;
+
     // 搜索铺面相关变量
     searchMap: Array<any> = [];
     searchEndId = 0;
@@ -38,6 +40,7 @@ export class SearchService {
         this.searchMap = [];
         this.searchKey = key;
         this.searchKey.match(/[\d]/ig) ? this.getSearchInfo() : this.getSearchList();
+        this.onSearch();
     }
 
     setParams = str => this.params = str;
@@ -98,6 +101,10 @@ export class SearchService {
             this.results_count = data.results;
             this.time_cost = data.time_cost;
         }
+    }
+
+    onSearch() {
+        this.tabIndex = 3;
     }
 
 }
