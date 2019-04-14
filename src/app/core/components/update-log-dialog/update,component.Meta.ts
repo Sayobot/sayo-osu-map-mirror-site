@@ -2,6 +2,16 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-04-14',
+        detail: [
+            '[ ✔ ] 增加雷达图',
+            '[ ✔ ] 增加难度曲线图',
+            '[ ✔ ] 丰富铺面详情内容',
+            '[ ✔ ] 支持点击标签搜索',
+            '[ ✔ ] 点击右上角难度切换数据',
+        ]
+    },
+    {
         time: '2019-03-26',
         detail: [
             '[ ✔ ] 详情图添加分享按钮，可以分享好听的歌曲给小伙伴啦',
