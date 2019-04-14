@@ -14,7 +14,7 @@ export class TagsComponent implements OnInit {
     tags: string[];
 
     constructor(
-        private search: SearchService
+        private search: SearchService,
     ) {
 
     }
@@ -29,7 +29,7 @@ export class TagsComponent implements OnInit {
 
     searchMap(key: string) {
         this.search.getSearch(key);
-        this.searchchange.emit();
+        this.searchChange.emit();
     }
 
 }
