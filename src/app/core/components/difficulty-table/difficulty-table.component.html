@@ -1,3 +1,4 @@
-<div class="difficult-table">
-    sdafasd
+<div class="difficult-table" *ngIf="maps">
+    <button mat-mini-fab *ngFor="let map of maps.bid_data; let index = index"
+        (click)="select(index)">{{getStar(map.star)}}</button>
 </div>
