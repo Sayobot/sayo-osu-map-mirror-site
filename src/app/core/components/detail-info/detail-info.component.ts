@@ -26,7 +26,7 @@ export class DetailInfoComponent implements OnInit {
     }
 
     getDate(date: number) {
-        const dateObj = new Date(date);
+        const dateObj = new Date(date * 1000);
         const year = dateObj.getFullYear();
         const mouth = dateObj.getMonth() + 1;
         const hour = dateObj.getHours();
