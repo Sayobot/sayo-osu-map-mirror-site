@@ -86,6 +86,8 @@ THE SOFTWARE.
 
 @angular/material/menu
 
+@angular/material/progress-bar
+
 @angular/material/snack-bar
 
 @angular/material/tabs
