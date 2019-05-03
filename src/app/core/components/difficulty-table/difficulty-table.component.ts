@@ -25,4 +25,16 @@ export class DifficultyTableComponent implements OnInit {
     getStar(star: number): string {
         return star.toFixed(2);
     }
+
+    getTip(map): string {
+        let tip: string;
+        switch (map.mode) {
+            case 0: tip = 'O'; break;
+            case 1: tip = 'T'; break;
+            case 2: tip = 'C'; break;
+            case 3: tip = 'M'; break;
+            default: break;
+        }
+        return tip;
+    }
 }
