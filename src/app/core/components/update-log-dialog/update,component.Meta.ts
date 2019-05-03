@@ -2,6 +2,16 @@ import { UpdateData } from './update-data.class';
 
 export const META: UpdateData[] = [
     {
+        time: '2019-05-03',
+        detail: [
+            '[ ✔ ] 修改预览图显示错误',
+            '[ ✔ ] 雷达图增加aim 和 star的比例条',
+            '[ ✔ ] 修改和丰富右侧难度进度条变为曲线',
+            '[ ✔ ] 难度进度条增加speed',
+            '[ ✔ ] 若干页面样式修改',
+        ]
+    },
+    {
         time: '2019-04-14',
         detail: [
             '[ ✔ ] 增加雷达图',
