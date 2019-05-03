@@ -73,8 +73,8 @@ export class DialogService {
         const mapDetail = this.dialog.open(
             MapDetailComponent, {
                 panelClass: 'no-padding-dialog',
-                width: '80vw',
-                height: '90vh',
+                width: '70vw',
+                maxHeight: '100vh',
                 data: {
                     id: id,
                     content: detail
