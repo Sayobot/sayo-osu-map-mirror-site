@@ -13,6 +13,7 @@ import { NewMapsComponent } from './home-main/new-maps';
 import { SearchMapsComponent } from './home-main/search-maps';
 import { InfoCardsComponent } from './home-main/info-cards';
 import { PreviewCardComponent } from './home-main/preview-card';
+import { MusicBoxComponent } from './music-box/music-box.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeListComponent }
@@ -34,4 +35,5 @@ export const COMPONENTS = [
     SearchMapsComponent,
     InfoCardsComponent,
     PreviewCardComponent,
+    MusicBoxComponent
 ];
