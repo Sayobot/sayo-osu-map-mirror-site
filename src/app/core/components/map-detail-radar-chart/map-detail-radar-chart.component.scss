@@ -13,21 +13,7 @@
     width: 600px;
 }
 
-.progress-wrapper {
-    position: relative;
-    padding: 1rem 2rem;
-
-    &::before {
-        position: absolute;
-        left: 0;
-        top: 0;
-        content: 'aim';
-    }
-
-    &::after {
-        position: absolute;
-        right: 0;
-        top: 0;
-        content: 'star';
-    }
+.count {
+    display: flex;
+    justify-content: space-between;
 }

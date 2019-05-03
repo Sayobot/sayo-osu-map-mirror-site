@@ -10,7 +10,10 @@ import { radar_option, curve_option } from './models';
 export class MapDetailRadarChartComponent implements OnInit {
 
     private _mapData: any;
-    range: number;
+    aim: number;
+    speed: number;
+    star: number;
+    rangeValue: number;
 
     @Input()
     set mapData(detail) {
@@ -38,9 +41,10 @@ export class MapDetailRadarChartComponent implements OnInit {
     }
 
     setRange() {
-        const total = this._mapData.aim + this._mapData.star;
-        const aim = this._mapData.aim;
-        this.range = 100 * (aim / total);
+        this.star = this._mapData.star;
+        this.aim = this._mapData.aim;
+        this.speed = this.star - this.aim;
+        this.rangeValue = 100 * (this.aim / this.star);
     }
 
     updateRadarOptionValue() {
@@ -53,6 +57,7 @@ export class MapDetailRadarChartComponent implements OnInit {
     updateCurveOptionData() {
         const mapdata = this._mapData;
         curve_option.series[0].data = mapdata.strain_aim.split('');
+        curve_option.series[1].data = mapdata.strain_speed.split('');
         this.curveEchart.setOption(curve_option);
     }
 }
