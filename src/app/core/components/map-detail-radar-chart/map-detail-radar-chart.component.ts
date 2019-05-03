@@ -10,13 +10,13 @@ import { radar_option, curve_option } from './models';
 export class MapDetailRadarChartComponent implements OnInit {
 
     private _mapData: any;
+    range: number;
 
     @Input()
     set mapData(detail) {
         this._mapData = detail;
         if (this.radarEchart && this.curveEchart) {
-            this.updateRadarOptionValue();
-            this.updateCurveOptionData();
+            this.update();
         }
     }
 
@@ -28,17 +28,24 @@ export class MapDetailRadarChartComponent implements OnInit {
     ngOnInit() {
         this.radarEchart = echarts.init(document.getElementById('map-detail-radar-echart'));
         this.curveEchart = echarts.init(document.getElementById('map-detail-curve-echart'));
+        this.update();
+    }
 
+    update() {
         this.updateRadarOptionValue();
         this.updateCurveOptionData();
+        this.setRange();
+    }
+
+    setRange() {
+        const total = this._mapData.aim + this._mapData.star;
+        const aim = this._mapData.aim;
+        this.range = 100 * (aim / total);
     }
 
     updateRadarOptionValue() {
         const mapdata = this._mapData;
-        const data = [
-            mapdata.AR, mapdata.CS, mapdata.HP,
-            mapdata.OD, mapdata.aim
-        ];
+        const data = [mapdata.AR, mapdata.CS, mapdata.HP, mapdata.OD];
         radar_option.series[0].data[0].value = data;
         this.radarEchart.setOption(radar_option);
     }
