@@ -37,10 +37,7 @@ export const curve_option = {
     },
     yAxis: {
         type: 'value',
-        max: 5
-    },
-    legend: {
-        data: ['aim', 'speed']
+        max: 8
     },
     series: [
         {
@@ -49,13 +46,6 @@ export const curve_option = {
             type: 'line',
             smooth: true,
             areaStyle: {}
-        },
-        {
-            name: 'speed',
-            data: [],
-            type: 'line',
-            smooth: true,
-            areaStyle: {}
-        },
+        }
     ]
 };
