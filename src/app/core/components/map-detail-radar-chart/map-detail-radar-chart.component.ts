@@ -56,8 +56,10 @@ export class MapDetailRadarChartComponent implements OnInit {
 
     updateCurveOptionData() {
         const mapdata = this._mapData;
-        curve_option.series[0].data = mapdata.strain_aim.split('');
-        curve_option.series[1].data = mapdata.strain_speed.split('');
+        const aim = mapdata.strain_aim.split('');
+        const speed = mapdata.strain_speed.split('');
+        const total = aim.map((count, index) => Number(count) + Number(speed[index]));
+        curve_option.series[0].data = total;
         this.curveEchart.setOption(curve_option);
     }
 }
