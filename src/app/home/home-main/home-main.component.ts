@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { DialogService } from 'app/core/service/DialogService';
 import { ApiService } from 'app/core/service/ApiService';
 import { SearchService } from 'app/core/service/Search';
 import { Router } from '@angular/router';
@@ -28,12 +26,10 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
     @ViewChild(SearchMapsComponent) private searchMaps: SearchMapsComponent;
 
     constructor(
-        public dialog: DialogService,
-        public apiService: ApiService,
-        public search: SearchService,
-        public http: HttpClient,
-        public activeRoute: ActivatedRoute,
-        public router: Router,
+        private apiService: ApiService,
+        private search: SearchService,
+        private activeRoute: ActivatedRoute,
+        private router: Router,
         private el: ElementRef
     ) { }
 

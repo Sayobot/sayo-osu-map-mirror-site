@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DialogService, } from 'app/core/service/DialogService';
-import { CommonFnService } from 'app/core/service/CommonFnService';
 
 @Injectable({
     providedIn: 'root'
@@ -26,13 +25,11 @@ export class SearchService {
     results_count: number;
     time_cost: number;
 
-    DETAIL_URL = 'https://api.sayobot.cn/v2/beatmapinfo?';
-    MAP_LIST_URL = 'https://api.sayobot.cn/beatmaplist';
-
     constructor(
-        public http: HttpClient,
-        public dialog: DialogService,
-        public commonFn: CommonFnService) { }
+        @Inject('BASE_CONFIG') private config,
+        private http: HttpClient,
+        private dialog: DialogService,
+    ) { }
 
     // 获取搜索结果
     getSearch(key) {
@@ -53,7 +50,7 @@ export class SearchService {
                 0: `${this.searchKey}`,
             }
         };
-        this.http.get(this.DETAIL_URL, OPTIONS)
+        this.http.get(this.config.detail, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
                     const detail = res.data;
@@ -78,7 +75,7 @@ export class SearchService {
         };
         Object.assign(OPTIONS.params, this.params);
 
-        this.http.get(this.MAP_LIST_URL, OPTIONS)
+        this.http.get(this.config.list, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
