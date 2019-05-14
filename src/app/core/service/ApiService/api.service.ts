@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DialogService, } from 'app/core/service/DialogService';
-import { CommonFnService } from 'app/core/service/CommonFnService';
+import { DialogService } from 'app/core/service/DialogService';
 
 @Injectable({
     providedIn: 'root'
@@ -18,15 +17,10 @@ export class ApiService {
     detail: any = {};
     public: any = {};
 
-    DETAIL_URL = 'https://api.sayobot.cn/v2/beatmapinfo';
-    MAP_LIST_URL = 'https://api.sayobot.cn/beatmaplist';
-    SUPPORT_URL = 'https://api.sayobot.cn/support';
-    NOTICE_URL = 'https://api.sayobot.cn/notice';
-
     constructor(
-        public http: HttpClient,
-        public dialog: DialogService,
-        public commonFn: CommonFnService
+        @Inject('BASE_CONFIG') private config,
+        private http: HttpClient,
+        private dialog: DialogService,
     ) { }
 
     // 铺面详情
@@ -36,7 +30,7 @@ export class ApiService {
                 0: id.toString(),
             }
         };
-        this.http.get(this.DETAIL_URL, OPTIONS)
+        this.http.get(this.config.detail, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
                     this.detail = res.data;
@@ -60,7 +54,7 @@ export class ApiService {
                 2: '2'
             }
         };
-        this.http.get(this.MAP_LIST_URL, OPTIONS)
+        this.http.get(this.config.list, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
@@ -79,7 +73,7 @@ export class ApiService {
                 2: '1'
             }
         };
-        this.http.get(this.MAP_LIST_URL, OPTIONS)
+        this.http.get(this.config.list, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
                     const maps = res.data;
@@ -91,7 +85,7 @@ export class ApiService {
 
     // 获取支持详情
     getSupport() {
-        this.http.get(this.SUPPORT_URL).toPromise().then((res: any) => {
+        this.http.get(this.config.support).toPromise().then((res: any) => {
             if (res.data) {
                 this.support = res.data;
                 const percentage = res.data.total / res.data.target;
@@ -103,7 +97,7 @@ export class ApiService {
 
     // 新闻列表
     getNewsList() {
-        this.http.get(this.NOTICE_URL)
+        this.http.get(this.config.notice)
             .subscribe((res: any) => this.public = res.data);
     }
 

@@ -11,12 +11,6 @@ import { ServerMangeService } from 'app/core/service/ServerMange';
     styleUrls: ['./map-detail.component.scss']
 })
 export class MapDetailComponent implements OnInit {
-    // API
-    mapUrl = 'https://osu.sayobot.cn/osu.php?s=';                   // 下载
-    mapUrlV2 = 'https://txy1.sayobot.cn/download/osz/';             // 下载V2
-    mapUnVedio = 'https://txy1.sayobot.cn/download/osz/novideo/';   // 下载不带视频
-    addMapUrl = 'https://sayo.sayobot.cn/add/';                     // 上传到服务器
-    filenameUrl = 'https://api.sayobot.cn/filename?1=';             // 获取name
 
     mapDetail: any;     // 铺面详情
     imgUrl: string;     // 图片链接
@@ -33,6 +27,7 @@ export class MapDetailComponent implements OnInit {
     mapUnvedioTimer: any; // 不带视频铺面下载
 
     constructor(
+        @Inject('BASE_CONFIG') private config,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private musicBox: PlayMusicService,
         private download: DownloadService,
@@ -102,7 +97,7 @@ export class MapDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.jpg?0`;
+        this.imgUrl = `${this.config.pic}${this.data.id}/covers/cover.jpg?0`;
         this.mapDetail = this.data.content;
         this.musicBox.setSrc(this.data.id);
 

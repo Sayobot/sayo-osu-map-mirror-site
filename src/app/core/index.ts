@@ -1,1 +1,3 @@
-export * from './public-api';
+export * from './core.module';
+export * from './module';
+export * from './components';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,7 +11,8 @@ export class SupportSayobotComponent implements OnInit {
     supportData: any = [];
 
     constructor(
-        public http: HttpClient,
+        @Inject('BASE_CONFIG') private config,
+        private http: HttpClient,
     ) { }
 
     ngOnInit() {
@@ -20,7 +21,7 @@ export class SupportSayobotComponent implements OnInit {
 
     // 获取支持者月份列表
     getSupportList() {
-        this.http.get(`https://api.sayobot.cn/static/supportlist`)
+        this.http.get(this.config.supportList)
             .subscribe((res: any) => {
                 this.supportData = res.data;
                 this.getSupportDetail();

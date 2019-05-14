@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ApiService } from 'app/core/service/ApiService';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
 import { DownloadService } from 'app/core/service/Download';
@@ -12,10 +12,10 @@ import { ServerMangeService } from 'app/core/service/ServerMange';
 export class PreviewCardComponent implements OnInit {
     @Input() preview;
 
-    mapUrlV2 = 'https://txy1.sayobot.cn/download/osz/';             // 下载V2
     musicStatu = false;
 
     constructor(
+        @Inject('BASE_CONFIG') private config,
         private apiService: ApiService,
         private musicBox: PlayMusicService,
         private download: DownloadService,
@@ -26,7 +26,7 @@ export class PreviewCardComponent implements OnInit {
     }
 
     // 设置图片
-    setImgUrl = sid => `https://cdn.sayobot.cn:25225/beatmaps/${sid}/covers/cover.jpg?0`;
+    setImgUrl = sid => `${this.config.pic}${sid}/covers/cover.jpg?0`;
 
     getStatus() {
         let statu: string;

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +7,9 @@ export class PlayMusicService {
     sid: number;
     musicEl = new Audio();
 
-    constructor() {
+    constructor(
+        @Inject('BASE_CONFIG') private config,
+    ) {
         this.musicEl.preload = 'metadata';
     }
 
@@ -17,6 +19,6 @@ export class PlayMusicService {
 
     setSrc(sid: number) {
         this.sid = sid;
-        this.musicEl.src = `https://cdnx.sayobot.cn:25225/preview/${this.sid}.mp3`;
+        this.musicEl.src = `${this.config.previewMp3}${this.sid}.mp3`;
     }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Server } from './class/server.class';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from 'app/core/service/LocalStorage';
@@ -8,11 +8,11 @@ import { LocalStorageService } from 'app/core/service/LocalStorage';
 })
 export class ServerMangeService {
 
-    SERVERS_URL = 'https://api.sayobot.cn/static/servers';
     serveList: Server[] = [];
     currentServer = '0';
 
     constructor(
+        @Inject('BASE_CONFIG') private config,
         private http: HttpClient,
         private local: LocalStorageService
     ) {
@@ -27,7 +27,7 @@ export class ServerMangeService {
     }
 
     getServerList() {
-        this.http.get(this.SERVERS_URL).subscribe((res: any) => {
+        this.http.get(this.config.serviceList).subscribe((res: any) => {
             const arr = res.data;
             arr.forEach(element => {
                 this.serveList.push(new Server(element));
