@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from 'app/core/service/DialogService';
 import { ApiService } from 'app/core/service/ApiService';
-import { SearchService } from 'app/core/service/Search';
 import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { throttleTime } from 'rxjs/operators';
+import { ResponsiveService } from 'app/core/service/Responsive';
 
 @Component({
     selector: 'hot-maps',
@@ -12,35 +11,17 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class HotMapsComponent implements OnInit {
 
-    cols: number;
-    doc: Document;
-
     constructor(
-        public dialog: DialogService,
-        public apiService: ApiService,
-        public search: SearchService,
+        private apiService: ApiService,
+        private responsive: ResponsiveService
     ) { }
 
     ngOnInit() {
-        this.doc = document;
-        const docResize = fromEvent(window, 'resize').pipe(
-            debounceTime(1000),
+        const docResize$ = fromEvent(window, 'resize').pipe(
+            throttleTime(1000),
         );
-        docResize.subscribe(() => this.changeSize());
-        this.changeSize();
-    }
-
-    changeSize() {
-        const width = this.doc.documentElement.clientWidth;
-        if (width > 1600) {
-            this.cols = 4;
-        } else if (width > 1300) {
-            this.cols = 3;
-        } else if (width > 1000) {
-            this.cols = 2;
-        } else {
-            this.cols = 1;
-        }
+        docResize$.subscribe(() => this.responsive.setCols());
+        this.responsive.setCols();
     }
 
     getHotMore = () => this.apiService.getHotMap();
