@@ -4,14 +4,12 @@ import { HelpDialogComponent } from './help-dialog';
 import { MapDetailComponent } from './map-detail';
 import { NotFoundMapDialogComponent } from './not-found-map-dialog';
 import { SupportSayobotComponent } from './support-sayobot';
-import { UpdateLogDialogComponent } from './update-log-dialog';
 
 export * from './about-dialog';
 export * from './help-dialog';
 export * from './map-detail';
 export * from './not-found-map-dialog';
 export * from './support-sayobot';
-export * from './update-log-dialog';
 
 // 普通组件
 import { DetailInfoComponent } from './detail-info';
@@ -26,7 +24,6 @@ export const DIALOGS = [
     HelpDialogComponent,
     MapDetailComponent,
     NotFoundMapDialogComponent,
-    UpdateLogDialogComponent,
     SupportSayobotComponent,
 ];
 

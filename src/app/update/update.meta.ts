@@ -1,4 +1,8 @@
-import { UpdateData } from './update-data.class';
+
+export class UpdateData {
+    time: string;
+    detail: string[];
+}
 
 export const META: UpdateData[] = [
     {

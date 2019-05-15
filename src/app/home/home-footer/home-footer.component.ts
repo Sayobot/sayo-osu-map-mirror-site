@@ -12,4 +12,8 @@ export class HomeFooterComponent implements OnInit {
   ngOnInit() {
   }
 
+  getYear() {
+      return new Date().getFullYear();
+  }
+
 }

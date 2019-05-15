@@ -1,1 +1,1 @@
-export * from './not-found-map-dialog.component'
+export * from './not-found-map-dialog.component';
