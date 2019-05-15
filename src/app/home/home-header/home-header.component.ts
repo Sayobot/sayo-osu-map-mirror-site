@@ -11,7 +11,7 @@ import { ServerMangeService } from 'app/core/service/ServerMange';
 export class HomeHeaderComponent implements OnInit {
 
     constructor(
-        private dialog: DialogService,
+        public dialog: DialogService,
         private local: LocalStorageService,
         public serverMange: ServerMangeService
     ) { }

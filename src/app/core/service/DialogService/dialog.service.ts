@@ -6,7 +6,6 @@ import { HelpDialogComponent } from 'app/core/components/help-dialog';
 import { MapDetailComponent } from 'app/core/components/map-detail';
 import { NotFoundMapDialogComponent } from 'app/core/components/not-found-map-dialog';
 import { SupportSayobotComponent } from 'app/core/components/support-sayobot';
-import { UpdateLogDialogComponent } from 'app/core/components/update-log-dialog';
 
 @Injectable({
     providedIn: 'root'
@@ -41,17 +40,6 @@ export class DialogService {
             AboutDialogComponent, {
                 maxHeight: '90vh',
                 height: '90vh',
-                maxWidth: '600px'
-            });
-    }
-
-    // 打开更新日志的弹窗
-    updateLog() {
-        this.dialog.open(
-            UpdateLogDialogComponent,
-            {
-                maxHeight: '90vh',
-                height: '70vh',
                 maxWidth: '600px'
             });
     }
