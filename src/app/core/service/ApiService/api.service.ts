@@ -1,12 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from 'app/core/service/DialogService';
+import { MapDetail } from 'app/shared/models';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
-    LIMIT = 20;
+    limit = 20;
 
     newMap: Array<any> = [];
     newEndId = 0;
@@ -30,8 +31,8 @@ export class ApiService {
                 0: id.toString(),
             }
         };
-        this.http.get(this.config.detail, OPTIONS)
-            .subscribe((res: any) => {
+        this.http.get<MapDetail>(this.config.detail, OPTIONS)
+            .subscribe((res: MapDetail) => {
                 if (res.status === 0) {
                     this.detail = res.data;
                     this.dialog.mapDetail(id, this.detail);
@@ -49,7 +50,7 @@ export class ApiService {
     getNewMap() {
         const OPTIONS = {
             params: {
-                0: this.LIMIT.toString(),
+                0: this.limit.toString(),
                 1: this.newEndId.toString(),
                 2: '2'
             }
@@ -68,7 +69,7 @@ export class ApiService {
     getHotMap() {
         const OPTIONS = {
             params: {
-                0: this.LIMIT.toString(),
+                0: this.limit.toString(),
                 1: this.hotEndId.toString(),
                 2: '1'
             }
