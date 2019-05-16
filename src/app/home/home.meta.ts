@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { OwnMaterialModule } from '../core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from 'app/shared';
 
 import { HomeListComponent } from './home-list';
 import { HomeHeaderComponent } from './home-header';
@@ -15,13 +14,13 @@ import { InfoCardsComponent } from './home-main/info-cards';
 import { PreviewCardComponent } from './home-main/preview-card';
 import { MusicBoxComponent } from './music-box/music-box.component';
 
+
 export const ROUTES: Routes = [
     { path: '', component: HomeListComponent }
 ];
 
 export const MODULES = [
-    OwnMaterialModule,
-    CommonModule
+    SharedModule,
 ];
 
 export const COMPONENTS = [
