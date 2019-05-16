@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import * as META from './shared.meta';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+    imports: [META.MODULES],
+    declarations: [],
+    exports: [META.MODULES]
 })
 export class SharedModule { }

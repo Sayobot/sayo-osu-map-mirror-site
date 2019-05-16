@@ -1,19 +1,12 @@
+
+import { SharedModule } from 'app/shared';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { OwnMaterialModule } from './module';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const MODULES = [
+    SharedModule,
     BrowserModule,
-    CommonModule,
-    RouterModule,
-    OwnMaterialModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
 ];
 
 export const PROVIDES = [
