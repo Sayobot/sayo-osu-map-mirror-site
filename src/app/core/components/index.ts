@@ -1,3 +1,6 @@
+// 其他
+import { NotFoundPageComponent } from './not-found-page';
+
 // 弹窗组件
 import { AboutDialogComponent } from './about-dialog';
 import { HelpDialogComponent } from './help-dialog';
@@ -11,14 +14,6 @@ export * from './map-detail';
 export * from './not-found-map-dialog';
 export * from './support-sayobot';
 
-// 普通组件
-import { DetailInfoComponent } from './detail-info';
-import { DifficultyTableComponent } from './difficulty-table';
-import { NotFoundPageComponent } from './not-found-page';
-import { TagsComponent } from './tags';
-import { MapDetailRadarChartComponent } from './map-detail-radar-chart';
-
-
 export const DIALOGS = [
     AboutDialogComponent,
     HelpDialogComponent,
@@ -29,10 +24,6 @@ export const DIALOGS = [
 
 export const COMPONENTS = [
     ...DIALOGS,
-    DetailInfoComponent,
-    DifficultyTableComponent,
-    NotFoundPageComponent,
-    TagsComponent,
-    MapDetailRadarChartComponent
+    NotFoundPageComponent
 ];
 
