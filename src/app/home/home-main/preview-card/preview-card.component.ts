@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { ApiService } from 'app/core/service/ApiService';
+import { MapService } from 'app/core/service/MapService';
 import { PlayMusicService } from 'app/core/service/PlayMusicService';
 import { DownloadService } from 'app/core/service/Download';
 import { ServerMangeService } from 'app/core/service/ServerMange';
@@ -16,7 +16,7 @@ export class PreviewCardComponent implements OnInit {
 
     constructor(
         @Inject('BASE_CONFIG') private config,
-        private apiService: ApiService,
+        private maps: MapService,
         private musicBox: PlayMusicService,
         private download: DownloadService,
         public serverMange: ServerMangeService
@@ -44,7 +44,7 @@ export class PreviewCardComponent implements OnInit {
 
     // 打开详情
     opneMapDetail(id: number) {
-        this.apiService.getMapDetail(id);
+        this.maps.getMapDetail(id);
     }
 
     play() {

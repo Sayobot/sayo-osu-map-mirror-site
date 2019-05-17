@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'app/core/service/ApiService';
+import { MapService } from 'app/core/service/MapService';
 import { SearchService } from 'app/core/service/Search';
 import { Router } from '@angular/router';
 
@@ -26,7 +26,7 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
     @ViewChild(SearchMapsComponent) private searchMaps: SearchMapsComponent;
 
     constructor(
-        private apiService: ApiService,
+        private maps: MapService,
         private search: SearchService,
         private activeRoute: ActivatedRoute,
         private router: Router,
@@ -41,11 +41,11 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
                     this.search.getSearch(params.search);
                     this.onSearch();
                 } else {
-                    this.apiService.getMapList();
+                    this.maps.getMapList();
                 }
             });
-        this.apiService.getSupport();
-        this.apiService.getNewsList();
+        this.maps.getSupport();
+        this.maps.getNewsList();
     }
 
     ngAfterViewInit() {
@@ -73,8 +73,8 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
 
             if (bottom < 1000 && bottom > 0) {
                 switch (index) {
-                    case 0: this.apiService.newEndId !== 0 ? this.newMaps.getNewMore() : console.log('已经到底啦！'); break;
-                    case 1: this.apiService.hotEndId !== 0 ? this.hotMaps.getHotMore() : console.log('已经到底啦！'); break;
+                    case 0: this.maps.newEndId !== 0 ? this.newMaps.getNewMore() : console.log('已经到底啦！'); break;
+                    case 1: this.maps.hotEndId !== 0 ? this.hotMaps.getHotMore() : console.log('已经到底啦！'); break;
                     case 2: this.search.searchEndId !== 0 ? this.searchMaps.getSearchMore() : console.log('已经到底啦！'); break;
                     default:
                         break;
@@ -93,13 +93,13 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.setMainBox();
         }, 600);
-        if (this.search.tabIndex === 0 && this.apiService.newMap.length === 0) {
-            this.apiService.getNewMap();
+        if (this.search.tabIndex === 0 && this.maps.newMap.length === 0) {
+            this.maps.getNewMap();
             this.router.navigate(['']);
         }
 
-        if (this.search.tabIndex === 1 && this.apiService.hotMap.length === 0) {
-            this.apiService.getHotMap();
+        if (this.search.tabIndex === 1 && this.maps.hotMap.length === 0) {
+            this.maps.getHotMap();
             this.router.navigate(['']);
         }
 

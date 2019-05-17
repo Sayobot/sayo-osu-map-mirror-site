@@ -6,8 +6,8 @@ import { MapDetail } from 'app/shared/models';
 @Injectable({
     providedIn: 'root'
 })
-export class ApiService {
-    limit = 20;
+export class MapService {
+    limit: number;
 
     newMap: Array<any> = [];
     newEndId = 0;
@@ -22,7 +22,9 @@ export class ApiService {
         @Inject('BASE_CONFIG') private config,
         private http: HttpClient,
         private dialog: DialogService,
-    ) { }
+    ) {
+        this.limit = 20;
+     }
 
     // 铺面详情
     getMapDetail(id: number) {

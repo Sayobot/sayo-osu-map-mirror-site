@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'app/core/service/DialogService';
-import { ApiService } from 'app/core/service/ApiService';
+import { MapService } from 'app/core/service/MapService';
 import { SearchService } from 'app/core/service/Search';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class SearchMapsComponent implements OnInit {
 
     constructor(
         public dialog: DialogService,
-        public apiService: ApiService,
+        public maps: MapService,
         public search: SearchService,
     ) { }
 

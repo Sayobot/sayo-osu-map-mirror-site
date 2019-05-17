@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'app/core/service/ApiService';
+import { MapService } from 'app/core/service/MapService';
 
 @Component({
   selector: 'info-cards',
@@ -9,7 +9,7 @@ import { ApiService } from 'app/core/service/ApiService';
 export class InfoCardsComponent implements OnInit {
 
   constructor(
-      public apiService: ApiService
+      public maps: MapService
   ) { }
 
   ngOnInit() {

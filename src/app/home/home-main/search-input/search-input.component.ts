@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ApiService } from 'app/core/service/ApiService';
+import { MapService } from 'app/core/service/MapService';
 import { SearchService } from 'app/core/service/Search';
 import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
@@ -21,7 +21,7 @@ export class SearchInputComponent implements OnInit {
     @Output() searchChange: EventEmitter<string> = new EventEmitter();
 
     constructor(
-        public apiService: ApiService,
+        public maps: MapService,
         public search: SearchService,
         private common: CommonFnService
     ) { }

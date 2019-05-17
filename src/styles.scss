@@ -1,7 +1,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import './app/core/theme/common'; // 通用
-@import './app/core/theme/scrollbar'; // 滚动条
-@import './app/core/theme/dialog'; // 弹窗
+@import './app/theme/common'; // 通用
+@import './app/theme/scrollbar'; // 滚动条
+@import './app/theme/dialog'; // 弹窗
 
 // CSS reset
 * {
