@@ -19,9 +19,9 @@ export class DialogService {
     supprot() {
         this.dialog.open(
             SupportSayobotComponent, {
-                height: '96%',
-                maxHeight: '96%',
-                width: '600px',
+                height: '98%',
+                maxHeight: '98%',
+                width: '700px',
             });
     }
 
@@ -29,7 +29,8 @@ export class DialogService {
     help() {
         this.dialog.open(
             HelpDialogComponent, {
-                maxWidth: '40vw'
+                maxWidth: '98%',
+                width: '700px'
             }
         );
     }
@@ -38,9 +39,9 @@ export class DialogService {
     about() {
         this.dialog.open(
             AboutDialogComponent, {
-                maxHeight: '90vh',
-                height: '90vh',
-                maxWidth: '600px'
+                maxWidth: '98%',
+                width: '700px',
+                maxHeight: '98%',
             });
     }
 
@@ -61,8 +62,9 @@ export class DialogService {
         this.dialog.open(
             MapDetailComponent, {
                 panelClass: 'no-padding-dialog',
-                width: '70vw',
+                maxWidth: '100vw',
                 maxHeight: '100vh',
+                width: '1080px',
                 data: {
                     id: id,
                     content: detail

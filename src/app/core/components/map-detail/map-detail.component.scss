@@ -20,14 +20,11 @@
 
         .actions {
             margin: 1rem 0;
-            display: flex;
-            justify-content: center;
+            @include flex-layout();
 
             button {
                 margin: 0 .5em;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
+                @include flex-layout();
 
                 img {
                     height: 16px;

@@ -1,8 +1,8 @@
 @import '../../core';
 
 p {
-    text-indent: 2em;
-    line-height: 2em;
+    text-indent: $text-indent;
+    line-height: $text-line-height;
 }
 
 a {
@@ -16,5 +16,4 @@ a {
 .actions {
     @include flex-layout();
     @include box-model($p: 2em, $b: 0);
-
 }

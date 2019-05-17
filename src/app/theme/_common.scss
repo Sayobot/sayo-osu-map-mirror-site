@@ -1,12 +1,11 @@
-@import './link'; // 跳转链接样式
-@import './position'; // 定位布局
+@import './position';            // 定位布局
+@import './text';                // 文字公共
 
 @mixin text-one-line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 
 
 // 禁用文字选中 none | text
