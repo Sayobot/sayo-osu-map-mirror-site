@@ -1,0 +1,7 @@
+<div class="map-content" *ngIf="maps">
+    <mat-grid-list [cols]="responsive.cols" gutterSize=".3em" rowHeight="900: 480">
+        <mat-grid-tile *ngFor="let map of maps">
+            <preview-card [preview]="map"></preview-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

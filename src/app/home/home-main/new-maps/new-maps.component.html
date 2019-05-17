@@ -1,8 +1,0 @@
-<div class="map-content" id="new-map-scroll">
-    <mat-grid-list [cols]="responsive.cols" gutterSize=".3em" rowHeight="900: 480">
-        <mat-grid-tile *ngFor="let map of maps.newMap">
-            <preview-card [preview]="map"></preview-card>
-        </mat-grid-tile>
-    </mat-grid-list>
-    <button mat-raised-button (click)="getNewMore()" class="getMore-btn">点击加载更多</button>
-</div>

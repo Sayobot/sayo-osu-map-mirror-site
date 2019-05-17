@@ -1,6 +1,7 @@
-@import '../home_main';
+@import '../../shared';
 
 .map-content {
+    padding-bottom: 40px;
     mat-grid-tile {
         display: flex;
         flex-direction: column;
@@ -39,13 +40,4 @@
 
 .getMore-btn {
     width: 100%;
-}
-
-.results {
-    padding-left: 2rem;
-    margin: 5px 0;
-    span {
-        margin: 0 .3em;
-        color: #ff0000;
-    }
 }
