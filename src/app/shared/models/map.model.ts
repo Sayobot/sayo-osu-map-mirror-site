@@ -53,3 +53,24 @@ export interface MapDetailChild {
     strain_speed: string;
     version: string;
 }
+
+export interface PreMapList {
+    endid: number;
+    status: number;
+    data: PreMap[];
+}
+
+
+export interface PreMap {
+    approved: number;
+    artist: string;
+    artistU: string;
+    creator: string;
+    favourite_count: number;
+    lastupdate: number;
+    modes: number;
+    order: number;
+    sid: number;
+    title: string;
+    titleU: string;
+}

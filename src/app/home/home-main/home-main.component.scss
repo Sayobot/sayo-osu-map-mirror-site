@@ -1,4 +1,4 @@
-@import './home_main';
+@import '../home_main';
 
 .main {
     display: flex;
@@ -26,6 +26,14 @@
             overflow: auto;
             height: 100%;
         }
+
+        turn-page {
+            position: absolute;
+            bottom: 0;
+            z-index: 10;
+            width: 100%;
+            background: #fff;
+        }
     }
 
     info-cards {
@@ -36,4 +44,12 @@
     }
 }
 
+.results {
+    padding-left: 2rem;
+    margin: 5px 0;
 
+    span {
+        margin: 0 .3em;
+        color: #ff0000;
+    }
+}

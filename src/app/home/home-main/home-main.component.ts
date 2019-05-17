@@ -1,36 +1,28 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MapService } from 'app/core/service/MapService';
 import { SearchService } from 'app/core/service/Search';
+import { ResponsiveService } from 'app/core/service/Responsive';
 import { Router } from '@angular/router';
 
-import { ElementRef } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { throttleTime } from 'rxjs/operators';
 
-import { NewMapsComponent } from './new-maps';
-import { HotMapsComponent } from './hot-maps';
-import { SearchMapsComponent } from './search-maps';
 
 @Component({
     selector: 'home-main',
     templateUrl: './home-main.component.html',
     styleUrls: ['./home-main.component.scss']
 })
-export class HomeMainComponent implements OnInit, AfterViewInit {
+export class HomeMainComponent implements OnInit {
     searchKey: string;      // 搜搜关键字
-    scrollSub: any;         // 订阅
-
-    @ViewChild(NewMapsComponent) private newMaps: NewMapsComponent;
-    @ViewChild(HotMapsComponent) private hotMaps: HotMapsComponent;
-    @ViewChild(SearchMapsComponent) private searchMaps: SearchMapsComponent;
 
     constructor(
-        private maps: MapService,
-        private search: SearchService,
+        public maps: MapService,
+        public search: SearchService,
         private activeRoute: ActivatedRoute,
         private router: Router,
-        private el: ElementRef
+        public responsive: ResponsiveService,
     ) { }
 
     ngOnInit() {
@@ -44,55 +36,22 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
                     this.maps.getMapList();
                 }
             });
+
+        const docResize = fromEvent(window, 'resize').pipe(
+            throttleTime(1000),
+        );
+        docResize.subscribe(() => this.responsive.setCols());
+        this.responsive.setCols();
+
         this.maps.getSupport();
         this.maps.getNewsList();
-    }
-
-    ngAfterViewInit() {
-        this.setMainBox();
-    }
-
-    // 获取当前可视的容器
-    setMainBox() {
-        const srcrollBox = this.el.nativeElement.querySelectorAll('.mat-tab-body-content');
-        const mapContent = this.el.nativeElement.querySelector('.map-content');
-
-        srcrollBox.forEach((item, index) => {
-            this.setEventScroll(item, mapContent, index);
-        });
-    }
-
-    // 绑定滚动事件
-    setEventScroll(target, box, index) {
-        this.scrollSub = fromEvent(target, 'scroll').pipe(
-            debounceTime(1000)
-        );
-
-        this.scrollSub.subscribe(res => {
-            const { bottom } = box.getBoundingClientRect();
-
-            if (bottom < 1000 && bottom > 0) {
-                switch (index) {
-                    case 0: this.maps.newEndId !== 0 ? this.newMaps.getNewMore() : console.log('已经到底啦！'); break;
-                    case 1: this.maps.hotEndId !== 0 ? this.hotMaps.getHotMore() : console.log('已经到底啦！'); break;
-                    case 2: this.search.searchEndId !== 0 ? this.searchMaps.getSearchMore() : console.log('已经到底啦！'); break;
-                    default:
-                        break;
-                }
-            }
-
-        });
     }
 
     // 搜索map
     onSearch = () => this.search.onSearch();
 
-    // tab选项卡改变
+    // 跳转搜索后 tab选项卡改变
     onTabChange() {
-
-        setTimeout(() => {
-            this.setMainBox();
-        }, 600);
         if (this.search.tabIndex === 0 && this.maps.newMap.length === 0) {
             this.maps.getNewMap();
             this.router.navigate(['']);
@@ -102,7 +61,6 @@ export class HomeMainComponent implements OnInit, AfterViewInit {
             this.maps.getHotMap();
             this.router.navigate(['']);
         }
-
     }
 
 
