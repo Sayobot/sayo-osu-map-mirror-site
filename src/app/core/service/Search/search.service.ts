@@ -14,7 +14,7 @@ export class SearchService {
     searchKey: string;
     params = '';                        // 字段
 
-    limit_count = '20';
+    limit_count = 20;
 
     // 匹配量
     match_artist: number;
@@ -64,22 +64,29 @@ export class SearchService {
     }
 
     // 获取搜索列表
-    getSearchList() {
+    getSearchList(type: string = 'next') {
+        switch (type) {
+            case 'after':
+                this.searchEndId = this.searchEndId === this.limit_count ? 0 : this.searchEndId - 2 * this.limit_count; break;
+            case 'next': break;
+            default: break;
+        }
+
         const OPTIONS = {
             params: {
-                0: this.limit_count,
+                0: this.limit_count.toString(),
                 1: this.searchEndId.toString(),
                 2: '4',
                 3: this.searchKey,
             }
         };
+
         Object.assign(OPTIONS.params, this.params);
 
         this.http.get(this.config.list, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data;
-                    maps.forEach(element => this.searchMap.push(element));
+                    this.searchMap = res.data;
                     this.setResInfo(res);
                 } else {
                     this.dialog.notFoundMap(this.searchKey);
