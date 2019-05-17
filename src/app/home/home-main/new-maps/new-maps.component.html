@@ -1,6 +1,6 @@
 <div class="map-content" id="new-map-scroll">
     <mat-grid-list [cols]="responsive.cols" gutterSize=".3em" rowHeight="900: 480">
-        <mat-grid-tile *ngFor="let map of apiService.newMap">
+        <mat-grid-tile *ngFor="let map of maps.newMap">
             <preview-card [preview]="map"></preview-card>
         </mat-grid-tile>
     </mat-grid-list>

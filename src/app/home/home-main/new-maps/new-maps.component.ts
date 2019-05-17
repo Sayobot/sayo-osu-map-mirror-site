@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'app/core/service/ApiService';
+import { MapService } from 'app/core/service/MapService';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { ResponsiveService } from 'app/core/service/Responsive';
@@ -12,7 +12,7 @@ import { ResponsiveService } from 'app/core/service/Responsive';
 export class NewMapsComponent implements OnInit {
 
     constructor(
-        private apiService: ApiService,
+        private maps: MapService,
         private responsive: ResponsiveService
     ) { }
 
@@ -24,6 +24,6 @@ export class NewMapsComponent implements OnInit {
         this.responsive.setCols();
     }
 
-    getNewMore = () => this.apiService.getNewMap();
+    getNewMore = () => this.maps.getNewMap();
 
 }

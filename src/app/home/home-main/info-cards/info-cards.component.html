@@ -6,9 +6,9 @@
         </mat-card-header>
         <mat-card-content>
             <div class="progress-bg">
-                <div class="progress-bar" [ngStyle]="{'width': apiService.totalWidth}"></div>
-                <span class="progress-percent">{{apiService.totalWidth}}</span>
-                <span class="support">RMB {{apiService.support.total}}/RMB {{apiService.support.target}}</span>
+                <div class="progress-bar" [ngStyle]="{'width': maps.totalWidth}"></div>
+                <span class="progress-percent">{{maps.totalWidth}}</span>
+                <span class="support">RMB {{maps.support.total}}/RMB {{maps.support.target}}</span>
             </div>
         </mat-card-content>
     </mat-card>
@@ -18,7 +18,7 @@
             <mat-card-title>公告栏</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <ng-container *ngIf="apiService.public as public">
+            <ng-container *ngIf="maps.public as public">
                 <h2>{{public.summary}}</h2>
                 <pre>{{public.content}}</pre>
                 <div *ngFor="let item of public.img">
