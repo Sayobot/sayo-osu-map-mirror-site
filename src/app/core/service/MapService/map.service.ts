@@ -24,7 +24,7 @@ export class MapService {
         private dialog: DialogService,
     ) {
         this.limit = 20;
-     }
+    }
 
     // 铺面详情
     getMapDetail(id: number) {
@@ -49,7 +49,15 @@ export class MapService {
     }
 
     // 获得最新图
-    getNewMap() {
+    getNewMap(type: string = 'next') {
+
+        switch (type) {
+            case 'after':
+                this.newEndId = this.newEndId === this.limit ? 0 : this.newEndId - 2 * this.limit; break;
+            case 'next': break;
+            default: break;
+        }
+
         const OPTIONS = {
             params: {
                 0: this.limit.toString(),
@@ -57,18 +65,26 @@ export class MapService {
                 2: '2'
             }
         };
+
         this.http.get(this.config.list, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data;
-                    maps.forEach(element => this.newMap.push(element));
+                    this.newMap = res.data;
                     this.newEndId = res.endid;
                 }
             });
     }
 
     // 获得热门图
-    getHotMap() {
+    getHotMap(type: string = 'next') {
+
+        switch (type) {
+            case 'after':
+                this.hotEndId = this.hotEndId === this.limit ? 0 : this.hotEndId - 2 * this.limit; break;
+            case 'next': break;
+            default: break;
+        }
+
         const OPTIONS = {
             params: {
                 0: this.limit.toString(),
@@ -79,8 +95,7 @@ export class MapService {
         this.http.get(this.config.list, OPTIONS)
             .subscribe((res: any) => {
                 if (res.status === 0) {
-                    const maps = res.data;
-                    maps.forEach(element => this.hotMap.push(element));
+                    this.hotMap = res.data;
                     this.hotEndId = res.endid;
                 }
             });
