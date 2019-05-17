@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DialogService } from 'app/core/service/DialogService';
 import { LocalStorageService } from 'app/core/service/LocalStorage';
 import { ServerMangeService } from 'app/core/service/ServerMange';
@@ -8,7 +8,7 @@ import { ServerMangeService } from 'app/core/service/ServerMange';
     templateUrl: './home-header.component.html',
     styleUrls: ['./home-header.component.scss']
 })
-export class HomeHeaderComponent implements OnInit {
+export class HomeHeaderComponent implements OnInit, AfterViewInit {
 
     constructor(
         public dialog: DialogService,
@@ -17,11 +17,14 @@ export class HomeHeaderComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
+    }
+
+    ngAfterViewInit() {
         if (!this.local.getItem('isShow') || this.local.getItem('isShow') === 'false') {
             setTimeout(() => {
                 this.dialog.help();
-            }, 500);
+            }, 0);
         }
     }
-
 }
