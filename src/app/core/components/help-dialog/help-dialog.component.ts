@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'app/core/service/LocalStorage';
+import { LocalStorageService } from '@service/LocalStorage';
 
 @Component({
     selector: 'app-help-dialog',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService } from 'app/core/service/MapService';
-import { SearchService } from 'app/core/service/Search';
+import { MapService } from '@service/MapService';
+import { SearchService } from '@service/Search';
 
 @Component({
     selector: 'turn-page',

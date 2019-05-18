@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DialogService } from 'app/core/service/DialogService';
+import { DialogService } from '@service/DialogService';
 import { MapDetail } from 'app/shared/models';
 
 @Injectable({
