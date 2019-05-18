@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { PlayMusicService } from 'app/core/service/PlayMusicService';
-import { ClipboardService } from 'app/core/service/Clipboard';
-import { DownloadService } from 'app/core/service/Download';
-import { ServerMangeService } from 'app/core/service/ServerMange';
+import { PlayMusicService } from '@service/PlayMusicService';
+import { ClipboardService } from '@service/Clipboard';
+import { DownloadService } from '@service/Download';
+import { ServerMangeService } from '@service/ServerMange';
+import { MapDetailChild } from 'app/shared/models';
 
 @Component({
     selector: 'app-map-detail',
@@ -14,8 +15,8 @@ export class MapDetailComponent implements OnInit {
 
     mapDetail: any;     // 铺面详情
     imgUrl: string;     // 图片链接
-    parttime: any;      // 试听剩余时间
-    detailInfo: any;
+    parttime: number;      // 试听剩余时间
+    detailInfo: MapDetailChild;
 
     // 下载状态
     isMapDownload = false;          // 是否正在下载
@@ -45,6 +46,7 @@ export class MapDetailComponent implements OnInit {
             clearTimeout(this.mapTimer);
         }, 15000);
     }
+
 
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
@@ -91,11 +93,6 @@ export class MapDetailComponent implements OnInit {
         }, 1000);
     }
 
-    // 播放完整音乐
-    playComplete() {
-        console.log('播放了完整的音乐');
-    }
-
     ngOnInit() {
         this.imgUrl = `${this.config.pic}${this.data.id}/covers/cover.jpg?0`;
         this.mapDetail = this.data.content;
@@ -105,8 +102,7 @@ export class MapDetailComponent implements OnInit {
     }
 
     shared() {
-        const url = `https://sayobot.cn/?search=${this.data.id}`;
-        this.clipBoard.write(url);
+        this.clipBoard.copy(`https://sayobot.cn/?search=${this.data.id}`);
     }
 
 }

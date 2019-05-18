@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchService } from 'app/core/service/Search';
+import { SearchService } from '@service/Search';
 
 @Component({
     selector: 'map-tags',

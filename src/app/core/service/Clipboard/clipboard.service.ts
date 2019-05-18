@@ -18,7 +18,7 @@ export class ClipboardService {
 
     constructor(private snackBar: MatSnackBar) { }
 
-    write(str: string) {
+    private write(str: string) {
         (navigator as NavigatorClipboard).clipboard
             .writeText(str)
             .then(() => {
@@ -26,5 +26,9 @@ export class ClipboardService {
                     duration: 2000,
                 });
             });
+    }
+
+    copy(content: string) {
+        this.write(content);
     }
 }

@@ -2,6 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "src",
+    "paths": {
+        "@service/*": ["app/core/service/*"]
+    },
     "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

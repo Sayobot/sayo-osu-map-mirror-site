@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MapService } from 'app/core/service/MapService';
-import { SearchService } from 'app/core/service/Search';
+import { MapService } from '@service/MapService';
+import { SearchService } from '@service/Search';
 import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
 import { Option } from './class/option';
 import { MatCheckbox } from '@angular/material';
-import { CommonFnService } from 'app/core/service/CommonFnService';
+import { CommonFnService } from '@service/CommonFnService';
 
 @Component({
     selector: 'search-input',

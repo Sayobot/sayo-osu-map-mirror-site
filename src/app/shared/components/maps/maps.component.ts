@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResponsiveService } from 'app/core/service/Responsive';
+import { ResponsiveService } from '@service/Responsive';
 import { PreMap } from 'app/shared/class/pre-map.class';
 
 @Component({

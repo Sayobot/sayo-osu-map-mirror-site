@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { DialogService } from 'app/core/service/DialogService';
-import { LocalStorageService } from 'app/core/service/LocalStorage';
-import { ServerMangeService } from 'app/core/service/ServerMange';
+import { DialogService } from '@service/DialogService';
+import { LocalStorageService } from '@service/LocalStorage';
+import { ServerMangeService } from '@service/ServerMange';
 
 @Component({
     selector: 'home-header',

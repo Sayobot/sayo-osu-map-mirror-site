@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { MapService } from 'app/core/service/MapService';
-import { PlayMusicService } from 'app/core/service/PlayMusicService';
-import { DownloadService } from 'app/core/service/Download';
-import { ServerMangeService } from 'app/core/service/ServerMange';
+import { MapService } from '@service/MapService';
+import { PlayMusicService } from '@service/PlayMusicService';
+import { DownloadService } from '@service/Download';
+import { ServerMangeService } from '@service/ServerMange';
 
 @Component({
     selector: 'preview-card',
