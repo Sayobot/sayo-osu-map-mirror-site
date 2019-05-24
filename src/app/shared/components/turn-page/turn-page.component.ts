@@ -9,32 +9,37 @@ import { SearchService } from '@service/Search';
 })
 export class TurnPageComponent implements OnInit {
 
+    endId: number;
+
     constructor(
         private maps: MapService,
         private search: SearchService
     ) { }
 
     ngOnInit() {
+        this.setEndId();
     }
 
-    afterPage() {
+    setEndId() {
         switch (this.search.tabIndex) {
-            case 0: this.maps.newEndId !== 0 ? this.maps.getNewMap('after') : console.log('已经到底啦！'); break;
-            case 1: this.maps.hotEndId !== 0 ? this.maps.getHotMap('after') : console.log('已经到底啦！'); break;
-            case 2: this.search.searchEndId !== 0 ? this.search.getSearchList('after') : console.log('已经到底啦！'); break;
+            case 0: this.endId = this.maps.newEndId; break;
+            case 1: this.endId = this.maps.hotEndId; break;
+            case 2: this.endId = this.search.searchEndId; break;
             default:
                 break;
         }
     }
 
-    nextPage() {
+    change(type: string = '') {
         switch (this.search.tabIndex) {
-            case 0: this.maps.newEndId !== 0 ? this.maps.getNewMap() : console.log('已经到底啦！'); break;
-            case 1: this.maps.hotEndId !== 0 ? this.maps.getHotMap() : console.log('已经到底啦！'); break;
-            case 2: this.search.searchEndId !== 0 ? this.search.getSearchList() : console.log('已经到底啦！'); break;
+            case 0: this.maps.getNewMap(type); break;
+            case 1: this.maps.getHotMap(type); break;
+            case 2: this.search.getSearchList(type); break;
             default:
                 break;
         }
+
+        this.setEndId();
     }
 
 }

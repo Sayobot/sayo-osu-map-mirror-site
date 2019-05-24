@@ -1,10 +1,10 @@
 <div class="turn-page">
-    <button mat-button (click)="afterPage()">
+    <button mat-button (click)="change('after')" [disabled]="endId === 0">
         <mat-icon>keyboard_arrow_left</mat-icon>
         after
     </button>
 
-    <button mat-button (click)="nextPage()">
+    <button mat-button (click)="change()">
         next
         <mat-icon>keyboard_arrow_right</mat-icon>
     </button>

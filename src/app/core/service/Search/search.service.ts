@@ -108,7 +108,7 @@ export class SearchService {
     }
 
     onSearch() {
-        this.tabIndex = 3;
+        this.tabIndex = 2;
     }
 
 }
