@@ -1,0 +1,26 @@
+<div class="admin-wrapper">
+    <header>
+        <mat-toolbar class="header">
+            <mat-toolbar-row>
+                <h1>后台管理</h1>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </header>
+
+    <main>
+        <nav>
+            <ul class="nav-wrapper">
+                <li><a [routerLink]="[ '/admin/announce' ]">公告管理</a></li>
+                <li><a [routerLink]="[ '/admin/finance' ]">财务管理</a></li>
+            </ul>
+        </nav>
+
+        <div class="wrapper">
+            <div class="border-wrapper">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+    </main>
+</div>
+
