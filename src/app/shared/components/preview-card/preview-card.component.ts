@@ -15,7 +15,7 @@ export class PreviewCardComponent implements OnInit {
     musicStatu = false;
 
     constructor(
-        @Inject('BASE_CONFIG') private config,
+        @Inject('BASE_CONFIG') public config,
         private maps: MapService,
         private musicBox: PlayMusicService,
         private download: DownloadService,
