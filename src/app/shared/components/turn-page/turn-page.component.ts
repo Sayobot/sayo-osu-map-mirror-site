@@ -10,6 +10,8 @@ import { SearchService } from '@service/Search';
 export class TurnPageComponent implements OnInit {
 
     endId: number;
+    timer = null;
+    first = true;
 
     constructor(
         private maps: MapService,
@@ -31,6 +33,23 @@ export class TurnPageComponent implements OnInit {
     }
 
     change(type: string = '') {
+        if (this.first) {
+            this.changePage(type);
+            this.first = false;
+        }
+
+        if (this.timer) {
+            return;
+        }
+
+        this.timer = setTimeout(() => {
+            clearTimeout(this.timer);
+            this.timer = null;
+            this.changePage(type);
+        }, 1500);
+    }
+
+    changePage(type: string) {
         switch (this.search.tabIndex) {
             case 0: this.maps.getNewMap(type); break;
             case 1: this.maps.getHotMap(type); break;
