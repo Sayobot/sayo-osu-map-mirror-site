@@ -1,7 +1,5 @@
 # Sayobot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
-
 这是[Sayobot网站](https://sayobot.cn/)的代码库，需要node环境，请自行到node官方安装最新版本。
 
 ## 使用指南

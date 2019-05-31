@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PlayMusicService } from '@service/PlayMusicService';
 import { ClipboardService } from '@service/Clipboard';
 import { DownloadService } from '@service/Download';
