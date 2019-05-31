@@ -4,7 +4,7 @@ import { SearchService } from '@service/Search';
 import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
 import { Option } from './class/option';
-import { MatCheckbox } from '@angular/material';
+import { MatCheckbox } from '@angular/material/checkbox';
 import { CommonFnService } from '@service/CommonFnService';
 
 @Component({
