@@ -3,7 +3,6 @@ import { DetailInfoComponent } from './detail-info';
 import { DifficultyTableComponent } from './difficulty-table';
 import { TurnPageComponent } from './turn-page';
 import { MapDetailRadarChartComponent } from './map-detail-radar-chart';
-import { MapsComponent } from './maps';
 import { PreviewCardComponent } from './preview-card';
 import { SearchInputComponent } from './search-input';
 import { InfoCardsComponent } from './info-cards';
@@ -15,7 +14,6 @@ export const COMPONENTS = [
     DifficultyTableComponent,
     MapDetailRadarChartComponent,
     TurnPageComponent,
-    MapsComponent,
     PreviewCardComponent,
     SearchInputComponent,
     InfoCardsComponent,

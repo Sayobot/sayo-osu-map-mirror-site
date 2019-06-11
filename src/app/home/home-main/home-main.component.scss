@@ -5,7 +5,7 @@
     height: 100%;
     width: 100%;
     background: #ececec;
-    padding: 1.5em 7em 1em;
+    padding: 1.5em 7em 0;
 
     .map-wrapper {
         position: relative;
@@ -14,10 +14,31 @@
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
 
+        .map-nav {
+            height: 40px;
+            display: flex;
+            align-items: center;
+
+            .map-nav-item {
+                height: 40px;
+                padding: 0 16px;
+                cursor: pointer;
+                box-sizing: border-box;
+                opacity: .6;
+                min-width: 120px;
+                text-align: center;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                white-space: nowrap;
+                position: relative;
+            }
+        }
+
         search-input {
             position: absolute;
-            right: 15px;
-            top: 5px;
+            right: 3px;
+            top: 1px;
             z-index: 10;
             width: 50%;
         }
@@ -44,12 +65,6 @@
     }
 }
 
-.results {
-    padding-left: 2rem;
-    margin: 5px 0;
-
-    span {
-        margin: 0 .3em;
-        color: #ff0000;
-    }
+.active {
+    border-bottom: 3px solid #000000;
 }

@@ -1,7 +1,15 @@
 <div class="main">
     <div class="map-wrapper">
         <search-input (searchChange)="onSearch()"></search-input>
-        <mat-tab-group [(selectedIndex)]="search.tabIndex" (selectedTabChange)="onTabChange()">
+        <nav class="map-nav">
+            <a [routerLink]="[ '/home/newMap']" class="map-nav-item" routerLinkActive="active">New map</a>
+            <a [routerLink]="[ '/home/hotMap']" class="map-nav-item" routerLinkActive="active">Hot map</a>
+            <a [routerLink]="[ '/home/searchMap']" class="map-nav-item" routerLinkActive="active">Search map</a>
+        </nav>
+
+        <router-outlet></router-outlet>
+
+        <!-- <mat-tab-group [(selectedIndex)]="search.tabIndex" (selectedTabChange)="onTabChange()">
             <mat-tab>
                 <ng-template mat-tab-label>最新map</ng-template>
                 <turn-page></turn-page>
@@ -27,7 +35,8 @@
                     搜索耗时<span>{{search.time_cost}}</span>ms</div>
                 <app-maps [maps]="search.searchMap"></app-maps>
             </mat-tab>
-        </mat-tab-group>
+        </mat-tab-group> -->
+
     </div>
 
     <info-cards></info-cards>
