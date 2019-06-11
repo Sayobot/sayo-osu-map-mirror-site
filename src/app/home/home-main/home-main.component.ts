@@ -31,9 +31,7 @@ export class HomeMainComponent implements OnInit {
             .subscribe(params => {
                 if (params.search) {
                     this.search.getSearch(params.search);
-                    this.onSearch();
-                } else {
-                    this.maps.getMapList();
+                    this.router.navigate(['/home/search']);
                 }
             });
 
@@ -46,23 +44,6 @@ export class HomeMainComponent implements OnInit {
         this.maps.getSupport();
         this.maps.getNewsList();
     }
-
-    // 搜索map
-    onSearch = () => this.search.onSearch();
-
-    // 跳转搜索后 tab选项卡改变
-    onTabChange() {
-        if (this.search.tabIndex === 0 && this.maps.newMap.length === 0) {
-            this.maps.getNewMap();
-            this.router.navigate(['']);
-        }
-
-        if (this.search.tabIndex === 1 && this.maps.hotMap.length === 0) {
-            this.maps.getHotMap();
-            this.router.navigate(['']);
-        }
-    }
-
 
 }
 

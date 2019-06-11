@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '@service/MapService';
 import { SearchService } from '@service/Search';
+import { Observable } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'turn-page',
@@ -9,35 +11,42 @@ import { SearchService } from '@service/Search';
 })
 export class TurnPageComponent implements OnInit {
 
+    nav: Observable<NavigationEnd>;
+
+    type: string;
     endId: number;
     timer = null;
-    first = true;
 
     constructor(
         private maps: MapService,
-        private search: SearchService
-    ) { }
+        private search: SearchService,
+        public router: Router
+    ) {
+        this.nav = this.router.events as Observable<NavigationEnd>;
+    }
 
     ngOnInit() {
+        this.updateType();
         this.setEndId();
+        this.nav.subscribe(evt => this.updateType());
+    }
+
+    updateType() {
+        const urls = location.pathname.split('/');
+        this.type = urls[urls.length - 1];
     }
 
     setEndId() {
-        switch (this.search.tabIndex) {
-            case 0: this.endId = this.maps.newEndId; break;
-            case 1: this.endId = this.maps.hotEndId; break;
-            case 2: this.endId = this.search.searchEndId; break;
+        switch (this.type) {
+            case 'new': this.endId = this.maps.newEndId; break;
+            case 'hot': this.endId = this.maps.hotEndId; break;
+            case 'search': this.endId = this.search.searchEndId; break;
             default:
                 break;
         }
     }
 
     change(type: string = '') {
-        if (this.first) {
-            this.changePage(type);
-            this.first = false;
-        }
-
         if (this.timer) {
             return;
         }
@@ -46,14 +55,14 @@ export class TurnPageComponent implements OnInit {
             clearTimeout(this.timer);
             this.timer = null;
             this.changePage(type);
-        }, 1500);
+        }, 1000);
     }
 
     changePage(type: string) {
-        switch (this.search.tabIndex) {
-            case 0: this.maps.getNewMap(type); break;
-            case 1: this.maps.getHotMap(type); break;
-            case 2: this.search.getSearchList(type); break;
+        switch (this.type) {
+            case 'new': this.maps.getNewMap(type); break;
+            case 'hot': this.maps.getHotMap(type); break;
+            case 'search': this.search.getSearchList(type); break;
             default:
                 break;
         }

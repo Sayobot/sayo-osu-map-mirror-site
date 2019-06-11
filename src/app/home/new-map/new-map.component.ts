@@ -15,6 +15,9 @@ export class NewMapComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        if (this.maps.newMap.length === 0) {
+            this.maps.getNewMap();
+        }
     }
 
 }

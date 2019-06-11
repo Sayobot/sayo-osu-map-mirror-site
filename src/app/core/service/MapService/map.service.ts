@@ -42,12 +42,6 @@ export class MapService {
             });
     }
 
-    // 铺面列表
-    getMapList() {
-        this.getNewMap();
-        this.getHotMap();
-    }
-
     // 获得最新图
     getNewMap(type: string = 'next') {
 
