@@ -6,6 +6,12 @@ export class UpdateData {
 
 export const META: UpdateData[] = [
     {
+        time: '2019-06-11',
+        detail: [
+            '[ ✔ ] 调整翻页形式，增加翻页按钮',
+        ]
+    },
+    {
         time: '2019-05-03',
         detail: [
             '[ ✔ ] 修改预览图显示错误',

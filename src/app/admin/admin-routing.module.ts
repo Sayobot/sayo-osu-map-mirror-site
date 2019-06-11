@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AdminAuthGuard } from 'app/auth/admin-auth.guard';
+
 import { AdminLoginComponent } from './admin-login';
 import { AdminComponent } from './admin.component';
 import { AnnounceComponent } from './announce';
@@ -10,6 +12,7 @@ const adminRoute: Routes = [
     {
         path: '',
         component: AdminComponent,
+        canActivate: [AdminAuthGuard],
         children: [
             { path: '', redirectTo: 'announce' },
             { path: 'announce', component: AnnounceComponent },
