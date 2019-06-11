@@ -1,15 +1,26 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import * as META from './admin.meta';
+import { SharedModule } from 'app/shared';
+import { AdminRoutingModule } from './admin-routing.module';
 
+import { AdminLoginComponent } from './admin-login';
+import { AdminComponent } from './admin.component';
+import { AnnounceComponent } from './announce';
+import { FinanceComponent } from './finance';
+
+const adminComponents = [
+    AdminComponent,
+    AdminLoginComponent,
+    AnnounceComponent,
+    FinanceComponent
+];
 
 @NgModule({
     imports: [
-        META.MODULES,
-        RouterModule.forChild(META.ROUTES)
+        SharedModule,
+        AdminRoutingModule
     ],
     entryComponents: [
     ],
-    declarations: [META.COMPONENTS]
+    declarations: [adminComponents]
 })
 export class AdminModule { }

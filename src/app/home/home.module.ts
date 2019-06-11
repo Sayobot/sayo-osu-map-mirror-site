@@ -1,14 +1,26 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import * as META from './home.meta';
+import { SharedModule } from 'app/shared';
+import { HomeRoutingModule } from './home-routing.module';
+
+import { HomeListComponent } from './home-list.component';
+import { HomeHeaderComponent } from './home-header';
+import { HomeFooterComponent } from './home-footer';
+import { HomeMainComponent } from './home-main';
+
+const homeComponents = [
+    HomeListComponent,
+    HomeHeaderComponent,
+    HomeFooterComponent,
+    HomeMainComponent,
+];
 
 @NgModule({
     imports: [
-        META.MODULES,
-        RouterModule.forChild(META.ROUTES)
+        SharedModule,
+        HomeRoutingModule
     ],
     entryComponents: [
     ],
-    declarations: [META.COMPONENTS]
+    declarations: [homeComponents]
 })
 export class HomeModule { }
