@@ -1,41 +1,14 @@
 <div class="main">
     <div class="map-wrapper">
-        <search-input (searchChange)="onSearch()"></search-input>
+        <search-input></search-input>
         <nav class="map-nav">
-            <a [routerLink]="[ '/home/newMap']" class="map-nav-item" routerLinkActive="active">New map</a>
-            <a [routerLink]="[ '/home/hotMap']" class="map-nav-item" routerLinkActive="active">Hot map</a>
-            <a [routerLink]="[ '/home/searchMap']" class="map-nav-item" routerLinkActive="active">Search map</a>
+            <a [routerLink]="[ '/home/new']" class="map-nav-item" routerLinkActive="active">New map</a>
+            <a [routerLink]="[ '/home/hot']" class="map-nav-item" routerLinkActive="active">Hot map</a>
+            <a [routerLink]="[ '/home/search']" class="map-nav-item" routerLinkActive="active">Search map</a>
         </nav>
 
         <router-outlet></router-outlet>
-
-        <!-- <mat-tab-group [(selectedIndex)]="search.tabIndex" (selectedTabChange)="onTabChange()">
-            <mat-tab>
-                <ng-template mat-tab-label>最新map</ng-template>
-                <turn-page></turn-page>
-                <app-maps [maps]="maps.newMap"></app-maps>
-            </mat-tab>
-
-            <mat-tab>
-                <ng-template mat-tab-label>热门map</ng-template>
-                <turn-page></turn-page>
-                <app-maps [maps]="maps.hotMap"></app-maps>
-            </mat-tab>
-
-            <mat-tab>
-                <ng-template mat-tab-label>搜索结果</ng-template>
-                <turn-page></turn-page>
-                <div class="results" *ngIf="search.searchMap.length > 0">
-                    匹配到歌手<span>{{search.match_artist}}</span>个,
-                    匹配到作图者<span>{{search.match_creator}}</span>个,
-                    匹配到标签<span>{{search.match_tags}}</span>个,
-                    匹配到标题<span>{{search.match_title}}</span>个,
-                    匹配到难度<span>{{search.match_version}}</span>个,
-                    总共匹配到<span>{{search.results_count}}</span>个,
-                    搜索耗时<span>{{search.time_cost}}</span>ms</div>
-                <app-maps [maps]="search.searchMap"></app-maps>
-            </mat-tab>
-        </mat-tab-group> -->
+        <turn-page></turn-page>
 
     </div>
 

@@ -1,13 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DialogService, } from '@service/DialogService';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SearchService {
-    tabIndex = 0;
-
     // 搜索铺面相关变量
     searchMap: Array<any> = [];
     searchEndId = 0;
@@ -29,6 +28,7 @@ export class SearchService {
         @Inject('BASE_CONFIG') private config,
         private http: HttpClient,
         private dialog: DialogService,
+        private router: Router
     ) { }
 
     // 获取搜索结果
@@ -37,7 +37,7 @@ export class SearchService {
         this.searchMap = [];
         this.searchKey = key;
         this.searchKey.match(/[\d]/ig) ? this.getSearchInfo() : this.getSearchList();
-        this.onSearch();
+        this.router.navigate(['home/search']);
     }
 
     setParams = str => this.params = str;
@@ -105,10 +105,6 @@ export class SearchService {
             this.results_count = data.results;
             this.time_cost = data.time_cost;
         }
-    }
-
-    onSearch() {
-        this.tabIndex = 2;
     }
 
 }

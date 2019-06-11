@@ -2,4 +2,17 @@
 
 .turn-page {
     @include flex-layout($x: space-between);
+    flex-direction: column;
+}
+
+button {
+    background: #fff;
+    outline: none;
+    border: 0;
+    box-shadow: 0 0 3px;
+    margin: 3px 0;
+}
+
+button:active {
+    box-shadow: 0 0 0;
 }

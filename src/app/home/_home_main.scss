@@ -1,8 +1,11 @@
 @import '../../theme/common';
 
+preview-card {
+    width: 100%;
+}
 
 .map-content {
-    padding-bottom: 40px;
+    position: relative;
     height: 84vh;
     overflow: auto;
 

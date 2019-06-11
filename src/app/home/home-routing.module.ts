@@ -10,10 +10,10 @@ const homeRoute: Routes = [
     {
         path: 'home', component: HomeListComponent,
         children: [
-            { path: '', redirectTo: 'newMap', pathMatch: 'full' },
-            { path: 'newMap', component: NewMapComponent },
-            { path: 'hotMap', component: HotMapComponent },
-            { path: 'searchMap', component: SearchMapComponent }
+            { path: '', redirectTo: 'new', pathMatch: 'full' },
+            { path: 'new', component: NewMapComponent },
+            { path: 'hot', component: HotMapComponent },
+            { path: 'search', component: SearchMapComponent }
         ]
     }
 ];

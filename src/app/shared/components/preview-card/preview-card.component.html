@@ -1,7 +1,7 @@
 <div class="map-summary">
     <span class="status">{{getStatus() | uppercase}}</span>
     <img [src]="setImgUrl(preview.sid)" class="pre-img" (click)="opneMapDetail(preview.sid)">
-    <dl>
+    <dl class="pre-data">
         <dt>
             <h3>{{preview.title}}</h3>
         </dt>

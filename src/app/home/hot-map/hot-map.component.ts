@@ -15,6 +15,9 @@ export class HotMapComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        if (this.maps.hotMap.length === 0) {
+            this.maps.getHotMap();
+        }
     }
 
 }

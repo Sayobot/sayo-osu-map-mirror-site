@@ -5,10 +5,20 @@
     width: 100%;
     position: relative;
 
+    .pre-data {
+
+        dd,
+        dt,
+        h3 {
+            @include text-one-line;
+        }
+    }
+
     .pre-img {
         cursor: pointer;
         filter: brightness(1);
         transition: all .3s;
+
         &:hover {
             filter: brightness(0.7);
         }
@@ -24,6 +34,7 @@
         color: #fff;
         z-index: 1;
         font-size: 0.6em;
+
         i {
             font-size: 16px;
         }
@@ -38,6 +49,7 @@
         display: inline-flex;
         align-items: center;
         @include font-icon(13px);
+
         i {
             font-size: 16px;
         }
@@ -75,6 +87,7 @@
     dl {
         padding: 0 .5em;
         margin-bottom: 5px;
+
         dt {
             font-size: .8em;
 
