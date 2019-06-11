@@ -5,7 +5,6 @@
             <span class="flex-spacer"></span>
             <button mat-button (click)="dialog.supprot()">支持</button>
             <button mat-button [matMenuTriggerFor]="appMenu">设置</button>
-            <a href="https://github.com/SoulDee" class="github"><img src="/assets/img/common/github.png"></a>
         </mat-toolbar-row>
     </mat-toolbar>
 
@@ -38,7 +37,6 @@
             (click)="serverMange.changeServer(server.server)">
             <mat-icon>
                 <ng-container *ngIf="server.isSelect">
-                    <!-- <img src="/assets/img/icon/done.png"> -->
                     check
                 </ng-container>
             </mat-icon>
