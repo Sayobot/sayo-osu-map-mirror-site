@@ -1,8 +1,8 @@
 <div class="info-wrapper">
     <mat-card class="m-b-2 support-sayobot">
         <mat-card-header>
-            <mat-card-title>当前捐助进度条</mat-card-title>
-            <mat-card-subtitle>点击上方导航的支持来捐助小夜</mat-card-subtitle>
+            <mat-card-title>{{ 'support.title' | translate }}</mat-card-title>
+            <mat-card-subtitle>{{ 'support.des' | translate }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div class="progress-bg">
@@ -15,7 +15,7 @@
 
     <mat-card class="m-y-2 announce-wrapper">
         <mat-card-header>
-            <mat-card-title>公告栏</mat-card-title>
+            <mat-card-title>{{ 'public.name' | translate }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <ng-container *ngIf="maps.public as public">

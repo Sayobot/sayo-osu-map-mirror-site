@@ -3,31 +3,32 @@
         <mat-toolbar-row>
             <span class="title">This Sayobot's Home</span>
             <span class="flex-spacer"></span>
-            <button mat-button (click)="dialog.supprot()">支持</button>
-            <button mat-button [matMenuTriggerFor]="appMenu">设置</button>
+            <button mat-button [matMenuTriggerFor]="langMenu">{{ 'header.Language' | translate }}</button>
+            <button mat-button (click)="dialog.supprot()">{{ 'header.support' | translate }}</button>
+            <button mat-button [matMenuTriggerFor]="appMenu">{{ 'header.setting' | translate }}</button>
         </mat-toolbar-row>
     </mat-toolbar>
 
     <mat-menu #appMenu="matMenu">
         <button mat-menu-item (click)="dialog.help()">
             <mat-icon>help</mat-icon>
-            <span>帮助说明</span>
+            <span>{{ 'header.help' | translate }}</span>
         </button>
         <button mat-menu-item (click)="dialog.about()">
             <mat-icon>person</mat-icon>
-            <span>关于我们</span>
+            <span>{{ 'header.about' | translate }}</span>
         </button>
         <button mat-menu-item>
             <mat-icon>update</mat-icon>
-            <a routerLink="/update" class="no-link">更新日志</a>
+            <a routerLink="/update" class="no-link">{{ 'header.update' | translate }}</a>
         </button>
         <button mat-menu-item disabled style="color: #aaa">
             <mat-icon>share</mat-icon>
-            <span>图包分享</span>
+            <span>{{ 'header.share' | translate }}</span>
         </button>
         <button mat-menu-item [matMenuTriggerFor]="lineMenu">
             <mat-icon>rotate_left</mat-icon>
-            <span>切换线路</span>
+            <span>{{ 'header.line' | translate }}</span>
         </button>
     </mat-menu>
 
@@ -43,4 +44,10 @@
             <span>{{server.name}}</span>
         </button>
     </mat-menu>
+
+    <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="useLanguage('en')">{{ 'language.en' | translate }}</button>
+        <button mat-menu-item (click)="useLanguage('zh')">{{ 'language.zh' | translate }}</button>
+    </mat-menu>
+
 </header>

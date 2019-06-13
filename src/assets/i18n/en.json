@@ -1,0 +1,42 @@
+{
+    "header": {
+        "domain": "This Sayobot's Home",
+        "support": "Supprot",
+        "update": "Update Log",
+        "setting": "Setting",
+        "help": "Help",
+        "about": "About Me",
+        "share": "Share map",
+        "Language": "Language",
+        "line": "Switch Line"
+    },
+    "language": {
+        "zh": "Chinese",
+        "en": "English"
+    },
+    "maps": {
+        "newMap": "New Map",
+        "hotMap": "Hot Map",
+        "searchMap": "Search Result"
+    },
+    "mapDetail": {
+        "try": "Preview",
+        "download": "Download",
+        "backup": "Download(Backup)",
+        "noVideo": "No Video",
+        "share": "Share"
+    },
+    "searchInput": {
+        "options": "Filter Options",
+        "search": "Search",
+        "reset": "Reset",
+        "placeholder": "please input something key......"
+    },
+    "support": {
+        "title": "donation progress",
+        "des": "Click on the support in the navigation above to donate to me"
+    },
+    "public": {
+        "name": "Bulletin Board"
+    }
+}
