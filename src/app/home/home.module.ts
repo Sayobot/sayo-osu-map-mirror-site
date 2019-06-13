@@ -10,6 +10,14 @@ import { NewMapComponent } from './new-map';
 import { HotMapComponent } from './hot-map';
 import { SearchMapComponent } from './search-map';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
+
 const homeComponents = [
     HomeListComponent,
     HomeHeaderComponent,
@@ -23,7 +31,14 @@ const homeComponents = [
 @NgModule({
     imports: [
         SharedModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
     ],
     entryComponents: [
     ],

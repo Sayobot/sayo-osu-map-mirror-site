@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DialogService } from '@service/DialogService';
 import { LocalStorageService } from '@service/LocalStorage';
 import { ServerMangeService } from '@service/ServerMange';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'home-header',
@@ -13,11 +14,16 @@ export class HomeHeaderComponent implements OnInit, AfterViewInit {
     constructor(
         public dialog: DialogService,
         private local: LocalStorageService,
-        public serverMange: ServerMangeService
+        public serverMange: ServerMangeService,
+        private translate: TranslateService
     ) { }
 
     ngOnInit() {
 
+    }
+
+    useLanguage(lang) {
+        this.translate.setDefaultLang(lang);
     }
 
     ngAfterViewInit() {

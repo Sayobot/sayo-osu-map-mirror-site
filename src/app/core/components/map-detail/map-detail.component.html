@@ -18,26 +18,27 @@
                 <img *ngIf="!parttime" src="assets/img/common/loading.gif">
             </button>
 
-            <button mat-raised-button color="accent" *ngIf="!musicTimer" (click)="playPart()">试听</button>
+            <button mat-raised-button color="accent" *ngIf="!musicTimer"
+                (click)="playPart()">{{ 'mapDetail.try' | translate }}</button>
             <!-- <button mat-raised-button color="accent" (click)="playComplete()" disabled>完整歌曲(开发中...)</button> -->
 
             <button mat-raised-button color="accent" (click)="onDownLoad(config.mapV2)" [disabled]="isMapDownload">
-                <span *ngIf="!isMapDownload">下载</span>
+                <span *ngIf="!isMapDownload">{{ 'mapDetail.download' | translate }}</span>
                 <img *ngIf="isMapDownload" src="assets/img/common/loading.gif">
             </button>
 
             <button mat-raised-button color="accent" (click)="onDownLoad(config.map)" [disabled]="isMapDownload">
-                <span *ngIf="!isMapDownload">下载(备用)</span>
+                <span *ngIf="!isMapDownload">{{ 'mapDetail.backup' | translate }}</span>
                 <img *ngIf="isMapDownload" src="assets/img/common/loading.gif">
             </button>
 
             <button mat-raised-button color="accent" (click)="onUnvedioDownload(config.mapUnVedio)"
                 [disabled]="isMapUnvedioDownload">
-                <span *ngIf="!isMapUnvedioDownload">不带视频</span>
+                <span *ngIf="!isMapUnvedioDownload">{{ 'mapDetail.noVideo' | translate }}</span>
                 <img *ngIf="isMapUnvedioDownload" src="assets/img/common/loading.gif">
             </button>
 
-            <button mat-raised-button color="accent" (click)="shared()">分享</button>
+            <button mat-raised-button color="accent" (click)="shared()">{{ 'mapDetail.share' | translate }}</button>
         </div>
     </div>
 </div>
