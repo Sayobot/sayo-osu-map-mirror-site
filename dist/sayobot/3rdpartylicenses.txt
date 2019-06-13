@@ -105,6 +105,8 @@ THE SOFTWARE.
 
 @angular/material/expansion
 
+@angular/material/form-field
+
 @angular/material/grid-list
 
 @angular/material/icon
@@ -127,6 +129,12 @@ THE SOFTWARE.
 MIT
 
 @angular/router
+MIT
+
+@ngx-translate/core
+MIT
+
+@ngx-translate/http-loader
 MIT
 
 hammerjs

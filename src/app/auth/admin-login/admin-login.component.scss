@@ -1,8 +1,0 @@
-@import '../common/admin';
-
-.login {
-    height: 100vh;
-    width: 100vw;
-
-    @include flex-layout();
-}
