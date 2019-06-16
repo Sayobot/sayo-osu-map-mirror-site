@@ -1,0 +1,40 @@
+{
+    "header": {
+        "domain": "This Sayobot's Home",
+        "support": "サポート",
+        "update": "更新ログ",
+        "setting": "設定",
+        "help": "ヘルプ",
+        "about": "について",
+        "share": "ビートマップパック",
+        "Language": "言語",
+        "line": "ネットワークを変更する",
+        "defaultLine": "中国",
+        "hongkong": "香港、中国（WTT）"
+    },
+    "maps": {
+        "newMap": "最新のビートマップ",
+        "hotMap": "人気のビートマップ",
+        "searchMap": "検索結果"
+    },
+    "mapDetail": {
+        "try": "オーディション",
+        "download": "ダウンロード",
+        "backup": "（代替）",
+        "noVideo": "ビデオなし",
+        "share": "共有する"
+    },
+    "searchInput": {
+        "options": "フィルタリングオプション",
+        "search": "検索する",
+        "reset": "リセット",
+        "placeholder": "ここに何か入力しませんか？何でもできる"
+    },
+    "support": {
+        "title": "現在のサポートの進捗",
+        "des": "お金ください～(☆_☆)上のサポートをクリックしてください"
+    },
+    "public": {
+        "name": "掲示板"
+    }
+}
