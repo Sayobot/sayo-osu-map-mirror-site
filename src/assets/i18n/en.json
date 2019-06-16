@@ -10,14 +10,10 @@
         "Language": "Language",
         "line": "Switch Line"
     },
-    "language": {
-        "zh": "Chinese",
-        "en": "English"
-    },
     "maps": {
-        "newMap": "New Map",
-        "hotMap": "Hot Map",
-        "searchMap": "Search Result"
+        "newMap": "New Maps",
+        "hotMap": "Hot Maps",
+        "searchMap": "Search Results"
     },
     "mapDetail": {
         "try": "Preview",

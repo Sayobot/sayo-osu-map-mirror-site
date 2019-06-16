@@ -46,8 +46,9 @@
     </mat-menu>
 
     <mat-menu #langMenu="matMenu">
-        <button mat-menu-item (click)="useLanguage('en')">{{ 'language.en' | translate }}</button>
-        <button mat-menu-item (click)="useLanguage('zh')">{{ 'language.zh' | translate }}</button>
+        <button mat-menu-item *ngFor="let item of language" (click)="useLanguage(item.key)">
+            <mat-icon><img [src]="item.flag" alt="item.key"></mat-icon>{{ item.title }}
+        </button>
     </mat-menu>
 
 </header>
