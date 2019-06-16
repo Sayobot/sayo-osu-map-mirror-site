@@ -9,16 +9,12 @@
         "share": "图包分享",
         "Language": "语言",
         "line": "切换线路",
-        "defaultLine": "默认线路（建议）",
+        "defaultLine": "国内多线（建议）",
         "hongkong": "香港（WTT）"
     },
-    "language": {
-        "zh": "中文",
-        "en": "英语"
-    },
     "maps": {
-        "newMap": "最新铺面",
-        "hotMap": "热门铺面",
+        "newMap": "最新谱面",
+        "hotMap": "热门谱面",
         "searchMap": "搜索结果"
     },
     "mapDetail": {
