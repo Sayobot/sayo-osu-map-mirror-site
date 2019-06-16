@@ -47,18 +47,19 @@ export class TurnPageComponent implements OnInit {
     }
 
     change(type: string = '') {
+
         if (this.timer) {
-            return;
+            clearTimeout(this.timer);
         }
 
         this.timer = setTimeout(() => {
-            clearTimeout(this.timer);
-            this.timer = null;
-            this.changePage(type);
-        }, 1000);
+            this.getMaps(type);
+        }, 200);
+
     }
 
-    changePage(type: string) {
+
+    getMaps(type: string) {
         switch (this.type) {
             case 'new': this.maps.getNewMap(type); break;
             case 'hot': this.maps.getHotMap(type); break;
