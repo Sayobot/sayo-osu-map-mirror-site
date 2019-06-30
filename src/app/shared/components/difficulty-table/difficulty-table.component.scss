@@ -12,3 +12,9 @@ button {
     padding: 0 8px;
     min-width: 0;
 }
+
+@media (max-width: 900px) {
+    .difficult-table {
+        position: static;
+    }
+}

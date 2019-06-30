@@ -7,6 +7,12 @@
         font-weight: normal;
         font-family: 'Lobster Two', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
     }
+    .big-menus {
+        display: block;
+    }
+    .small-menus {
+        display: none;
+    }
 }
 
 .github {
@@ -15,4 +21,15 @@
 
 .no-link {
     color: #000;
+}
+
+@media (max-width: 900px) {
+    .header {
+        .big-menus {
+            display: none;
+        }
+        .small-menus {
+            display: block;
+        }
+    }
 }

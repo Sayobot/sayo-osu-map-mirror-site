@@ -17,3 +17,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media (max-width: 900px) {
+    #map-detail-radar-echart,
+    .progress-wrapper {
+        display: none;
+    }
+    #map-detail-curve-echart {
+        height: 300px;
+        width: 100%;
+    }
+}

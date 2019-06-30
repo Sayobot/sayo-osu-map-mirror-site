@@ -1,20 +1,39 @@
-.items {
-    display: flex;
-    flex-wrap: wrap;
+@import '../../shared';
+.title {
+    @include text-one-line();
+}
 
+.items {
+    display: grid;
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+    grid-column-gap: 0.5rem;
     .item {
         display: flex;
         flex: 0 0 33.33%;
-        margin: .3rem 0;
-
+        margin: .1rem 0;
         .label {
             flex: 1;
             text-align: right;
             font-weight: bold;
+            @include text-one-line();
         }
-
         .content {
-            flex: 1;
+            display: inline-block;
+            max-width: 100px;
+            @include text-one-line();
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .items {
+        grid-template: repeat(4, 1fr)/repeat(2, 1fr);
+        font-size: .6rem;
+        .item {
+            font-size: .8em;
+            .label {
+                text-align: left;
+            }
         }
     }
 }

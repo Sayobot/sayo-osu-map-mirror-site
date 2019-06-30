@@ -3,11 +3,20 @@
         <mat-toolbar-row>
             <span class="title">This Sayobot's Home</span>
             <span class="flex-spacer"></span>
-            <button mat-button [matMenuTriggerFor]="langMenu">{{ 'header.Language' | translate }}</button>
-            <button mat-button (click)="dialog.supprot()">{{ 'header.support' | translate }}</button>
-            <button mat-button [matMenuTriggerFor]="appMenu">{{ 'header.setting' | translate }}</button>
+            <button mat-button [matMenuTriggerFor]="menu" class="small-menus">Menu</button>
+            <div class="big-menus">
+                <button mat-button [matMenuTriggerFor]="langMenu">{{ 'header.Language' | translate }}</button>
+                <button mat-button (click)="dialog.supprot()">{{ 'header.support' | translate }}</button>
+                <button mat-button [matMenuTriggerFor]="appMenu">{{ 'header.setting' | translate }}</button>
+            </div>
         </mat-toolbar-row>
     </mat-toolbar>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="langMenu">{{ 'header.Language' | translate }}</button>
+        <button mat-menu-item (click)="dialog.supprot()">{{ 'header.support' | translate }}</button>
+        <button mat-menu-item [matMenuTriggerFor]="appMenu">{{ 'header.setting' | translate }}</button>
+    </mat-menu>
 
     <mat-menu #appMenu="matMenu">
         <button mat-menu-item (click)="dialog.help()">
@@ -34,8 +43,7 @@
 
 
     <mat-menu #lineMenu="matMenu">
-        <button mat-menu-item *ngFor="let server of serverMange.serveList"
-            (click)="serverMange.changeServer(server.server)">
+        <button mat-menu-item *ngFor="let server of serverMange.serveList" (click)="serverMange.changeServer(server.server)">
             <mat-icon>
                 <ng-container *ngIf="server.isSelect">
                     check
