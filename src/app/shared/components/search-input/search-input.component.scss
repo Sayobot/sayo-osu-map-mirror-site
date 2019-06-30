@@ -1,6 +1,5 @@
 .seach-wrapper {
     position: relative;
-
     .search-input {
         border: 3px solid #717171;
         border-radius: 12px;
@@ -9,12 +8,10 @@
         outline: none;
         width: 100%;
         transition: all 0.3s;
-
         &:focus {
             border-color: #000000;
         }
     }
-
     .search-button {
         position: absolute;
         top: 8px;
@@ -22,7 +19,6 @@
         cursor: pointer;
         z-index: 1;
     }
-
     mat-card-header {
         position: relative;
         .close-options {
@@ -30,10 +26,12 @@
             right: 10px;
         }
     }
-
+    .search-card {
+        position: absolute;
+        z-index: 10;
+    }
     .options {
         font-size: 12px;
-
         .option {
             margin: 5px 0;
             display: flex;
@@ -44,9 +42,16 @@
                 font-size: 14px;
             }
         }
-
         mat-checkbox {
             margin: 0 3px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .seach-wrapper {
+        .search-input {
+            border-radius: 0;
         }
     }
 }

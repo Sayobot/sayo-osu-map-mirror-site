@@ -1,15 +1,6 @@
 .home {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 56px 1fr 25px;
     height: 100vh;
     overflow: hidden;
-
-    home-main {
-        flex: 1;
-        overflow: auto;
-    }
-
-    home-footer {
-        flex: 0 0 25px;
-    }
 }

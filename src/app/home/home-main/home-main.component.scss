@@ -1,57 +1,28 @@
 @import '../home_main';
-
 .main {
-    display: flex;
+    display: grid;
+    grid-template-columns: 8fr 2fr;
     height: 100%;
-    width: 100%;
     background: #ececec;
-    padding: 1.5em 7em 0;
-
+    padding: 1.5em 5em 0;
     .map-wrapper {
         position: relative;
-        height: 100%;
-        flex: 1;
         background: #fff;
         box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
-
         .map-nav {
-            height: 40px;
+            height: 4rem;
             display: flex;
             align-items: center;
-
             .map-nav-item {
-                height: 40px;
-                padding: 0 16px;
+                display: inline-block;
+                height: 3.2rem;
+                line-height: 3.2rem;
+                width: 8rem;
                 cursor: pointer;
-                box-sizing: border-box;
-                opacity: .6;
-                min-width: 120px;
                 text-align: center;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                white-space: nowrap;
-                position: relative;
             }
         }
-
-        search-input {
-            position: absolute;
-            right: 3px;
-            top: 1px;
-            z-index: 10;
-            width: 50%;
-        }
-
-        turn-page {
-            position: absolute;
-            top: 0;
-            left: -50px;
-            z-index: 10;
-            background: #fff;
-        }
     }
-
     info-cards {
         overflow: auto;
         height: 100%;
@@ -60,6 +31,48 @@
     }
 }
 
-.active {
-    border-bottom: 3px solid #000000;
+search-input {
+    position: absolute;
+    right: 3px;
+    top: 10px;
+    z-index: 10;
+    width: 50%;
+}
+
+turn-page {
+    position: absolute;
+    right: calc(100% + 20px);
+    bottom: 90%;
+    z-index: 10;
+    background: #fff;
+}
+
+@media (max-width: 900px) {
+    .main {
+        padding: 0;
+        grid-template-columns: 1fr;
+        .map-nav {
+            justify-content: center;
+            .map-nav-item {
+                flex: 1;
+            }
+        }
+        info-cards {
+            display: none;
+        }
+        search-input {
+            position: static;
+            width: 100%;
+            border-radius: 0;
+        }
+        turn-page {
+            position: fixed;
+            bottom: 0rem;
+            right: 1rem;
+            z-index: 10;
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0);
+        }
+    }
 }
