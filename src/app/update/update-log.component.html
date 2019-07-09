@@ -31,7 +31,7 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="content-box">
-            <img src="https://sayobot.cn/png/o2.jpg" alt="">
+            <img src="https://{{domain}}/png/o2.jpg" alt="">
             <ul>
                 <li>O2键盘大量出货</li>
                 <li>1000HZ</li>
@@ -43,8 +43,7 @@
                 <li>支持模拟鼠标操作和多媒体按键</li>
                 <li>支持宏脚本</li>
             </ul>
-            <a mat-raised-button color="accent"
-                href="https://item.taobao.com/item.htm?spm=a230r.1.14.3.77484d6fejowZc&id=579397618209&ns=1&abbucket=11#detail">立即购买</a>
+            <a mat-raised-button color="accent" href="https://item.taobao.com/item.htm?spm=a230r.1.14.3.77484d6fejowZc&id=579397618209&ns=1&abbucket=11#detail">立即购买</a>
         </div>
     </mat-expansion-panel>
 
@@ -55,11 +54,10 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="content-box">
-            <img src="https://sayobot.cn/png/yhjb.png" alt="">
+            <img src="https://{{domain}}/png/yhjb.png" alt="">
             <ul>
-                <li>**新增 osu!<a href="https://sayobot.cn/sayobot.user.js">地图下载油猴脚本</a></li>
-                <li>**新增 osu!<a
-                        href="https://sayobot.cn/Ranked%e5%9c%b0%e5%9b%be%e4%b8%8b%e8%bd%bd%e5%99%a8.exe">Ranked地图批量下载器</a>
+                <li>**新增 osu!<a href="https://{{domain}}/sayobot.user.js">地图下载油猴脚本</a></li>
+                <li>**新增 osu!<a href="https://{{domain}}/Ranked%e5%9c%b0%e5%9b%be%e4%b8%8b%e8%bd%bd%e5%99%a8.exe">Ranked地图批量下载器</a>
                 </li>
                 <li>支持下载99.99%的官方地图</li>
                 <li>服务器在大陆，不会被墙</li>
@@ -76,7 +74,7 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="content-box">
-            <img src="https://sayobot.cn/png/yhjb.png" alt="">
+            <img src="https://{{domain}}/png/yhjb.png" alt="">
             <ul>
                 <li>版本更新到V0.1.8 复读++</li>
             </ul>
@@ -109,19 +107,19 @@
                 <li>V0.1.7_5 roll++</li>
                 <li>支持十六进制和8进制参数</li>
                 <li>命令:
-                <li>roll or !roll
-                <li>
-                <li>roll 参数1
-                <li>
-                <li>roll 参数1 参数2
-                <li>
-                <li>roll 参数1 参数2 参数3
-                <li>
-                <li>roll 参数1 参数2 参数3 参数4
-                <li>
-                <li>每个参数用空格分开！！！
-                <li>
-                <li>参数可以是文字、符号、小表情，甚至图片</li>
+                    <li>roll or !roll
+                        <li>
+                            <li>roll 参数1
+                                <li>
+                                    <li>roll 参数1 参数2
+                                        <li>
+                                            <li>roll 参数1 参数2 参数3
+                                                <li>
+                                                    <li>roll 参数1 参数2 参数3 参数4
+                                                        <li>
+                                                            <li>每个参数用空格分开！！！
+                                                                <li>
+                                                                    <li>参数可以是文字、符号、小表情，甚至图片</li>
             </ul>
 
 
@@ -130,43 +128,37 @@
                     <li>进入单选模式，此时最大支持8个参数（也就是8选1），从第一个空格后算第一个参数</li>
                 </mat-tab>
                 <mat-tab label="4个参数">
-                    ----4个<br>
-                    --------试图把参数2和参数3转化为数值<br>
-                    --------如果参数2小于参数3<br>
-                    -----------输出随机数 参数2～参数3<br>
-                    -----------输出前面加上冒号<br>
-                    --------否则<br>
-                    -----------随机数 0～1<br>
-                    -----------如果随机数是0<br>
-                    ---------------输出文字 <参数2><br>
-                        -----------否则<br>
-                        ---------------输出文字 <参数3><br>
-                            ---------------把参数1放到输出的开头<br>
-                            ---------------参数4放到输出的结尾<br>
-                            ---------------发送消息<br>
+                    ----4个<br> --------试图把参数2和参数3转化为数值
+                    <br> --------如果参数2小于参数3
+                    <br> -----------输出随机数 参数2～参数3<br> -----------输出前面加上冒号
+                    <br> --------否则
+                    <br> -----------随机数 0～1<br> -----------如果随机数是0
+                    <br> ---------------输出文字
+                    <参数2><br> -----------否则
+                        <br> ---------------输出文字
+                        <参数3><br> ---------------把参数1放到输出的开头
+                            <br> ---------------参数4放到输出的结尾
+                            <br> ---------------发送消息
+                            <br>
                 </mat-tab>
                 <mat-tab label="3个参数">
                     --------跟四个参数相似，没有参数4而已。<br>
                 </mat-tab>
                 <mat-tab label="2个参数">
-                    --------试图把参数1和参数2转化为数值<br>
-                    --------如果参数1小于参数2<br>
-                    ------------输出随机数 参数1～参数2<br>
-                    ------------输出前面加上冒号<br>
-                    --------否则<br>
-                    ------------随机数-0～1<br>
-                    ------------如果随机数是0<br>
-                    ----------------输出文字 当然是<参数1>咯<br>
-                        ------------否则<br>
-                        ----------------输出文字 当然是<参数2>咯<br>
+                    --------试图把参数1和参数2转化为数值<br> --------如果参数1小于参数2
+                    <br> ------------输出随机数 参数1～参数2<br> ------------输出前面加上冒号
+                    <br> --------否则
+                    <br> ------------随机数-0～1
+                    <br> ------------如果随机数是0
+                    <br> ----------------输出文字 当然是
+                    <参数1>咯<br> ------------否则
+                        <br> ----------------输出文字 当然是
+                        <参数2>咯<br>
                 </mat-tab>
                 <mat-tab label="1个参数">
-                    --------试图转化参数1成数值<br>
-                    --------如果大于0<br>
-                    ------------输出随机数 0～参数1<br>
-                    --------否则<br>
-                    ------------输入随机数 0～99<br>
-                    ------------输出前面加上艾特
+                    --------试图转化参数1成数值<br> --------如果大于0
+                    <br> ------------输出随机数 0～参数1<br> --------否则
+                    <br> ------------输入随机数 0～99<br> ------------输出前面加上艾特
                 </mat-tab>
             </mat-tab-group>
 
@@ -182,7 +174,7 @@
         </mat-expansion-panel-header>
         <div class="content-box">
             <ul>
-                <li>第一批<a href="https://sayobot.cn/png/o1v1">osu V1</a>键盘发货</li>
+                <li>第一批<a href="https://{{domain}}/png/o1v1">osu V1</a>键盘发货</li>
             </ul>
         </div>
     </mat-expansion-panel>
@@ -210,8 +202,7 @@
         </mat-expansion-panel-header>
         <div class="content-box">
             <ul>
-                <li>*新增<a
-                        href="https://sayobot.cn/%E5%B0%8F%E5%A4%9C%E3%81%AEosu!%E4%B8%8B%E8%BD%BD%E5%99%A8.exe">小夜のosu!下载器</a>点击谱面链接可以自动下图
+                <li>*新增<a href="https://{{domain}}/%E5%B0%8F%E5%A4%9C%E3%81%AEosu!%E4%B8%8B%E8%BD%BD%E5%99%A8.exe">小夜のosu!下载器</a>点击谱面链接可以自动下图
                 </li>
             </ul>
         </div>
@@ -257,8 +248,7 @@
                 <li>*启用 可以更新框框了，具体看小夜空间相册。</li>
                 <li>*新增 更改框框会顺便修改这歌框的主要字体颜色</li>
                 <li>*新增 上传自定义的资料卡元素（图片、框框、字体）</li>
-                <li>!感谢<a href="https://osu.ppy.sh/u/11173658">Yumli</a> 提供的文件站：<a
-                        href="https://files.yumli.net">https://files.yumli.net</a></li>
+                <li>!感谢<a href="https://osu.ppy.sh/u/11173658">Yumli</a> 提供的文件站：<a href="https://files.yumli.net">https://files.yumli.net</a></li>
                 <li>想自定义背景的话请上传到上面的地址，不能太模糊，否则无视，文件名最好包含id，有空我会添加上的</li>
             </ul>
         </div>
@@ -271,7 +261,7 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="content-box">
-            <img src="https://sayobot.cn/img/2b44e1c66b5bd93f_c.jpg">
+            <img src="https://{{domain}}/img/2b44e1c66b5bd93f_c.jpg">
             <ul>
                 <li>虽然有点懒（不是有点是很懒好吗！）但还是更新一下吧。</li>
                 <li>本次更新（改）功能较乱，大概有以下</li>

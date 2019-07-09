@@ -50,7 +50,7 @@ export class MapDetailComponent implements OnInit {
 
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
-        this.download.downloadFile(this.mapDetail.sid);
+        this.download.downloadFile(`${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`);
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
             this.isMapUnvedioDownload = false;
@@ -102,7 +102,7 @@ export class MapDetailComponent implements OnInit {
     }
 
     shared() {
-        this.clipBoard.copy(`https://sayobot.cn/?search=${this.data.id}`);
+        this.clipBoard.copy(`https://${this.config.domain}/?search=${this.data.id}`);
     }
 
 }

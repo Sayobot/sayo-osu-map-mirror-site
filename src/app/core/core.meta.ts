@@ -7,6 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared';
 
+export const domain = 'osu.sayobot.cn';
+export const api = 'api.sayobot.cn';
+export const cdn = 'cdnx.sayobot.cn';
+
 export const MODULES = [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,19 +43,20 @@ export const PROVIDES = [
     {
         provide: 'BASE_CONFIG',
         useValue: {
-            detail: 'https://api.sayobot.cn/v2/beatmapinfo',
-            pic: 'https://cdn.sayobot.cn:25225/beatmaps/',
-            list: 'https://api.sayobot.cn/beatmaplist',
-            support: 'https://api.sayobot.cn/support',
-            supportList: 'https://api.sayobot.cn/static/supportlist',
-            notice: 'https://api.sayobot.cn/notice',
-            previewMp3: 'https://cdnx.sayobot.cn:25225/preview/',
-            serviceList: 'https://api.sayobot.cn/static/servers',
-            map: 'https://osu.sayobot.cn/osu.php?s=',
-            mapV2: 'https://txy1.sayobot.cn/download/osz/',
-            mapUnVedio: 'https://txy1.sayobot.cn/download/osz/novideo/',
-            addMap: 'https://sayo.sayobot.cn/add/',
-            filename: 'https://api.sayobot.cn/filename?1='
+            domain: domain,
+            detail: `https://${api}/v2/beatmapinfo`,
+            pic: `https://cdn.sayobot.cn:25225/beatmaps/`,
+            list: `https://${api}/beatmaplist`,
+            support: `https://${api}/support`,
+            supportList: `https://${api}/static/supportlist`,
+            notice: `https://${api}/notice`,
+            previewMp3: `https://${cdn}:25225/preview/`,
+            serviceList: `https://${api}/static/servers`,
+            map: `https://${domain}/osu.php?s=`,
+            mapV2: `https://txy1.sayobot.cn/download/osz/`,
+            mapUnVedio: `https://txy1.sayobot.cn/download/osz/novideo/`,
+            addMap: `https://sayo.sayobot.cn/add/`,
+            filename: `https://${api}/filename?1=`
         }
     }
 ];
