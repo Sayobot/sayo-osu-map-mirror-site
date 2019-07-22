@@ -94,7 +94,7 @@ export class MapDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.imgUrl = `${this.config.pic}${this.data.id}/covers/cover.jpg?0`;
+        this.imgUrl = `${this.config.pic}${this.data.id}/covers/cover.webp?0`;
         this.mapDetail = this.data.content;
         this.musicBox.setSrc(this.data.id);
 
