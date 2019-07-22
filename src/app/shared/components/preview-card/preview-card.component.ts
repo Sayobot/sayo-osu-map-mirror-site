@@ -26,7 +26,7 @@ export class PreviewCardComponent implements OnInit {
     }
 
     // 设置图片
-    setImgUrl = sid => `${this.config.pic}${sid}/covers/cover.jpg?0`;
+    setImgUrl = sid => `${this.config.pic}${sid}/covers/cover.webp?0`;
 
     getStatus() {
         let statu: string;
