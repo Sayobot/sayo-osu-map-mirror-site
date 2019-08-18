@@ -1,5 +1,7 @@
 @import '../../theme/common';
+
 preview-card {
+    height: 100%;
     width: 100%;
 }
 
@@ -8,6 +10,7 @@ preview-card {
     height: 84vh;
     padding: .5rem;
     overflow: auto;
+
     mat-grid-tile {
         display: flex;
         flex-direction: column;
@@ -15,6 +18,7 @@ preview-card {
         box-shadow: 0 1px 2px 0 #888888;
         border-radius: 5px;
     }
+
     img {
         cursor: pointer;
     }
@@ -22,15 +26,19 @@ preview-card {
 
 .map-summary {
     width: 100%;
+
     dl {
         padding: 0 .5em;
+
         dt {
             font-size: .8em;
+
             h3 {
                 margin: 5px 0;
                 @include text-one-line;
             }
         }
+
         dd {
             @include text-one-line;
             font-size: .65em;
