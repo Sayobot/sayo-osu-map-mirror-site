@@ -18,13 +18,19 @@
             <mat-card-title>{{ 'public.name' | translate }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <ng-container *ngIf="maps.public as public">
-                <h2>{{public.summary}}</h2>
-                <pre>{{public.content}}</pre>
-                <div *ngFor="let item of public.img">
-                    <img [src]="item.url" alt="">
-                </div>
-            </ng-container>
+            <div class="wrapper">
+                <ng-container *ngIf="maps.publics as publics">
+                    <div *ngFor="let public of publics" class="public-item">
+                        <h2>{{public.title}}</h2>
+                        <span class="auther">{{public.user_id}}：{{public.date}}</span>
+                        <pre>{{public.content}}</pre>
+                        <div *ngFor="let item of public.img">
+                            <img [src]="item.url" alt="">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
         </mat-card-content>
     </mat-card>
 </div>
