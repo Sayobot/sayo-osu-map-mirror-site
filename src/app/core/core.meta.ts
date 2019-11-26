@@ -1,15 +1,14 @@
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
+import { SharedModule } from "app/shared";
 
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from 'app/shared';
-
-export const domain = 'osu.sayobot.cn';
-export const api = 'api.sayobot.cn';
-export const cdn = 'cdnx.sayobot.cn';
+export const domain = "osu.sayobot.cn";
+export const api = "api.sayobot.cn";
+export const cdn = "cdnx.sayobot.cn";
 
 export const MODULES = [
     BrowserModule,
@@ -22,7 +21,6 @@ export const MODULES = [
 ];
 
 export const PROVIDES = [
-
     /**
      * 全局 API 链接配置
      * detail            铺面详情
@@ -41,7 +39,7 @@ export const PROVIDES = [
      */
 
     {
-        provide: 'BASE_CONFIG',
+        provide: "BASE_CONFIG",
         useValue: {
             domain: domain,
             detail: `https://${api}/v2/beatmapinfo`,
@@ -53,12 +51,13 @@ export const PROVIDES = [
             previewMp3: `https://${cdn}:25225/preview/`,
             serviceList: `https://${api}/static/servers`,
             map: `https://${domain}/osu.php?s=`,
-            mapV2: `https://txy1.sayobot.cn/download/osz/`,
-            mapUnVedio: `https://txy1.sayobot.cn/download/osz/novideo/`,
+            mapV2: `https://txy1.sayobot.cn/beatmaps/download/full/`,
+            mapUnVedio: `https://txy1.sayobot.cn/beatmaps/download/novideo/`,
+            mapMini: `https://txy1.sayobot.cn/beatmaps/download/mini/`,
             addMap: `https://sayo.sayobot.cn/add/`,
             filename: `https://${api}/filename?1=`
         }
     }
 ];
 
-export { COMPONENTS, DIALOGS } from './components';
+export { COMPONENTS, DIALOGS } from "./components";
