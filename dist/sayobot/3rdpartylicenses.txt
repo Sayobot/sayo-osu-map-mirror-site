@@ -117,6 +117,8 @@ THE SOFTWARE.
 
 @angular/material/progress-bar
 
+@angular/material/select
+
 @angular/material/snack-bar
 
 @angular/material/tabs
