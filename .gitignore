@@ -36,3 +36,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+# 测试硬件
+hidapi.dll
+hidtest.exe

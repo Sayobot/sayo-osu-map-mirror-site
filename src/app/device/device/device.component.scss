@@ -1,0 +1,58 @@
+.card {
+    margin: 2rem;
+    .connect-list {
+        padding: 1rem 5rem;
+        .connect-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem;
+            margin: 0.5rem 0;
+
+            button {
+                margin: 0 1rem;
+            }
+        }
+    }
+}
+
+.form {
+    padding: 2rem 5rem;
+
+    .target {
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+
+        .item {
+            text-align: center;
+            flex: 0 1 15%;
+            &:nth-child(1) {
+                flex: 1;
+            }
+            .th,
+            .td {
+                border: 1px solid #000;
+                padding: 0.5rem 1rem;
+            }
+
+            .td {
+                height: 6rem;
+                line-height: 6rem;
+            }
+        }
+    }
+}
+
+.no-device {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    user-select: none;
+}
