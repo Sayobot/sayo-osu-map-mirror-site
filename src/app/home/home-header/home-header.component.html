@@ -47,6 +47,12 @@
                 "header.update" | translate
             }}</a>
         </button>
+        <button mat-menu-item>
+            <mat-icon>update</mat-icon>
+            <a routerLink="/device" class="no-link">{{
+                "header.device" | translate
+            }}</a>
+        </button>
         <button mat-menu-item disabled style="color: #aaa">
             <mat-icon>share</mat-icon>
             <span>{{ "header.share" | translate }}</span>
@@ -58,11 +64,8 @@
     </mat-menu>
 
     <mat-menu #lineMenu="matMenu">
-        <button
-            mat-menu-item
-            *ngFor="let server of serverMange.serveList"
-            (click)="serverMange.changeServer(server.server)"
-        >
+        <button mat-menu-item *ngFor="let server of serverMange.serveList"
+            (click)="serverMange.changeServer(server.server)">
             <mat-icon>
                 <ng-container *ngIf="server.isSelect">
                     check
@@ -73,13 +76,8 @@
     </mat-menu>
 
     <mat-menu #langMenu="matMenu">
-        <button
-            mat-menu-item
-            *ngFor="let item of language"
-            (click)="useLanguage(item.key)"
-        >
-            <mat-icon><img [src]="item.flag" alt="item.key"/></mat-icon
-            >{{ item.title }}
+        <button mat-menu-item *ngFor="let item of language" (click)="useLanguage(item.key)">
+            <mat-icon><img [src]="item.flag" alt="item.key" /></mat-icon>{{ item.title }}
         </button>
     </mat-menu>
 </header>

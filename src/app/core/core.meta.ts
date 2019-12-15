@@ -55,7 +55,8 @@ export const PROVIDES = [
             mapUnVedio: `https://txy1.sayobot.cn/beatmaps/download/novideo/`,
             mapMini: `https://txy1.sayobot.cn/beatmaps/download/mini/`,
             addMap: `https://sayo.sayobot.cn/add/`,
-            filename: `https://${api}/filename?1=`
+            filename: `https://${api}/filename?1=`,
+            device: `http://127.0.0.1:7296/api/devices`
         }
     }
 ];

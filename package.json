@@ -3,9 +3,8 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
-        "build": "node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng build --prod",
-        "watch": "ng build --output-path dev-dist --aot false --source-map false --watch",
+        "start": "ng serve --aot",
+        "build": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
