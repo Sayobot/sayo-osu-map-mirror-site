@@ -100,7 +100,7 @@ export class DeviceComponent implements OnInit {
      * 下载 sayo_control_cli
      */
     onDownload() {
-        const url = "/assets/Sayo_control_CLI.exe";
+        const url = "/assets/sayo_control.rar";
         this.download.downloadFile(url);
     }
 }
