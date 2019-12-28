@@ -4,18 +4,16 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class CommonFnService {
-
-    constructor() { }
+    constructor() {}
 
     // json浅拷贝
-    jsonDeepCopy = item => JSON.parse(JSON.stringify(item));
+    jsonDeepCopy = (item) => JSON.parse(JSON.stringify(item));
 
     fromEntries(arr: any) {
         const obj = {};
-        arr.forEach(element => {
+        arr.forEach((element) => {
             obj[element[0]] = element[1];
         });
         return obj;
     }
-
 }

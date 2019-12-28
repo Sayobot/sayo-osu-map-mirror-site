@@ -22,7 +22,7 @@ export interface MapDetail {
         tags: string;
         title: string;
         titleU: string;
-        video: number
+        video: number;
     };
 }
 
@@ -59,7 +59,6 @@ export interface PreMapList {
     status: number;
     data: PreMap[];
 }
-
 
 export interface PreMap {
     approved: number;

@@ -8,13 +8,7 @@ import { SearchService } from 'app/core/service/Search';
     styleUrls: ['./search-map.component.scss']
 })
 export class SearchMapComponent implements OnInit {
+    constructor(public responsive: ResponsiveService, public search: SearchService) {}
 
-    constructor(
-        public responsive: ResponsiveService,
-        public search: SearchService
-    ) { }
-
-    ngOnInit() {
-    }
-
+    ngOnInit() {}
 }

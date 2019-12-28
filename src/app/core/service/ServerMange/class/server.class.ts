@@ -19,6 +19,6 @@ export class Server {
     }
 
     changeStatus(server: string) {
-        this.server === server ? this.select() : this.isSelect = false;
+        this.server === server ? this.select() : (this.isSelect = false);
     }
 }

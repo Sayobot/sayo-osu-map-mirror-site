@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class DownloadService {
-
-    constructor() { }
+    constructor() {}
 
     // 文件下载功能
     downloadFile(url: string) {
@@ -16,5 +15,4 @@ export class DownloadService {
         a.click();
         document.body.removeChild(a);
     }
-
 }

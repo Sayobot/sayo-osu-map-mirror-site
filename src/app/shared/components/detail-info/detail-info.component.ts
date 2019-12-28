@@ -1,21 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Language, Genre } from './detail-info.meta';
 
-
 @Component({
     selector: 'detail-info',
     templateUrl: './detail-info.component.html',
     styleUrls: ['./detail-info.component.scss']
 })
 export class DetailInfoComponent implements OnInit {
-
     @Input() detail: any;
     @Input() info: any;
 
-    constructor() { }
+    constructor() {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     getLanguage(index: string) {
         return Language[index];
@@ -32,5 +29,4 @@ export class DetailInfoComponent implements OnInit {
         const hour = dateObj.getHours();
         return `${year} - ${mouth} - ${hour}`;
     }
-
 }

@@ -1,11 +1,10 @@
 $text-indent: 2rem;
 $text-line-height: 2rem;
 
-
 @mixin link-btn {
     display: inline-block;
     text-align: center;
-    padding: 0 .5em;
+    padding: 0 0.5em;
     text-indent: 0;
     border: 1px solid #000;
     border-radius: 5px;

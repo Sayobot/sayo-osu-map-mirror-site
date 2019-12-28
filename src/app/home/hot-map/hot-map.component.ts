@@ -8,16 +8,11 @@ import { MapService } from 'app/core/service/MapService';
     styleUrls: ['./hot-map.component.scss']
 })
 export class HotMapComponent implements OnInit {
-
-    constructor(
-        public responsive: ResponsiveService,
-        public maps: MapService
-    ) { }
+    constructor(public responsive: ResponsiveService, public maps: MapService) {}
 
     ngOnInit() {
         if (this.maps.hotMap.length === 0) {
             this.maps.getHotMap();
         }
     }
-
 }

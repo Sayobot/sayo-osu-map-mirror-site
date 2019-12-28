@@ -10,14 +10,17 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-    imports: [...META.MODULES, TranslateModule.forChild({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
-    })],
+    imports: [
+        ...META.MODULES,
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
+    ],
     declarations: [...META.COMPONENTS],
     exports: [...META.MODULES, ...META.COMPONENTS]
 })
-export class SharedModule { }
+export class SharedModule {}

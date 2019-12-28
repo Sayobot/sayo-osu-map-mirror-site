@@ -7,13 +7,9 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./support-sayobot.component.scss']
 })
 export class SupportSayobotComponent implements OnInit {
-
     supportData: any = [];
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-        private http: HttpClient,
-    ) { }
+    constructor(@Inject('BASE_CONFIG') private config, private http: HttpClient) {}
 
     ngOnInit() {
         this.getSupportList();
@@ -21,25 +17,23 @@ export class SupportSayobotComponent implements OnInit {
 
     // 获取支持者月份列表
     getSupportList() {
-        this.http.get(this.config.supportList)
-            .subscribe((res: any) => {
-                this.supportData = res.data;
-                this.getSupportDetail();
-            });
+        this.http.get(this.config.supportList).subscribe((res: any) => {
+            this.supportData = res.data;
+            this.getSupportDetail();
+        });
     }
 
     // 获取支持者详情列表
     getSupportDetail() {
-        this.supportData.forEach(element => {
-            this.http.get(element.link)
-                .subscribe((res: any) => {
-                    if (res.data) {
-                        const arr = res.data.sort((a, b) => {
-                            return b.money - a.money;
-                        });
-                        element['detail'] = arr;
-                    }
-                });
+        this.supportData.forEach((element) => {
+            this.http.get(element.link).subscribe((res: any) => {
+                if (res.data) {
+                    const arr = res.data.sort((a, b) => {
+                        return b.money - a.money;
+                    });
+                    element['detail'] = arr;
+                }
+            });
         });
     }
 
@@ -47,9 +41,15 @@ export class SupportSayobotComponent implements OnInit {
     isFrom(type) {
         let str: string;
         switch (type) {
-            case 0: str = '支付宝'; break;
-            case 1: str = '微信'; break;
-            case 2: str = 'QQ红包'; break;
+            case 0:
+                str = '支付宝';
+                break;
+            case 1:
+                str = '微信';
+                break;
+            case 2:
+                str = 'QQ红包';
+                break;
             default:
                 break;
         }

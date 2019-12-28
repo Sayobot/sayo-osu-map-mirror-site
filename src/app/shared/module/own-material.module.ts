@@ -36,7 +36,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
-
     imports: [
         MatAutocompleteModule,
         MatBadgeModule,
@@ -72,7 +71,7 @@ import { MatTreeModule } from '@angular/material/tree';
         MatTreeModule,
         MatTableModule,
         MatTooltipModule,
-        MatToolbarModule,
+        MatToolbarModule
     ],
 
     exports: [
@@ -110,13 +109,7 @@ import { MatTreeModule } from '@angular/material/tree';
         MatTreeModule,
         MatTableModule,
         MatTooltipModule,
-        MatToolbarModule,
-    ],
+        MatToolbarModule
+    ]
 })
-export class OwnMaterialModule { }
-
-
-
-
-
-
+export class OwnMaterialModule {}

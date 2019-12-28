@@ -7,11 +7,10 @@ import { AuthService } from '@service/AuthService';
     styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent implements OnInit {
-
     username: string;
     password: string;
 
-    constructor(private auth: AuthService) { }
+    constructor(private auth: AuthService) {}
 
     ngOnInit() {
         this.auth.adminLogin();
@@ -20,5 +19,4 @@ export class AdminLoginComponent implements OnInit {
     login() {
         this.auth.adminLogin(this.username, this.password);
     }
-
 }

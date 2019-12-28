@@ -1,14 +1,14 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
-import { SharedModule } from "app/shared";
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from 'app/shared';
 
-export const domain = "osu.sayobot.cn";
-export const api = "api.sayobot.cn";
-export const cdn = "cdnx.sayobot.cn";
+export const domain = 'osu.sayobot.cn';
+export const api = 'api.sayobot.cn';
+export const cdn = 'cdnx.sayobot.cn';
 
 export const MODULES = [
     BrowserModule,
@@ -39,7 +39,7 @@ export const PROVIDES = [
      */
 
     {
-        provide: "BASE_CONFIG",
+        provide: 'BASE_CONFIG',
         useValue: {
             domain: domain,
             detail: `https://${api}/v2/beatmapinfo`,
@@ -61,4 +61,4 @@ export const PROVIDES = [
     }
 ];
 
-export { COMPONENTS, DIALOGS } from "./components";
+export { COMPONENTS, DIALOGS } from './components';

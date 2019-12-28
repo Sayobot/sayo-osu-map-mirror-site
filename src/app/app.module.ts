@@ -15,14 +15,18 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [CoreModule, HomeModule, AppRoutingModule,
+    imports: [
+        CoreModule,
+        HomeModule,
+        AppRoutingModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
                 useFactory: HttpLoaderFactory,
                 deps: [HttpClient]
             }
-        })],
+        })
+    ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

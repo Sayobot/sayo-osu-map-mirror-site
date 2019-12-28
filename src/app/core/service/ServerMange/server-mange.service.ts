@@ -7,15 +7,10 @@ import { LocalStorageService } from '@service/LocalStorage';
     providedIn: 'root'
 })
 export class ServerMangeService {
-
     serveList: Server[] = [];
     currentServer = '0';
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-        private http: HttpClient,
-        private local: LocalStorageService
-    ) {
+    constructor(@Inject('BASE_CONFIG') private config, private http: HttpClient, private local: LocalStorageService) {
         this.getServerList();
         setTimeout(() => {
             this.local.getItem('server') ? this.changeServer(this.local.getItem('server')) : this.saveServer();
@@ -29,7 +24,7 @@ export class ServerMangeService {
     getServerList() {
         this.http.get(this.config.serviceList).subscribe((res: any) => {
             const arr = res.data;
-            arr.forEach(element => {
+            arr.forEach((element) => {
                 this.serveList.push(new Server(element));
             });
         });

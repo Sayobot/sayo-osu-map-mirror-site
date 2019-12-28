@@ -16,9 +16,10 @@ const adminRoute: Routes = [
         children: [
             { path: '', redirectTo: 'announce' },
             { path: 'announce', component: AnnounceComponent },
-            { path: 'finance', component: FinanceComponent },
+            { path: 'finance', component: FinanceComponent }
         ]
-    }, {
+    },
+    {
         path: 'login',
         component: AdminLoginComponent
     }
@@ -29,4 +30,4 @@ const adminRoute: Routes = [
     imports: [RouterModule.forChild(adminRoute)],
     exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

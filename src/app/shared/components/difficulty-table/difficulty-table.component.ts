@@ -11,11 +11,9 @@ export class DifficultyTableComponent implements OnInit {
 
     currentIndex = 0;
 
-    constructor() { }
+    constructor() {}
 
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 
     select(index: number) {
         this.currentIndex = index;
@@ -29,11 +27,20 @@ export class DifficultyTableComponent implements OnInit {
     getTip(map): string {
         let tip: string;
         switch (map.mode) {
-            case 0: tip = 'O'; break;
-            case 1: tip = 'T'; break;
-            case 2: tip = 'C'; break;
-            case 3: tip = 'M'; break;
-            default: break;
+            case 0:
+                tip = 'O';
+                break;
+            case 1:
+                tip = 'T';
+                break;
+            case 2:
+                tip = 'C';
+                break;
+            case 3:
+                tip = 'M';
+                break;
+            default:
+                break;
         }
         return tip;
     }

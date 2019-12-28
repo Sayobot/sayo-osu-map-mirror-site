@@ -7,10 +7,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 export class AboutDialogComponent implements OnInit {
     domain: string;
-    constructor(@Inject('BASE_CONFIG') private config, ) { }
+    constructor(@Inject('BASE_CONFIG') private config) {}
 
     ngOnInit() {
         this.domain = this.config.domain;
     }
-
 }

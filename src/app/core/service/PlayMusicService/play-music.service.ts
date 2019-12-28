@@ -7,9 +7,7 @@ export class PlayMusicService {
     sid: number;
     musicEl = new Audio();
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-    ) {
+    constructor(@Inject('BASE_CONFIG') private config) {
         this.musicEl.preload = 'metadata';
     }
 

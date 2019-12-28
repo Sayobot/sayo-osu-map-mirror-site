@@ -1,29 +1,28 @@
-import { Component, OnInit } from "@angular/core";
-import { DeviceOperaService } from "@service/Device";
-import { Operate, KeyItem } from "@service/Device/devices.model";
-import { DownloadService } from "@service/Download";
+import { Component, OnInit } from '@angular/core';
+import { DeviceOperaService } from '@service/Device';
+import { Operate, KeyItem } from '@service/Device/devices.model';
+import { DownloadService } from '@service/Download';
 
 @Component({
-    selector: "app-device",
-    templateUrl: "./device.component.html",
-    styleUrls: ["./device.component.scss"]
+    selector: 'app-device',
+    templateUrl: './device.component.html',
+    styleUrls: ['./device.component.scss']
 })
 export class DeviceComponent implements OnInit {
     current: number;
     isSelect = false;
 
-    constructor(
-        public device: DeviceOperaService,
-        private download: DownloadService
-    ) {}
+    constructor(public device: DeviceOperaService, private download: DownloadService) {}
 
     ngOnInit() {
         this.device.assetsCache();
         this.getDeviceList();
 
         // 绑定 window 离开/刷新 事件，关闭正在连接的设备
-        window.addEventListener("beforeunload", () => {
-            if (this.device.isConnect) this.close();
+        window.addEventListener('beforeunload', () => {
+            if (this.device.isConnect) {
+                this.close();
+            }
         });
     }
 
@@ -31,7 +30,9 @@ export class DeviceComponent implements OnInit {
      * 获得设备列表和可操作列表
      */
     getDeviceList() {
-        if (this.device.isConnect) this.close();
+        if (this.device.isConnect) {
+            this.close();
+        }
 
         this.device.getDeviceList();
     }
@@ -65,7 +66,7 @@ export class DeviceComponent implements OnInit {
 
     /**
      * 是否修改状态
-     * @param item
+     * @param item 每个按钮的设置项
      */
     isEdit(item: KeyItem) {
         item.isEdit = true;
@@ -113,7 +114,7 @@ export class DeviceComponent implements OnInit {
      * 下载 sayo_control_cli
      */
     onDownload() {
-        const url = "/assets/sayo_control.rar";
+        const url = '/assets/sayo_control.rar';
         this.download.downloadFile(url);
     }
 }
