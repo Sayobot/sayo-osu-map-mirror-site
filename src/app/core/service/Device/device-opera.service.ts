@@ -11,6 +11,7 @@ import {
     KeyCode,
     KeyItem
 } from "./devices.model";
+import { numSeparate2SystemArr } from "app/utils";
 
 const deviceUrl = `http://127.0.0.1:7296/api/devices`;
 const ASSETS_LIST = ["generalKeys", "modifierKeys", "mouseKeys", "noMore"];
@@ -44,6 +45,11 @@ export class KeyItemOption {
         this.getValuesItem(options.values);
     }
 
+    update(values) {
+        this.getModeItem();
+        this.getValuesItem(values);
+    }
+
     /**
      * 获取 mode 项
      */
@@ -69,30 +75,66 @@ export class KeyItemOption {
      */
     getValuesItem(codes: number[]) {
         const values = this.mode.values;
+        this.keyItems = [];
         values.forEach((asset: string, index: number) => {
             const cache: KeysAssets = this.keysCache[asset];
             const item = cache.data.filter(
                 (item: KeyCode) => item.code === codes[index]
             )[0];
-            console.log(item);
+
+            let code = this.getCode(item ? item.code : codes[index], cache);
+            let name = this.getName(code, cache);
+
             this.keyItems.push({
                 th: cache.title,
-                td: item ? item.name : "none",
-                code: item ? item.code : 0,
+                td: name,
+                multiple: cache.multiple,
+                code: code,
                 isEdit: false,
                 options: cache.data
             });
         });
     }
 
+    getName(code: any, cache): string {
+        let result;
+
+        if (code.length > 0) {
+            result = [];
+            for (let i = 0; i < code.length; i++) {
+                const item = cache.data.filter(
+                    (item: KeyCode) => item.code === code[i]
+                )[0];
+                result.push(item ? item.name : "none");
+            }
+        } else {
+            const item = cache.data.filter(
+                (item: KeyCode) => item.code === code
+            )[0];
+            result = item ? item.name : "none";
+        }
+
+        return result;
+    }
+
+    getCode(code, cache) {
+        return cache.multiple ? numSeparate2SystemArr(code) : code;
+    }
+
     /**
      * 根据最新数据返回相应的配置项
      */
     getOptions(): DeviceOptions {
+        let values = this.keyItems.map((item: any) => {
+            return item.multiple
+                ? item.code.reduce((acc, next) => acc + next)
+                : item.code;
+        });
+
         return {
-            code: this.mode.code,
+            code: <number>this.mode.code,
             number: this.number,
-            values: this.keyItems.map((item: KeyItem) => item.code)
+            values: values
         };
     }
 }
@@ -212,7 +254,6 @@ export class DeviceOperaService {
             );
 
             this.result.push(item);
-            console.log(this.result);
         });
     }
 
@@ -240,24 +281,23 @@ export class DeviceOperaService {
     /**
      * 根据命令修改设备
      */
-    writeDeviceOptions() {
-        const data = this.result.map((item: KeyItemOption) =>
-            item.getOptions()
-        );
+    writeDeviceOptions(options: KeyItemOption) {
+        const data = options.getOptions();
 
         const cmd = {
             cmd: this.currentOperate.cmd,
             session: this.session,
             method: "write",
-            data: data
+            data: [data]
         };
 
         this.http
             .post(deviceUrl, JSON.stringify(cmd))
             .toPromise()
-            .then((res: { status: number; data: DeviceOptions[] }) =>
-                this.updateResult(res.data)
-            );
+            .then((res: { status: number; data: DeviceOptions[] }) => {
+                const values = res.data[0].values;
+                options.update(values);
+            });
     }
 
     /**

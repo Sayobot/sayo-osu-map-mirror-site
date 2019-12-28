@@ -77,7 +77,7 @@
                             <span *ngIf="!mode.isEdit" (click)="isEdit(mode)">{{mode.td}}</span>
                             <mat-form-field *ngIf="mode.isEdit">
                                 <mat-select placeholder="请选择模式" [(value)]="mode.code"
-                                    (selectionChange)="onSelect($event, mode)">
+                                    (openedChange)="onSelect($event, mode)">
                                     <mat-option *ngFor="let option of mode.options" [value]="option.code">
                                         {{option.name}}
                                     </mat-option>
@@ -90,9 +90,18 @@
                     <div class="th">{{item.th}}</div>
                     <div class="td">
                         <span *ngIf="!item.isEdit" (click)="isEdit(item)">{{item.td}}</span>
-                        <mat-form-field *ngIf="item.isEdit">
+                        <mat-form-field *ngIf="item.isEdit && !item.multiple">
                             <mat-select placeholder="请选择按键" [(value)]="item.code"
-                                (selectionChange)="onSelect($event, item)">
+                                (openedChange)="onSelect($event, item, keyItemOption)">
+                                <mat-option *ngFor="let option of item.options" [value]="option.code">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field *ngIf="item.isEdit && item.multiple">
+                            <mat-select placeholder="请选择按键" multiple #multi [(value)]="item.code"
+                                (openedChange)="onSelectMulti($event, keyItemOption)">
                                 <mat-option *ngFor="let option of item.options" [value]="option.code">
                                     {{option.name}}
                                 </mat-option>

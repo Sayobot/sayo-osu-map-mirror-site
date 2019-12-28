@@ -60,7 +60,7 @@ export interface OperateMode {
 export interface KeysAssets {
     version: string;
     title: string;
-    "Multiple choice": boolean;
+    multiple: boolean;
     data: KeyCode[];
 }
 
@@ -72,8 +72,9 @@ export interface KeyCode {
 export interface KeyItem {
     th: string;
     td: string;
-    code: number;
+    code: number | number[];
     isEdit: boolean;
+    multiple?: boolean;
     options: any[];
     values?: string[];
 }
