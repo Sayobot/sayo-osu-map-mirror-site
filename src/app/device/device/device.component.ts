@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { DeviceOperaService } from "@service/Device";
-import { MatSelectChange } from "@angular/material/select";
 import { Operate, KeyItem } from "@service/Device/devices.model";
 import { DownloadService } from "@service/Download";
 
@@ -75,8 +74,8 @@ export class DeviceComponent implements OnInit {
     /**
      * 修改并获取最新的配置
      */
-    write() {
-        this.device.writeDeviceOptions();
+    write(keyItemOption) {
+        this.device.writeDeviceOptions(keyItemOption);
     }
 
     /**
@@ -88,12 +87,26 @@ export class DeviceComponent implements OnInit {
 
     /**
      * 选中之后修改编辑状态并触发修改
-     * @param event 选中项
+     * @param isOpen 状态是否为打开
      * @param item 键值项
      */
-    onSelect(event: MatSelectChange, item: KeyItem) {
-        item.isEdit = false;
-        this.write();
+    onSelect(isOpen: boolean, item: KeyItem, keyItemOption: any) {
+        if (!isOpen) {
+            item.isEdit = false;
+            this.write(keyItemOption);
+        }
+    }
+
+    /**
+     * 复选选中之后修改编辑状态并触发修改
+     * @param isOpen 状态是否为打开
+     * @param item 键值项
+     * @param values 复选选中的值
+     */
+    onSelectMulti(isOpen: boolean, keyItemOption: any) {
+        if (!isOpen) {
+            this.write(keyItemOption);
+        }
     }
 
     /**
