@@ -1,7 +1,7 @@
 {
     "version": "1.0",
     "title": "no more",
-    "Multiple choice": false,
+    "multiple": false,
     "data": [
         {
             "code": 0,

@@ -1,7 +1,7 @@
 {
     "version": "1.0",
     "title": "mouse keys",
-    "Multiple choice": true,
+    "multiple": true,
     "data": [
         {
             "code": 0,

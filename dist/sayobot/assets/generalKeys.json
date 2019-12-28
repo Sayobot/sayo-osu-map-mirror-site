@@ -1,7 +1,7 @@
 {
     "version": "1.0",
     "title": "General keys",
-    "Multiple choice": false,
+    "multiple": false,
     "data": [
         {
             "code": 0,
