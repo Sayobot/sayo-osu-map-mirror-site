@@ -9,23 +9,21 @@ interface NavigatorClipboard {
     readonly clipboard?: Clipboard;
 }
 
-interface Navigator extends NavigatorClipboard { }
+// tslint:disable-next-line: no-empty-interface
+interface Navigator extends NavigatorClipboard {}
 
 @Injectable({
     providedIn: 'root'
 })
 export class ClipboardService {
-
-    constructor(private snackBar: MatSnackBar) { }
+    constructor(private snackBar: MatSnackBar) {}
 
     private write(str: string) {
-        (navigator as NavigatorClipboard).clipboard
-            .writeText(str)
-            .then(() => {
-                this.snackBar.open('已复制：', str, {
-                    duration: 2000,
-                });
+        (navigator as NavigatorClipboard).clipboard.writeText(str).then(() => {
+            this.snackBar.open('已复制：', str, {
+                duration: 2000
             });
+        });
     }
 
     copy(content: string) {

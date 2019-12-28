@@ -11,65 +11,53 @@ import { SupportSayobotComponent } from 'app/core/components/support-sayobot';
     providedIn: 'root'
 })
 export class DialogService {
-
-    constructor(
-        private dialog: MatDialog
-    ) { }
+    constructor(private dialog: MatDialog) {}
 
     supprot() {
-        this.dialog.open(
-            SupportSayobotComponent, {
-                height: '98%',
-                maxHeight: '98%',
-                width: '700px',
-            });
+        this.dialog.open(SupportSayobotComponent, {
+            height: '98%',
+            maxHeight: '98%',
+            width: '700px'
+        });
     }
 
     // 打开帮助弹窗
     help() {
-        this.dialog.open(
-            HelpDialogComponent, {
-                maxWidth: '98%',
-                width: '700px'
-            }
-        );
+        this.dialog.open(HelpDialogComponent, {
+            maxWidth: '98%',
+            width: '700px'
+        });
     }
 
     // 打开关于小夜的弹窗
     about() {
-        this.dialog.open(
-            AboutDialogComponent, {
-                maxWidth: '98%',
-                width: '700px',
-                maxHeight: '98%',
-            });
+        this.dialog.open(AboutDialogComponent, {
+            maxWidth: '98%',
+            width: '700px',
+            maxHeight: '98%'
+        });
     }
 
     // 未找到
     notFoundMap(str) {
-        this.dialog.open(
-            NotFoundMapDialogComponent,
-            {
-                data: {
-                    key: str,
-                }
+        this.dialog.open(NotFoundMapDialogComponent, {
+            data: {
+                key: str
             }
-        );
+        });
     }
 
     // 铺面详情
     mapDetail(id, detail) {
-        this.dialog.open(
-            MapDetailComponent, {
-                panelClass: 'no-padding-dialog',
-                maxWidth: '100vw',
-                maxHeight: '100vh',
-                width: '1080px',
-                data: {
-                    id: id,
-                    content: detail
-                }
+        this.dialog.open(MapDetailComponent, {
+            panelClass: 'no-padding-dialog',
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            width: '1080px',
+            data: {
+                id: id,
+                content: detail
             }
-        );
+        });
     }
 }

@@ -10,7 +10,7 @@ export const Language = {
     8: 'german',
     9: 'swedish',
     10: 'spanish',
-    11: 'italian',
+    11: 'italian'
 };
 
 export const Genre = {
@@ -23,5 +23,5 @@ export const Genre = {
     6: 'other',
     7: 'novelty',
     9: 'hip hop',
-    10: 'electronic',
-}
+    10: 'electronic'
+};

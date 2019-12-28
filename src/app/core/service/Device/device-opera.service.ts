@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import {
     Device,
     OperateAssets,
@@ -10,11 +10,11 @@ import {
     DeviceOptions,
     KeyCode,
     KeyItem
-} from "./devices.model";
-import { numSeparate2SystemArr } from "app/utils";
+} from './devices.model';
+import { numSeparate2SystemArr } from 'app/utils';
 
 const deviceUrl = `http://127.0.0.1:7296/api/devices`;
-const ASSETS_LIST = ["generalKeys", "modifierKeys", "mouseKeys", "noMore"];
+const ASSETS_LIST = ['generalKeys', 'modifierKeys', 'mouseKeys', 'noMore'];
 
 export class KeyItemOption {
     private operate: Operate;
@@ -55,12 +55,10 @@ export class KeyItemOption {
      */
     getModeItem() {
         this.modeOptions = this.operate.mode;
-        const item = this.modeOptions.filter(
-            (mode: OperateMode) => mode.code === this.code
-        )[0];
+        const item = this.modeOptions.filter((mode: OperateMode) => mode.code === this.code)[0];
 
         this.mode = {
-            th: "mode",
+            th: 'mode',
             td: item.name,
             code: item.code,
             isEdit: false,
@@ -78,12 +76,10 @@ export class KeyItemOption {
         this.keyItems = [];
         values.forEach((asset: string, index: number) => {
             const cache: KeysAssets = this.keysCache[asset];
-            const item = cache.data.filter(
-                (item: KeyCode) => item.code === codes[index]
-            )[0];
+            const option = cache.data.filter((item: KeyCode) => item.code === codes[index])[0];
 
-            let code = this.getCode(item ? item.code : codes[index], cache);
-            let name = this.getName(code, cache);
+            const code = this.getCode(option ? option.code : codes[index], cache);
+            const name = this.getName(code, cache);
 
             this.keyItems.push({
                 th: cache.title,
@@ -102,16 +98,12 @@ export class KeyItemOption {
         if (code.length > 0) {
             result = [];
             for (let i = 0; i < code.length; i++) {
-                const item = cache.data.filter(
-                    (item: KeyCode) => item.code === code[i]
-                )[0];
-                result.push(item ? item.name : "none");
+                const option = cache.data.filter((item: KeyCode) => item.code === code[i])[0];
+                result.push(option ? option.name : 'none');
             }
         } else {
-            const item = cache.data.filter(
-                (item: KeyCode) => item.code === code
-            )[0];
-            result = item ? item.name : "none";
+            const option = cache.data.filter((item: KeyCode) => item.code === code)[0];
+            result = option ? option.name : 'none';
         }
 
         return result;
@@ -125,10 +117,8 @@ export class KeyItemOption {
      * 根据最新数据返回相应的配置项
      */
     getOptions(): DeviceOptions {
-        let values = this.keyItems.map((item: any) => {
-            return item.multiple
-                ? item.code.reduce((acc, next) => acc + next)
-                : item.code;
+        const values = this.keyItems.map((item: any) => {
+            return item.multiple ? item.code.reduce((acc, next) => acc + next) : item.code;
         });
 
         return {
@@ -140,7 +130,7 @@ export class KeyItemOption {
 }
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DeviceOperaService {
     devices: Device[];
@@ -150,7 +140,7 @@ export class DeviceOperaService {
     session: number;
     targetModes: OperateMode;
     currentOperate: Operate;
-    isConnect: boolean = false;
+    isConnect = false;
 
     keysCache: {
         [key: string]: KeysAssets;
@@ -171,7 +161,7 @@ export class DeviceOperaService {
      */
     async getOperatesAssets() {
         this.http
-            .get("/assets/operate.json")
+            .get('/assets/operate.json')
             .toPromise()
             .then((res: OperateAssets) => {
                 this.operates = res.data;
@@ -198,7 +188,7 @@ export class DeviceOperaService {
      */
     async getDeviceList() {
         const cmd = JSON.stringify({
-            cmd: "search",
+            cmd: 'search',
             vendor_id: 32905,
             product_id: 0
         });
@@ -216,7 +206,7 @@ export class DeviceOperaService {
      * @param path 设备路径
      */
     async connect(path: string) {
-        const cmd = JSON.stringify({ cmd: "connect", path: path });
+        const cmd = JSON.stringify({ cmd: 'connect', path: path });
         this.http
             .post(deviceUrl, cmd)
             .toPromise()
@@ -230,12 +220,14 @@ export class DeviceOperaService {
      * 关闭当前连接的设备
      */
     async close() {
-        const cmd = JSON.stringify({ cmd: "disconnect", session: 1 });
+        const cmd = JSON.stringify({ cmd: 'disconnect', session: 1 });
         this.http
             .post(deviceUrl, cmd)
             .toPromise()
             .then((res: { status: number }) => {
-                if (res.status === 0) this.isConnect = false;
+                if (res.status === 0) {
+                    this.isConnect = false;
+                }
             });
     }
 
@@ -247,11 +239,7 @@ export class DeviceOperaService {
         this.result = [];
 
         options.forEach((option: DeviceOptions) => {
-            let item = new KeyItemOption(
-                this.currentOperate,
-                this.keysCache,
-                option
-            );
+            const item = new KeyItemOption(this.currentOperate, this.keysCache, option);
 
             this.result.push(item);
         });
@@ -263,7 +251,7 @@ export class DeviceOperaService {
     readDeviceOption(operate: Operate) {
         const cmd = {
             cmd: operate.cmd,
-            method: "read",
+            method: 'read',
             session: this.session
         };
 
@@ -287,7 +275,7 @@ export class DeviceOperaService {
         const cmd = {
             cmd: this.currentOperate.cmd,
             session: this.session,
-            method: "write",
+            method: 'write',
             data: [data]
         };
 
@@ -304,14 +292,12 @@ export class DeviceOperaService {
      * 修改后的键位需要保存
      */
     saveDeviceOptions() {
-        const cmd = JSON.stringify({ cmd: "save", session: this.session });
+        const cmd = JSON.stringify({ cmd: 'save', session: this.session });
         this.http
             .post(deviceUrl, cmd)
             .toPromise()
             .then((res: { status: number; message: string }) => {
-                const data = this.result.map((item: KeyItemOption) =>
-                    item.getOptions()
-                );
+                const data = this.result.map((item: KeyItemOption) => item.getOptions());
 
                 this.updateResult(data);
             });

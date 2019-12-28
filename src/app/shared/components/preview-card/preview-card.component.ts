@@ -20,24 +20,37 @@ export class PreviewCardComponent implements OnInit {
         private musicBox: PlayMusicService,
         private download: DownloadService,
         public serverMange: ServerMangeService
-    ) { }
+    ) {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     // 设置图片
-    setImgUrl = sid => `${this.config.pic}${sid}/covers/cover.webp?0`;
+    setImgUrl = (sid) => `${this.config.pic}${sid}/covers/cover.webp?0`;
 
     getStatus() {
         let statu: string;
         switch (this.preview.approved) {
-            case 4: statu = 'loved'; break;
-            case 3: statu = 'qualified'; break;
-            case 2: statu = 'approved'; break;
-            case 1: statu = 'ranked'; break;
-            case 0: statu = 'pending'; break;
-            case -1: statu = 'WIP'; break;
-            case -2: statu = 'graveyard'; break;
+            case 4:
+                statu = 'loved';
+                break;
+            case 3:
+                statu = 'qualified';
+                break;
+            case 2:
+                statu = 'approved';
+                break;
+            case 1:
+                statu = 'ranked';
+                break;
+            case 0:
+                statu = 'pending';
+                break;
+            case -1:
+                statu = 'WIP';
+                break;
+            case -2:
+                statu = 'graveyard';
+                break;
         }
         return statu;
     }

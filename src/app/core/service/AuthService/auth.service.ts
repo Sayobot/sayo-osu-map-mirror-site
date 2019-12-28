@@ -11,7 +11,7 @@ export class AuthService {
     mockAdminUsername = 'admin';
     mockAdminPassword = 'admin';
 
-    constructor(private router: Router) { }
+    constructor(private router: Router) {}
 
     adminLogin(username = '', password = ''): void {
         if (sessionStorage.getItem('isAdminLogin') === 'true') {
@@ -29,6 +29,4 @@ export class AuthService {
     adminLogout(): void {
         this.isAdminLogin = false;
     }
-
-
 }

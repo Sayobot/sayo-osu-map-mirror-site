@@ -1,2 +1,1 @@
-export class DetailMap {
-}
+export class DetailMap {}

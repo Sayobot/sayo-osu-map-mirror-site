@@ -11,17 +11,19 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-    imports: [...META.MODULES, TranslateModule.forChild({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
-    })],
+    imports: [
+        ...META.MODULES,
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
+    ],
     entryComponents: [...META.DIALOGS],
     declarations: [...META.COMPONENTS],
     exports: [...META.DIALOGS, ...META.COMPONENTS],
     providers: [...META.PROVIDES]
 })
-
-export class CoreModule { }
+export class CoreModule {}

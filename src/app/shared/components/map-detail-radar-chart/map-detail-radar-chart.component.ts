@@ -8,7 +8,6 @@ import { radar_option, curve_option } from './models';
     styleUrls: ['./map-detail-radar-chart.component.scss']
 })
 export class MapDetailRadarChartComponent implements OnInit {
-
     private _mapData: any;
     aim: number;
     speed: number;
@@ -26,7 +25,7 @@ export class MapDetailRadarChartComponent implements OnInit {
     radarEchart: any;
     curveEchart: any;
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         this.radarEchart = echarts.init(document.getElementById('map-detail-radar-echart'));

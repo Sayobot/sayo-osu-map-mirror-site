@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'home-footer',
-  templateUrl: './home-footer.component.html',
-  styleUrls: ['./home-footer.component.scss']
+    selector: 'home-footer',
+    templateUrl: './home-footer.component.html',
+    styleUrls: ['./home-footer.component.scss']
 })
 export class HomeFooterComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
+    ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  getYear() {
-      return new Date().getFullYear();
-  }
-
+    getYear() {
+        return new Date().getFullYear();
+    }
 }

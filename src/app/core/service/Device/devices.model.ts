@@ -4,7 +4,7 @@ export interface CMD {
     cmd?: string;
     session?: string;
     path?: string;
-    method?: "read" | "write" | "save";
+    method?: 'read' | 'write' | 'save';
     data?: any;
 }
 

@@ -7,24 +7,18 @@ import { AuthService } from '@service/AuthService';
     providedIn: 'root'
 })
 export class AdminAuthGuard implements CanActivate {
+    constructor(private auth: AuthService, private router: Router) {}
 
-    constructor(
-        private auth: AuthService,
-        private router: Router
-    ) {
-
-    }
-
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): boolean {
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const url: string = state.url;
 
         return this.checkLogin(url);
     }
 
     checkLogin(url: string): boolean {
-        if (this.auth.isAdminLogin) { return true; }
+        if (this.auth.isAdminLogin) {
+            return true;
+        }
 
         this.auth.adminUrl = url;
         this.router.navigate(['/admin/login']);

@@ -1,1 +1,1 @@
-export * from "./device-opera.service";
+export * from './device-opera.service';

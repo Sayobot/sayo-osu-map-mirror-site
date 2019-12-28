@@ -7,17 +7,12 @@ import { SearchService } from '@service/Search';
     styleUrls: ['./tags.component.scss']
 })
 export class TagsComponent implements OnInit {
-
     @Input() content: string;
     @Output() searchChange: EventEmitter<void> = new EventEmitter<void>();
 
     tags: string[];
 
-    constructor(
-        private search: SearchService,
-    ) {
-
-    }
+    constructor(private search: SearchService) {}
 
     ngOnInit() {
         this.tags = this.getTags(this.content);
@@ -31,5 +26,4 @@ export class TagsComponent implements OnInit {
         this.search.getSearch(key);
         this.searchChange.emit();
     }
-
 }

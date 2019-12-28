@@ -6,12 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./music-box.component.scss']
 })
 export class MusicBoxComponent implements OnInit {
-
     // 饥人谷 音乐参考 https://github.com/jirengu/music
 
-    constructor() { }
+    constructor() {}
 
-    ngOnInit() {
-    }
-
+    ngOnInit() {}
 }

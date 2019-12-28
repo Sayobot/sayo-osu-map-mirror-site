@@ -7,20 +7,11 @@ import { AdminComponent } from './admin.component';
 import { AnnounceComponent } from './announce';
 import { FinanceComponent } from './finance';
 
-const adminComponents = [
-    AdminComponent,
-    AdminLoginComponent,
-    AnnounceComponent,
-    FinanceComponent
-];
+const adminComponents = [AdminComponent, AdminLoginComponent, AnnounceComponent, FinanceComponent];
 
 @NgModule({
-    imports: [
-        SharedModule,
-        AdminRoutingModule
-    ],
-    entryComponents: [
-    ],
+    imports: [SharedModule, AdminRoutingModule],
+    entryComponents: [],
     declarations: [adminComponents]
 })
-export class AdminModule { }
+export class AdminModule {}

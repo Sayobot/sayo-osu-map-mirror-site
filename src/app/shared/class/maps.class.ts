@@ -4,7 +4,7 @@ export class Maps {
     maps: PreMap[] = [];
 
     constructor(maps) {
-        maps.forEach(map => {
+        maps.forEach((map) => {
             this.maps.push(new PreMap(map));
         });
     }

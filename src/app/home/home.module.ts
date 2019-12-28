@@ -40,8 +40,7 @@ const homeComponents = [
             }
         })
     ],
-    entryComponents: [
-    ],
+    entryComponents: [],
     declarations: [homeComponents]
 })
-export class HomeModule { }
+export class HomeModule {}

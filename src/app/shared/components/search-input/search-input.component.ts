@@ -13,22 +13,17 @@ import { CommonFnService } from '@service/CommonFnService';
     styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent implements OnInit {
-    searchKey: string;                       // 搜搜关键字
-    isShow = false;                          // 是否显示
-    filterOptions: Array<Options> = [];      // 选项组
-
+    searchKey: string; // 搜搜关键字
+    isShow = false; // 是否显示
+    filterOptions: Array<Options> = []; // 选项组
 
     @Output() searchChange: EventEmitter<string> = new EventEmitter();
 
-    constructor(
-        public maps: MapService,
-        public search: SearchService,
-        private common: CommonFnService
-    ) { }
+    constructor(public maps: MapService, public search: SearchService, private common: CommonFnService) {}
 
     // 搜索map
     onSearch(str: string) {
-        this.searchKey = str.replace(/["]/ig, '').replace(/(^\s*)|(\s*$)/ig, '');
+        this.searchKey = str.replace(/["]/gi, '').replace(/(^\s*)|(\s*$)/gi, '');
         this.search.getSearch(this.searchKey);
         this.searchChange.emit(this.searchKey);
         this.hideOptions();
@@ -58,12 +53,11 @@ export class SearchInputComponent implements OnInit {
         this.search.setParams(params);
     }
 
-    showOptions = () => this.isShow = true;
-    hideOptions = () => this.isShow = false;
+    showOptions = () => (this.isShow = true);
+    hideOptions = () => (this.isShow = false);
 
     ngOnInit() {
         this.getFilterOptions();
         this.changeOptions();
     }
-
 }

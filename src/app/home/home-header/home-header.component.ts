@@ -11,7 +11,6 @@ import { language } from 'assets/i18n/language';
     styleUrls: ['./home-header.component.scss']
 })
 export class HomeHeaderComponent implements OnInit, AfterViewInit {
-
     language: Array<any>;
 
     constructor(
@@ -19,7 +18,7 @@ export class HomeHeaderComponent implements OnInit, AfterViewInit {
         private local: LocalStorageService,
         public serverMange: ServerMangeService,
         private translate: TranslateService
-    ) { }
+    ) {}
 
     ngOnInit() {
         this.language = language;
