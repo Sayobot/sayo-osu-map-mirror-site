@@ -23,7 +23,6 @@ img {
     max-width: 100%;
 }
 
-
 ul,
 li {
     list-style: none;
@@ -65,7 +64,6 @@ a {
     margin-bottom: 8px;
 }
 
-
 body,
 html {
     padding: 0;
@@ -94,7 +92,7 @@ h6 {
     color: #fff;
     transform: translate(-50%, -50%);
     z-index: 10;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 #load img {
@@ -105,7 +103,6 @@ h6 {
 pre {
     white-space: pre-wrap;
 }
-
 
 .tags .mat-chip-list-wrapper {
     justify-content: flex-end;
