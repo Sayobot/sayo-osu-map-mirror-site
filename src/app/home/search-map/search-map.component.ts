@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponsiveService } from '@service/Responsive';
-import { SearchService } from 'app/core/service/Search';
+import { ResponsiveService } from '@app/shared/service';
+import { SearchService } from '@app/shared/service/Search';
 
 @Component({
     selector: 'app-search-map',

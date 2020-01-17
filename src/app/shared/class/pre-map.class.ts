@@ -1,4 +1,4 @@
-import { PlayMusicService } from '@service/PlayMusicService';
+import { PlayMusicService } from '@app/shared/service';
 
 export class PreMap {
     private music: PlayMusicService;

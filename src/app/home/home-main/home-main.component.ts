@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MapService } from '@service/MapService';
-import { SearchService } from '@service/Search';
-import { ResponsiveService } from '@service/Responsive';
+import { MapService, SearchService, ResponsiveService } from '@app/shared/service';
+
 import { Router } from '@angular/router';
 
 import { fromEvent } from 'rxjs';

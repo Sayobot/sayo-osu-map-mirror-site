@@ -11,7 +11,7 @@ import {
     KeyCode,
     KeyItem
 } from './devices.model';
-import { numSeparate2SystemArr } from 'app/utils';
+import { numSeparate2SystemArr } from '@app/utils';
 
 const deviceUrl = `http://127.0.0.1:7296/api/devices`;
 const ASSETS_LIST = ['generalKeys', 'modifierKeys', 'mouseKeys', 'noMore'];

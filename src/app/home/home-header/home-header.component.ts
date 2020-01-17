@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { DialogService } from '@service/DialogService';
-import { LocalStorageService } from '@service/LocalStorage';
-import { ServerMangeService } from '@service/ServerMange';
+import { DialogService, LocalStorageService, ServerMangeService } from '@app/shared/service';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
 

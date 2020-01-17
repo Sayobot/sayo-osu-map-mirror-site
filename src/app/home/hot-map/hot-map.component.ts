@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponsiveService } from '@service/Responsive';
-import { MapService } from 'app/core/service/MapService';
+import { ResponsiveService } from '@shared/service';
+import { MapService } from '@app/shared/service/MapService';
 
 @Component({
     selector: 'app-hot-map',

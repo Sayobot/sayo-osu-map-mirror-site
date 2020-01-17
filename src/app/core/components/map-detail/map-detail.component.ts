@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { PlayMusicService } from '@service/PlayMusicService';
-import { ClipboardService } from '@service/Clipboard';
-import { DownloadService } from '@service/Download';
-import { ServerMangeService } from '@service/ServerMange';
+import { PlayMusicService, ClipboardService, DownloadService, ServerMangeService } from '@app/shared/service';
+
 import { MapDetailChild } from 'app/shared/models';
 
 @Component({

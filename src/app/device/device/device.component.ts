@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceOperaService } from '@service/Device';
-import { Operate, KeyItem } from '@service/Device/devices.model';
-import { DownloadService } from '@service/Download';
+import { DeviceOperaService, DownloadService } from '@app/shared/service';
+import { Operate, KeyItem } from '@app/shared/service/Device/devices.model';
 
 @Component({
     selector: 'app-device',
