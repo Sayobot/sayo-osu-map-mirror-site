@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { MapService } from '@service/MapService';
-import { PlayMusicService } from '@service/PlayMusicService';
-import { DownloadService } from '@service/Download';
-import { ServerMangeService } from '@service/ServerMange';
+import {
+    MapService,
+    PlayMusicService,
+    DownloadService,
+    ServerMangeService
+} from '@app/shared/service';
 
 @Component({
     selector: 'preview-card',
@@ -72,11 +74,15 @@ export class PreviewCardComponent implements OnInit {
     }
 
     isPlay() {
-        return this.preview.sid === this.musicBox.sid && this.musicStatu ? true : false;
+        return this.preview.sid === this.musicBox.sid && this.musicStatu
+            ? true
+            : false;
     }
 
     onDownLoad(url: string) {
-        this.download.downloadFile(`${url}${this.preview.sid}?server=${this.serverMange.currentServer}`);
+        this.download.downloadFile(
+            `${url}${this.preview.sid}?server=${this.serverMange.currentServer}`
+        );
     }
 
     showSTD(modes: number) {

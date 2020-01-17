@@ -1,11 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MapService } from '@service/MapService';
-import { SearchService } from '@service/Search';
 import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
 import { Option } from './class/option';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { CommonFnService } from '@service/CommonFnService';
+import {
+    MapService,
+    SearchService,
+    CommonFnService
+} from '@app/shared/service';
 
 @Component({
     selector: 'search-input',
@@ -19,11 +21,17 @@ export class SearchInputComponent implements OnInit {
 
     @Output() searchChange: EventEmitter<string> = new EventEmitter();
 
-    constructor(public maps: MapService, public search: SearchService, private common: CommonFnService) {}
+    constructor(
+        public maps: MapService,
+        public search: SearchService,
+        private common: CommonFnService
+    ) {}
 
     // 搜索map
     onSearch(str: string) {
-        this.searchKey = str.replace(/["]/gi, '').replace(/(^\s*)|(\s*$)/gi, '');
+        this.searchKey = str
+            .replace(/["]/gi, '')
+            .replace(/(^\s*)|(\s*$)/gi, '');
         this.search.getSearch(this.searchKey);
         this.searchChange.emit(this.searchKey);
         this.hideOptions();

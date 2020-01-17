@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService } from '@service/MapService';
-import { SearchService } from '@service/Search';
+import { MapService, SearchService } from '@app/shared/service';
 import { Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -16,7 +15,11 @@ export class TurnPageComponent implements OnInit {
     endId: number;
     timer = null;
 
-    constructor(private maps: MapService, private search: SearchService, public router: Router) {
+    constructor(
+        private maps: MapService,
+        private search: SearchService,
+        public router: Router
+    ) {
         this.nav = this.router.events as Observable<NavigationEnd>;
     }
 
