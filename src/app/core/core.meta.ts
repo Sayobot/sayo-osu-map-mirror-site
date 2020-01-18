@@ -11,7 +11,6 @@ import {
     HelpDialogComponent,
     MapDetailComponent,
     NotFoundMapDialogComponent,
-    NotFoundPageComponent,
     SupportSayobotComponent
 } from './components';
 
@@ -78,4 +77,4 @@ export const DIALOG = [
     SupportSayobotComponent
 ];
 
-export const COMPONENTS = [...DIALOG, NotFoundPageComponent];
+export const COMPONENTS = [...DIALOG];

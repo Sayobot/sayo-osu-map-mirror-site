@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundPageComponent } from 'app/core/components/not-found-page';
-import { UpdatedLogComponent, SayoControlComponent } from './pages';
+import {
+    UpdatedLogComponent,
+    SayoControlComponent,
+    NotFoundPageComponent
+} from './pages';
 import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
@@ -19,4 +22,8 @@ const appRoutes: Routes = [
 })
 export class AppRoutingModule {}
 
-export const COMPONENTS = [UpdatedLogComponent, SayoControlComponent];
+export const COMPONENTS = [
+    UpdatedLogComponent,
+    SayoControlComponent,
+    NotFoundPageComponent
+];
