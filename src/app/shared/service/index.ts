@@ -1,4 +1,3 @@
-export * from './AuthService';
 export * from './Clipboard';
 export * from './CommonFnService';
 export * from './Device';
