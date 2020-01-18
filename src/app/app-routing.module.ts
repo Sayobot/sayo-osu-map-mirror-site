@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundPageComponent } from 'app/core/components/not-found-page';
 import { UpdatedLogComponent } from './pages';
+import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
     {
-        path: 'admin',
-        loadChildren: () =>
-            import('./admin/admin.module').then((m) => m.AdminModule)
+        path: 'home',
+        component: AppComponent
     },
     {
         path: 'update',
