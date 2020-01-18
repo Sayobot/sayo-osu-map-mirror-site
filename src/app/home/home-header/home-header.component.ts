@@ -1,7 +1,13 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { DialogService, LocalStorageService, ServerMangeService } from '@app/shared/service';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
+import { LocalStorageService, ServerMangeService } from '@app/shared/service';
+import {
+    HelpDialogComponent,
+    SupportSayobotComponent,
+    AboutDialogComponent
+} from '@app/core';
 
 @Component({
     selector: 'home-header',
@@ -12,10 +18,10 @@ export class HomeHeaderComponent implements OnInit, AfterViewInit {
     language: Array<any>;
 
     constructor(
-        public dialog: DialogService,
         private local: LocalStorageService,
         public serverMange: ServerMangeService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private dialog: MatDialog
     ) {}
 
     ngOnInit() {
@@ -32,10 +38,40 @@ export class HomeHeaderComponent implements OnInit, AfterViewInit {
         this.translate.setDefaultLang(lang);
     }
 
+    openHelpDialog() {
+        this.dialog.open(HelpDialogComponent, {
+            maxWidth: '98%',
+            width: '700px'
+        });
+    }
+
+    openSupperDialog() {
+        this.dialog.open(SupportSayobotComponent, {
+            height: '98%',
+            maxHeight: '98%',
+            width: '700px'
+        });
+    }
+
+    openAboutDialog() {
+        this.dialog.open(AboutDialogComponent, {
+            maxWidth: '98%',
+            width: '700px',
+            maxHeight: '98%'
+        });
+    }
+
+    isShowHelpDialog() {
+        return (
+            !this.local.getItem('isShow') ||
+            this.local.getItem('isShow') === 'false'
+        );
+    }
+
     ngAfterViewInit() {
-        if (!this.local.getItem('isShow') || this.local.getItem('isShow') === 'false') {
+        if (this.isShowHelpDialog()) {
             setTimeout(() => {
-                this.dialog.help();
+                this.openHelpDialog();
             }, 0);
         }
     }

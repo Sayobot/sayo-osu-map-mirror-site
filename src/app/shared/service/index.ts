@@ -2,7 +2,6 @@ export * from './AuthService';
 export * from './Clipboard';
 export * from './CommonFnService';
 export * from './Device';
-export * from './DialogService';
 export * from './Download';
 export * from './LocalStorage';
 export * from './MapService';

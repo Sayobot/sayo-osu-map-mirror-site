@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import * as META from './core.meta';
+import { DIALOG, COMPONENTS, PROVIDES, MODULES } from './core.meta';
 
 // 导入 ng 国际化插件
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -12,7 +12,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
     imports: [
-        ...META.MODULES,
+        ...MODULES,
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
@@ -21,9 +21,9 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         })
     ],
-    entryComponents: [...META.DIALOGS],
-    declarations: [...META.COMPONENTS],
-    exports: [...META.DIALOGS, ...META.COMPONENTS],
-    providers: [...META.PROVIDES]
+    entryComponents: [...DIALOG],
+    declarations: [...COMPONENTS],
+    exports: [...COMPONENTS],
+    providers: [...PROVIDES]
 })
 export class CoreModule {}

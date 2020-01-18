@@ -6,6 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared';
 
+import {
+    AboutDialogComponent,
+    HelpDialogComponent,
+    MapDetailComponent,
+    NotFoundMapDialogComponent,
+    NotFoundPageComponent,
+    SupportSayobotComponent
+} from './components';
+
 export const domain = 'osu.sayobot.cn';
 export const api = 'api.sayobot.cn';
 export const cdn = 'cdnx.sayobot.cn';
@@ -61,4 +70,12 @@ export const PROVIDES = [
     }
 ];
 
-export { COMPONENTS, DIALOGS } from './components';
+export const DIALOG = [
+    AboutDialogComponent,
+    HelpDialogComponent,
+    NotFoundMapDialogComponent,
+    MapDetailComponent,
+    SupportSayobotComponent
+];
+
+export const COMPONENTS = [...DIALOG, NotFoundPageComponent];

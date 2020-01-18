@@ -8,6 +8,9 @@ import {
     SearchService,
     CommonFnService
 } from '@app/shared/service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
 
 @Component({
     selector: 'search-input',
@@ -24,7 +27,9 @@ export class SearchInputComponent implements OnInit {
     constructor(
         public maps: MapService,
         public search: SearchService,
-        private common: CommonFnService
+        private common: CommonFnService,
+        private router: Router,
+        public dialog: MatDialog
     ) {}
 
     // 搜索map
@@ -32,9 +37,58 @@ export class SearchInputComponent implements OnInit {
         this.searchKey = str
             .replace(/["]/gi, '')
             .replace(/(^\s*)|(\s*$)/gi, '');
-        this.search.getSearch(this.searchKey);
+
+        this.search.resetSearchData(this.searchKey);
+
+        if (this.search.searchKey.match(/[\d]/gi)) {
+            this.search.getSearchInfo().subscribe((res: any) => {
+                if (res.status === 0) {
+                    const detail = res.data;
+                    const id = detail.sid;
+                    this.openMapDetailDialog(id, detail);
+                }
+                if (res.status === -1) {
+                    this.getSearchList();
+                }
+            });
+        } else {
+            this.getSearchList();
+        }
+
+        this.router.navigate(['home/search']);
         this.searchChange.emit(this.searchKey);
         this.hideOptions();
+    }
+
+    getSearchList() {
+        this.search.getSearchList().subscribe((res: any) => {
+            if (res.status === 0) {
+                this.search.setResInfo(res);
+            } else {
+                this.openNotFoundMapDialog(this.search.searchKey);
+            }
+        });
+    }
+
+    openMapDetailDialog(id, detail) {
+        this.dialog.open(MapDetailComponent, {
+            panelClass: 'no-padding-dialog',
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            width: '1080px',
+            data: {
+                id: id,
+                content: detail
+            }
+        });
+    }
+
+    openNotFoundMapDialog(key: string) {
+        this.dialog.open(NotFoundMapDialogComponent, {
+            data: {
+                key: key
+            }
+        });
     }
 
     getFilterOptions() {

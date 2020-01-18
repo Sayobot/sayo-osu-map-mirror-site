@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import * as META from './shared.meta';
+import { COMPONENTS, MODULES } from './shared.meta';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -11,7 +11,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
     imports: [
-        ...META.MODULES,
+        ...MODULES,
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
@@ -20,7 +20,7 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         })
     ],
-    declarations: [...META.COMPONENTS],
-    exports: [...META.MODULES, ...META.COMPONENTS]
+    declarations: [...COMPONENTS],
+    exports: [...MODULES, ...COMPONENTS]
 })
 export class SharedModule {}

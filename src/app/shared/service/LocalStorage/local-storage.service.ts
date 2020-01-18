@@ -7,7 +7,7 @@ import { CommonFnService } from '../CommonFnService';
 export class LocalStorageService {
     local: object;
 
-    constructor(private commonFn: CommonFnService) {
+    constructor(public commonFn: CommonFnService) {
         this.local = commonFn.jsonDeepCopy(localStorage);
     }
 
