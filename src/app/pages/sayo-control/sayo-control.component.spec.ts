@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceComponent } from './device.component';
+import { SayoControlComponent } from './sayo-control.component';
 
-describe('DeviceComponent', () => {
-    let component: DeviceComponent;
-    let fixture: ComponentFixture<DeviceComponent>;
+describe('SayoControlComponent', () => {
+    let component: SayoControlComponent;
+    let fixture: ComponentFixture<SayoControlComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DeviceComponent]
+            declarations: [SayoControlComponent]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DeviceComponent);
+        fixture = TestBed.createComponent(SayoControlComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

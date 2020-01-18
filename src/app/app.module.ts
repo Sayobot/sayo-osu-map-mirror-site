@@ -8,15 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
-import { UpdatedLogComponent } from './pages/updated-log/updated-log.component';
 import { SharedModule } from './shared';
+
+import { COMPONENTS } from './app-routing.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-    declarations: [AppComponent, UpdatedLogComponent],
+    declarations: [AppComponent, ...COMPONENTS],
     imports: [
         CoreModule,
         SharedModule,

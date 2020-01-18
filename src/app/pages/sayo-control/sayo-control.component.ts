@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceOperaService, DownloadService } from '@app/shared/service';
-import { Operate, KeyItem } from '@app/shared/service/Device/devices.model';
+import { Operate, KeyItem } from '@app/shared/models';
 
 @Component({
-    selector: 'app-device',
-    templateUrl: './device.component.html',
-    styleUrls: ['./device.component.scss']
+    selector: 'app-sayo-control',
+    templateUrl: './sayo-control.component.html',
+    styleUrls: ['./sayo-control.component.scss']
 })
-export class DeviceComponent implements OnInit {
+export class SayoControlComponent implements OnInit {
     current: number;
     isSelect = false;
 
-    constructor(public device: DeviceOperaService, private download: DownloadService) {}
+    constructor(
+        public device: DeviceOperaService,
+        private download: DownloadService
+    ) {}
 
     ngOnInit() {
         this.device.assetsCache();
