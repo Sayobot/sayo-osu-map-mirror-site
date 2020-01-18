@@ -10,7 +10,7 @@ import {
     DeviceOptions,
     KeyCode,
     KeyItem
-} from './devices.model';
+} from '../../models/devices.model';
 import { numSeparate2SystemArr } from '@app/utils';
 
 const deviceUrl = `http://127.0.0.1:7296/api/devices`;
@@ -55,7 +55,9 @@ export class KeyItemOption {
      */
     getModeItem() {
         this.modeOptions = this.operate.mode;
-        const item = this.modeOptions.filter((mode: OperateMode) => mode.code === this.code)[0];
+        const item = this.modeOptions.filter(
+            (mode: OperateMode) => mode.code === this.code
+        )[0];
 
         this.mode = {
             th: 'mode',
@@ -76,9 +78,14 @@ export class KeyItemOption {
         this.keyItems = [];
         values.forEach((asset: string, index: number) => {
             const cache: KeysAssets = this.keysCache[asset];
-            const option = cache.data.filter((item: KeyCode) => item.code === codes[index])[0];
+            const option = cache.data.filter(
+                (item: KeyCode) => item.code === codes[index]
+            )[0];
 
-            const code = this.getCode(option ? option.code : codes[index], cache);
+            const code = this.getCode(
+                option ? option.code : codes[index],
+                cache
+            );
             const name = this.getName(code, cache);
 
             this.keyItems.push({
@@ -98,11 +105,15 @@ export class KeyItemOption {
         if (code.length > 0) {
             result = [];
             for (let i = 0; i < code.length; i++) {
-                const option = cache.data.filter((item: KeyCode) => item.code === code[i])[0];
+                const option = cache.data.filter(
+                    (item: KeyCode) => item.code === code[i]
+                )[0];
                 result.push(option ? option.name : 'none');
             }
         } else {
-            const option = cache.data.filter((item: KeyCode) => item.code === code)[0];
+            const option = cache.data.filter(
+                (item: KeyCode) => item.code === code
+            )[0];
             result = option ? option.name : 'none';
         }
 
@@ -118,7 +129,9 @@ export class KeyItemOption {
      */
     getOptions(): DeviceOptions {
         const values = this.keyItems.map((item: any) => {
-            return item.multiple ? item.code.reduce((acc, next) => acc + next) : item.code;
+            return item.multiple
+                ? item.code.reduce((acc, next) => acc + next)
+                : item.code;
         });
 
         return {
@@ -239,7 +252,11 @@ export class DeviceOperaService {
         this.result = [];
 
         options.forEach((option: DeviceOptions) => {
-            const item = new KeyItemOption(this.currentOperate, this.keysCache, option);
+            const item = new KeyItemOption(
+                this.currentOperate,
+                this.keysCache,
+                option
+            );
 
             this.result.push(item);
         });
@@ -297,7 +314,9 @@ export class DeviceOperaService {
             .post(deviceUrl, cmd)
             .toPromise()
             .then((res: { status: number; message: string }) => {
-                const data = this.result.map((item: KeyItemOption) => item.getOptions());
+                const data = this.result.map((item: KeyItemOption) =>
+                    item.getOptions()
+                );
 
                 this.updateResult(data);
             });
