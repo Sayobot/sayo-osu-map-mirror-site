@@ -5,6 +5,9 @@ import {
     DownloadService,
     ServerMangeService
 } from '@app/shared/service';
+import { MapDetail } from '@app/shared/models';
+import { MapDetailComponent } from '@app/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'preview-card',
@@ -21,7 +24,8 @@ export class PreviewCardComponent implements OnInit {
         private maps: MapService,
         private musicBox: PlayMusicService,
         private download: DownloadService,
-        public serverMange: ServerMangeService
+        public serverMange: ServerMangeService,
+        public dialog: MatDialog
     ) {}
 
     ngOnInit() {}
@@ -59,7 +63,25 @@ export class PreviewCardComponent implements OnInit {
 
     // 打开详情
     opneMapDetail(id: number) {
-        this.maps.getMapDetail(id);
+        this.maps.getMapDetail(id).subscribe((res: MapDetail) => {
+            if (res.status === 0) {
+                this.maps.detail = res.data;
+                this.openMapDetailDialog(id, this.maps.detail);
+            }
+        });
+    }
+
+    openMapDetailDialog(id: number, detail: MapDetail) {
+        this.dialog.open(MapDetailComponent, {
+            panelClass: 'no-padding-dialog',
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            width: '1080px',
+            data: {
+                id: id,
+                content: detail
+            }
+        });
     }
 
     play() {

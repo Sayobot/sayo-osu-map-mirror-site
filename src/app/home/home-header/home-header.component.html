@@ -10,7 +10,7 @@
                 <button mat-button [matMenuTriggerFor]="langMenu">
                     {{ "header.Language" | translate }}
                 </button>
-                <button mat-button (click)="dialog.supprot()">
+                <button mat-button (click)="openSupperDialog()">
                     {{ "header.support" | translate }}
                 </button>
                 <button mat-button [matMenuTriggerFor]="appMenu">
@@ -24,7 +24,7 @@
         <button mat-menu-item [matMenuTriggerFor]="langMenu">
             {{ "header.Language" | translate }}
         </button>
-        <button mat-menu-item (click)="dialog.supprot()">
+        <button mat-menu-item (click)="openSupperDialog()">
             {{ "header.support" | translate }}
         </button>
         <button mat-menu-item [matMenuTriggerFor]="appMenu">
@@ -33,11 +33,11 @@
     </mat-menu>
 
     <mat-menu #appMenu="matMenu">
-        <button mat-menu-item (click)="dialog.help()">
+        <button mat-menu-item (click)="openHelpDialog()">
             <mat-icon>help</mat-icon>
             <span>{{ "header.help" | translate }}</span>
         </button>
-        <button mat-menu-item (click)="dialog.about()">
+        <button mat-menu-item (click)="openAboutDialog()">
             <mat-icon>person</mat-icon>
             <span>{{ "header.about" | translate }}</span>
         </button>

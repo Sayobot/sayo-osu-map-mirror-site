@@ -19,7 +19,10 @@ export class AuthService {
             this.router.navigate(['/admin']);
         }
 
-        if (username === this.mockAdminUsername && password === this.mockAdminPassword) {
+        if (
+            username === this.mockAdminUsername &&
+            password === this.mockAdminPassword
+        ) {
             this.isAdminLogin = true;
             sessionStorage.setItem('isAdminLogin', 'true');
             this.router.navigate(['/admin']);

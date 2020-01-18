@@ -1,6 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { PlayMusicService, ClipboardService, DownloadService, ServerMangeService } from '@app/shared/service';
+import {
+    PlayMusicService,
+    ClipboardService,
+    DownloadService,
+    ServerMangeService
+} from '@app/shared/service';
 
 import { MapDetailChild } from 'app/shared/models';
 
@@ -36,7 +41,9 @@ export class MapDetailComponent implements OnInit {
 
     // 点击下载事件
     onDownLoad(url: string) {
-        this.download.downloadFile(`${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`);
+        this.download.downloadFile(
+            `${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`
+        );
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
             this.isMapDownload = false;
@@ -46,7 +53,9 @@ export class MapDetailComponent implements OnInit {
 
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
-        this.download.downloadFile(`${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`);
+        this.download.downloadFile(
+            `${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`
+        );
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
             this.isMapUnvedioDownload = false;
@@ -93,10 +102,14 @@ export class MapDetailComponent implements OnInit {
     // 试听歌曲
     playPart() {
         this.musicBox.play();
-        this.parttime = Math.floor(this.musicBox.musicEl.duration) - Math.floor(this.musicBox.musicEl.currentTime);
+        this.parttime =
+            Math.floor(this.musicBox.musicEl.duration) -
+            Math.floor(this.musicBox.musicEl.currentTime);
         this.musicTimer = setInterval(() => {
             this.parttime =
-                Math.floor(this.musicBox.musicEl.duration) - Math.floor(this.musicBox.musicEl.currentTime) - 1;
+                Math.floor(this.musicBox.musicEl.duration) -
+                Math.floor(this.musicBox.musicEl.currentTime) -
+                1;
             if (this.parttime === 0) {
                 clearInterval(this.musicTimer);
                 this.musicTimer = null;
@@ -113,6 +126,8 @@ export class MapDetailComponent implements OnInit {
     }
 
     shared() {
-        this.clipBoard.copy(`https://${this.config.domain}/?search=${this.data.id}`);
+        this.clipBoard.copy(
+            `https://${this.config.domain}/?search=${this.data.id}`
+        );
     }
 }

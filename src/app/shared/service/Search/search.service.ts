@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DialogService } from '../DialogService';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
     providedIn: 'root'
@@ -27,17 +27,22 @@ export class SearchService {
     constructor(
         @Inject('BASE_CONFIG') private config,
         private http: HttpClient,
-        private dialog: DialogService,
-        private router: Router
+        private dialog: MatDialog // private router: Router
     ) {}
 
     // 获取搜索结果
-    getSearch(key) {
+    // getSearch(key) {
+    //     this.resetSearchData(key);
+    //     this.searchKey.match(/[\d]/gi)
+    //         ? this.getSearchInfo()
+    //         : this.getSearchList();
+    //     this.router.navigate(['home/search']);
+    // }
+
+    resetSearchData(key: string) {
         this.searchEndId = 0;
         this.searchMap = [];
         this.searchKey = key;
-        this.searchKey.match(/[\d]/gi) ? this.getSearchInfo() : this.getSearchList();
-        this.router.navigate(['home/search']);
     }
 
     setParams = (str) => (this.params = str);
@@ -49,23 +54,28 @@ export class SearchService {
                 0: `${this.searchKey}`
             }
         };
-        this.http.get(this.config.detail, OPTIONS).subscribe((res: any) => {
-            if (res.status === 0) {
-                const detail = res.data;
-                const id = detail.sid;
-                this.dialog.mapDetail(id, detail);
-            }
-            if (res.status === -1) {
-                this.getSearchList();
-            }
-        });
+        return this.http.get(this.config.detail, OPTIONS);
+
+        // .subscribe((res: any) => {
+        //     if (res.status === 0) {
+        //         const detail = res.data;
+        //         const id = detail.sid;
+        //         this.openMapDetailDialog(id, detail);
+        //     }
+        //     if (res.status === -1) {
+        //         this.getSearchList();
+        //     }
+        // });
     }
 
     // 获取搜索列表
     getSearchList(type: string = 'next') {
         switch (type) {
             case 'after':
-                this.searchEndId = this.searchEndId === this.limit_count ? 0 : this.searchEndId - 2 * this.limit_count;
+                this.searchEndId =
+                    this.searchEndId === this.limit_count
+                        ? 0
+                        : this.searchEndId - 2 * this.limit_count;
                 break;
             case 'next':
                 break;
@@ -84,17 +94,19 @@ export class SearchService {
 
         Object.assign(OPTIONS.params, this.params);
 
-        this.http.get(this.config.list, OPTIONS).subscribe((res: any) => {
-            if (res.status === 0) {
-                this.searchMap = res.data;
-                this.setResInfo(res);
-            } else {
-                this.dialog.notFoundMap(this.searchKey);
-            }
-        });
+        return this.http.get(this.config.list, OPTIONS);
+
+        // .subscribe((res: any) => {
+        //     if (res.status === 0) {
+        //         this.setResInfo(res);
+        //     } else {
+        //         this.openNotFoundMapDialog(this.searchKey);
+        //     }
+        // });
     }
 
     setResInfo(data: any) {
+        this.searchMap = data.data;
         this.searchEndId = data.endid;
         if (data.time_cost >= 0) {
             this.match_artist = data.match_artist_results;

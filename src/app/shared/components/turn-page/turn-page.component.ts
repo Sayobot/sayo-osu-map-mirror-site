@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MapService, SearchService } from '@app/shared/service';
 import { Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { NotFoundMapDialogComponent } from '@app/core';
 
 @Component({
     selector: 'turn-page',
@@ -18,7 +20,8 @@ export class TurnPageComponent implements OnInit {
     constructor(
         private maps: MapService,
         private search: SearchService,
-        public router: Router
+        public router: Router,
+        public dialog: MatDialog
     ) {
         this.nav = this.router.events as Observable<NavigationEnd>;
     }
@@ -69,12 +72,26 @@ export class TurnPageComponent implements OnInit {
                 this.maps.getHotMap(type);
                 break;
             case 'search':
-                this.search.getSearchList(type);
+                this.search.getSearchList(type).subscribe((res: any) => {
+                    if (res.status === 0) {
+                        this.search.setResInfo(res);
+                    } else {
+                        this.openNotFoundMapDialog(this.search.searchKey);
+                    }
+                });
                 break;
             default:
                 break;
         }
 
         this.setEndId();
+    }
+
+    openNotFoundMapDialog(key: string) {
+        this.dialog.open(NotFoundMapDialogComponent, {
+            data: {
+                key: key
+            }
+        });
     }
 }
