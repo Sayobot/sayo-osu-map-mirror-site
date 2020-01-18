@@ -6,22 +6,21 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-
-<!-- web的更新数据 -->
-<mat-list>
-    <ng-container *ngFor="let updata of updataList">
-        <h3 mat-subheader>{{updata.time}}</h3>
-        <mat-list-item *ngFor="let item of updata.detail">
-            <h4 mat-line>{{item}}</h4>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-    </ng-container>
-</mat-list>
-
-
+<ng-container *ngIf="updated?.updateData">
+    <!-- web的更新数据 -->
+    <mat-list>
+        <ng-container *ngFor="let updata of updated?.updateData">
+            <h3 mat-subheader>{{updata.time}}</h3>
+            <mat-list-item *ngFor="let item of updata.detail">
+                <h4 mat-line>{{item}}</h4>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </mat-list>
+</ng-container>
 
 <!-- sayobot 的更新数据  未整理 -->
-<h3>Soyobot 的更新日志</h3>
+<!-- <h3>Soyobot 的更新日志</h3>
 <mat-accordion displayMode="flat" *ngIf="updataList">
 
     <mat-expansion-panel>
@@ -417,4 +416,4 @@
         </div>
     </mat-expansion-panel>
 
-</mat-accordion>
+</mat-accordion> -->

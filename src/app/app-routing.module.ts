@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundPageComponent } from 'app/core/components/not-found-page';
+import { UpdatedLogComponent } from './pages';
 
 const appRoutes: Routes = [
     {
@@ -8,11 +9,10 @@ const appRoutes: Routes = [
         loadChildren: () =>
             import('./admin/admin.module').then((m) => m.AdminModule)
     },
-    // {
-    //     path: 'update',
-    //     component: UpdatedLogComponent
-    //     // loadChildren: () => import('./update/update-log.module').then((m) => m.UpdateLogModule)
-    // },
+    {
+        path: 'update',
+        component: UpdatedLogComponent
+    },
     {
         path: 'device',
         loadChildren: () =>
