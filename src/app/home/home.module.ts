@@ -3,7 +3,6 @@ import { SharedModule } from 'app/shared';
 import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeListComponent } from './home-list.component';
-import { HomeHeaderComponent } from './home-header';
 import { HomeFooterComponent } from './home-footer';
 import { HomeMainComponent } from './home-main';
 import { NewMapComponent } from './new-map';
@@ -20,7 +19,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 const homeComponents = [
     HomeListComponent,
-    HomeHeaderComponent,
     HomeFooterComponent,
     HomeMainComponent,
     NewMapComponent,

@@ -1,3 +1,4 @@
+export * from './header';
 export * from './tags';
 export * from './detail-info';
 export * from './difficulty-table';
