@@ -6,6 +6,7 @@ import { OwnMaterialModule } from './module/own-material.module';
 
 import {
     HeaderComponent,
+    FooterComponent,
     TagsComponent,
     DetailInfoComponent,
     DifficultyTableComponent,
@@ -28,6 +29,7 @@ export const MODULES = [
 
 export const COMPONENTS = [
     HeaderComponent,
+    FooterComponent,
     TagsComponent,
     DetailInfoComponent,
     DifficultyTableComponent,
