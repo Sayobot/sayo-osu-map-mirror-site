@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
@@ -10,11 +10,11 @@ import {
 } from '@app/core';
 
 @Component({
-    selector: 'home-header',
-    templateUrl: './home-header.component.html',
-    styleUrls: ['./home-header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
-export class HomeHeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit {
     language: Array<any>;
 
     constructor(

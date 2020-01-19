@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { OwnMaterialModule } from './module/own-material.module';
 
 import {
+    HeaderComponent,
     TagsComponent,
     DetailInfoComponent,
     DifficultyTableComponent,
@@ -26,6 +27,7 @@ export const MODULES = [
 ];
 
 export const COMPONENTS = [
+    HeaderComponent,
     TagsComponent,
     DetailInfoComponent,
     DifficultyTableComponent,
