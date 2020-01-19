@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
         <div class="home">
             <app-header></app-header>
             <home-main></home-main>
-            <home-footer></home-footer>
+            <app-footer></app-footer>
         </div>
     `,
     styleUrls: ['./home-list.component.scss']
