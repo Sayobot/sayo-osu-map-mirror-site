@@ -9,7 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class SupportSayobotComponent implements OnInit {
     supportData: any = [];
 
-    constructor(@Inject('BASE_CONFIG') private config, private http: HttpClient) {}
+    constructor(
+        @Inject('BASE_CONFIG') private config,
+        private http: HttpClient
+    ) {}
 
     ngOnInit() {
         this.getSupportList();

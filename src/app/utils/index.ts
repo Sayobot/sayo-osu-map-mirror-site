@@ -3,7 +3,10 @@
  * @param num 一个数字
  * @param scale 进制
  */
-export function numSeparate2SystemArr(num: number, scale: number = 2): number[] {
+export function numSeparate2SystemArr(
+    num: number,
+    scale: number = 2
+): number[] {
     const numArr = num
         .toString(scale)
         .split('')
@@ -26,7 +29,11 @@ export function numSeparate2SystemArr(num: number, scale: number = 2): number[] 
  * @param origin 原来的进制位
  * @param target 目标进制位
  */
-export function coverNumberSystem(n: number, origin: number = 10, target: number = 2) {
+export function coverNumberSystem(
+    n: number,
+    origin: number = 10,
+    target: number = 2
+) {
     let res: number;
     if (origin !== 10) {
         n = parseInt(n.toString(), origin);

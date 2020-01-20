@@ -10,9 +10,9 @@
     <!-- web的更新数据 -->
     <mat-list>
         <ng-container *ngFor="let updata of updated?.updateData">
-            <h3 mat-subheader>{{updata.time}}</h3>
+            <h3 mat-subheader>{{ updata.time }}</h3>
             <mat-list-item *ngFor="let item of updata.detail">
-                <h4 mat-line>{{item}}</h4>
+                <h4 mat-line>{{ item }}</h4>
             </mat-list-item>
             <mat-divider></mat-divider>
         </ng-container>

@@ -8,13 +8,13 @@
             </button>
             <div class="big-menus">
                 <button mat-button [matMenuTriggerFor]="langMenu">
-                    {{ "header.Language" | translate }}
+                    {{ 'header.Language' | translate }}
                 </button>
                 <button mat-button (click)="openSupperDialog()">
-                    {{ "header.support" | translate }}
+                    {{ 'header.support' | translate }}
                 </button>
                 <button mat-button [matMenuTriggerFor]="appMenu">
-                    {{ "header.setting" | translate }}
+                    {{ 'header.setting' | translate }}
                 </button>
             </div>
         </mat-toolbar-row>
@@ -22,50 +22,53 @@
 
     <mat-menu #menu="matMenu">
         <button mat-menu-item [matMenuTriggerFor]="langMenu">
-            {{ "header.Language" | translate }}
+            {{ 'header.Language' | translate }}
         </button>
         <button mat-menu-item (click)="openSupperDialog()">
-            {{ "header.support" | translate }}
+            {{ 'header.support' | translate }}
         </button>
         <button mat-menu-item [matMenuTriggerFor]="appMenu">
-            {{ "header.setting" | translate }}
+            {{ 'header.setting' | translate }}
         </button>
     </mat-menu>
 
     <mat-menu #appMenu="matMenu">
         <button mat-menu-item (click)="openHelpDialog()">
             <mat-icon>help</mat-icon>
-            <span>{{ "header.help" | translate }}</span>
+            <span>{{ 'header.help' | translate }}</span>
         </button>
         <button mat-menu-item (click)="openAboutDialog()">
             <mat-icon>person</mat-icon>
-            <span>{{ "header.about" | translate }}</span>
+            <span>{{ 'header.about' | translate }}</span>
         </button>
         <button mat-menu-item>
             <mat-icon>update</mat-icon>
             <a routerLink="/update" class="no-link">{{
-                "header.update" | translate
+                'header.update' | translate
             }}</a>
         </button>
         <button mat-menu-item>
             <mat-icon>update</mat-icon>
             <a routerLink="/device" class="no-link">{{
-                "header.device" | translate
+                'header.device' | translate
             }}</a>
         </button>
         <button mat-menu-item disabled style="color: #aaa">
             <mat-icon>share</mat-icon>
-            <span>{{ "header.share" | translate }}</span>
+            <span>{{ 'header.share' | translate }}</span>
         </button>
         <button mat-menu-item [matMenuTriggerFor]="lineMenu">
             <mat-icon>rotate_left</mat-icon>
-            <span>{{ "header.line" | translate }}</span>
+            <span>{{ 'header.line' | translate }}</span>
         </button>
     </mat-menu>
 
     <mat-menu #lineMenu="matMenu">
-        <button mat-menu-item *ngFor="let server of serverMange.serveList"
-            (click)="serverMange.changeServer(server.server)">
+        <button
+            mat-menu-item
+            *ngFor="let server of serverMange.serveList"
+            (click)="serverMange.changeServer(server.server)"
+        >
             <mat-icon>
                 <ng-container *ngIf="server.isSelect">
                     check
@@ -76,8 +79,13 @@
     </mat-menu>
 
     <mat-menu #langMenu="matMenu">
-        <button mat-menu-item *ngFor="let item of language" (click)="useLanguage(item.key)">
-            <mat-icon><img [src]="item.flag" alt="item.key" /></mat-icon>{{ item.title }}
+        <button
+            mat-menu-item
+            *ngFor="let item of language"
+            (click)="useLanguage(item.key)"
+        >
+            <mat-icon><img [src]="item.flag" alt="item.key"/></mat-icon
+            >{{ item.title }}
         </button>
     </mat-menu>
 </header>
