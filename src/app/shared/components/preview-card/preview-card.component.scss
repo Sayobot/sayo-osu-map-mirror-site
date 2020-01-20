@@ -6,7 +6,6 @@
     position: relative;
 
     .pre-data {
-
         dd,
         dt,
         h3 {
@@ -17,7 +16,7 @@
     .pre-img {
         cursor: pointer;
         filter: brightness(1);
-        transition: all .3s;
+        transition: all 0.3s;
 
         &:hover {
             filter: brightness(0.7);
@@ -26,11 +25,11 @@
 
     .status {
         position: absolute;
-        left: .5rem;
-        top: .5rem;
+        left: 0.5rem;
+        top: 0.5rem;
         background: rgba(0, 0, 0, 0.7);
-        border-radius: .5rem;
-        padding: .15rem .5rem;
+        border-radius: 0.5rem;
+        padding: 0.15rem 0.5rem;
         color: #fff;
         z-index: 1;
         font-size: 0.6em;
@@ -42,8 +41,8 @@
 
     .player-count {
         position: absolute;
-        right: .5rem;
-        top: .5rem;
+        right: 0.5rem;
+        top: 0.5rem;
         border-radius: 50%;
         color: #fff;
         display: inline-flex;
@@ -57,7 +56,7 @@
 
     .favorite-count {
         position: absolute;
-        right: .5rem;
+        right: 0.5rem;
         top: 2rem;
         border-radius: 50%;
         color: #fff;
@@ -85,11 +84,11 @@
     }
 
     dl {
-        padding: 0 .5em;
+        padding: 0 0.5em;
         margin-bottom: 5px;
 
         dt {
-            font-size: .8em;
+            font-size: 0.8em;
 
             h3 {
                 margin: 5px 0;
@@ -99,7 +98,7 @@
 
         dd {
             @include text-one-line;
-            font-size: .65em;
+            font-size: 0.65em;
             margin: 0;
         }
     }

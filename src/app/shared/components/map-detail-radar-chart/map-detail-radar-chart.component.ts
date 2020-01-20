@@ -28,8 +28,12 @@ export class MapDetailRadarChartComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {
-        this.radarEchart = echarts.init(document.getElementById('map-detail-radar-echart'));
-        this.curveEchart = echarts.init(document.getElementById('map-detail-curve-echart'));
+        this.radarEchart = echarts.init(
+            document.getElementById('map-detail-radar-echart')
+        );
+        this.curveEchart = echarts.init(
+            document.getElementById('map-detail-curve-echart')
+        );
         this.update();
     }
 
@@ -57,7 +61,9 @@ export class MapDetailRadarChartComponent implements OnInit {
         const mapdata = this._mapData;
         const aim = mapdata.strain_aim.split('');
         const speed = mapdata.strain_speed.split('');
-        const total = aim.map((count, index) => Number(count) + Number(speed[index]));
+        const total = aim.map(
+            (count, index) => Number(count) + Number(speed[index])
+        );
         curve_option.series[0].data = total;
         this.curveEchart.setOption(curve_option);
     }

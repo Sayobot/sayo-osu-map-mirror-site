@@ -10,7 +10,7 @@ export class Options {
         this.title = obj.title;
         this.value = obj.value;
 
-        obj.options.forEach(element => {
+        obj.options.forEach((element) => {
             const option = new Option(element, this);
             this.options.push(option);
         });
@@ -19,15 +19,15 @@ export class Options {
     }
 
     onOptionChange() {
-        const arr = this.options.filter(option => option.select);
+        const arr = this.options.filter((option) => option.select);
         this._key = 0;
-        arr.forEach(option => {
+        arr.forEach((option) => {
             this._key += option.key;
         });
     }
 
     reset() {
-        this.options.forEach(option => option.select = true);
+        this.options.forEach((option) => (option.select = true));
         this.onOptionChange();
     }
 

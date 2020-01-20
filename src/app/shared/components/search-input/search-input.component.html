@@ -1,24 +1,47 @@
 <div class="seach-wrapper">
-    <input type="text" class="search-input" #download [placeholder]="'searchInput.placeholder' | translate" (keyup.enter)="onSearch(download.value)" (focus)="showOptions()">
-    <mat-icon (click)="onSearch(download.value)" class="search-button"><img src="/assets/img/icon/search.png">
+    <input
+        type="text"
+        class="search-input"
+        #download
+        [placeholder]="'searchInput.placeholder' | translate"
+        (keyup.enter)="onSearch(download.value)"
+        (focus)="showOptions()"
+    />
+    <mat-icon (click)="onSearch(download.value)" class="search-button"
+        ><img src="/assets/img/icon/search.png" />
     </mat-icon>
 
     <mat-card *ngIf="isShow" class="search-card">
         <mat-card-header>
             <h3>{{ 'searchInput.options' | translate }}</h3>
-            <button mat-stroked-button class="close-options" (click)="hideOptions()">X</button>
+            <button
+                mat-stroked-button
+                class="close-options"
+                (click)="hideOptions()"
+            >
+                X
+            </button>
         </mat-card-header>
         <mat-card-content>
             <ul class="options">
                 <li *ngFor="let options of filterOptions" class="option">
-                    <label>{{options.title}}：</label>
-                    <mat-checkbox *ngFor="let option of options.options" [(checked)]="option.select" (change)="isSelect($event, option)">{{option.title}}</mat-checkbox>
+                    <label>{{ options.title }}：</label>
+                    <mat-checkbox
+                        *ngFor="let option of options.options"
+                        [(checked)]="option.select"
+                        (change)="isSelect($event, option)"
+                        >{{ option.title }}</mat-checkbox
+                    >
                 </li>
             </ul>
         </mat-card-content>
         <mat-card-actions align="center">
-            <button mat-raised-button (click)="onSearch(download.value)">{{ 'searchInput.search' | translate }}</button>
-            <button mat-raised-button (click)="resetOptions()">{{ 'searchInput.reset' | translate }}</button>
+            <button mat-raised-button (click)="onSearch(download.value)">
+                {{ 'searchInput.search' | translate }}
+            </button>
+            <button mat-raised-button (click)="resetOptions()">
+                {{ 'searchInput.reset' | translate }}
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

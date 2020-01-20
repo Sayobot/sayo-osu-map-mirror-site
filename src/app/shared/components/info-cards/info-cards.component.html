@@ -2,13 +2,21 @@
     <mat-card class="m-b-2 support-sayobot">
         <mat-card-header>
             <mat-card-title>{{ 'support.title' | translate }}</mat-card-title>
-            <mat-card-subtitle>{{ 'support.des' | translate }}</mat-card-subtitle>
+            <mat-card-subtitle>{{
+                'support.des' | translate
+            }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div class="progress-bg">
-                <div class="progress-bar" [ngStyle]="{'width': maps.totalWidth}"></div>
-                <span class="progress-percent">{{maps.totalWidth}}</span>
-                <span class="support">RMB {{maps.support.total}}/RMB {{maps.support.target}}</span>
+                <div
+                    class="progress-bar"
+                    [ngStyle]="{ width: maps.totalWidth }"
+                ></div>
+                <span class="progress-percent">{{ maps.totalWidth }}</span>
+                <span class="support"
+                    >RMB {{ maps.support.total }}/RMB
+                    {{ maps.support.target }}</span
+                >
             </div>
         </mat-card-content>
     </mat-card>
@@ -21,16 +29,17 @@
             <div class="wrapper">
                 <ng-container *ngIf="maps.publics as publics">
                     <div *ngFor="let public of publics" class="public-item">
-                        <h2>{{public.title}}</h2>
-                        <span class="auther">{{public.user_id}}：{{public.date}}</span>
-                        <pre>{{public.content}}</pre>
+                        <h2>{{ public.title }}</h2>
+                        <span class="auther"
+                            >{{ public.user_id }}：{{ public.date }}</span
+                        >
+                        <pre>{{ public.content }}</pre>
                         <div *ngFor="let item of public.img">
-                            <img [src]="item.url" alt="">
+                            <img [src]="item.url" alt="" />
                         </div>
                     </div>
                 </ng-container>
             </div>
-
         </mat-card-content>
     </mat-card>
 </div>

@@ -8,7 +8,8 @@ import { SearchMapComponent } from './search-map';
 
 const homeRoute: Routes = [
     {
-        path: 'home', component: HomeListComponent,
+        path: 'home',
+        component: HomeListComponent,
         children: [
             { path: '', redirectTo: 'new', pathMatch: 'full' },
             { path: 'new', component: NewMapComponent },
@@ -23,4 +24,4 @@ const homeRoute: Routes = [
     imports: [RouterModule.forChild(homeRoute)],
     exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}

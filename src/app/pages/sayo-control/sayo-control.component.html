@@ -2,20 +2,37 @@
     <mat-card-header>
         <mat-card-title>
             点击刷新按钮来刷新设备列表
-            <button mat-button (click)="getDeviceList()" mat-stroked-button>刷新</button>
+            <button mat-button (click)="getDeviceList()" mat-stroked-button>
+                刷新
+            </button>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <ng-container *ngIf="device?.devices">
             <ul class="connect-list">
-                <li *ngFor="let item of device?.devices; let index = index" class="connect-item">
-                    {{item?.product_string}}
+                <li
+                    *ngFor="let item of device?.devices; let index = index"
+                    class="connect-item"
+                >
+                    {{ item?.product_string }}
 
                     <div class="actions">
-                        <button mat-raised-button (click)="connect(item?.path, index)" color="accent"
-                            [disabled]="device?.isConnect">Connect</button>
-                        <button mat-raised-button (click)="close()" color="accent"
-                            [disabled]="!device?.isConnect || index !== current">Close</button>
+                        <button
+                            mat-raised-button
+                            (click)="connect(item?.path, index)"
+                            color="accent"
+                            [disabled]="device?.isConnect"
+                        >
+                            Connect
+                        </button>
+                        <button
+                            mat-raised-button
+                            (click)="close()"
+                            color="accent"
+                            [disabled]="!device?.isConnect || index !== current"
+                        >
+                            Close
+                        </button>
                     </div>
                 </li>
             </ul>
@@ -27,16 +44,24 @@
                 <mat-list-item>
                     <mat-icon mat-list-icon>note</mat-icon>
                     <h4 mat-line>
-                        是否启动了 Sayo_control_Cli.exe 服务，可以点击这里下载该服务
-                        <button mat-button (click)="onDownload()">Click me!!!</button>
+                        是否启动了 Sayo_control_Cli.exe
+                        服务，可以点击这里下载该服务
+                        <button mat-button (click)="onDownload()">
+                            Click me!!!
+                        </button>
                     </h4>
                 </mat-list-item>
                 <mat-list-item>
                     <mat-icon mat-list-icon>note</mat-icon>
                     <h4 mat-line>
                         是否正确的插入了触盘，没有的话可以到这里购买
-                        <a href="https://shop129081486.taobao.com/
-                        " target="_blank" rel="noopener noreferrer">Click me!!!</a>
+                        <a
+                            href="https://shop129081486.taobao.com/
+                        "
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Click me!!!</a
+                        >
                     </h4>
                 </mat-list-item>
             </mat-list>
@@ -52,8 +77,15 @@
     </mat-card-header>
 
     <mat-card-content>
-        <button mat-raised-button *ngFor="let btn of device.operates" (click)="getKeyItem(btn)"
-            [disabled]="isSelect && device.currentOperate.cmd !== btn.cmd" color="accent">{{btn.title}}</button>
+        <button
+            mat-raised-button
+            *ngFor="let btn of device.operates"
+            (click)="getKeyItem(btn)"
+            [disabled]="isSelect && device.currentOperate.cmd !== btn.cmd"
+            color="accent"
+        >
+            {{ btn.title }}
+        </button>
     </mat-card-content>
 </mat-card>
 
@@ -72,14 +104,22 @@
             <div class="target" *ngFor="let keyItemOption of device.result">
                 <div class="item">
                     <ng-container *ngIf="keyItemOption.mode as mode">
-                        <div class="th">{{mode.th}}</div>
+                        <div class="th">{{ mode.th }}</div>
                         <div class="td">
-                            <span *ngIf="!mode.isEdit" (click)="isEdit(mode)">{{mode.td}}</span>
+                            <span *ngIf="!mode.isEdit" (click)="isEdit(mode)">{{
+                                mode.td
+                            }}</span>
                             <mat-form-field *ngIf="mode.isEdit">
-                                <mat-select placeholder="请选择模式" [(value)]="mode.code"
-                                    (openedChange)="onSelect($event, mode)">
-                                    <mat-option *ngFor="let option of mode.options" [value]="option.code">
-                                        {{option.name}}
+                                <mat-select
+                                    placeholder="请选择模式"
+                                    [(value)]="mode.code"
+                                    (openedChange)="onSelect($event, mode)"
+                                >
+                                    <mat-option
+                                        *ngFor="let option of mode.options"
+                                        [value]="option.code"
+                                    >
+                                        {{ option.name }}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -87,23 +127,43 @@
                     </ng-container>
                 </div>
                 <div *ngFor="let item of keyItemOption.keyItems" class="item">
-                    <div class="th">{{item.th}}</div>
+                    <div class="th">{{ item.th }}</div>
                     <div class="td">
-                        <span *ngIf="!item.isEdit" (click)="isEdit(item)">{{item.td}}</span>
+                        <span *ngIf="!item.isEdit" (click)="isEdit(item)">{{
+                            item.td
+                        }}</span>
                         <mat-form-field *ngIf="item.isEdit && !item.multiple">
-                            <mat-select placeholder="请选择按键" [(value)]="item.code"
-                                (openedChange)="onSelect($event, item, keyItemOption)">
-                                <mat-option *ngFor="let option of item.options" [value]="option.code">
-                                    {{option.name}}
+                            <mat-select
+                                placeholder="请选择按键"
+                                [(value)]="item.code"
+                                (openedChange)="
+                                    onSelect($event, item, keyItemOption)
+                                "
+                            >
+                                <mat-option
+                                    *ngFor="let option of item.options"
+                                    [value]="option.code"
+                                >
+                                    {{ option.name }}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
 
                         <mat-form-field *ngIf="item.isEdit && item.multiple">
-                            <mat-select placeholder="请选择按键" multiple #multi [(value)]="item.code"
-                                (openedChange)="onSelectMulti($event, keyItemOption)">
-                                <mat-option *ngFor="let option of item.options" [value]="option.code">
-                                    {{option.name}}
+                            <mat-select
+                                placeholder="请选择按键"
+                                multiple
+                                #multi
+                                [(value)]="item.code"
+                                (openedChange)="
+                                    onSelectMulti($event, keyItemOption)
+                                "
+                            >
+                                <mat-option
+                                    *ngFor="let option of item.options"
+                                    [value]="option.code"
+                                >
+                                    {{ option.name }}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
