@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceOperaService, DownloadService } from '@app/shared/service';
+import { DeviceOperaService } from '@app/shared/service';
 import { Operate, KeyItem } from '@app/shared/models';
+import * as myUtils from '@app/utils';
 
 @Component({
     selector: 'app-sayo-control',
@@ -11,10 +12,7 @@ export class SayoControlComponent implements OnInit {
     current: number;
     isSelect = false;
 
-    constructor(
-        public device: DeviceOperaService,
-        private download: DownloadService
-    ) {}
+    constructor(public device: DeviceOperaService) {}
 
     ngOnInit() {
         this.device.assetsCache();
@@ -117,6 +115,6 @@ export class SayoControlComponent implements OnInit {
      */
     onDownload() {
         const url = '/assets/sayo_control.rar';
-        this.download.downloadFile(url);
+        myUtils.downloadFile(url);
     }
 }

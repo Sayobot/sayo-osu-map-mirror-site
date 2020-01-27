@@ -8,6 +8,7 @@ import {
 import { MapDetail } from '@app/shared/models';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
+import * as myUtils from '@app/utils';
 
 @Component({
     selector: 'preview-card',
@@ -102,7 +103,7 @@ export class PreviewCardComponent implements OnInit {
     }
 
     onDownLoad(url: string) {
-        this.download.downloadFile(
+        myUtils.downloadFile(
             `${url}${this.preview.sid}?server=${this.serverMange.currentServer}`
         );
     }

@@ -3,10 +3,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
     PlayMusicService,
     ClipboardService,
-    DownloadService,
     ServerMangeService
 } from '@app/shared/service';
-
+import * as myUtils from '@app/utils';
 import { MapDetailChild } from 'app/shared/models';
 
 @Component({
@@ -33,7 +32,6 @@ export class MapDetailComponent implements OnInit {
         @Inject('BASE_CONFIG') public config,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private musicBox: PlayMusicService,
-        private download: DownloadService,
         public serverMange: ServerMangeService,
         private clipBoard: ClipboardService,
         private detailDialog: MatDialogRef<MapDetailComponent>
@@ -41,7 +39,7 @@ export class MapDetailComponent implements OnInit {
 
     // 点击下载事件
     onDownLoad(url: string) {
-        this.download.downloadFile(
+        myUtils.downloadFile(
             `${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`
         );
         this.isMapDownload = true;
@@ -53,7 +51,7 @@ export class MapDetailComponent implements OnInit {
 
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
-        this.download.downloadFile(
+        myUtils.downloadFile(
             `${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`
         );
         this.isMapUnvedioDownload = true;
