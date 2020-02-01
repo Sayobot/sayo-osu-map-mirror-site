@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Server } from './class/server.class';
 import { HttpClient } from '@angular/common/http';
-import { LocalStorageService } from '../LocalStorage';
 
 @Injectable({
     providedIn: 'root'
@@ -12,19 +11,18 @@ export class ServerMangeService {
 
     constructor(
         @Inject('BASE_CONFIG') private config,
-        private http: HttpClient,
-        private local: LocalStorageService
+        private http: HttpClient
     ) {
         this.getServerList();
         setTimeout(() => {
-            this.local.getItem('server')
-                ? this.changeServer(this.local.getItem('server'))
+            localStorage.getItem('server')
+                ? this.changeServer(localStorage.getItem('server'))
                 : this.saveServer();
         }, 500);
     }
 
     saveServer() {
-        this.local.setItem('server', this.currentServer);
+        localStorage.setItem('server', this.currentServer);
     }
 
     getServerList() {

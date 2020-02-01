@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { LocalStorageService } from '@app/shared/service/LocalStorage';
 
 @Component({
     selector: 'app-help-dialog',
@@ -8,19 +7,14 @@ import { LocalStorageService } from '@app/shared/service/LocalStorage';
 })
 export class HelpDialogComponent implements OnInit {
     checked: boolean;
-    domain: string;
-    constructor(
-        public local: LocalStorageService,
-        @Inject('BASE_CONFIG') private config
-    ) {}
+
+    constructor() {}
 
     ngOnInit() {
-        this.checked = this.local.getItem('isShow') === 'true' ? true : false;
-        this.domain = this.config.domain;
+        this.checked = localStorage.getItem('isShow') === 'true' ? true : false;
     }
 
     statusChange() {
-        const key = String(this.checked);
-        this.local.setItem('isShow', key);
+        localStorage.setItem('isShow', this.checked.toString());
     }
 }

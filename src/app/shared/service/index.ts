@@ -1,7 +1,6 @@
 export * from './Clipboard';
 export * from './CommonFnService';
 export * from './Device';
-export * from './LocalStorage';
 export * from './MapService';
 export * from './PlayMusicService';
 export * from './Responsive';
