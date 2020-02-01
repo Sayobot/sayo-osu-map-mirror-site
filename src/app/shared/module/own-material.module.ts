@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { MatNativeDateModule } from '@angular/material/core';
@@ -26,7 +27,6 @@ import { MatSelectModule } from '@angular/material/select';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { MatSliderModule } from '@angular/material/slider';
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { MatSortModule } from '@angular/material/sort';
 // import { MatStepperModule } from '@angular/material/stepper';
 // import { MatTableModule } from '@angular/material/table';
@@ -51,7 +51,8 @@ const MATERIAL_MODULE = [
     MatMenuModule,
     MatProgressBarModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule
 
     // MatAutocompleteModule,
     // MatFormFieldModule,

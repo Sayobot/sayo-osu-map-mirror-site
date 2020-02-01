@@ -14,11 +14,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
 
 @Component({
-    selector: 'home-main',
-    templateUrl: './home-main.component.html',
-    styleUrls: ['./home-main.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
-export class HomeMainComponent implements OnInit {
+export class HomeComponent implements OnInit {
     searchKey: string; // 搜搜关键字
 
     constructor(
