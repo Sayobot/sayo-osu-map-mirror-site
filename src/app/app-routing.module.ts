@@ -3,12 +3,24 @@ import { Routes, RouterModule } from '@angular/router';
 import {
     UpdatedLogComponent,
     SayoControlComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    HomeComponent,
+    HotMapComponent,
+    NewMapComponent,
+    SearchMapComponent
 } from './pages';
-import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
-    { path: 'home', component: AppComponent },
+    {
+        path: 'home',
+        component: HomeComponent,
+        children: [
+            { path: 'new', component: NewMapComponent },
+            { path: 'hot', component: HotMapComponent },
+            { path: 'search', component: SearchMapComponent },
+            { path: '', redirectTo: 'new', pathMatch: 'full' }
+        ]
+    },
     { path: 'update', component: UpdatedLogComponent },
     { path: 'device', component: SayoControlComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,5 +37,9 @@ export class AppRoutingModule {}
 export const COMPONENTS = [
     UpdatedLogComponent,
     SayoControlComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    HomeComponent,
+    HotMapComponent,
+    NewMapComponent,
+    SearchMapComponent
 ];
