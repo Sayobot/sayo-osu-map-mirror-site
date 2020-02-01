@@ -1,12 +1,8 @@
 @import '../../core';
 
-p {
+.content {
     text-indent: $text-indent;
     line-height: $text-line-height;
-}
-
-a {
-    @include link-btn();
 }
 
 .no-show {
@@ -14,6 +10,6 @@ a {
 }
 
 .actions {
-    @include flex-layout();
-    @include box-model($p: 2em, $b: 0);
+    padding: 2em;
+    width: 100%;
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
-import { LocalStorageService, ServerMangeService } from '@app/shared/service';
+import { ServerMangeService } from '@app/shared/service';
 import {
     HelpDialogComponent,
     SupportSayobotComponent,
@@ -14,11 +14,10 @@ import {
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
     language: Array<any>;
 
     constructor(
-        private local: LocalStorageService,
         public serverMange: ServerMangeService,
         private translate: TranslateService,
         private dialog: MatDialog
@@ -27,14 +26,14 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         this.language = language;
 
-        if (this.local.getItem('language')) {
-            const lang = this.local.getItem('language');
+        if (localStorage.getItem('language')) {
+            const lang = localStorage.getItem('language');
             this.useLanguage(lang);
         }
     }
 
     useLanguage(lang) {
-        this.local.setItem('language', lang);
+        localStorage.setItem('language', lang);
         this.translate.setDefaultLang(lang);
     }
 
@@ -63,8 +62,8 @@ export class HeaderComponent implements OnInit {
 
     isShowHelpDialog() {
         return (
-            !this.local.getItem('isShow') ||
-            this.local.getItem('isShow') === 'false'
+            !localStorage.getItem('isShow') ||
+            localStorage.getItem('isShow') === 'false'
         );
     }
 

@@ -1,7 +1,9 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import './app/theme/common'; // 通用
-@import './app/theme/scrollbar'; // 滚动条
-@import './app/theme/dialog'; // 弹窗
+@import './app/theme/common';
+@import './app/theme/scrollbar';
+@import './app/theme/dialog';
+@import './app/theme/position';
+@import './app/theme/text';
 
 // CSS reset
 * {
@@ -38,30 +40,6 @@ dd {
 
 a {
     text-decoration: none;
-}
-
-// 布局
-.flex-spacer {
-    flex: 1;
-}
-
-// 去除图片造成的文字空隙
-.img-box {
-    font-size: 0;
-}
-
-.m-y-1 {
-    margin-top: 4px;
-    margin-bottom: 4px;
-}
-
-.m-y-2 {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.m-b-2 {
-    margin-bottom: 8px;
 }
 
 body,
