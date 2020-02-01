@@ -3,14 +3,11 @@ import { OPTIONS_META } from './search-input.meta';
 import { Options } from './class/options';
 import { Option } from './class/option';
 import { MatCheckbox } from '@angular/material/checkbox';
-import {
-    MapService,
-    SearchService,
-    CommonFnService
-} from '@app/shared/service';
+import { MapService, SearchService } from '@app/shared/service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
+import * as utils from '@app/utils';
 
 @Component({
     selector: 'search-input',
@@ -27,7 +24,6 @@ export class SearchInputComponent implements OnInit {
     constructor(
         public maps: MapService,
         public search: SearchService,
-        private common: CommonFnService,
         private router: Router,
         public dialog: MatDialog
     ) {}
@@ -111,7 +107,7 @@ export class SearchInputComponent implements OnInit {
 
     changeOptions() {
         const arr = this.filterOptions.map((options: Options) => options.key);
-        const params = this.common.fromEntries(arr);
+        const params = utils.fromEntries(arr);
         this.search.setParams(params);
     }
 
