@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import {
     MapService,
     PlayMusicService,
-    DownloadService,
     ServerMangeService
 } from '@app/shared/service';
 import { MapDetail } from '@app/shared/models';
@@ -24,7 +23,6 @@ export class PreviewCardComponent implements OnInit {
         @Inject('BASE_CONFIG') public config,
         private maps: MapService,
         private musicBox: PlayMusicService,
-        private download: DownloadService,
         public serverMange: ServerMangeService,
         public dialog: MatDialog
     ) {}
