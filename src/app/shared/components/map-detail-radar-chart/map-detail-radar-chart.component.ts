@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-declare const echarts: any;
 import { radar_option, curve_option } from './models';
+import { init } from 'echarts';
 
 @Component({
     selector: 'map-detail-radar-chart',
@@ -28,11 +28,11 @@ export class MapDetailRadarChartComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {
-        this.radarEchart = echarts.init(
-            document.getElementById('map-detail-radar-echart')
+        this.radarEchart = init(
+            document.getElementById('map-detail-radar-echart') as HTMLDivElement
         );
-        this.curveEchart = echarts.init(
-            document.getElementById('map-detail-curve-echart')
+        this.curveEchart = init(
+            document.getElementById('map-detail-curve-echart') as HTMLDivElement
         );
         this.update();
     }
