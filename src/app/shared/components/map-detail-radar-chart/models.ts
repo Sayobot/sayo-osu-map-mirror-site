@@ -1,5 +1,4 @@
 export const radar_option = {
-    tooltip: {},
     radar: {
         name: {
             textStyle: {
