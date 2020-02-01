@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+/**
+ * 解决 剪贴板 的兼容性问题
+ */
+
 interface Clipboard {
     writeText(newClipText: string): Promise<void>;
 }

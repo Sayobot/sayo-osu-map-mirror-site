@@ -1,7 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
     providedIn: 'root'
@@ -26,18 +24,8 @@ export class SearchService {
 
     constructor(
         @Inject('BASE_CONFIG') private config,
-        private http: HttpClient,
-        private dialog: MatDialog // private router: Router
+        private http: HttpClient
     ) {}
-
-    // 获取搜索结果
-    // getSearch(key) {
-    //     this.resetSearchData(key);
-    //     this.searchKey.match(/[\d]/gi)
-    //         ? this.getSearchInfo()
-    //         : this.getSearchList();
-    //     this.router.navigate(['home/search']);
-    // }
 
     resetSearchData(key: string) {
         this.searchEndId = 0;
@@ -55,17 +43,6 @@ export class SearchService {
             }
         };
         return this.http.get(this.config.detail, OPTIONS);
-
-        // .subscribe((res: any) => {
-        //     if (res.status === 0) {
-        //         const detail = res.data;
-        //         const id = detail.sid;
-        //         this.openMapDetailDialog(id, detail);
-        //     }
-        //     if (res.status === -1) {
-        //         this.getSearchList();
-        //     }
-        // });
     }
 
     // 获取搜索列表
@@ -95,14 +72,6 @@ export class SearchService {
         Object.assign(OPTIONS.params, this.params);
 
         return this.http.get(this.config.list, OPTIONS);
-
-        // .subscribe((res: any) => {
-        //     if (res.status === 0) {
-        //         this.setResInfo(res);
-        //     } else {
-        //         this.openNotFoundMapDialog(this.searchKey);
-        //     }
-        // });
     }
 
     setResInfo(data: any) {

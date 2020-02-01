@@ -1,5 +1,4 @@
 export * from './Clipboard';
-export * from './CommonFnService';
 export * from './Device';
 export * from './MapService';
 export * from './PlayMusicService';

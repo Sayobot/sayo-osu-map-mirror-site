@@ -54,3 +54,15 @@ export function downloadFile(url: string) {
     a.click();
     document.body.removeChild(a);
 }
+
+/**
+ * 将键值对列表转化为对象
+ * @param arr 键值对列表
+ */
+export function fromEntries(arr: any) {
+    const obj = {};
+    arr.forEach((element) => {
+        obj[element[0]] = element[1];
+    });
+    return obj;
+}
