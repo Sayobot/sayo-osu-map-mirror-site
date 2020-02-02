@@ -9,6 +9,12 @@ import {
     AboutDialogComponent
 } from '@app/core';
 
+const dialog_common_config = {
+    height: '98%',
+    maxHeight: '98%',
+    width: '700px'
+};
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -38,26 +44,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     openHelpDialog() {
-        this.dialog.open(HelpDialogComponent, {
-            maxWidth: '98%',
-            width: '700px'
-        });
+        this.dialog.open(HelpDialogComponent, dialog_common_config);
     }
 
     openSupperDialog() {
-        this.dialog.open(SupportSayobotComponent, {
-            height: '98%',
-            maxHeight: '98%',
-            width: '700px'
-        });
+        this.dialog.open(SupportSayobotComponent, dialog_common_config);
     }
 
     openAboutDialog() {
-        this.dialog.open(AboutDialogComponent, {
-            maxWidth: '98%',
-            width: '700px',
-            maxHeight: '98%'
-        });
+        this.dialog.open(AboutDialogComponent, dialog_common_config);
     }
 
     isShowHelpDialog() {
