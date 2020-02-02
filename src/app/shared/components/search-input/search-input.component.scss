@@ -19,6 +19,16 @@
         cursor: pointer;
         z-index: 1;
     }
+    .icon-toggle-option {
+        position: absolute;
+        top: 8px;
+        right: 34px;
+        cursor: pointer;
+        z-index: 1;
+    }
+    .icon-option-open {
+        background: gray;
+    }
     mat-card-header {
         position: relative;
         .close-options {

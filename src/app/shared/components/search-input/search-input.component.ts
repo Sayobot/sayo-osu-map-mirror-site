@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { OPTIONS_META } from './search-input.meta';
-import { Options } from './class/options';
-import { Option } from './class/option';
-import { MatCheckbox } from '@angular/material/checkbox';
-import { MapService, SearchService } from '@app/shared/service';
+import {
+    OPTIONS_META,
+    Options,
+    Option,
+    OptionPanel
+} from './search-input.meta';
+import { SearchService } from '@app/shared/service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
@@ -16,13 +18,13 @@ import * as utils from '@app/utils';
 })
 export class SearchInputComponent implements OnInit {
     searchKey: string; // 搜搜关键字
-    isShow = false; // 是否显示
     filterOptions: Array<Options> = []; // 选项组
+
+    panel: OptionPanel;
 
     @Output() searchChange: EventEmitter<string> = new EventEmitter();
 
     constructor(
-        public maps: MapService,
         public search: SearchService,
         private router: Router,
         public dialog: MatDialog
@@ -53,7 +55,7 @@ export class SearchInputComponent implements OnInit {
 
         this.router.navigate(['home/search']);
         this.searchChange.emit(this.searchKey);
-        this.hideOptions();
+        this.panel.close();
     }
 
     getSearchList() {
@@ -80,11 +82,7 @@ export class SearchInputComponent implements OnInit {
     }
 
     openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, {
-            data: {
-                key: key
-            }
-        });
+        this.dialog.open(NotFoundMapDialogComponent, { data: { key: key } });
     }
 
     getFilterOptions() {
@@ -95,7 +93,7 @@ export class SearchInputComponent implements OnInit {
         });
     }
 
-    isSelect(event: MatCheckbox, option: Option) {
+    isSelect(event: any, option: Option) {
         option.isSelect(event.checked);
         this.changeOptions();
     }
@@ -111,10 +109,8 @@ export class SearchInputComponent implements OnInit {
         this.search.setParams(params);
     }
 
-    showOptions = () => (this.isShow = true);
-    hideOptions = () => (this.isShow = false);
-
     ngOnInit() {
+        this.panel = new OptionPanel();
         this.getFilterOptions();
         this.changeOptions();
     }
