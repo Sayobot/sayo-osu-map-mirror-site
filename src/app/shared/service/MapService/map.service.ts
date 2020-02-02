@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MapDetail } from 'app/shared/models';
+import { MapSidDetail } from 'app/shared/models';
 import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
@@ -33,7 +33,7 @@ export class MapService {
                 0: id.toString()
             }
         };
-        return this.http.get<MapDetail>(this.config.detail, OPTIONS);
+        return this.http.get<MapSidDetail>(this.config.detail, OPTIONS);
     }
 
     // 获得最新图

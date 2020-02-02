@@ -4,7 +4,6 @@ import {
     PlayMusicService,
     ServerMangeService
 } from '@app/shared/service';
-import { MapDetail } from '@app/shared/models';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as myUtils from '@app/utils';
@@ -62,7 +61,7 @@ export class PreviewCardComponent implements OnInit {
 
     // 打开详情
     opneMapDetail(id: number) {
-        this.maps.getMapDetail(id).subscribe((res: MapDetail) => {
+        this.maps.getMapDetail(id).subscribe((res: any) => {
             if (res.status === 0) {
                 this.maps.detail = res.data;
                 this.openMapDetailDialog(id, this.maps.detail);
@@ -70,7 +69,7 @@ export class PreviewCardComponent implements OnInit {
         });
     }
 
-    openMapDetailDialog(id: number, detail: MapDetail) {
+    openMapDetailDialog(id: number, detail: any) {
         this.dialog.open(MapDetailComponent, {
             panelClass: 'no-padding-dialog',
             maxWidth: '100vw',
