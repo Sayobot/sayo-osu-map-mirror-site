@@ -6,7 +6,6 @@ import {
     ServerMangeService
 } from '@app/shared/service';
 import * as myUtils from '@app/utils';
-import { MapDetailChild } from 'app/shared/models';
 
 @Component({
     selector: 'app-map-detail',
@@ -17,7 +16,7 @@ export class MapDetailComponent implements OnInit {
     mapDetail: any; // 铺面详情
     imgUrl: string; // 图片链接
     parttime: number; // 试听剩余时间
-    detailInfo: MapDetailChild;
+    detailInfo: any;
 
     // 下载状态
     isMapDownload = false; // 是否正在下载
