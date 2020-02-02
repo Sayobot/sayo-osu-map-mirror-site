@@ -1,4 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MapBidDetail } from '@app/shared/models';
+
+const MODE_TIP = {
+    0: 'O',
+    1: 'T',
+    2: 'C',
+    3: 'M'
+};
 
 @Component({
     selector: 'difficulty-table',
@@ -6,42 +14,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./difficulty-table.component.scss']
 })
 export class DifficultyTableComponent implements OnInit {
-    @Input() maps: any;
-    @Output() difficultChange: EventEmitter<number> = new EventEmitter();
+    // 铺面难度列表
+    @Input() bidDataList: MapBidDetail[];
 
-    currentIndex = 0;
+    // 切换难度
+    @Output() switch: EventEmitter<MapBidDetail> = new EventEmitter();
+
+    // 当前选中的
+    result: MapBidDetail;
 
     constructor() {}
 
-    ngOnInit() {}
-
-    select(index: number) {
-        this.currentIndex = index;
-        this.difficultChange.emit(index);
+    ngOnInit() {
+        this.result = this.bidDataList[0];
     }
 
-    getStar(star: number): string {
-        return star.toFixed(2);
+    select(bidData: MapBidDetail) {
+        this.result = bidData;
+        this.switch.emit(this.result);
     }
 
-    getTip(map): string {
-        let tip: string;
-        switch (map.mode) {
-            case 0:
-                tip = 'O';
-                break;
-            case 1:
-                tip = 'T';
-                break;
-            case 2:
-                tip = 'C';
-                break;
-            case 3:
-                tip = 'M';
-                break;
-            default:
-                break;
-        }
-        return tip;
+    modeTip(map: MapBidDetail): string {
+        return MODE_TIP[map.mode];
     }
 }

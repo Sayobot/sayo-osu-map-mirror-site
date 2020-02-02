@@ -5,7 +5,8 @@
         <span class="sid-float">SID : {{ data.id }}</span>
         <map-tags [content]="mapDetail.tags" (searchChange)="onTagSearch()"></map-tags>
         <img [src]="imgUrl" alt="" />
-        <difficulty-table [maps]="mapDetail" (difficultChange)="difficultChange($event)"></difficulty-table>
+        <difficulty-table [bidDataList]="mapDetail.bid_data" (switch)="difficultChange($event)">
+        </difficulty-table>
     </div>
 
     <div class="detail">

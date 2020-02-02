@@ -1,12 +1,6 @@
-<div class="difficult-table" *ngIf="maps">
-    <button
-        mat-raised-button
-        color="accent"
-        [matBadge]="getTip(map)"
-        matBadgePosition="after"
-        *ngFor="let map of maps.bid_data; let index = index"
-        (click)="select(index)"
-    >
-        {{ getStar(map.star) }}
+<div class="difficult-table" *ngIf="bidDataList">
+    <button *ngFor="let item of bidDataList" matBadgePosition="after" mat-raised-button color="accent"
+        [matBadge]="modeTip(item)" (click)="select(item)">
+        {{ item.star | number: '1.2-2' }}
     </button>
 </div>
