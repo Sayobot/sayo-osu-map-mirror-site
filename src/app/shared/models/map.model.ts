@@ -23,6 +23,7 @@
  * @param tags 标签字符串
  * @param language 语言
  * @param genre 风格
+ * @param bid_data 难度详情列表
  * @example {
  *  sid: 163112
  *  local_update: 1580646455
@@ -45,6 +46,7 @@
  *  tags: "monthly beatmapping contest electronic folk pop w_h_i_t_e"
  *  language: 2
  *  genre: 5
+ *  bid_data: [ MapBidDetail list ]
  * }
  */
 export interface MapSidDetail {
@@ -69,6 +71,7 @@ export interface MapSidDetail {
     tags: string;
     language: number;
     genre: number;
+    bid_data: MapBidDetail[];
 }
 
 /**
@@ -166,19 +169,7 @@ export interface MapBidDetail {
  * @example {
  *   status: 0
  *   endid: 20,
- *   data: [{
- *    sid: 320118
- *    modes: 1
- *    approved: 1
- *    lastupdate: 1449873487
- *    title: "No title"
- *    artist: "Reol"
- *    titleU: "No title"
- *    artistU: "Reol"
- *    creator: "VINXIS"
- *    favourite_count: 10759
- *    order: 57614501
- *  }]
+ *   data: [ PreMap list ]
  * }
  */
 export interface PreMapList {

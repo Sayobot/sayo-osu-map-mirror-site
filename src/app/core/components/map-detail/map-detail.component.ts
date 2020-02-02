@@ -6,6 +6,7 @@ import {
     ServerMangeService
 } from '@app/shared/service';
 import * as myUtils from '@app/utils';
+import { MapSidDetail, MapBidDetail } from '@app/shared/models';
 
 @Component({
     selector: 'app-map-detail',
@@ -13,7 +14,7 @@ import * as myUtils from '@app/utils';
     styleUrls: ['./map-detail.component.scss']
 })
 export class MapDetailComponent implements OnInit {
-    mapDetail: any; // 铺面详情
+    mapDetail: MapSidDetail; // 铺面详情
     imgUrl: string; // 图片链接
     parttime: number; // 试听剩余时间
     detailInfo: any;
@@ -60,8 +61,8 @@ export class MapDetailComponent implements OnInit {
         }, 15000);
     }
 
-    difficultChange(index: number) {
-        this.detailInfo = this.mapDetail.bid_data[index];
+    difficultChange(bidData: MapBidDetail) {
+        this.detailInfo = bidData;
     }
 
     onTagSearch() {
