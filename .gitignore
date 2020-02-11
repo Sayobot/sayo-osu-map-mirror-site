@@ -41,3 +41,8 @@ Thumbs.db
 # 测试硬件
 hidapi.dll
 hidtest.exe
+Sayo_control_CLI.exe
+
+# lock file
+package-lock.json
+yarn.lock
