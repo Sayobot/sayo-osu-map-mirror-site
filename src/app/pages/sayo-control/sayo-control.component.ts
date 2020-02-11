@@ -114,7 +114,7 @@ export class SayoControlComponent implements OnInit {
      * 下载 sayo_control_cli
      */
     onDownload() {
-        const url = '/assets/sayo_control.rar';
+        const url = '/assets/sayo_control_cli.zip';
         myUtils.downloadFile(url);
     }
 }
