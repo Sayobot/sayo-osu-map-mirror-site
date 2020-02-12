@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "prettier": "prettier --write src/**/*"
+        "prettier": "prettier --write src/**/*",
+        "bundle-analyze": "webpack-bundle-analyzer dist/sayobot/stats.json"
     },
     "private": true,
     "dependencies": {
@@ -51,6 +52,7 @@
         "protractor": "^5.4.3",
         "ts-node": "~8.3.0",
         "tslint": "~5.18.0",
-        "typescript": "3.4.5"
+        "typescript": "3.4.5",
+        "webpack-bundle-analyzer": "^3.6.0"
     }
 }
