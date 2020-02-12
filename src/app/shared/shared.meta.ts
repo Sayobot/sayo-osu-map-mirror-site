@@ -15,7 +15,7 @@ import {
     PreviewCardComponent,
     SearchInputComponent,
     InfoCardsComponent,
-    MusicBoxComponent
+    SearchStatisComponent
 } from './components';
 
 export const MODULES = [
@@ -38,5 +38,5 @@ export const COMPONENTS = [
     PreviewCardComponent,
     SearchInputComponent,
     InfoCardsComponent,
-    MusicBoxComponent
+    SearchStatisComponent
 ];

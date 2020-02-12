@@ -1,0 +1,10 @@
+<div class="results" *ngIf="search.searchMap.length > 0">
+    匹配到歌手<span>{{ search.match_artist }}</span
+    >个, 匹配到作图者<span>{{ search.match_creator }}</span
+    >个, 匹配到标签<span>{{ search.match_tags }}</span
+    >个, 匹配到标题<span>{{ search.match_title }}</span
+    >个, 匹配到难度<span>{{ search.match_version }}</span
+    >个, 总共匹配到<span>{{ search.results_count }}</span
+    >个, 搜索耗时<span>{{ search.time_cost }}</span
+    >ms
+</div>

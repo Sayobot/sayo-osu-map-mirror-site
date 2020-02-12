@@ -8,3 +8,4 @@ export * from './map-detail-radar-chart';
 export * from './preview-card';
 export * from './search-input';
 export * from './info-cards';
+export * from './search-statis';
