@@ -11,13 +11,14 @@ import { SharedModule } from './shared';
 
 import { COMPONENTS } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
+import { MapsBoxComponent } from './pages/home/maps-box/maps-box.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-    declarations: [AppComponent, ...COMPONENTS, HomeComponent],
+    declarations: [AppComponent, ...COMPONENTS, HomeComponent, MapsBoxComponent],
     imports: [
         CoreModule,
         SharedModule,

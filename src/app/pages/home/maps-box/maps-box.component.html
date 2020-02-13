@@ -1,0 +1,42 @@
+<ng-container *ngIf="mapType === 'hot' && maps.hotMap">
+    <div class="map-content">
+        <mat-grid-list
+            [cols]="responsive.cols"
+            gutterSize=".3em"
+            rowHeight="900: 480"
+        >
+            <mat-grid-tile *ngFor="let map of maps.hotMap">
+                <preview-card [preview]="map"></preview-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="mapType === 'new' && maps.newMap">
+    <div class="map-content" *ngIf="maps.newMap">
+        <mat-grid-list
+            [cols]="responsive.cols"
+            gutterSize=".3em"
+            rowHeight="900: 480"
+        >
+            <mat-grid-tile *ngFor="let map of maps.newMap">
+                <preview-card [preview]="map"></preview-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="mapType === 'search' && search.searchMap">
+    <div class="map-content">
+        <search-statis></search-statis>
+        <mat-grid-list
+            rowHeight="900: 480"
+            gutterSize=".3em"
+            [cols]="responsive.cols"
+        >
+            <mat-grid-tile *ngFor="let map of search.searchMap">
+                <preview-card [preview]="map"></preview-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</ng-container>
