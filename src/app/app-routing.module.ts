@@ -5,25 +5,14 @@ import {
     SayoControlComponent,
     NotFoundPageComponent,
     HomeComponent,
-    HotMapComponent,
-    NewMapComponent,
-    SearchMapComponent
+    MapsBoxComponent
 } from './pages';
 
 const appRoutes: Routes = [
-    {
-        path: 'home',
-        component: HomeComponent,
-        children: [
-            { path: 'new', component: NewMapComponent },
-            { path: 'hot', component: HotMapComponent },
-            { path: 'search', component: SearchMapComponent },
-            { path: '', redirectTo: 'new', pathMatch: 'full' }
-        ]
-    },
+    { path: 'home/:type', component: HomeComponent },
     { path: 'update', component: UpdatedLogComponent },
     { path: 'device', component: SayoControlComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'home/new', pathMatch: 'full' },
     { path: '**', component: NotFoundPageComponent }
 ];
 
@@ -39,7 +28,5 @@ export const COMPONENTS = [
     SayoControlComponent,
     NotFoundPageComponent,
     HomeComponent,
-    HotMapComponent,
-    NewMapComponent,
-    SearchMapComponent
+    MapsBoxComponent
 ];
