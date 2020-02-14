@@ -238,7 +238,7 @@ export interface PreMap {
 
  * }
  */
-export interface SearchMapResult extends ResponseBase<MapSidDetail> {
+export interface SearchMapResult extends ResponseBase<MapSidDetail[]> {
     time_cost: number;
     results: number;
     match_title_results: number;

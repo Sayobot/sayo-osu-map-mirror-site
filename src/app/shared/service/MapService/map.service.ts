@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapSidDetail } from 'app/shared/models';
-import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
     providedIn: 'root'
@@ -20,8 +19,7 @@ export class MapService {
 
     constructor(
         @Inject('BASE_CONFIG') private config,
-        private http: HttpClient,
-        private dialog: MatDialog
+        private http: HttpClient
     ) {
         this.limit = 20;
     }
