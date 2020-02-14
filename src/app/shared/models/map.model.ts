@@ -1,3 +1,5 @@
+import { ResponseBase } from './base.model';
+
 /**
  * ==============================================================
  * 铺面集合详情
@@ -219,4 +221,29 @@ export interface PreMap {
     sid: number;
     title: string;
     titleU: string;
+}
+
+/**
+ * ==============================================================
+ * 搜索结果统计
+ * ==============================================================
+ * @param time_cost 耗时
+ * @param results 结果总量
+ * @param match_title_results 匹配标题
+ * @param match_artist_results 匹配歌手
+ * @param match_creator_results 匹配创作者
+ * @param match_version_results 匹配难度
+ * @param match_tags_results 匹配标签
+ * @example {
+
+ * }
+ */
+export interface SearchMapResult extends ResponseBase<MapSidDetail> {
+    time_cost: number;
+    results: number;
+    match_title_results: number;
+    match_artist_results: number;
+    match_creator_results: number;
+    match_version_results: number;
+    match_tags_results: number;
 }

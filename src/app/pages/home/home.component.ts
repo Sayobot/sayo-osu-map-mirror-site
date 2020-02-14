@@ -6,12 +6,11 @@ import {
     ResponsiveService
 } from '@app/shared/service';
 
-import { Router } from '@angular/router';
-
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
+import { MapSidDetail } from '@app/shared/models';
 
 @Component({
     selector: 'app-home',
@@ -23,9 +22,8 @@ export class HomeComponent implements OnInit {
 
     constructor(
         public maps: MapService,
-        public search: SearchService,
+        public searchService: SearchService,
         private activeRoute: ActivatedRoute,
-        private router: Router,
         public responsive: ResponsiveService,
         public dialog: MatDialog
     ) {}
@@ -33,24 +31,11 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.activeRoute.queryParams.subscribe((params) => {
             if (params.search) {
-                this.search.resetSearchData(params.search);
-
-                if (this.search.searchKey.match(/[\d]/gi)) {
-                    this.search.getSearchInfo().subscribe((res: any) => {
-                        if (res.status === 0) {
-                            const detail = res.data;
-                            const id = detail.sid;
-                            this.openMapDetailDialog(id, detail);
-                        }
-                        if (res.status === -1) {
-                            this.getSearchList();
-                        }
-                    });
-                } else {
-                    this.getSearchList();
-                }
-
-                this.router.navigate(['/home/search']);
+                this.searchService.search(
+                    params.search,
+                    (key) => this.openNotFoundMapDialog(key),
+                    (id, detail) => this.openMapDetailDialog(id, detail)
+                );
             }
         });
 
@@ -62,34 +47,14 @@ export class HomeComponent implements OnInit {
         this.maps.getNewsList();
     }
 
-    getSearchList() {
-        this.search.getSearchList().subscribe((res: any) => {
-            if (res.status === 0) {
-                this.search.setResInfo(res);
-            } else {
-                this.openNotFoundMapDialog(this.search.searchKey);
-            }
-        });
-    }
-
-    openMapDetailDialog(id, detail) {
+    openMapDetailDialog(id: number, detail: MapSidDetail) {
         this.dialog.open(MapDetailComponent, {
-            panelClass: 'no-padding-dialog',
-            maxWidth: '100vw',
-            maxHeight: '100vh',
-            width: '1080px',
-            data: {
-                id: id,
-                content: detail
-            }
+            panelClass: 'common-dialog',
+            data: { id: id, content: detail }
         });
     }
 
     openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, {
-            data: {
-                key: key
-            }
-        });
+        this.dialog.open(NotFoundMapDialogComponent, { data: { key: key } });
     }
 }

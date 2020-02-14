@@ -7,6 +7,17 @@ import {
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as myUtils from '@app/utils';
+import { PreMap } from '@app/shared/models';
+
+enum Approved {
+    graveyard = -2,
+    WIP = -1,
+    pending = 0,
+    ranked = 1,
+    approved = 2,
+    qualified = 3,
+    loved = 4
+}
 
 @Component({
     selector: 'preview-card',
@@ -14,7 +25,7 @@ import * as myUtils from '@app/utils';
     styleUrls: ['./preview-card.component.scss']
 })
 export class PreviewCardComponent implements OnInit {
-    @Input() preview;
+    @Input() preview: PreMap;
 
     musicStatu = false;
 
@@ -31,55 +42,8 @@ export class PreviewCardComponent implements OnInit {
     // 设置图片
     setImgUrl = (sid) => `${this.config.pic}${sid}/covers/cover.webp?0`;
 
-    getStatus() {
-        let statu: string;
-        switch (this.preview.approved) {
-            case 4:
-                statu = 'loved';
-                break;
-            case 3:
-                statu = 'qualified';
-                break;
-            case 2:
-                statu = 'approved';
-                break;
-            case 1:
-                statu = 'ranked';
-                break;
-            case 0:
-                statu = 'pending';
-                break;
-            case -1:
-                statu = 'WIP';
-                break;
-            case -2:
-                statu = 'graveyard';
-                break;
-        }
-        return statu;
-    }
-
-    // 打开详情
-    opneMapDetail(id: number) {
-        this.maps.getMapDetail(id).subscribe((res: any) => {
-            if (res.status === 0) {
-                this.maps.detail = res.data;
-                this.openMapDetailDialog(id, this.maps.detail);
-            }
-        });
-    }
-
-    openMapDetailDialog(id: number, detail: any) {
-        this.dialog.open(MapDetailComponent, {
-            panelClass: 'no-padding-dialog',
-            maxWidth: '100vw',
-            maxHeight: '100vh',
-            width: '1080px',
-            data: {
-                id: id,
-                content: detail
-            }
-        });
+    get approved() {
+        return Approved[this.preview.approved];
     }
 
     play() {
@@ -94,9 +58,7 @@ export class PreviewCardComponent implements OnInit {
     }
 
     isPlay() {
-        return this.preview.sid === this.musicBox.sid && this.musicStatu
-            ? true
-            : false;
+        return this.preview.sid === this.musicBox.sid && this.musicStatu;
     }
 
     onDownLoad(url: string) {
@@ -122,5 +84,21 @@ export class PreviewCardComponent implements OnInit {
 
     showMania(modes: number) {
         return modes >= 8;
+    }
+
+    opneMapDetail(id: number) {
+        this.maps.getMapDetail(id).subscribe((res: any) => {
+            if (res.status === 0) {
+                this.maps.detail = res.data;
+                this.openMapDetailDialog(id, this.maps.detail);
+            }
+        });
+    }
+
+    openMapDetailDialog(id: number, detail: any) {
+        this.dialog.open(MapDetailComponent, {
+            panelClass: 'common-dialog',
+            data: { id: id, content: detail }
+        });
     }
 }

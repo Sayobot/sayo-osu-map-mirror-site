@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
 import * as utils from '@app/utils';
+import { MapSidDetail } from '@app/shared/models';
 
 @Component({
     selector: 'search-input',
@@ -25,7 +26,7 @@ export class SearchInputComponent implements OnInit {
     @Output() searchChange: EventEmitter<string> = new EventEmitter();
 
     constructor(
-        public search: SearchService,
+        public searchService: SearchService,
         private router: Router,
         public dialog: MatDialog
     ) {}
@@ -36,48 +37,20 @@ export class SearchInputComponent implements OnInit {
             .replace(/["]/gi, '')
             .replace(/(^\s*)|(\s*$)/gi, '');
 
-        this.search.resetSearchData(this.searchKey);
+        this.searchService.search(
+            this.searchKey,
+            (key) => this.openNotFoundMapDialog(key),
+            (id, detail) => this.openMapDetailDialog(id, detail)
+        );
 
-        if (this.search.searchKey.match(/[\d]/gi)) {
-            this.search.getSearchInfo().subscribe((res: any) => {
-                if (res.status === 0) {
-                    const detail = res.data;
-                    const id = detail.sid;
-                    this.openMapDetailDialog(id, detail);
-                }
-                if (res.status === -1) {
-                    this.getSearchList();
-                }
-            });
-        } else {
-            this.getSearchList();
-        }
-
-        this.router.navigate(['home/search']);
         this.searchChange.emit(this.searchKey);
         this.panel.close();
     }
 
-    getSearchList() {
-        this.search.getSearchList().subscribe((res: any) => {
-            if (res.status === 0) {
-                this.search.setResInfo(res);
-            } else {
-                this.openNotFoundMapDialog(this.search.searchKey);
-            }
-        });
-    }
-
-    openMapDetailDialog(id, detail) {
+    openMapDetailDialog(id: number, detail: MapSidDetail) {
         this.dialog.open(MapDetailComponent, {
-            panelClass: 'no-padding-dialog',
-            maxWidth: '100vw',
-            maxHeight: '100vh',
-            width: '1080px',
-            data: {
-                id: id,
-                content: detail
-            }
+            panelClass: 'common-dialog',
+            data: { id: id, content: detail }
         });
     }
 
@@ -106,7 +79,7 @@ export class SearchInputComponent implements OnInit {
     changeOptions() {
         const arr = this.filterOptions.map((options: Options) => options.key);
         const params = utils.fromEntries(arr);
-        this.search.setParams(params);
+        this.searchService.setParams(params);
     }
 
     ngOnInit() {

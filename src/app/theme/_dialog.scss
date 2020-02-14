@@ -1,4 +1,6 @@
-// 没有padding
-.no-padding-dialog .mat-dialog-container {
+.common-dialog .mat-dialog-container {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 1080px;
     padding: 0;
 }

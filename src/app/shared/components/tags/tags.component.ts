@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SearchService } from '@app/shared/service';
-import { Router } from '@angular/router';
 import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MapSidDetail } from '@app/shared/models';
 
 @Component({
     selector: 'map-tags',
@@ -16,8 +16,7 @@ export class TagsComponent implements OnInit {
     tags: string[];
 
     constructor(
-        private search: SearchService,
-        private router: Router,
+        private searchService: SearchService,
         public dialog: MatDialog
     ) {}
 
@@ -29,57 +28,23 @@ export class TagsComponent implements OnInit {
         return content ? content.split(' ') : [];
     }
 
-    searchMap(key: string) {
-        this.search.resetSearchData(key);
-
-        if (this.search.searchKey.match(/[\d]/gi)) {
-            this.search.getSearchInfo().subscribe((res: any) => {
-                if (res.status === 0) {
-                    const detail = res.data;
-                    const id = detail.sid;
-                    this.openMapDetailDialog(id, detail);
-                }
-                if (res.status === -1) {
-                    this.getSearchList();
-                }
-            });
-        } else {
-            this.getSearchList();
-        }
-
-        this.router.navigate(['home/search']);
-
+    searchMap(str: string) {
+        this.searchService.search(
+            str,
+            (key) => this.openNotFoundMapDialog(key),
+            (id, detail) => this.openMapDetailDialog(id, detail)
+        );
         this.searchChange.emit();
     }
 
-    getSearchList() {
-        this.search.getSearchList().subscribe((res: any) => {
-            if (res.status === 0) {
-                this.search.setResInfo(res);
-            } else {
-                this.openNotFoundMapDialog(this.search.searchKey);
-            }
-        });
-    }
-
-    openMapDetailDialog(id, detail) {
+    openMapDetailDialog(id: number, detail: MapSidDetail) {
         this.dialog.open(MapDetailComponent, {
-            panelClass: 'no-padding-dialog',
-            maxWidth: '100vw',
-            maxHeight: '100vh',
-            width: '1080px',
-            data: {
-                id: id,
-                content: detail
-            }
+            panelClass: 'common-dialog',
+            data: { id: id, content: detail }
         });
     }
 
     openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, {
-            data: {
-                key: key
-            }
-        });
+        this.dialog.open(NotFoundMapDialogComponent, { data: { key: key } });
     }
 }
