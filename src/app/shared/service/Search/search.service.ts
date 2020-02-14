@@ -1,5 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MapSidDetail } from '@app/shared/models';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -24,8 +26,31 @@ export class SearchService {
 
     constructor(
         @Inject('BASE_CONFIG') private config,
-        private http: HttpClient
+        private http: HttpClient,
+        private router: Router
     ) {}
+
+    search(
+        key: string,
+        notFound: (key: string) => void,
+        openDetail: (id: number, detail: MapSidDetail) => void
+    ) {
+        this.resetSearchData(key);
+
+        if (key.match(/[\d]/gi)) {
+            this.getSearchInfo().subscribe((res: any) => {
+                if (res.status === 0) {
+                    openDetail(res.data.sid, res.data);
+                } else if (res.status === -1) {
+                    this.getSearchList(notFound);
+                }
+            });
+        } else {
+            this.getSearchList(notFound);
+        }
+
+        this.router.navigate(['home/search']);
+    }
 
     resetSearchData(key: string) {
         this.searchEndId = 0;
@@ -46,7 +71,7 @@ export class SearchService {
     }
 
     // 获取搜索列表
-    getSearchList(type: string = 'next') {
+    getSearchList(notFound: (key: string) => void, type: string = 'next') {
         switch (type) {
             case 'after':
                 this.searchEndId =
@@ -71,7 +96,13 @@ export class SearchService {
 
         Object.assign(OPTIONS.params, this.params);
 
-        return this.http.get(this.config.list, OPTIONS);
+        return this.http
+            .get(this.config.list, OPTIONS)
+            .subscribe((res: any) => {
+                res.status === 0
+                    ? this.setResInfo(res)
+                    : notFound(this.searchKey);
+            });
     }
 
     setResInfo(data: any) {
@@ -87,4 +118,6 @@ export class SearchService {
             this.time_cost = data.time_cost;
         }
     }
+
+    getSearchStatis() {}
 }

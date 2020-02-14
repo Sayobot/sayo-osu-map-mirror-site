@@ -72,26 +72,16 @@ export class TurnPageComponent implements OnInit {
                 this.maps.getHotMap(type);
                 break;
             case 'search':
-                this.search.getSearchList(type).subscribe((res: any) => {
-                    if (res.status === 0) {
-                        this.search.setResInfo(res);
-                    } else {
-                        this.openNotFoundMapDialog(this.search.searchKey);
-                    }
-                });
+                this.search.getSearchList((key: string) => {
+                    this.dialog.open(NotFoundMapDialogComponent, {
+                        data: { key: key }
+                    });
+                }, type);
                 break;
             default:
                 break;
         }
 
         this.setEndId();
-    }
-
-    openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, {
-            data: {
-                key: key
-            }
-        });
     }
 }

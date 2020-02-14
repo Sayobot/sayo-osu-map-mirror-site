@@ -1,5 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ResponsiveService, SearchService } from '@app/shared/service';
+import { Component, OnInit, Input } from '@angular/core';
+
+interface Statis {
+    time_cost: number;
+    results: number;
+    match_title_results: number;
+    match_artist_results: number;
+    match_creator_results: number;
+    match_version_results: number;
+    match_tags_results: number;
+}
 
 @Component({
     selector: 'search-statis',
@@ -7,10 +16,9 @@ import { ResponsiveService, SearchService } from '@app/shared/service';
     styleUrls: ['./search-statis.component.scss']
 })
 export class SearchStatisComponent implements OnInit {
-    constructor(
-        public responsive: ResponsiveService,
-        public search: SearchService
-    ) {}
+    @Input() statis: Statis;
+
+    constructor() {}
 
     ngOnInit() {}
 }
