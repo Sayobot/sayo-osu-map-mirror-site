@@ -11,7 +11,7 @@
  *   "server_nameU": "默认线路"
  * }
  */
-export interface Server {
+export interface ServerItem {
     server: string;
     server_name: string;
     server_nameU: string;

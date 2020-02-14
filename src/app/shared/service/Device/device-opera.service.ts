@@ -10,7 +10,7 @@ import {
     DeviceOptions,
     KeyCode,
     KeyItem
-} from '../../models/devices.model';
+} from '@app/shared/models';
 import { numSeparate2SystemArr } from '@app/utils';
 
 const deviceUrl = `http://127.0.0.1:7296/api/devices`;

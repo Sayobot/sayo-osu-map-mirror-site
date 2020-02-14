@@ -1,28 +1,24 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MapSidDetail } from '@app/shared/models';
+import {
+    MapSidDetail,
+    SearchMapResult,
+    ResponseBase
+} from '@app/shared/models';
 import { Router } from '@angular/router';
+
+const MAP_SIZE = 20;
 
 @Injectable({
     providedIn: 'root'
 })
 export class SearchService {
     // 搜索铺面相关变量
-    searchMap: Array<any> = [];
+    searchResult: SearchMapResult;
+    searchMap: MapSidDetail[] = [];
     searchEndId = 0;
     searchKey: string;
-    params = ''; // 字段
-
-    limit_count = 20;
-
-    // 匹配量
-    match_artist: number;
-    match_creator: number;
-    match_tags: number;
-    match_title: number;
-    match_version: number;
-    results_count: number;
-    time_cost: number;
+    params = {}; // 字段
 
     constructor(
         @Inject('BASE_CONFIG') private config,
@@ -38,13 +34,15 @@ export class SearchService {
         this.resetSearchData(key);
 
         if (key.match(/[\d]/gi)) {
-            this.getSearchInfo().subscribe((res: any) => {
-                if (res.status === 0) {
-                    openDetail(res.data.sid, res.data);
-                } else if (res.status === -1) {
-                    this.getSearchList(notFound);
+            this.getSearchInfo().subscribe(
+                (res: ResponseBase<MapSidDetail>) => {
+                    if (res.status === 0) {
+                        openDetail(res.data.sid, res.data);
+                    } else if (res.status === -1) {
+                        this.getSearchList(notFound);
+                    }
                 }
-            });
+            );
         } else {
             this.getSearchList(notFound);
         }
@@ -52,22 +50,24 @@ export class SearchService {
         this.router.navigate(['home/search']);
     }
 
+    /**
+     * 初始化搜索关键字
+     * @param key 搜索关键字
+     */
     resetSearchData(key: string) {
         this.searchEndId = 0;
         this.searchMap = [];
         this.searchKey = key;
     }
 
-    setParams = (str) => (this.params = str);
+    // 设置搜索参数
+    setParams = (str: Object) => (this.params = str);
 
     // 获取单个搜索信息
     getSearchInfo() {
-        const OPTIONS = {
-            params: {
-                0: `${this.searchKey}`
-            }
-        };
-        return this.http.get(this.config.detail, OPTIONS);
+        return this.http.get(this.config.detail, {
+            params: { 0: `${this.searchKey}` }
+        });
     }
 
     // 获取搜索列表
@@ -75,9 +75,9 @@ export class SearchService {
         switch (type) {
             case 'after':
                 this.searchEndId =
-                    this.searchEndId === this.limit_count
+                    this.searchEndId === MAP_SIZE
                         ? 0
-                        : this.searchEndId - 2 * this.limit_count;
+                        : this.searchEndId - 2 * MAP_SIZE;
                 break;
             case 'next':
                 break;
@@ -87,7 +87,7 @@ export class SearchService {
 
         const OPTIONS = {
             params: {
-                0: this.limit_count.toString(),
+                0: MAP_SIZE.toString(),
                 1: this.searchEndId.toString(),
                 2: '4',
                 3: this.searchKey
@@ -98,26 +98,30 @@ export class SearchService {
 
         return this.http
             .get(this.config.list, OPTIONS)
-            .subscribe((res: any) => {
+            .subscribe((res: SearchMapResult) => {
                 res.status === 0
                     ? this.setResInfo(res)
                     : notFound(this.searchKey);
             });
     }
 
-    setResInfo(data: any) {
+    // 设置搜索信息
+    setResInfo(data: SearchMapResult) {
         this.searchMap = data.data;
         this.searchEndId = data.endid;
-        if (data.time_cost >= 0) {
-            this.match_artist = data.match_artist_results;
-            this.match_creator = data.match_creator_results;
-            this.match_tags = data.match_tags_results;
-            this.match_title = data.match_title_results;
-            this.match_version = data.match_version_results;
-            this.results_count = data.results;
-            this.time_cost = data.time_cost;
-        }
+        this.searchResult = data;
     }
 
-    getSearchStatis() {}
+    // 提取出搜索统计信息
+    getSearchStatis() {
+        const result = this.searchResult;
+        return {
+            time_cost: result.time_cost,
+            match_title_results: result.match_title_results,
+            match_artist_results: result.match_artist_results,
+            match_creator_results: result.match_creator_results,
+            match_version_results: result.match_version_results,
+            match_tags_results: result.match_tags_results
+        };
+    }
 }
