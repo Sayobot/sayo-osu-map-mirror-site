@@ -247,3 +247,16 @@ export interface SearchMapResult extends ResponseBase<MapSidDetail> {
     match_version_results: number;
     match_tags_results: number;
 }
+
+/**
+ * 铺面当前的收录状态
+ */
+export enum Approved {
+    graveyard = -2,
+    WIP = -1,
+    pending = 0,
+    ranked = 1,
+    approved = 2,
+    qualified = 3,
+    loved = 4
+}

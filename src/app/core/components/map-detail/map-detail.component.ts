@@ -6,7 +6,7 @@ import {
     ServerMangeService
 } from '@app/shared/service';
 import * as myUtils from '@app/utils';
-import { MapSidDetail, MapBidDetail } from '@app/shared/models';
+import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
 
 @Component({
     selector: 'app-map-detail',
@@ -17,16 +17,16 @@ export class MapDetailComponent implements OnInit {
     mapDetail: MapSidDetail; // 铺面详情
     imgUrl: string; // 图片链接
     parttime: number; // 试听剩余时间
-    detailInfo: any;
+    detailInfo: MapBidDetail;
 
     // 下载状态
     isMapDownload = false; // 是否正在下载
     isMapUnvedioDownload = false; // 不带视频是否在下载
 
     // 定时器
-    musicTimer: any; // 音乐播放时间
-    mapTimer: any; // 铺面下载定时器
-    mapUnvedioTimer: any; // 不带视频铺面下载
+    musicTimer = null; // 音乐播放时间
+    mapTimer = null; // 铺面下载定时器
+    mapUnvedioTimer = null; // 不带视频铺面下载
 
     constructor(
         @Inject('BASE_CONFIG') public config,
@@ -36,6 +36,10 @@ export class MapDetailComponent implements OnInit {
         private clipBoard: ClipboardService,
         private detailDialog: MatDialogRef<MapDetailComponent>
     ) {}
+
+    get approved() {
+        return Approved[this.mapDetail.approved];
+    }
 
     // 点击下载事件
     onDownLoad(url: string) {
@@ -61,40 +65,14 @@ export class MapDetailComponent implements OnInit {
         }, 15000);
     }
 
+    // 点击难度变更数据
     difficultChange(bidData: MapBidDetail) {
         this.detailInfo = bidData;
     }
 
+    // 点击标签出发搜索后关闭面板
     onTagSearch() {
         this.detailDialog.close();
-    }
-
-    getStatus() {
-        let statu: string;
-        switch (this.mapDetail.approved) {
-            case 4:
-                statu = 'loved';
-                break;
-            case 3:
-                statu = 'qualified';
-                break;
-            case 2:
-                statu = 'approved';
-                break;
-            case 1:
-                statu = 'ranked';
-                break;
-            case 0:
-                statu = 'pending';
-                break;
-            case -1:
-                statu = 'WIP';
-                break;
-            case -2:
-                statu = 'graveyard';
-                break;
-        }
-        return statu;
     }
 
     // 试听歌曲
@@ -123,6 +101,7 @@ export class MapDetailComponent implements OnInit {
         this.detailInfo = this.mapDetail.bid_data[0];
     }
 
+    // 将当前铺面复制到剪切板
     shared() {
         this.clipBoard.copy(
             `https://${this.config.domain}/?search=${this.data.id}`
