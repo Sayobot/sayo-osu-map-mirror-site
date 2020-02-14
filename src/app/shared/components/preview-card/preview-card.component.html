@@ -13,10 +13,22 @@
             <dd>Artist：{{ preview.artist }}</dd>
             <dd>Creator：{{ preview.creator }}</dd>
             <div class="modes">
-                <i class="std mode-icon" *ngIf="showSTD(preview.modes)"></i>
-                <i class="taiko mode-icon" *ngIf="showTaiko(preview.modes)"></i>
-                <i class="catch mode-icon" *ngIf="showCatch(preview.modes)"></i>
-                <i class="mania mode-icon" *ngIf="showMania(preview.modes)"></i>
+                <i
+                    class="std mode-icon"
+                    *ngIf="showModes('std', preview.modes)"
+                ></i>
+                <i
+                    class="taiko mode-icon"
+                    *ngIf="showModes('taiko', preview.modes)"
+                ></i>
+                <i
+                    class="catch mode-icon"
+                    *ngIf="showModes('catch', preview.modes)"
+                ></i>
+                <i
+                    class="mania mode-icon"
+                    *ngIf="showModes('mania', preview.modes)"
+                ></i>
             </div>
         </dl>
         <span class="player-count"

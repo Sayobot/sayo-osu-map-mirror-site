@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SupportDetails, Supports, ResponseBase } from '@app/shared/models';
+
+const supportFrom = ['支付宝', '微信', 'QQ红包'];
 
 @Component({
     selector: 'app-support-sayobot',
@@ -7,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./support-sayobot.component.scss']
 })
 export class SupportSayobotComponent implements OnInit {
-    supportData: any = [];
+    supportData: Supports[] = [];
 
     constructor(
         @Inject('BASE_CONFIG') private config,
@@ -15,47 +18,27 @@ export class SupportSayobotComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.getSupportList();
-    }
-
-    // 获取支持者月份列表
-    getSupportList() {
-        this.http.get(this.config.supportList).subscribe((res: any) => {
-            this.supportData = res.data;
-            this.getSupportDetail();
-        });
+        this.http
+            .get(this.config.supportList)
+            .subscribe((res: ResponseBase<Supports[]>) => {
+                this.supportData = res.data;
+                this.getSupportDetail();
+            });
     }
 
     // 获取支持者详情列表
     getSupportDetail() {
-        this.supportData.forEach((element) => {
-            this.http.get(element.link).subscribe((res: any) => {
-                if (res.data) {
-                    const arr = res.data.sort((a, b) => {
-                        return b.money - a.money;
-                    });
-                    element['detail'] = arr;
-                }
-            });
+        this.supportData.forEach((el: Supports) => {
+            this.http
+                .get(el.link)
+                .subscribe((res: ResponseBase<SupportDetails[]>) => {
+                    el['detail'] = res.data.sort((a, b) => b.money - a.money);
+                });
         });
     }
 
-    // 支持来自哪里 0是支付宝，1是微信，2是QQ红包
-    isFrom(type) {
-        let str: string;
-        switch (type) {
-            case 0:
-                str = '支付宝';
-                break;
-            case 1:
-                str = '微信';
-                break;
-            case 2:
-                str = 'QQ红包';
-                break;
-            default:
-                break;
-        }
-        return str;
+    // 支持来源
+    supportFrom(code: number) {
+        return supportFrom[code];
     }
 }

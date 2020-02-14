@@ -7,17 +7,14 @@ import {
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as myUtils from '@app/utils';
-import { PreMap } from '@app/shared/models';
+import { PreMap, MapSidDetail, Approved } from '@app/shared/models';
 
-enum Approved {
-    graveyard = -2,
-    WIP = -1,
-    pending = 0,
-    ranked = 1,
-    approved = 2,
-    qualified = 3,
-    loved = 4
-}
+const Modes_Config = {
+    std: [1, 3, 5, 7, 9, 11, 13, 15],
+    taiko: [2, 3, 6, 7, 10, 11, 14, 15],
+    catch: [4, 5, 6, 7, 12, 13, 14, 15],
+    mania: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+};
 
 @Component({
     selector: 'preview-card',
@@ -67,23 +64,8 @@ export class PreviewCardComponent implements OnInit {
         );
     }
 
-    showSTD(modes: number) {
-        const std = [1, 3, 5, 7, 9, 11, 13, 15];
-        return std.includes(modes);
-    }
-
-    showTaiko(modes: number) {
-        const taiko = [2, 3, 6, 7, 10, 11, 14, 15];
-        return taiko.includes(modes);
-    }
-
-    showCatch(modes: number) {
-        const catchs = [4, 5, 6, 7, 12, 13, 14, 15];
-        return catchs.includes(modes);
-    }
-
-    showMania(modes: number) {
-        return modes >= 8;
+    showModes(type: string, code: number) {
+        return Modes_Config[type].includes(code);
     }
 
     opneMapDetail(id: number) {
@@ -95,7 +77,7 @@ export class PreviewCardComponent implements OnInit {
         });
     }
 
-    openMapDetailDialog(id: number, detail: any) {
+    openMapDetailDialog(id: number, detail: MapSidDetail) {
         this.dialog.open(MapDetailComponent, {
             panelClass: 'common-dialog',
             data: { id: id, content: detail }
