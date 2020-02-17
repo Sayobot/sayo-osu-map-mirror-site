@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { DIALOG, COMPONENTS, PROVIDES, MODULES } from './core.meta';
 
 // 导入 ng 国际化插件
@@ -26,4 +26,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     exports: [...COMPONENTS],
     providers: [...PROVIDES]
 })
-export class CoreModule {}
+export class CoreModule {
+    constructor(@Optional() @SkipSelf() parent: CoreModule) {
+        if (parent) {
+            throw new Error(
+                'CoreModule already exists and cannot be loaded again!'
+            );
+        }
+    }
+}
