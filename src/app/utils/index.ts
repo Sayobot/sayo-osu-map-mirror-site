@@ -1,3 +1,5 @@
+export * from './svgIcon.utils';
+
 /**
  * 将一个数字拆解成进制数组
  * @param num 一个数字

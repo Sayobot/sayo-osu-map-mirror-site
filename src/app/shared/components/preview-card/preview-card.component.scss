@@ -57,7 +57,7 @@
     .favorite-count {
         position: absolute;
         right: 0.5rem;
-        top: 2rem;
+        top: 2.3rem;
         border-radius: 50%;
         color: #fff;
         display: inline-flex;
@@ -69,7 +69,7 @@
         position: absolute;
         cursor: pointer;
         bottom: 5px;
-        right: 2.5rem;
+        right: 3rem;
         @include font-icon();
         z-index: 1;
     }

@@ -5,6 +5,9 @@ import { DIALOG, COMPONENTS, PROVIDES, MODULES } from './core.meta';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { loadSvgIconResources } from '@app/utils';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -27,11 +30,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     providers: [...PROVIDES]
 })
 export class CoreModule {
-    constructor(@Optional() @SkipSelf() parent: CoreModule) {
+    constructor(
+        @Optional() @SkipSelf() parent: CoreModule,
+        ir: MatIconRegistry,
+        ds: DomSanitizer
+    ) {
         if (parent) {
             throw new Error(
                 'CoreModule already exists and cannot be loaded again!'
             );
         }
+
+        // 注册全局自定义 svg 图标
+        loadSvgIconResources(ir, ds);
     }
 }

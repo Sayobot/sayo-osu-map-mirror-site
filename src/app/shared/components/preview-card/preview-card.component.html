@@ -31,26 +31,31 @@
                 ></i>
             </div>
         </dl>
-        <span class="player-count"
-            >{{ preview.order }}&nbsp;<i class="material-icons"
-                ><img src="/assets/img/icon/play_circle.png"/></i
-        ></span>
-        <span class="favorite-count"
-            >{{ preview.favourite_count }}&nbsp;<i class="material-icons"
-                ><img src="/assets/img/icon/favorite.png"/></i
+        <span class="player-count">
+            {{ preview.order }}&nbsp;
+            <mat-icon svgIcon="play-circle"></mat-icon>
+        </span>
+        <span class="favorite-count">
+            {{ preview.favourite_count }}&nbsp;
+            <mat-icon svgIcon="favorite"></mat-icon
         ></span>
         <span [ngSwitch]="isPlay()" class="music-icon">
-            <i *ngSwitchCase="false" class="material-icons" (click)="play()"
-                ><img src="/assets/img/icon/play_arrow_black.png"
-            /></i>
-
-            <i *ngSwitchCase="true" class="material-icons" (click)="pause()"
-                ><img src="/assets/img/icon/pause_black.png"
-            /></i>
+            <mat-icon
+                *ngSwitchCase="false"
+                svgIcon="play_arrow"
+                (click)="play()"
+            ></mat-icon>
+            <mat-icon
+                *ngSwitchCase="true"
+                svgIcon="pause_black"
+                (click)="pause()"
+            ></mat-icon>
         </span>
-        <span class="down-icon"
-            ><i class="material-icons" (click)="onDownLoad(config.mapV2)"
-                ><img src="/assets/img/icon/cloud_download.png"/></i
+        <span class="down-icon">
+            <mat-icon
+                svgIcon="cloud-download"
+                (click)="onDownLoad(config.mapV2)"
+            ></mat-icon
         ></span>
     </div>
 </ng-container>
