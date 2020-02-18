@@ -7,15 +7,16 @@
         (keyup.enter)="onSearch(searchBox.value)"
     />
     <mat-icon
+        svgIcon="options"
         (click)="panel.toggle()"
         class="icon-toggle-option"
         [style.background]="panel.isShow ? '#ccc' : '#fff'"
-    >
-        <img src="/assets/img/icon/options.png" />
-    </mat-icon>
-    <mat-icon (click)="onSearch(searchBox.value)" class="search-button"
-        ><img src="/assets/img/icon/search.png" />
-    </mat-icon>
+    ></mat-icon>
+    <mat-icon
+        svgIcon="search"
+        (click)="onSearch(searchBox.value)"
+        class="search-button"
+    ></mat-icon>
 
     <mat-card *ngIf="panel.isShow" class="search-card">
         <mat-card-header>
