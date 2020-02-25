@@ -1,0 +1,11 @@
+<div
+    *ngIf="musicBox.current as music"
+    class="music-box"
+    cdkDrag
+    cdkDragBoundary="body"
+>
+    <div class="status">
+        <mat-icon (click)="switchStatus()" [svgIcon]="status"></mat-icon>
+    </div>
+    <div class="title one-line-hidden">{{ music.title }}</div>
+</div>

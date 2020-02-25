@@ -16,6 +16,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+// CDK
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 // import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { MatNativeDateModule } from '@angular/material/core';
 // import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -52,7 +55,8 @@ const MATERIAL_MODULE = [
     MatProgressBarModule,
     MatSelectModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    DragDropModule
 
     // MatAutocompleteModule,
     // MatFormFieldModule,

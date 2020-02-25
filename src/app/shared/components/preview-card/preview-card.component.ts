@@ -44,9 +44,11 @@ export class PreviewCardComponent implements OnInit {
     }
 
     play() {
-        this.musicBox.setSrc(this.preview.sid);
+        this.musicBox.switchAndPlay({
+            title: this.preview.title,
+            sid: this.preview.sid
+        });
         this.musicStatu = true;
-        this.musicBox.play();
     }
 
     pause() {
@@ -55,7 +57,9 @@ export class PreviewCardComponent implements OnInit {
     }
 
     isPlay() {
-        return this.preview.sid === this.musicBox.sid && this.musicStatu;
+        return (
+            this.preview.sid === this.musicBox.current.sid && this.musicStatu
+        );
     }
 
     onDownLoad(url: string) {

@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
     selector: 'app-root',
     template: `
         <router-outlet></router-outlet>
+        <music-box></music-box>
     `
 })
 export class AppComponent {
