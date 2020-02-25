@@ -77,7 +77,10 @@ export class MapDetailComponent implements OnInit {
 
     // 试听歌曲
     playPart() {
-        this.musicBox.play();
+        this.musicBox.switchAndPlay({
+            title: this.mapDetail.title,
+            sid: this.mapDetail.sid
+        });
         this.parttime =
             Math.floor(this.musicBox.musicEl.duration) -
             Math.floor(this.musicBox.musicEl.currentTime);
@@ -96,8 +99,6 @@ export class MapDetailComponent implements OnInit {
     ngOnInit() {
         this.imgUrl = `${this.config.pic}${this.data.id}/covers/cover.webp?0`;
         this.mapDetail = this.data.content;
-        this.musicBox.setSrc(this.data.id);
-
         this.detailInfo = this.mapDetail.bid_data[0];
     }
 

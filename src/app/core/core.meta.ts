@@ -11,7 +11,8 @@ import {
     HelpDialogComponent,
     MapDetailComponent,
     NotFoundMapDialogComponent,
-    SupportSayobotComponent
+    SupportSayobotComponent,
+    MusicBoxComponent
 } from './components';
 
 export const domain = 'osu.sayobot.cn';
@@ -77,4 +78,4 @@ export const DIALOG = [
     SupportSayobotComponent
 ];
 
-export const COMPONENTS = [...DIALOG];
+export const COMPONENTS = [...DIALOG, MusicBoxComponent];
