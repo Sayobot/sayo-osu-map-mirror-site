@@ -39,18 +39,10 @@
             {{ preview.favourite_count }}&nbsp;
             <mat-icon svgIcon="favorite"></mat-icon
         ></span>
-        <span [ngSwitch]="isPlay()" class="music-icon">
-            <mat-icon
-                *ngSwitchCase="false"
-                svgIcon="play_arrow"
-                (click)="play()"
-            ></mat-icon>
-            <mat-icon
-                *ngSwitchCase="true"
-                svgIcon="pause_black"
-                (click)="pause()"
-            ></mat-icon>
+        <span class="add-icon">
+            <mat-icon (click)="addToMusicBox()">add</mat-icon>
         </span>
+
         <span class="down-icon">
             <mat-icon
                 svgIcon="cloud-download"

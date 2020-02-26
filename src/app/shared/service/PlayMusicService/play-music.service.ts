@@ -1,28 +1,37 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-const musicCDN = 'https://cdnx.sayobot.cn:25225/preview/';
+const MUSIC_CDN = 'https://cdnx.sayobot.cn:25225/preview/';
 
-class Music {
-    private _title: string;
+interface Music {
+    title: string;
+    id: number;
+}
+
+export class MusicItem {
+    title: string;
     sid: number;
     src: string;
 
-    constructor() {
-        this.title = '请开始播放音乐';
+    constructor(item: Music) {
+        this.title = item.title;
+        this.sid = item.id;
+        this.src = `${MUSIC_CDN}${this.sid}.mp3`;
+    }
+}
+
+/**
+ * TODO:优先级队列
+ */
+class Queue<T> {
+    items: T[];
+    head: T;
+
+    constructor(data: T[] = []) {
+        this.items = data;
     }
 
-    get title() {
-        return this._title;
-    }
-
-    set title(title: string) {
-        this._title = title;
-    }
-
-    update(map: { title: string; sid: number }) {
-        this.title = map.title;
-        this.sid = map.sid;
-        this.src = `${musicCDN}${this.sid}.mp3`;
+    size() {
+        return this.items.length;
     }
 }
 
@@ -31,21 +40,15 @@ class Music {
 })
 export class PlayMusicService {
     musicEl = new Audio();
-    private _isPlay: boolean;
-    current: Music;
+    isPlay: boolean;
 
-    get isPlay() {
-        return this._isPlay;
-    }
-
-    set isPlay(status: boolean) {
-        this._isPlay = status;
-    }
+    current: MusicItem;
+    playList: MusicItem[];
 
     constructor() {
         this.musicEl.preload = 'metadata';
-        this.current = new Music();
         this.isPlay = false;
+        this.playList = [];
     }
 
     play() {
@@ -58,13 +61,37 @@ export class PlayMusicService {
         this.isPlay = false;
     }
 
+    /**
+     * TODO:判断是否重复，是的话将这首歌放到队列首并播放
+     * @param item Music
+     */
+    add(item: Music) {
+        this.playList.push(new MusicItem(item));
+    }
+
+    insert(item: MusicItem) {
+        this.playList.unshift(item);
+        this.current = this.playList[0];
+        this.musicEl.src = this.current.src;
+    }
+
+    remove(id: number) {
+        this.playList.filter((el) => el.sid === id);
+    }
+
     switch() {
         this.isPlay ? this.pause() : this.play();
     }
 
-    switchAndPlay(map: { title: string; sid: number }) {
+    switchAndPlay(item: MusicItem) {
         this.isPlay = false;
-        this.current.update(map);
+        this.insert(item);
+        this.play();
+    }
+
+    playNow(item: MusicItem) {
+        this.isPlay = false;
+        this.current = item;
         this.musicEl.src = this.current.src;
         this.play();
     }
