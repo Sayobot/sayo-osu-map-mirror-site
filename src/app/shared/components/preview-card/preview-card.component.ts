@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import {
     MapService,
     PlayMusicService,
-    ServerMangeService
+    ServerMangeService,
+    MusicItem
 } from '@app/shared/service';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,7 +30,7 @@ export class PreviewCardComponent implements OnInit {
     constructor(
         @Inject('BASE_CONFIG') public config,
         private maps: MapService,
-        private musicBox: PlayMusicService,
+        public musicBox: PlayMusicService,
         public serverMange: ServerMangeService,
         public dialog: MatDialog
     ) {}
@@ -43,28 +44,18 @@ export class PreviewCardComponent implements OnInit {
         return Approved[this.preview.approved];
     }
 
-    play() {
-        this.musicBox.switchAndPlay({
-            title: this.preview.title,
-            sid: this.preview.sid
-        });
-        this.musicStatu = true;
-    }
-
-    pause() {
-        this.musicStatu = false;
-        this.musicBox.pause();
-    }
-
-    isPlay() {
-        return (
-            this.preview.sid === this.musicBox.current.sid && this.musicStatu
-        );
-    }
-
     onDownLoad(url: string) {
         myUtils.downloadFile(
             `${url}${this.preview.sid}?server=${this.serverMange.currentServer}`
+        );
+    }
+
+    addToMusicBox() {
+        this.musicBox.switchAndPlay(
+            new MusicItem({
+                title: this.preview.title,
+                id: this.preview.sid
+            })
         );
     }
 

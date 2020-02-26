@@ -65,20 +65,20 @@
         @include font-icon(13px);
     }
 
-    .music-icon {
-        position: absolute;
-        cursor: pointer;
-        bottom: 5px;
-        right: 3rem;
-        @include font-icon();
-        z-index: 1;
-    }
-
     .down-icon {
         position: absolute;
         cursor: pointer;
         bottom: 5px;
         right: 1rem;
+        z-index: 1;
+        @include font-icon();
+    }
+
+    .add-icon {
+        position: absolute;
+        cursor: pointer;
+        bottom: 5px;
+        right: 3rem;
         z-index: 1;
         @include font-icon();
     }

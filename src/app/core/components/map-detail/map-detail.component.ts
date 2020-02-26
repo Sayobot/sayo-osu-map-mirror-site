@@ -3,7 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
     PlayMusicService,
     ClipboardService,
-    ServerMangeService
+    ServerMangeService,
+    MusicItem
 } from '@app/shared/service';
 import * as myUtils from '@app/utils';
 import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
@@ -77,10 +78,12 @@ export class MapDetailComponent implements OnInit {
 
     // 试听歌曲
     playPart() {
-        this.musicBox.switchAndPlay({
-            title: this.mapDetail.title,
-            sid: this.mapDetail.sid
-        });
+        this.musicBox.switchAndPlay(
+            new MusicItem({
+                title: this.mapDetail.title,
+                id: this.mapDetail.sid
+            })
+        );
         this.parttime =
             Math.floor(this.musicBox.musicEl.duration) -
             Math.floor(this.musicBox.musicEl.currentTime);

@@ -1,11 +1,30 @@
-<div
-    *ngIf="musicBox.current as music"
-    class="music-box"
-    cdkDrag
-    cdkDragBoundary="body"
->
-    <div class="status">
-        <mat-icon (click)="switchStatus()" [svgIcon]="status"></mat-icon>
+<div class="music-box-container" cdkDrag cdkDragBoundary="body">
+    <div class="music-box-mini">
+        <div class="status">
+            <mat-icon (click)="switchStatus()" [svgIcon]="status"></mat-icon>
+        </div>
+        <div class="title one-line-hidden">
+            <ng-container *ngIf="musicBox.current">
+                {{ musicBox.current.title }}
+            </ng-container>
+            <ng-container *ngIf="!musicBox.current">
+                请选择想要播放的音乐
+            </ng-container>
+        </div>
+        <div class="list" [class.active]="isOpenList" (click)="switchListBox()">
+            <mat-icon>sort</mat-icon>
+        </div>
     </div>
-    <div class="title one-line-hidden">{{ music.title }}</div>
+
+    <ul class="music-play-list" *ngIf="isOpenList">
+        <li
+            class="music-play-item one-line-hidden"
+            [class.active]="isMatch(item)"
+            *ngFor="let item of musicBox.playList; let order = index"
+            (dblclick)="playNow(item)"
+        >
+            {{ order }}.&nbsp;
+            {{ item.title }}
+        </li>
+    </ul>
 </div>
