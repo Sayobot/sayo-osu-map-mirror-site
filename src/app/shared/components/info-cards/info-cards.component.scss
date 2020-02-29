@@ -1,5 +1,5 @@
 .info-wrapper {
-    & > mat-card {
+    &>mat-card {
         min-height: 200px;
     }
 
@@ -46,7 +46,6 @@
 
             .auther {
                 display: block;
-                width: 100%;
                 text-align: right;
                 font-size: 0.7rem;
                 margin: 0.5rem;
