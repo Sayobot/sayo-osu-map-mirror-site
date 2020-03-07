@@ -42,6 +42,10 @@ export class MapDetailComponent implements OnInit {
         return Approved[this.mapDetail.approved];
     }
 
+    get link() {
+        return `http://osugame.online/preview.html?sid=${this.mapDetail.sid}&bid=${this.detailInfo.bid}`;
+    }
+
     // 点击下载事件
     onDownLoad(url: string) {
         myUtils.downloadFile(
