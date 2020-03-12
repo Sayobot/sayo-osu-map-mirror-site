@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SearchService } from '@app/shared/service';
-import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
+import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MapSidDetail } from '@app/shared/models';
 
@@ -29,10 +29,8 @@ export class TagsComponent implements OnInit {
     }
 
     searchMap(str: string) {
-        this.searchService.search(
-            str,
-            (key) => this.openNotFoundMapDialog(key),
-            (id, detail) => this.openMapDetailDialog(id, detail)
+        this.searchService.search(str, (id, detail) =>
+            this.openMapDetailDialog(id, detail)
         );
         this.searchChange.emit();
     }
@@ -42,9 +40,5 @@ export class TagsComponent implements OnInit {
             panelClass: 'common-dialog',
             data: { id: id, content: detail }
         });
-    }
-
-    openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, { data: { key: key } });
     }
 }

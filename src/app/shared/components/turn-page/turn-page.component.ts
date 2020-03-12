@@ -3,7 +3,6 @@ import { MapService, SearchService } from '@app/shared/service';
 import { Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { NotFoundMapDialogComponent } from '@app/core';
 
 @Component({
     selector: 'turn-page',
@@ -72,11 +71,7 @@ export class TurnPageComponent implements OnInit {
                 this.maps.getHotMap(type);
                 break;
             case 'search':
-                this.search.getSearchList((key: string) => {
-                    this.dialog.open(NotFoundMapDialogComponent, {
-                        data: { key: key }
-                    });
-                }, type);
+                this.search.getSearchList(type);
                 break;
             default:
                 break;

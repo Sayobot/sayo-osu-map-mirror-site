@@ -8,7 +8,7 @@ import {
 import { SearchService } from '@app/shared/service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
+import { MapDetailComponent } from '@app/core';
 import * as utils from '@app/utils';
 import { MapSidDetail } from '@app/shared/models';
 
@@ -37,10 +37,8 @@ export class SearchInputComponent implements OnInit {
             .replace(/["]/gi, '')
             .replace(/(^\s*)|(\s*$)/gi, '');
 
-        this.searchService.search(
-            this.searchKey,
-            (key) => this.openNotFoundMapDialog(key),
-            (id, detail) => this.openMapDetailDialog(id, detail)
+        this.searchService.search(this.searchKey, (id, detail) =>
+            this.openMapDetailDialog(id, detail)
         );
 
         this.searchChange.emit(this.searchKey);
@@ -52,10 +50,6 @@ export class SearchInputComponent implements OnInit {
             panelClass: 'common-dialog',
             data: { id: id, content: detail }
         });
-    }
-
-    openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, { data: { key: key } });
     }
 
     getFilterOptions() {

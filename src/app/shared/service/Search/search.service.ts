@@ -28,7 +28,6 @@ export class SearchService {
 
     search(
         key: string,
-        notFound: (key: string) => void,
         openDetail: (id: number, detail: MapSidDetail) => void
     ) {
         this.resetSearchData(key);
@@ -39,12 +38,12 @@ export class SearchService {
                     if (res.status === 0) {
                         openDetail(res.data.sid, res.data);
                     } else if (res.status === -1) {
-                        this.getSearchList(notFound);
+                        this.getSearchList();
                     }
                 }
             );
         } else {
-            this.getSearchList(notFound);
+            this.getSearchList();
         }
 
         this.router.navigate(['home/search']);
@@ -57,6 +56,7 @@ export class SearchService {
     resetSearchData(key: string) {
         this.searchEndId = 0;
         this.searchMap = [];
+        this.searchResult = null;
         this.searchKey = key;
     }
 
@@ -71,7 +71,7 @@ export class SearchService {
     }
 
     // 获取搜索列表
-    getSearchList(notFound: (key: string) => void, type: string = 'next') {
+    getSearchList(type: string = 'next') {
         switch (type) {
             case 'after':
                 this.searchEndId =
@@ -99,9 +99,9 @@ export class SearchService {
         return this.http
             .get(this.config.list, OPTIONS)
             .subscribe((res: SearchMapResult) => {
-                res.status === 0
-                    ? this.setResInfo(res)
-                    : notFound(this.searchKey);
+                if (res.status === 0) {
+                    this.setResInfo(res);
+                }
             });
     }
 
