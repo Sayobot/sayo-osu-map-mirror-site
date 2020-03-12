@@ -1,12 +1,8 @@
-:host {
+.music-box-container {
     position: fixed;
     z-index: 9999;
     top: 5px;
     left: 50%;
-}
-
-.music-box-container {
-    position: relative;
 
     .music-box-mini {
         display: flex;

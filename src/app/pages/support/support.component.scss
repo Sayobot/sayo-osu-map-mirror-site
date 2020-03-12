@@ -1,0 +1,25 @@
+:host {
+    padding: 2rem;
+}
+
+.support-wrapper {
+    display: flex;
+
+    mat-card {
+        width: 80%;
+        margin: 0 auto;
+
+        table {
+            width: 100%;
+        }
+    }
+
+    .pay-wrapper {
+        order: 2;
+        flex: 0 1 18%;
+    }
+
+    .back {
+        margin: 1rem 0;
+    }
+}

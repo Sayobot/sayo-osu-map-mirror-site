@@ -10,7 +10,6 @@ import {
     AboutDialogComponent,
     HelpDialogComponent,
     MapDetailComponent,
-    SupportSayobotComponent,
     MusicBoxComponent
 } from './components';
 
@@ -72,8 +71,7 @@ export const PROVIDES = [
 export const DIALOG = [
     AboutDialogComponent,
     HelpDialogComponent,
-    MapDetailComponent,
-    SupportSayobotComponent
+    MapDetailComponent
 ];
 
 export const COMPONENTS = [...DIALOG, MusicBoxComponent];
