@@ -3,11 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
 import { ServerMangeService } from '@app/shared/service';
-import {
-    HelpDialogComponent,
-    SupportSayobotComponent,
-    AboutDialogComponent
-} from '@app/core';
+import { HelpDialogComponent, AboutDialogComponent } from '@app/core';
 
 const dialog_common_config = {
     height: '98%',
@@ -45,10 +41,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     openHelpDialog() {
         this.dialog.open(HelpDialogComponent, dialog_common_config);
-    }
-
-    openSupperDialog() {
-        this.dialog.open(SupportSayobotComponent, dialog_common_config);
     }
 
     openAboutDialog() {

@@ -1,0 +1,68 @@
+<div class="support-wrapper">
+    <div class="pay-wrapper">
+        <div class="back">
+            <button mat-raised-button color="warn" (click)="back()">
+                返回
+            </button>
+        </div>
+        <img src="assets/img/home/pay-zhifubao.jpg" alt="支付宝" />
+        <img src="assets/img/home/pay-weixin.png" alt="微信收钱" />
+    </div>
+
+    <mat-card>
+        <mat-card-content>
+            <mat-form-field *ngIf="supportList">
+                <mat-label>请选择对应的时间段</mat-label>
+                <mat-select
+                    [(ngModel)]="currentLink"
+                    (selectionChange)="onSelectLink()"
+                >
+                    <mat-option
+                        *ngFor="let supports of supportList"
+                        [value]="supports.link"
+                    >
+                        {{ getSelectListValue(supports.link) }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSource">
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+                </ng-container>
+
+                <!-- type Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Type</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ supportFrom(element.type) }}
+                    </td>
+                </ng-container>
+
+                <!-- money Column -->
+                <ng-container matColumnDef="money">
+                    <th mat-header-cell *matHeaderCellDef>Money</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.money }}
+                    </td>
+                </ng-container>
+
+                <!-- time Column -->
+                <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef>Time</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.time }}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

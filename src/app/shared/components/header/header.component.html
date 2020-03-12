@@ -10,7 +10,7 @@
                 <button mat-button [matMenuTriggerFor]="langMenu">
                     {{ 'header.Language' | translate }}
                 </button>
-                <button mat-button (click)="openSupperDialog()">
+                <button mat-button routerLink="/support">
                     {{ 'header.support' | translate }}
                 </button>
                 <button mat-button [matMenuTriggerFor]="appMenu">
@@ -24,7 +24,7 @@
         <button mat-menu-item [matMenuTriggerFor]="langMenu">
             {{ 'header.Language' | translate }}
         </button>
-        <button mat-menu-item (click)="openSupperDialog()">
+        <button mat-menu-item routerLink="/support">
             {{ 'header.support' | translate }}
         </button>
         <button mat-menu-item [matMenuTriggerFor]="appMenu">
