@@ -9,7 +9,7 @@ import {
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { MapDetailComponent, NotFoundMapDialogComponent } from '@app/core';
+import { MapDetailComponent } from '@app/core';
 import { MapSidDetail } from '@app/shared/models';
 
 @Component({
@@ -31,10 +31,8 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.activeRoute.queryParams.subscribe((params) => {
             if (params.search) {
-                this.searchService.search(
-                    params.search,
-                    (key) => this.openNotFoundMapDialog(key),
-                    (id, detail) => this.openMapDetailDialog(id, detail)
+                this.searchService.search(params.search, (id, detail) =>
+                    this.openMapDetailDialog(id, detail)
                 );
             }
         });
@@ -52,9 +50,5 @@ export class HomeComponent implements OnInit {
             panelClass: 'common-dialog',
             data: { id: id, content: detail }
         });
-    }
-
-    openNotFoundMapDialog(key: string) {
-        this.dialog.open(NotFoundMapDialogComponent, { data: { key: key } });
     }
 }
