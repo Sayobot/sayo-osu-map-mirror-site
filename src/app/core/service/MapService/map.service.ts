@@ -12,10 +12,7 @@ export class MapService {
     newEndId = 0;
     hotMap: Array<any> = [];
     hotEndId = 0;
-    support: any = {};
-    totalWidth = '0%';
     detail: any = {};
-    publics: any = [];
 
     constructor(
         @Inject('BASE_CONFIG') private config,
@@ -93,27 +90,5 @@ export class MapService {
                 this.hotEndId = res.endid;
             }
         });
-    }
-
-    // 获取支持详情
-    getSupport() {
-        this.http
-            .get(this.config.support)
-            .toPromise()
-            .then((res: any) => {
-                if (res.data) {
-                    this.support = res.data;
-                    const percentage = res.data.total / res.data.target;
-                    const num = percentage > 100 ? 100 : percentage;
-                    this.totalWidth = Math.floor(num * 100) + '%';
-                }
-            });
-    }
-
-    // 新闻列表
-    getNewsList() {
-        this.http
-            .get(this.config.notice)
-            .subscribe((res: any) => (this.publics = res.data));
     }
 }

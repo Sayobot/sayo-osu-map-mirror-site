@@ -4,3 +4,4 @@ export * from './PlayMusicService';
 export * from './Responsive';
 export * from './Search';
 export * from './ServerMange';
+export * from './Message';

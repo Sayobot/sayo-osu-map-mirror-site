@@ -1,8 +1,4 @@
 .info-wrapper {
-    &>mat-card {
-        min-height: 200px;
-    }
-
     .progress-bg {
         position: relative;
         height: 50px;
@@ -21,10 +17,12 @@
     }
 
     .support {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translate(0, -50%);
+        display: block;
+        font-size: 12px;
+        text-align: right;
+        color: #333;
+        margin-top: 6px;
+        padding-right: 6px;
     }
 
     .progress-percent {
