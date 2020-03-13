@@ -1,23 +1,20 @@
 <div class="info-wrapper">
     <mat-card class="m-b-2 support-sayobot">
         <mat-card-header>
-            <mat-card-title>{{ 'support.title' | translate }}</mat-card-title>
             <mat-card-subtitle>{{
                 'support.des' | translate
             }}</mat-card-subtitle>
         </mat-card-header>
+
         <mat-card-content>
             <div class="progress-bg">
                 <div
                     class="progress-bar"
-                    [ngStyle]="{ width: maps.totalWidth }"
+                    [ngStyle]="{ width: progressPercent }"
                 ></div>
-                <span class="progress-percent">{{ maps.totalWidth }}</span>
-                <span class="support"
-                    >RMB {{ maps.support.total }}/RMB
-                    {{ maps.support.target }}</span
-                >
+                <span class="progress-percent">{{ progressPercent }}</span>
             </div>
+            <i class="support">{{ supportProgress }}</i>
         </mat-card-content>
     </mat-card>
 
@@ -25,20 +22,19 @@
         <mat-card-header>
             <mat-card-title>{{ 'public.name' | translate }}</mat-card-title>
         </mat-card-header>
+
         <mat-card-content>
-            <div class="wrapper">
-                <ng-container *ngIf="maps.publics as publics">
-                    <div *ngFor="let public of publics" class="public-item">
-                        <h2>{{ public.title }}</h2>
-                        <span class="auther"
-                            >{{ public.user_id }}：{{ public.date }}</span
-                        >
-                        <pre>{{ public.content }}</pre>
-                        <div *ngFor="let item of public.img">
-                            <img [src]="item.url" alt="" />
-                        </div>
+            <div class="wrapper" *ngIf="message.notices as publics">
+                <div *ngFor="let public of publics" class="public-item">
+                    <h2>{{ public.title }}</h2>
+                    <span class="auther">
+                        {{ public.user_id }}：{{ public.date }}
+                    </span>
+                    <pre>{{ public.content }}</pre>
+                    <div *ngFor="let url of public.img">
+                        <img [src]="url" alt="" />
                     </div>
-                </ng-container>
+                </div>
             </div>
         </mat-card-content>
     </mat-card>

@@ -40,9 +40,6 @@ export class HomeComponent implements OnInit {
         const docResize = fromEvent(window, 'resize').pipe(throttleTime(1000));
         docResize.subscribe(() => this.responsive.setCols());
         this.responsive.setCols();
-
-        this.maps.getSupport();
-        this.maps.getNewsList();
     }
 
     openMapDetailDialog(id: number, detail: MapSidDetail) {

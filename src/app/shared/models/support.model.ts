@@ -61,7 +61,7 @@ export interface SupportDetails {
  * }
  */
 export interface FeedTarget {
-    target: string;
+    target: number;
     total: number;
     link: string;
     importance: number;
