@@ -7,10 +7,11 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'app/shared';
 
 import {
+    HeaderComponent,
+    FooterComponent,
     AboutDialogComponent,
     HelpDialogComponent,
-    MapDetailComponent,
-    MusicBoxComponent
+    MapDetailComponent
 } from './components';
 
 export const domain = 'osu.sayobot.cn';
@@ -69,9 +70,11 @@ export const PROVIDES = [
 ];
 
 export const DIALOG = [
+    HeaderComponent,
+    FooterComponent,
     AboutDialogComponent,
     HelpDialogComponent,
     MapDetailComponent
 ];
 
-export const COMPONENTS = [...DIALOG, MusicBoxComponent];
+export const COMPONENTS = [...DIALOG];

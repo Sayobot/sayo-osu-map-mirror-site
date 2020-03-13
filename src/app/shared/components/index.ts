@@ -1,5 +1,3 @@
-export * from './header';
-export * from './footer';
 export * from './tags';
 export * from './detail-info';
 export * from './difficulty-table';
@@ -9,3 +7,4 @@ export * from './preview-card';
 export * from './search-input';
 export * from './info-cards';
 export * from './search-statis';
+export * from './music-box';
