@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceOperaService } from '@app/shared/service';
+import { DeviceOperaService } from '@app/core/service';
 import { Operate, KeyItem } from '@app/shared/models';
 import * as myUtils from '@app/utils';
 

@@ -5,7 +5,7 @@ import {
     Option,
     OptionPanel
 } from './search-input.meta';
-import { SearchService } from '@app/shared/service';
+import { SearchService } from '@app/core/service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MapDetailComponent } from '@app/core';

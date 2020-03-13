@@ -5,7 +5,7 @@ import {
     ClipboardService,
     ServerMangeService,
     MusicItem
-} from '@app/shared/service';
+} from '@app/core/service';
 import * as myUtils from '@app/utils';
 import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
 

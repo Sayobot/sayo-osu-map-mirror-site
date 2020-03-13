@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService } from '@app/shared/service';
+import { MapService } from '@app/core/service';
 
 @Component({
     selector: 'info-cards',

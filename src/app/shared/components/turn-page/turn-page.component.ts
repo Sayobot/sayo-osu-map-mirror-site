@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService, SearchService } from '@app/shared/service';
+import { MapService, SearchService } from '@app/core/service';
 import { Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';

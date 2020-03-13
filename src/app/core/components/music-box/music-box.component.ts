@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayMusicService, MusicItem } from '@app/shared/service';
+import { PlayMusicService, MusicItem } from '@app/core/service';
 
 @Component({
     selector: 'music-box',

@@ -3,7 +3,7 @@ import {
     ResponsiveService,
     MapService,
     SearchService
-} from '@app/shared/service';
+} from '@app/core/service';
 import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
