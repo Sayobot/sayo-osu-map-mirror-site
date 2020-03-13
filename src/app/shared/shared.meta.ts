@@ -5,8 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { OwnMaterialModule } from './module/own-material.module';
 
 import {
-    HeaderComponent,
-    FooterComponent,
     TagsComponent,
     DetailInfoComponent,
     DifficultyTableComponent,
@@ -15,7 +13,8 @@ import {
     PreviewCardComponent,
     SearchInputComponent,
     InfoCardsComponent,
-    SearchStatisComponent
+    SearchStatisComponent,
+    MusicBoxComponent
 } from './components';
 
 export const MODULES = [
@@ -27,8 +26,6 @@ export const MODULES = [
 ];
 
 export const COMPONENTS = [
-    HeaderComponent,
-    FooterComponent,
     TagsComponent,
     DetailInfoComponent,
     DifficultyTableComponent,
@@ -37,5 +34,6 @@ export const COMPONENTS = [
     PreviewCardComponent,
     SearchInputComponent,
     InfoCardsComponent,
-    SearchStatisComponent
+    SearchStatisComponent,
+    MusicBoxComponent
 ];
