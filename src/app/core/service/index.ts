@@ -1,4 +1,3 @@
-export * from './Clipboard';
 export * from './Device';
 export * from './MapService';
 export * from './PlayMusicService';

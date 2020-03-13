@@ -7,8 +7,8 @@ import {
 } from '@app/core/service';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
-import * as myUtils from '@app/utils';
 import { PreMap, MapSidDetail, Approved } from '@app/shared/models';
+import { downloadFile } from '@app/utils';
 
 const Modes_Config = {
     std: [1, 3, 5, 7, 9, 11, 13, 15],
@@ -45,7 +45,7 @@ export class PreviewCardComponent implements OnInit {
     }
 
     onDownLoad(url: string) {
-        myUtils.downloadFile(
+        downloadFile(
             `${url}${this.preview.sid}?server=${this.serverMange.currentServer}`
         );
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceOperaService } from '@app/core/service';
 import { Operate, KeyItem } from '@app/shared/models';
-import * as myUtils from '@app/utils';
+import { downloadFile } from '@app/utils';
 
 @Component({
     selector: 'app-sayo-control',
@@ -115,6 +115,6 @@ export class SayoControlComponent implements OnInit {
      */
     onDownload() {
         const url = '/assets/sayo_control_cli.zip';
-        myUtils.downloadFile(url);
+        downloadFile(url);
     }
 }
