@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchService } from '@app/shared/service';
+import { SearchService } from '@app/core/service';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MapSidDetail } from '@app/shared/models';

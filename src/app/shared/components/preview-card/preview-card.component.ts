@@ -4,7 +4,7 @@ import {
     PlayMusicService,
     ServerMangeService,
     MusicItem
-} from '@app/shared/service';
+} from '@app/core/service';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as myUtils from '@app/utils';

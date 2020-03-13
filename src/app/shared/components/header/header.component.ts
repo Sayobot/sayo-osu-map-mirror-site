@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
-import { ServerMangeService } from '@app/shared/service';
+import { ServerMangeService } from '@app/core/service';
 import { HelpDialogComponent, AboutDialogComponent } from '@app/core';
 
 const dialog_common_config = {

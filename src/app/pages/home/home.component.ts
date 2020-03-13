@@ -4,7 +4,7 @@ import {
     MapService,
     SearchService,
     ResponsiveService
-} from '@app/shared/service';
+} from '@app/core/service';
 
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
