@@ -1,15 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { config } from './about-config';
 
 @Component({
     selector: 'app-about-dialog',
-    templateUrl: './about-dialog.component.html',
-    styleUrls: ['./about-dialog.component.scss']
+    templateUrl: './about-dialog.component.html'
 })
 export class AboutDialogComponent implements OnInit {
-    domain: string;
-    constructor(@Inject('BASE_CONFIG') private config) {}
+    config: any;
 
-    ngOnInit() {
-        this.domain = this.config.domain;
+    constructor() {
+        this.config = config;
     }
+
+    ngOnInit() {}
 }

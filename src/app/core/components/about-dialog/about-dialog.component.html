@@ -9,22 +9,18 @@
         </mat-expansion-panel-header>
         <div>
             <p>
-                小夜是一个基于酷Q、<a
-                    href="https://osu.ppy.sh/forum/t/141240"
-                    target="_block"
-                    >osu!api open beta</a
-                >
+                小夜是一个基于酷Q、
+                <a href="{{ config.kq }}" target="_block">osu!api open beta</a>
                 的QQ bot.
             </p>
             <p>
                 主要编写语言是C++，辅以脚本语言Ruby、powershell、cmd（批处理）.
             </p>
             <p>
-                处理图片使用<a
-                    href="http://www.imagemagick.org/script/index.php"
-                    target="_block"
+                处理图片使用
+                <a href="{{ config.imageMagick }}" target="_block"
                     >ImageMagick</a
-                >.
+                >
             </p>
             <p>数据库目前还是用的目录树和文本文件</p>
         </div>
@@ -40,10 +36,7 @@
             <p>
                 小夜目前能做的事情还不是很多，但可以帮你查一下osu游戏的基本数据，然后生成一个资料卡。
             </p>
-            <img
-                src="assets/img/home//qq-sayobot-help.png"
-                alt="小夜使用帮助"
-            />
+            <img src="{{ config.useHelper }}" />
         </div>
     </mat-expansion-panel>
 
@@ -55,20 +48,12 @@
         </mat-expansion-panel-header>
         <div>
             <p>
-                <a
-                    href="https://{{
-                        domain
-                    }}/%E5%B0%8F%E5%A4%9C%E3%81%AEosu!%E4%B8%8B%E8%BD%BD%E5%99%A8.exe"
-                    target="_block"
+                <a href="{{ config.sayoDown }}" target="_block"
                     >小夜のosu!下载器</a
                 >点击谱面链接可以自动下图,mp神器，麻麻再也不用担心我的下图速度了！
             </p>
             <p>
-                <a
-                    href="https://{{
-                        domain
-                    }}/Ranked%e5%9c%b0%e5%9b%be%e4%b8%8b%e8%bd%bd%e5%99%a8.exe"
-                    >Ranked地图下载器</a
+                <a href="{{ config.sayoRankDown }}">Ranked地图下载器</a
                 >批量下载已经Ranked地图或者指定id的bp列表并存入收藏夹
             </p>
         </div>
@@ -82,27 +67,13 @@
         </mat-expansion-panel-header>
         <div>
             <h3>
-                <a
-                    href="https://item.taobao.com/item.htm?spm=a230r.1.14.3.77484d6fejowZc&id=579397618209&ns=1&abbucket=11#detail"
-                    >这里</a
+                <a href="{{ config.buySayo }}">这里</a
                 >前往淘宝购买适合玩osu!的迷你键盘！
             </h3>
             <div class="img-box">
                 <img
-                    src="assets//img/home/Sayobot-O2-pic1.jpg"
-                    alt="Sayobot触盘展示图"
-                />
-                <img
-                    src="assets//img/home/Sayobot-O2-pic2.jpg"
-                    alt="Sayobot触盘展示图"
-                />
-                <img
-                    src="assets//img/home/Sayobot-O2-pic3.jpg"
-                    alt="Sayobot触盘展示图"
-                />
-                <img
-                    src="assets//img/home/Sayobot-O2-pic4.jpg"
-                    alt="Sayobot触盘展示图"
+                    *ngFor="let picUrl of config.sayoShowPngs"
+                    src="{{ picUrl }}"
                 />
             </div>
         </div>
@@ -115,8 +86,8 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div>
-            <b>群号 693190897</b>
-            <img src="assets//img/home/sayobot-qq.jpg" alt="小夜QQ" />
+            <b>群号 {{ config.qqGroup }}</b>
+            <img src="{{ config.qqGroupPng }}" />
         </div>
     </mat-expansion-panel>
 </mat-accordion>
