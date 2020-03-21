@@ -5,6 +5,15 @@
 @import './app/theme/position';
 @import './app/theme/text';
 
+$theme-primary: #3f51b5;
+$theme-accent: #ff4081;
+$theme-warn: #850808;
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('./assets/fonts/Titillium-Web.ttf');
+}
+
 // CSS reset
 * {
     box-sizing: border-box;
@@ -14,10 +23,7 @@ body,
 html {
     padding: 0;
     margin: 0;
-}
-
-html {
-    font-size: 14px;
+    background: #ececec;
 }
 
 img {
@@ -55,6 +61,10 @@ h4,
 h5,
 h6 {
     margin: 0;
+}
+
+main {
+    margin-top: 64px;
 }
 
 #load {
@@ -99,4 +109,10 @@ pre {
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+.flex-between-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

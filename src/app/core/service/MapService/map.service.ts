@@ -1,34 +1,35 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MapSidDetail } from 'app/shared/models';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MapService {
-    limit: number;
+    BASE_URL: string = 'https://api.sayobot.cn';
+    BASE_LIST_URL: string = 'https://api.sayobot.cn/beatmaplist';
+    BASE_INFO_URL: string = 'https://api.sayobot.cn/v2/beatmapinfo';
 
+    limit: number;
     newMap: Array<any> = [];
     newEndId = 0;
     hotMap: Array<any> = [];
     hotEndId = 0;
     detail: any = {};
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-        private http: HttpClient
-    ) {
+    constructor(private http: HttpClient) {
         this.limit = 20;
     }
 
-    // 铺面详情
+    // 铺面详情0
     getMapDetail(id: number) {
         const OPTIONS = {
             params: {
                 0: id.toString()
             }
         };
-        return this.http.get<MapSidDetail>(this.config.detail, OPTIONS);
+        return this.http.get<MapSidDetail>(this.BASE_INFO_URL, OPTIONS);
     }
 
     // 获得最新图
@@ -54,7 +55,7 @@ export class MapService {
             }
         };
 
-        this.http.get(this.config.list, OPTIONS).subscribe((res: any) => {
+        this.http.get(this.BASE_LIST_URL, OPTIONS).subscribe((res: any) => {
             if (res.status === 0) {
                 this.newMap = res.data;
                 this.newEndId = res.endid;
@@ -84,11 +85,54 @@ export class MapService {
                 2: '1'
             }
         };
-        this.http.get(this.config.list, OPTIONS).subscribe((res: any) => {
+        this.http.get(this.BASE_LIST_URL, OPTIONS).subscribe((res: any) => {
             if (res.status === 0) {
                 this.hotMap = res.data;
                 this.hotEndId = res.endid;
             }
+        });
+    }
+
+    // !TODO
+    getMapInfo(sid: number) {
+        const params = new HttpParams({ fromString: `0=${sid}` });
+        return this.http.get<any[]>(`${this.BASE_URL}/v2/beatmapinfo`, {
+            responseType: 'json',
+            params
+        });
+    }
+
+    getSearchResult(page: number, size: number, keywords: string, params: any) {
+        const query = [
+            `0=${size}`,
+            `1=${page}`,
+            '2=4',
+            `3=${keywords}`,
+            ...params
+        ];
+
+        return this.getMapList('beatmaplist', query);
+    }
+
+    getNewMap2(page: number, size: number) {
+        const query = [`0=${size}`, `1=${page}`, '2=2'];
+        return this.getMapList('beatmaplist', query);
+    }
+
+    getHotMap2(page: number, size: number) {
+        const query = [`0=${size}`, `1=${page}`, '2=1'];
+        return this.getMapList('beatmaplist', query);
+    }
+
+    private getMapList(url: string, options?: any): Observable<any[]> {
+        const queryUrl = `${this.BASE_URL}/${url}`;
+        const params = options
+            ? new HttpParams({ fromString: `${options.join('&')}` })
+            : {};
+
+        return this.http.get<any[]>(queryUrl, {
+            responseType: 'json',
+            params
         });
     }
 }
