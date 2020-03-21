@@ -1,36 +1,39 @@
-.header {
-    .title {
-        display: inline-block;
-        vertical-align: top;
-        line-height: 36px;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 64px;
+    color: #fff;
+    background: #3f51b5;
+    padding: 0 2rem;
+    z-index: 100;
+
+    .logo {
+        height: 1.5em;
+        line-height: 1.5em;
         font-size: 24px;
         font-weight: normal;
-        font-family: 'Lobster Two', 'Monda', 'PingFang SC', 'Microsoft YaHei',
-            sans-serif;
+        font-family: 'Titillium Web', sans-serif;
+        outline: none;
     }
-    .big-menus {
-        display: block;
-    }
-    .small-menus {
-        display: none;
-    }
-}
 
-.github {
-    width: 24px;
-}
-
-.no-link {
-    color: #000;
-}
-
-@media (max-width: 900px) {
-    .header {
-        .big-menus {
+    .menus {
+        .menus-sm {
             display: none;
         }
-        .small-menus {
-            display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        .menus {
+            .menus-bg {
+                display: none;
+            }
+            .menus-sm {
+                display: block;
+            }
         }
     }
 }

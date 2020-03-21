@@ -1,18 +1,10 @@
 @import './home_main';
 
-.home {
-    display: grid;
-    grid-template-rows: 56px 1fr 25px;
-    height: 100vh;
-    overflow: hidden;
-}
-
 .main {
     display: grid;
     grid-template-columns: 8fr 2fr;
-    height: 100%;
-    background: #ececec;
     padding: 1.5em 5em 0;
+
     .map-wrapper {
         position: relative;
         background: #fff;

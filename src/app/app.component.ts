@@ -4,7 +4,10 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
     selector: 'app-root',
     template: `
-        <router-outlet></router-outlet>
+        <app-header></app-header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
         <music-box></music-box>
     `
 })

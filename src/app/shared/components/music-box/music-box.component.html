@@ -1,4 +1,4 @@
-<div class="music-box-container" cdkDrag cdkDragBoundary="body">
+<div class="music-box-container" cdkDrag cdkDragBoundary="html">
     <div class="music-box-mini">
         <div class="status">
             <mat-icon (click)="switchStatus()" [svgIcon]="status"></mat-icon>
@@ -17,12 +17,8 @@
     </div>
 
     <ul class="music-play-list" *ngIf="isOpenList">
-        <li
-            class="music-play-item one-line-hidden"
-            [class.active]="isMatch(item)"
-            *ngFor="let item of musicBox.playList; let order = index"
-            (dblclick)="playNow(item)"
-        >
+        <li class="music-play-item one-line-hidden" [class.active]="isMatch(item)"
+            *ngFor="let item of musicBox.playList; let order = index" (dblclick)="playNow(item)">
             {{ order }}.&nbsp;
             {{ item.title }}
         </li>
