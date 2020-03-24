@@ -27,10 +27,8 @@
         padding: 1em;
         .actions {
             margin: 1rem 0;
-            @include flex-layout();
             button {
                 margin: 0 0.5em;
-                @include flex-layout();
                 img {
                     height: 16px;
                     width: 16px;

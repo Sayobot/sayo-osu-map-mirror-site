@@ -1,0 +1,22 @@
+$icon-size: 3rem;
+
+.paginnator {
+    display: flex;
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .mat-icon {
+        width: $icon-size;
+        height: $icon-size;
+        font-size: $icon-size;
+        color: #fff;
+        background: #1d1d1d;
+        border-radius: 50%;
+    }
+
+    .left {
+        margin-right: 1rem;
+    }
+}

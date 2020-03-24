@@ -31,9 +31,16 @@
         top: 50%;
         transform: translate(0, -50%);
     }
+
+    .support-sayobot {
+        margin-bottom: 8px;
+    }
 }
 
 .announce-wrapper {
+    margin-top: 8px;
+    margin-bottom: 8px;
+
     .wrapper {
         max-height: 60vh;
         overflow: hidden;

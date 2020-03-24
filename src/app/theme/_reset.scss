@@ -1,0 +1,54 @@
+// CSS reset
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    min-height: 100vw;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+dl,
+dt,
+dd {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}

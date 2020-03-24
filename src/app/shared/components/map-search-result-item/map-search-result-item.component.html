@@ -1,0 +1,51 @@
+<div class="map-wrap" *ngIf="map">
+    <div class="img-wrap">
+        <img src="{{ imgSrc }}" alt="{{ imgSrc }}" />
+        <div class="overlay"></div>
+        <div class="title one-line">{{ map.title }}</div>
+        <div class="status" matTooltip="铺面状态">{{ status | uppercase }}</div>
+        <div class="play-count flex-center">
+            {{ map.order
+            }}<mat-icon svgIcon="play-circle" matTooltip="游戏次数"></mat-icon>
+        </div>
+        <div class="favorite flex-center">
+            {{ map.favourite_count
+            }}<mat-icon svgIcon="favorite" matTooltip="收藏次数"></mat-icon>
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="creator">
+            <div class="label-wrap">
+                <span class="label">Creator</span>
+                <span>：</span>
+            </div>
+            {{ map.creator }}
+        </div>
+        <div class="artist">
+            <div class="label-wrap">
+                <span class="label">Artist</span>
+                <span>：</span>
+            </div>
+            {{ map.artist }}
+        </div>
+        <div class="modes">
+            <i
+                *ngFor="let mode of modes"
+                [ngClass]="['icon', mode]"
+                matTooltip="{{ mode }}"
+            ></i>
+        </div>
+        <div class="action">
+            <mat-icon (click)="addToMusicQueue()" matTooltip="添加到播放列表"
+                >queue</mat-icon
+            >
+            <mat-icon (click)="download()" matTooltip="下载"
+                >cloud_download</mat-icon
+            >
+            <mat-icon (click)="openDetailPanel()" matTooltip="查看详情"
+                >open_in_new</mat-icon
+            >
+        </div>
+    </div>
+</div>
