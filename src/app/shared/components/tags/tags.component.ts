@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchService } from '@app/core/service';
 import { MapDetailComponent } from '@app/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MapSidDetail } from '@app/shared/models';
@@ -15,10 +14,7 @@ export class TagsComponent implements OnInit {
 
     tags: string[];
 
-    constructor(
-        private searchService: SearchService,
-        public dialog: MatDialog
-    ) {}
+    constructor(public dialog: MatDialog) {}
 
     ngOnInit() {
         this.tags = this.getTags(this.content);
@@ -26,13 +22,6 @@ export class TagsComponent implements OnInit {
 
     getTags(content: string): string[] {
         return content ? content.split(' ') : [];
-    }
-
-    searchMap(str: string) {
-        this.searchService.search(str, (id, detail) =>
-            this.openMapDetailDialog(id, detail)
-        );
-        this.searchChange.emit();
     }
 
     openMapDetailDialog(id: number, detail: MapSidDetail) {

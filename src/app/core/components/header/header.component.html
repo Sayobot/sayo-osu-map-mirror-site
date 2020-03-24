@@ -1,4 +1,4 @@
-<header class="flex-between-center">
+<header>
     <h1 class="logo" routerLink="/">Sayobot's Home</h1>
 
     <div class="menus">
@@ -7,7 +7,6 @@
                 Menu
             </button>
         </div>
-
 
         <div class="menus-bg">
             <button mat-button [matMenuTriggerFor]="langMenu">
@@ -22,7 +21,6 @@
         </div>
     </div>
 </header>
-
 
 <mat-menu #menu="matMenu">
     <button mat-menu-item [matMenuTriggerFor]="langMenu">
@@ -47,11 +45,11 @@
     </button>
     <button mat-menu-item>
         <mat-icon>update</mat-icon>
-        <span routerLink="/update">{{ 'header.update' | translate}}</span>
+        <span routerLink="/update">{{ 'header.update' | translate }}</span>
     </button>
     <button mat-menu-item>
         <mat-icon>update</mat-icon>
-        <span routerLink="/device">{{  'header.device' | translate}}</span>
+        <span routerLink="/device">{{ 'header.device' | translate }}</span>
     </button>
     <button mat-menu-item disabled style="color: #aaa">
         <mat-icon>share</mat-icon>
@@ -64,8 +62,11 @@
 </mat-menu>
 
 <mat-menu #lineMenu="matMenu">
-    <button mat-menu-item *ngFor="let server of serverMange.serveList"
-        (click)="serverMange.changeServer(server.server)">
+    <button
+        mat-menu-item
+        *ngFor="let server of serverMange.serveList"
+        (click)="serverMange.changeServer(server.server)"
+    >
         <mat-icon>
             <ng-container *ngIf="server.isSelect">
                 check
@@ -76,7 +77,12 @@
 </mat-menu>
 
 <mat-menu #langMenu="matMenu">
-    <button mat-menu-item *ngFor="let item of language" (click)="useLanguage(item.key)">
-        <mat-icon><img [src]="item.flag" alt="item.key" /></mat-icon>{{ item.title }}
+    <button
+        mat-menu-item
+        *ngFor="let item of language"
+        (click)="useLanguage(item.key)"
+    >
+        <mat-icon><img [src]="item.flag" alt="item.key"/></mat-icon
+        >{{ item.title }}
     </button>
 </mat-menu>

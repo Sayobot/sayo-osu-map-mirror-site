@@ -7,7 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatGridListModule } from '@angular/material/grid-list';
+// import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
@@ -34,7 +34,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 // import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 // import { MatTabsModule } from '@angular/material/tabs';
-// import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 // import { MatTreeModule } from '@angular/material/tree';
 // import { MatAutocompleteModule } from '@angular/material/autocomplete';
 // import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -47,7 +47,7 @@ const MATERIAL_MODULE = [
     MatCheckboxModule,
     MatDialogModule,
     MatExpansionModule,
-    MatGridListModule,
+    // MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
@@ -71,8 +71,8 @@ const MATERIAL_MODULE = [
     // MatSlideToggleModule,
     // MatTabsModule,
     // MatTreeModule,
-    MatTableModule
-    // MatTooltipModule,
+    MatTableModule,
+    MatTooltipModule
     // MatProgressSpinnerModule,
     // MatRadioModule,
     // MatSortModule,

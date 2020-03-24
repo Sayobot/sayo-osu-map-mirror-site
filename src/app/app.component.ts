@@ -8,11 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
         <main>
             <router-outlet></router-outlet>
         </main>
+        <app-footer></app-footer>
         <music-box></music-box>
     `
 })
 export class AppComponent {
-    constructor(private translate: TranslateService) {
+    constructor(public translate: TranslateService) {
         translate.setDefaultLang('zh');
     }
 }

@@ -5,16 +5,15 @@ import {
     SayoControlComponent,
     NotFoundPageComponent,
     HomeComponent,
-    MapsBoxComponent,
     SupportComponent
 } from './pages';
 
 const appRoutes: Routes = [
-    { path: 'home/:type', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'update', component: UpdatedLogComponent },
     { path: 'device', component: SayoControlComponent },
     { path: 'support', component: SupportComponent },
-    { path: '', redirectTo: 'home/new', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: NotFoundPageComponent }
 ];
 
@@ -30,6 +29,5 @@ export const COMPONENTS = [
     SayoControlComponent,
     NotFoundPageComponent,
     HomeComponent,
-    MapsBoxComponent,
     SupportComponent
 ];

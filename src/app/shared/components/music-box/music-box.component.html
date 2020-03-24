@@ -3,7 +3,7 @@
         <div class="status">
             <mat-icon (click)="switchStatus()" [svgIcon]="status"></mat-icon>
         </div>
-        <div class="title one-line-hidden">
+        <div class="title one-line">
             <ng-container *ngIf="musicBox.current">
                 {{ musicBox.current.title }}
             </ng-container>
@@ -17,8 +17,12 @@
     </div>
 
     <ul class="music-play-list" *ngIf="isOpenList">
-        <li class="music-play-item one-line-hidden" [class.active]="isMatch(item)"
-            *ngFor="let item of musicBox.playList; let order = index" (dblclick)="playNow(item)">
+        <li
+            class="music-play-item one-line"
+            [class.active]="isMatch(item)"
+            *ngFor="let item of musicBox.playList; let order = index"
+            (dblclick)="playNow(item)"
+        >
             {{ order }}.&nbsp;
             {{ item.title }}
         </li>

@@ -1,9 +1,41 @@
-import { ResponseBase } from './base.model';
+/**
+ * ==============================================================
+ * 铺面集合详情
+ * ==============================================================
+ * @param status 状态
+ * @param sid 谱面集合id
+ * @param local_update 最后检查更新时间
+ * @param bids_amount 此谱面集合中的谱面数量
+ * @param approved rank状态
+ * @param title 标题
+ * @param artist 艺术家
+ * @param titleU 标题 Unicode
+ * @param artistU 艺术家 Unicode
+ * @param creator 作图者
+ * @param creator_id 作图者的id
+ * @param source 提供方/专辑/……
+ * @param last_update 谱面最后更新时间
+ * @param approved_date Ranked 时间
+ * @param bpm bpm
+ * @param favourite_count 收藏数
+ * @param video 是否有视频
+ * @param storyboard 是否有storyboard
+ * @param preview 是否有预览
+ * @param tags 标签字符串
+ * @param language 语言
+ * @param genre 风格
+ * @param bid_data 难度详情列表
+ */
+export interface MapInfoResult {
+    status: number;
+    data: MapSidDetail;
+}
 
 /**
  * ==============================================================
  * 铺面集合详情
  * ==============================================================
+ * @param status 状态
  * @param sid 谱面集合id
  * @param local_update 最后检查更新时间
  * @param bids_amount 此谱面集合中的谱面数量
@@ -163,25 +195,6 @@ export interface MapBidDetail {
 
 /**
  * ==============================================================
- * 预览列表
- * ==============================================================
- * @param endid 最后的ID
- * @param status 状态
- * @param data 预览数组
- * @example {
- *   status: 0
- *   endid: 20,
- *   data: [ PreMap list ]
- * }
- */
-export interface PreMapList {
-    endid: number;
-    status: number;
-    data: PreMap[];
-}
-
-/**
- * ==============================================================
  * 预览图
  * ==============================================================
  * @param approved 已承认
@@ -225,8 +238,10 @@ export interface PreMap {
 
 /**
  * ==============================================================
- * 搜索结果统计
+ * 搜索铺面列表结果
  * ==============================================================
+ * @param status 状态;
+ * @param endid 下一页的偏移值;
  * @param time_cost 耗时
  * @param results 结果总量
  * @param match_title_results 匹配标题
@@ -234,18 +249,18 @@ export interface PreMap {
  * @param match_creator_results 匹配创作者
  * @param match_version_results 匹配难度
  * @param match_tags_results 匹配标签
- * @example {
-
- * }
  */
-export interface SearchMapResult extends ResponseBase<MapSidDetail[]> {
-    time_cost: number;
-    results: number;
-    match_title_results: number;
-    match_artist_results: number;
-    match_creator_results: number;
-    match_version_results: number;
+export interface SearchMapResult {
+    status: number;
+    endid: number;
+    time_cost?: number;
+    results?: number;
+    match_title_results?: number;
+    match_artist_results?: number;
+    match_creator_results?: number;
+    match_version_results?: number;
     match_tags_results: number;
+    data: PreMap[];
 }
 
 /**

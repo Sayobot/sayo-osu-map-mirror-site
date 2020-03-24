@@ -1,0 +1,23 @@
+// 去除图片造成的文字空隙
+.img-box {
+    font-size: 0;
+}
+
+// =======================================
+.ab-center-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ab-center-x {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

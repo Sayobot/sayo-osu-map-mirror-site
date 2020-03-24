@@ -9,12 +9,12 @@ import {
     DetailInfoComponent,
     DifficultyTableComponent,
     MapDetailRadarChartComponent,
-    TurnPageComponent,
-    PreviewCardComponent,
-    SearchInputComponent,
     InfoCardsComponent,
-    SearchStatisComponent,
-    MusicBoxComponent
+    MusicBoxComponent,
+    MapSearchContainerComponent,
+    MapSearchBoxComponent,
+    MapSearchResultsComponent,
+    MapSearchPaginnatorComponent
 } from './components';
 
 export const MODULES = [
@@ -30,10 +30,10 @@ export const COMPONENTS = [
     DetailInfoComponent,
     DifficultyTableComponent,
     MapDetailRadarChartComponent,
-    TurnPageComponent,
-    PreviewCardComponent,
-    SearchInputComponent,
     InfoCardsComponent,
-    SearchStatisComponent,
-    MusicBoxComponent
+    MusicBoxComponent,
+    MapSearchContainerComponent,
+    MapSearchBoxComponent,
+    MapSearchResultsComponent,
+    MapSearchPaginnatorComponent
 ];

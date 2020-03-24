@@ -1,35 +1,11 @@
-@import './position'; // 定位布局
-@import './text'; // 文字公共
-
 @mixin text-one-line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-// 禁用文字选中 none | text
-@mixin text-no-select($isSelet: none) {
-    -moz-user-select: $isSelet;
-    -webkit-user-select: $isSelet;
-    -ms-user-select: $isSelet;
-    -khtml-user-select: $isSelet;
-    user-select: $isSelet;
-}
-
-// 字体图标
-@mixin font-icon($size: 16px) {
-    font-size: $size;
-
-    i {
-        font-size: $size;
-        height: $size;
-        width: $size;
-    }
-}
-
 // 高亮关键文字
 .high-light-text {
-    @include text-no-select(text);
     font-weight: lighter;
     border-bottom: 2px solid #000;
     padding: 0 0.5em;
@@ -49,4 +25,29 @@
     i {
         font-size: 16px;
     }
+}
+
+// ============================
+$theme-primary: #3f51b5;
+$theme-accent: #ff4081;
+$theme-warn: #850808;
+
+.one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.icon {
+    $icon-size: 24px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+    background-position: center;
+}
+
+.mat-tooltip {
+    background: rgba(0, 0, 0, 0.9);
 }

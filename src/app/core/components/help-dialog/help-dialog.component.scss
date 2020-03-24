@@ -1,15 +1,28 @@
 @import '../../core';
 
 .content {
-    text-indent: $text-indent;
-    line-height: $text-line-height;
+    text-indent: 2rem;
+    line-height: 2rem;
 }
 
 .no-show {
-    @include flex-layout($x: flex-end);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .actions {
     padding: 2em;
     width: 100%;
+}
+
+.link-btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0 0.5em;
+    text-indent: 0;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0 5px;
+    color: #ad2b58;
 }

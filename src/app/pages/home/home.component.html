@@ -1,20 +1,3 @@
-<div class="home">
-    <div class="main">
-        <div class="map-wrapper">
-            <search-input></search-input>
-            <nav class="map-nav">
-                <a [routerLink]="['/home', 'new']" class="map-nav-item" [title]="'maps.placeholder' | translate"
-                    routerLinkActive="active">{{ 'maps.newMap' | translate }}</a>
-                <a [routerLink]="['/home', 'hot']" class="map-nav-item"
-                    routerLinkActive="active">{{ 'maps.hotMap' | translate }}</a>
-                <a [routerLink]="['/home', 'search']" class="map-nav-item"
-                    routerLinkActive="active">{{ 'maps.searchMap' | translate }}</a>
-            </nav>
-
-            <maps-box></maps-box>
-            <turn-page></turn-page>
-        </div>
-
-        <info-cards></info-cards>
-    </div>
+<div class="main">
+    <map-search-container></map-search-container>
 </div>
