@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
         </main>
         <app-footer></app-footer>
         <music-box></music-box>
+        <scroll-top></scroll-top>
     `
 })
 export class AppComponent {

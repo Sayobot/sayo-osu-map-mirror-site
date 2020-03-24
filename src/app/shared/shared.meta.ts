@@ -11,10 +11,14 @@ import {
     MapDetailRadarChartComponent,
     InfoCardsComponent,
     MusicBoxComponent,
+    ScrollTopComponent,
     MapSearchContainerComponent,
     MapSearchBoxComponent,
     MapSearchResultsComponent,
-    MapSearchPaginnatorComponent
+    MapSearchPaginnatorComponent,
+    MapSearchOptionsComponent,
+    MapSearchResultItemComponent,
+    MapSearchQuickbarComponent
 } from './components';
 
 export const MODULES = [
@@ -32,8 +36,12 @@ export const COMPONENTS = [
     MapDetailRadarChartComponent,
     InfoCardsComponent,
     MusicBoxComponent,
+    ScrollTopComponent,
     MapSearchContainerComponent,
     MapSearchBoxComponent,
     MapSearchResultsComponent,
-    MapSearchPaginnatorComponent
+    MapSearchPaginnatorComponent,
+    MapSearchOptionsComponent,
+    MapSearchResultItemComponent,
+    MapSearchQuickbarComponent
 ];

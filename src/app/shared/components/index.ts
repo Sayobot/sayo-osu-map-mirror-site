@@ -4,6 +4,7 @@ export * from './difficulty-table/difficulty-table.component';
 export * from './map-detail-radar-chart/map-detail-radar-chart.component';
 export * from './info-cards/info-cards.component';
 export * from './music-box/music-box.component';
+export * from './scroll-top/scroll-top.component';
 export * from './map-search-box/map-search-box.component';
 export * from './map-search-container/map-search-container.component';
 export * from './map-search-paginnator/map-search-paginnator.component';

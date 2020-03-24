@@ -1,0 +1,12 @@
+$icon-size: 2rem;
+
+.scroll-top {
+    position: fixed;
+    right: 2rem;
+    bottom: 3rem;
+    color: #fff;
+    background: #1d1d1d;
+    height: $icon-size;
+    width: $icon-size;
+    font-size: $icon-size;
+}
