@@ -10,7 +10,10 @@
         #panel
         (change)="onOptionsChange($event)"
     ></map-search-options>
-    <map-search-results *ngIf="results" [maps]="results"></map-search-results>
+
+    <app-loading [loading]="loading"></app-loading>
+    <map-search-results *ngIf="!loading" [maps]="results"></map-search-results>
+
     <map-search-paginnator
         (change)="onPagechange($event)"
     ></map-search-paginnator>
