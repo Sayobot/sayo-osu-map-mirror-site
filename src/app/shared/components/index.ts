@@ -12,3 +12,4 @@ export * from './map-search-results/map-search-results.component';
 export * from './map-search-options/map-search-options.component';
 export * from './map-search-quickbar/map-search-quickbar.component';
 export * from './map-search-result-item/map-search-result-item.component';
+export * from './loading/loading.component';

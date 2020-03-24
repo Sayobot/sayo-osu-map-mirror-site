@@ -21,6 +21,8 @@ export class MapSearchContainerComponent implements OnInit {
     offset: number = 0;
     pageSize: number = 20;
 
+    loading: boolean = false;
+
     @ViewChild('panel', { static: true }) panel: MapSearchOptionsComponent;
 
     constructor(
@@ -87,6 +89,8 @@ export class MapSearchContainerComponent implements OnInit {
     }
 
     onSearch() {
+        this.loading = true;
+
         let query = [
             `0=${this.pageSize}`,
             `1=${this.offset}`,
@@ -101,6 +105,7 @@ export class MapSearchContainerComponent implements OnInit {
         this.mapServe.getMapList(query).subscribe((res: SearchMapResult) => {
             this.results = res.data;
             this.offset = res.endid;
+            this.loading = false;
         });
     }
 
