@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayMusicService, MusicItem } from '@app/core/service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
     selector: 'music-box',
@@ -8,11 +9,22 @@ import { PlayMusicService, MusicItem } from '@app/core/service';
 })
 export class MusicBoxComponent implements OnInit {
     isOpenList: boolean;
-    constructor(public musicBox: PlayMusicService) {
+    mode: string = 'box';
+
+    constructor(
+        public musicBox: PlayMusicService,
+        private breakPotintObserver: BreakpointObserver
+    ) {
         this.isOpenList = false;
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.breakPotintObserver
+            .observe([Breakpoints.XSmall])
+            .subscribe((result) => {
+                this.mode = result.matches ? 'box' : 'mini';
+            });
+    }
 
     get status() {
         return this.musicBox.isPlay ? 'pause_black' : 'play_arrow';
