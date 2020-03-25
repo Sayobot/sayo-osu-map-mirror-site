@@ -47,6 +47,8 @@ export class MapSearchContainerComponent implements OnInit {
     }
 
     onQuickSearch(keyWords: string) {
+        this.offset = 0;
+
         switch (keyWords) {
             case 'new':
                 this.typeCode = 2;
@@ -56,6 +58,7 @@ export class MapSearchContainerComponent implements OnInit {
                 break;
             default:
                 this.typeCode = 4;
+                this.keywords = keyWords;
                 break;
         }
 
