@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
 import { ServerMangeService } from '@app/core/service';
-import { HelpDialogComponent } from '@app/core/components/help-dialog';
-import { AboutDialogComponent } from '@app/core/components/about-dialog';
+import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
+import { AboutDialogComponent } from '../about-dialog/about-dialog.component';
 
 const dialog_common_config = {
     height: '98%',

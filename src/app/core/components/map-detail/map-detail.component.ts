@@ -15,6 +15,8 @@ import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
     styleUrls: ['./map-detail.component.scss']
 })
 export class MapDetailComponent implements OnInit {
+    BASE_URL = 'https://txy1.sayobot.cn/beatmaps/download/';
+
     mapDetail: MapSidDetail; // 铺面详情
     imgUrl: string; // 图片链接
     parttime: number; // 试听剩余时间
@@ -30,7 +32,6 @@ export class MapDetailComponent implements OnInit {
     mapUnvedioTimer = null; // 不带视频铺面下载
 
     constructor(
-        @Inject('BASE_CONFIG') public config,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private musicBox: PlayMusicService,
         public serverMange: ServerMangeService,
@@ -39,7 +40,7 @@ export class MapDetailComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.imgUrl = `${this.config.pic}${this.data.id}/covers/cover.webp?0`;
+        this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.data.id}/covers/cover.webp?0`;
         this.mapDetail = this.data.content;
         this.detailInfo = this.mapDetail.bid_data[0];
     }
@@ -55,7 +56,7 @@ export class MapDetailComponent implements OnInit {
     // 点击下载事件
     onDownLoad(url: string) {
         downloadFile(
-            `${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`
+            `${this.BASE_URL}${url}?server=${this.serverMange.currentServer}`
         );
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
@@ -67,7 +68,7 @@ export class MapDetailComponent implements OnInit {
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
         downloadFile(
-            `${url}${this.mapDetail.sid}?server=${this.serverMange.currentServer}`
+            `${this.BASE_URL}${url}?server=${this.serverMange.currentServer}`
         );
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
@@ -111,7 +112,7 @@ export class MapDetailComponent implements OnInit {
 
     // 将当前铺面复制到剪切板
     shared() {
-        const sharedInfo = `https://${this.config.domain}/?search=${this.data.id}`;
+        const sharedInfo = `https://osu.sayobot.cn/?search=${this.data.id}`;
 
         copy2Clipboard(sharedInfo).then(() => {
             this.snackBar.open('已复制：', sharedInfo, {

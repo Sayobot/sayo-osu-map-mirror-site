@@ -1,22 +1,45 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { DIALOG, COMPONENTS, PROVIDES, MODULES } from './core.meta';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from 'app/shared';
+import { PagesModule } from '@app/pages/pages.module';
 
 // 导入 ng 国际化插件
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
-import { loadSvgIconResources } from '@app/utils';
-
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
 
+// 注册全局图标
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { loadSvgIconResources } from '@app/utils';
+
+import {
+    HeaderComponent,
+    FooterComponent,
+    AboutDialogComponent,
+    HelpDialogComponent,
+    MapDetailComponent
+} from './components';
+
 @NgModule({
     imports: [
-        ...MODULES,
-        TranslateModule.forChild({
+        BrowserModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        SharedModule,
+        PagesModule,
+        TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
                 useFactory: HttpLoaderFactory,
@@ -24,10 +47,30 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         })
     ],
-    entryComponents: [...DIALOG],
-    declarations: [...COMPONENTS],
-    exports: [...COMPONENTS],
-    providers: [...PROVIDES]
+    entryComponents: [
+        AboutDialogComponent,
+        HelpDialogComponent,
+        MapDetailComponent
+    ],
+    declarations: [
+        HeaderComponent,
+        FooterComponent,
+        AboutDialogComponent,
+        HelpDialogComponent,
+        MapDetailComponent
+    ],
+    exports: [
+        SharedModule,
+        AppRoutingModule,
+        AboutDialogComponent,
+        HelpDialogComponent,
+        MapDetailComponent,
+        HeaderComponent,
+        FooterComponent,
+        AboutDialogComponent,
+        HelpDialogComponent,
+        MapDetailComponent
+    ]
 })
 export class CoreModule {
     constructor(

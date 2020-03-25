@@ -22,14 +22,11 @@ export class SupportComponent implements OnInit {
     // 当前选中的年月
     currentLink: string;
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-        private http: HttpClient
-    ) {}
+    constructor(private http: HttpClient) {}
 
     ngOnInit() {
         this.http
-            .get(this.config.supportList)
+            .get('https://api.sayobot.cn/static/supportlist')
             .subscribe((res: ResponseBase<Supports[]>) => {
                 this.supportList = res.data;
                 this.currentLink = res.data[0].link;
@@ -58,9 +55,5 @@ export class SupportComponent implements OnInit {
     getSelectListValue(link: string) {
         const arr = link.split('/');
         return arr[arr.length - 1];
-    }
-
-    back() {
-        history.back();
     }
 }

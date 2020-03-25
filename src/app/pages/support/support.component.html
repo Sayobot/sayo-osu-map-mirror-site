@@ -8,8 +8,14 @@
         <mat-card-content>
             <mat-form-field *ngIf="supportList">
                 <mat-label>请选择对应的时间段</mat-label>
-                <mat-select [(ngModel)]="currentLink" (selectionChange)="onSelectLink()">
-                    <mat-option *ngFor="let supports of supportList" [value]="supports.link">
+                <mat-select
+                    [(ngModel)]="currentLink"
+                    (selectionChange)="onSelectLink()"
+                >
+                    <mat-option
+                        *ngFor="let supports of supportList"
+                        [value]="supports.link"
+                    >
                         {{ getSelectListValue(supports.link) }}
                     </mat-option>
                 </mat-select>
@@ -47,7 +53,10 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                ></tr>
             </table>
         </mat-card-content>
     </mat-card>
