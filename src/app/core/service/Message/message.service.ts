@@ -1,12 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Notice, ResponseBase, FeedTarget } from '@app/shared/models';
+import { Notice, ResponseBase } from '@app/shared/models';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MessageService {
-    supportInfo: FeedTarget;
+    supportInfo: any;
     notices: Notice[];
 
     constructor(
@@ -18,7 +18,7 @@ export class MessageService {
     getSupportTotal() {
         this.http
             .get(this.config.support)
-            .subscribe((res: ResponseBase<FeedTarget>) => {
+            .subscribe((res: ResponseBase<any>) => {
                 this.supportInfo = res.data;
             });
     }

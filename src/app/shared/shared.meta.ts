@@ -19,7 +19,8 @@ import {
     MapSearchPaginnatorComponent,
     MapSearchOptionsComponent,
     MapSearchResultItemComponent,
-    MapSearchQuickbarComponent
+    MapSearchQuickbarComponent,
+    DonationCardComponent
 } from './components';
 
 export const MODULES = [
@@ -45,5 +46,6 @@ export const COMPONENTS = [
     MapSearchPaginnatorComponent,
     MapSearchOptionsComponent,
     MapSearchResultItemComponent,
-    MapSearchQuickbarComponent
+    MapSearchQuickbarComponent,
+    DonationCardComponent
 ];

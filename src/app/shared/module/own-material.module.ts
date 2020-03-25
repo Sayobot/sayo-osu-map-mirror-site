@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // CDK
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { MatNativeDateModule } from '@angular/material/core';
@@ -56,8 +57,6 @@ const MATERIAL_MODULE = [
     MatSelectModule,
     // MatToolbarModule,
     MatSnackBarModule,
-    DragDropModule,
-
     // MatAutocompleteModule,
     // MatFormFieldModule,
     // MatSliderModule,
@@ -72,12 +71,14 @@ const MATERIAL_MODULE = [
     // MatTabsModule,
     // MatTreeModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
     // MatProgressSpinnerModule,
     // MatRadioModule,
     // MatSortModule,
     // MatNativeDateModule,
     // MatPaginatorModule,
+    DragDropModule,
+    LayoutModule
 ];
 
 @NgModule({
