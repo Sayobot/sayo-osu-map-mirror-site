@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { UpdatedLogService } from '@app/core/service/UpdateLog';
+import { Component, OnInit } from '@angular/core';
+import { UpdatedLogService } from '@app/core/service';
 
 @Component({
     selector: 'app-updated-log',
