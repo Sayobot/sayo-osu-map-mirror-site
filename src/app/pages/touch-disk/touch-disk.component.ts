@@ -4,11 +4,11 @@ import { Operate, KeyItem } from '@app/shared/models';
 import { downloadFile } from '@app/utils';
 
 @Component({
-    selector: 'app-sayo-control',
-    templateUrl: './sayo-control.component.html',
-    styleUrls: ['./sayo-control.component.scss']
+    selector: 'app-touch-disk',
+    templateUrl: './touch-disk.component.html',
+    styleUrls: ['./touch-disk.component.scss']
 })
-export class SayoControlComponent implements OnInit {
+export class TouchDiskComponent implements OnInit {
     current: number;
     isSelect = false;
 

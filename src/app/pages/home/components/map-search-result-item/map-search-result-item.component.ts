@@ -3,7 +3,7 @@ import { PreMap, Approved, MapSidDetail } from '@app/shared/models';
 import { downloadFile } from '@app/utils';
 import { PlayMusicService, MusicItem, MapService } from '@app/core/service';
 import { MatDialog } from '@angular/material';
-import { MapDetailComponent } from '@app/core';
+import { MapDetailComponent } from '@app/core/components';
 
 const MODES_CONFIG = {
     std: [1, 3, 5, 7, 9, 11, 13, 15],

@@ -34,10 +34,7 @@ export class ServerMangeService {
     serveList: Server[] = [];
     currentServer = '0';
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-        private http: HttpClient
-    ) {
+    constructor(private http: HttpClient) {
         this.getServerList();
         setTimeout(() => {
             localStorage.getItem('server')
@@ -52,7 +49,7 @@ export class ServerMangeService {
 
     getServerList() {
         this.http
-            .get(this.config.serviceList)
+            .get('https://api.sayobot.cn/static/servers')
             .subscribe((res: ResponseBase<ServerItem[]>) => {
                 res.data.forEach((element) => {
                     this.serveList.push(new Server(element));

@@ -11,22 +11,6 @@
     padding: 0 0.5em;
 }
 
-@mixin float-label($top: 0.5rem, $left: 0.5rem) {
-    position: absolute;
-    left: $left;
-    top: $top;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 0.5rem;
-    padding: 0.15rem 0.5rem;
-    color: #fff;
-    z-index: 1;
-    font-size: 0.6em;
-
-    i {
-        font-size: 16px;
-    }
-}
-
 // ============================
 $theme-primary: #3f51b5;
 $theme-accent: #ff4081;

@@ -1,20 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {
-    UpdatedLogComponent,
-    SayoControlComponent,
-    NotFoundPageComponent,
-    HomeComponent,
-    SupportComponent
-} from './pages';
 
 const appRoutes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'update', component: UpdatedLogComponent },
-    { path: 'device', component: SayoControlComponent },
-    { path: 'support', component: SupportComponent },
+    {
+        path: 'home',
+        loadChildren: () =>
+            import('./pages/home/home.module').then((m) => m.HomeModule)
+    },
+    {
+        path: 'history',
+        loadChildren: () =>
+            import('./pages/history/history.module').then(
+                (m) => m.HistoryModule
+            )
+    },
+    {
+        path: 'touchDisk',
+        loadChildren: () =>
+            import('./pages/touch-disk/touch-disk.module').then(
+                (m) => m.TouchDiskModule
+            )
+    },
+    {
+        path: 'support',
+        loadChildren: () =>
+            import('./pages/support/support.module').then(
+                (m) => m.SupportModule
+            )
+    },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: '**', component: NotFoundPageComponent }
+    { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
@@ -23,11 +38,3 @@ const appRoutes: Routes = [
     exports: [RouterModule]
 })
 export class AppRoutingModule {}
-
-export const COMPONENTS = [
-    UpdatedLogComponent,
-    SayoControlComponent,
-    NotFoundPageComponent,
-    HomeComponent,
-    SupportComponent
-];

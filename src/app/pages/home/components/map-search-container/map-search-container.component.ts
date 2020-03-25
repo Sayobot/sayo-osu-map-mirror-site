@@ -3,7 +3,7 @@ import { MapService } from '@app/core/service';
 import { PreMap, SearchMapResult, MapSidDetail } from '@app/shared/models';
 import { MapSearchOptionsComponent } from '../map-search-options/map-search-options.component';
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { MapDetailComponent } from '@app/core';
+import { MapDetailComponent } from '@app/core/components';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({

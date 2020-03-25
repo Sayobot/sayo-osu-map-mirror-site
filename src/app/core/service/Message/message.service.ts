@@ -9,15 +9,12 @@ export class MessageService {
     supportInfo: any;
     notices: Notice[];
 
-    constructor(
-        @Inject('BASE_CONFIG') private config,
-        private http: HttpClient
-    ) {}
+    constructor(private http: HttpClient) {}
 
     // 获取支持详情
     getSupportTotal() {
         this.http
-            .get(this.config.support)
+            .get('https://api.sayobot.cn/support')
             .subscribe((res: ResponseBase<any>) => {
                 this.supportInfo = res.data;
             });
@@ -26,7 +23,7 @@ export class MessageService {
     // 新闻列表
     getNewsList() {
         this.http
-            .get(this.config.notice)
+            .get('https://api.sayobot.cn/notice')
             .subscribe(
                 (res: ResponseBase<Notice[]>) => (this.notices = res.data)
             );
