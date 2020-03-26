@@ -1,7 +1,11 @@
 <div class="map-wrap" *ngIf="map">
     <div class="img-wrap">
         <img src="{{ imgSrc }}" alt="{{ imgSrc }}" />
-        <div class="overlay"></div>
+        <div
+            class="overlay"
+            matTooltip="查看详情"
+            (click)="openDetailPanel()"
+        ></div>
         <div class="title one-line">{{ map.title }}</div>
         <div class="status" matTooltip="铺面状态">{{ status | uppercase }}</div>
         <div class="play-count flex-center">

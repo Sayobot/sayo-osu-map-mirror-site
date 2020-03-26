@@ -22,19 +22,19 @@
             >
                 <mat-icon>sort</mat-icon>
             </div>
-        </div>
 
-        <ul class="music-play-list" *ngIf="isOpenList">
-            <li
-                class="music-play-item one-line"
-                [class.active]="isMatch(item)"
-                *ngFor="let item of musicBox.playList; let order = index"
-                (dblclick)="playNow(item)"
-            >
-                {{ order }}.&nbsp;
-                {{ item.title }}
-            </li>
-        </ul>
+            <ul class="music-play-list" *ngIf="isOpenList">
+                <li
+                    class="music-play-item one-line"
+                    [class.active]="isMatch(item)"
+                    *ngFor="let item of musicBox.playList; let order = index"
+                    (dblclick)="playNow(item)"
+                >
+                    {{ order }}.&nbsp;
+                    {{ item.title }}
+                </li>
+            </ul>
+        </div>
     </div>
 </ng-container>
 
