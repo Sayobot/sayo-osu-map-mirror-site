@@ -1,0 +1,26 @@
+@mixin icon($size) {
+    cursor: pointer;
+    display: inline-block;
+    background-repeat: no-repeat;
+    fill: currentColor;
+    background-position: center;
+    height: $size;
+    width: $size;
+    font-size: $size;
+}
+
+.icon-s {
+    @include icon(1rem);
+}
+
+.icon-m {
+    @include icon(1.5rem);
+}
+
+.icon-l {
+    @include icon(2rem);
+}
+
+.icon-xl {
+    @include icon(3rem);
+}

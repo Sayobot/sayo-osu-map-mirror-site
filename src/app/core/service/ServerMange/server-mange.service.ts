@@ -1,67 +1,28 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ResponseBase, ServerItem } from '@app/shared/models';
-
-export class Server {
-    server: string;
-    name: string;
-    name_english: string;
-    isSelect = false;
-
-    constructor(obj: ServerItem) {
-        this.server = obj.server;
-        this.name = obj.server_nameU;
-        this.name_english = obj.server_name;
-
-        if (Object.is(this.server, '0')) {
-            this.select();
-        }
-    }
-
-    select() {
-        this.isSelect = true;
-    }
-
-    changeStatus(server: string) {
-        this.server === server ? this.select() : (this.isSelect = false);
-    }
-}
+import { Observable } from 'rxjs';
+import { ServerItem } from '@app/shared/models';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ServerMangeService {
-    serveList: Server[] = [];
-    currentServer = '0';
+    BASE_URL: string = 'https://api.sayobot.cn/';
 
-    constructor(private http: HttpClient) {
-        this.getServerList();
-        setTimeout(() => {
-            localStorage.getItem('server')
-                ? this.changeServer(localStorage.getItem('server'))
-                : this.saveServer();
-        }, 500);
+    constructor(private http: HttpClient) {}
+
+    getServerList(): Observable<ServerItem[]> {
+        return this.http
+            .get(`${this.BASE_URL}static/servers`)
+            .pipe(map((res: { data: ServerItem[] }) => res.data));
     }
 
-    saveServer() {
-        localStorage.setItem('server', this.currentServer);
+    set current(server: string) {
+        localStorage.setItem('server', server);
     }
 
-    getServerList() {
-        this.http
-            .get('https://api.sayobot.cn/static/servers')
-            .subscribe((res: ResponseBase<ServerItem[]>) => {
-                res.data.forEach((element) => {
-                    this.serveList.push(new Server(element));
-                });
-            });
-    }
-
-    changeServer(server: string) {
-        this.currentServer = server;
-        this.saveServer();
-        this.serveList.forEach((serve: Server) => {
-            serve.changeStatus(server);
-        });
+    get current() {
+        return localStorage.getItem('server') || '0';
     }
 }

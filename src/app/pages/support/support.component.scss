@@ -1,13 +1,9 @@
-:host {
-    padding: 2rem;
-}
-
 .support-wrapper {
+    padding: 2rem;
     display: flex;
 
     mat-card {
-        width: 80%;
-        margin: 0 auto;
+        flex: 1;
 
         table {
             width: 100%;
@@ -17,9 +13,31 @@
     .pay-wrapper {
         order: 2;
         flex: 0 1 18%;
+        margin: 0 1rem;
     }
 
     .back {
         margin: 1rem 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .support-wrapper {
+        flex-direction: column;
+        padding: 0;
+
+        mat-card {
+            flex: 0 1 100%;
+        }
+
+        .pay-wrapper {
+            order: 0;
+            flex: 0 1 100%;
+            margin: 0 0 1rem;
+
+            img {
+                width: 50%;
+            }
+        }
     }
 }

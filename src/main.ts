@@ -6,6 +6,7 @@ import { environment } from './environments/environment';
 
 // 手势支持
 import 'hammerjs';
+import 'swiper';
 
 if (environment.production) {
     enableProdMode();

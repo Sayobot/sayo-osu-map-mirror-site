@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    template: `
+        <div class="page">
+            <ads-box></ads-box>
+            <map-search-container></map-search-container>
+            <donation-card></donation-card>
+        </div>
+    `
 })
 export class HomeComponent implements OnInit {
     constructor() {}

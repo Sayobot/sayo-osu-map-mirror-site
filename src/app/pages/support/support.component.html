@@ -8,20 +8,17 @@
         <mat-card-content>
             <mat-form-field *ngIf="supportList">
                 <mat-label>请选择对应的时间段</mat-label>
-                <mat-select
-                    [(ngModel)]="currentLink"
-                    (selectionChange)="onSelectLink()"
-                >
-                    <mat-option
-                        *ngFor="let supports of supportList"
-                        [value]="supports.link"
-                    >
+                <mat-select [(ngModel)]="currentLink"
+                    (selectionChange)="onSelectLink()">
+                    <mat-option *ngFor="let supports of supportList"
+                        [value]="supports.link">
                         {{ getSelectListValue(supports.link) }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <table mat-table [dataSource]="dataSource">
+            <app-loading [loading]="loading"></app-loading>
+            <table mat-table [dataSource]="dataSource" *ngIf="!loading">
                 <!-- ID Column -->
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -53,10 +50,8 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                    mat-row
-                    *matRowDef="let row; columns: displayedColumns"
-                ></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns">
+                </tr>
             </table>
         </mat-card-content>
     </mat-card>

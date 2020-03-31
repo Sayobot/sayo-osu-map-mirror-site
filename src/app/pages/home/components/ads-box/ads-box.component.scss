@@ -1,0 +1,43 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 15%;
+
+    .pic {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .link-bg {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 2rem;
+        line-height: 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 0 1rem;
+        transition: all 0.3s ease-in-out;
+
+        .link {
+            font-size: 1.5rem;
+            text-decoration: underline;
+            color: #fff;
+            z-index: 100;
+        }
+    }
+}
+.swiper-container:hover .link-bg {
+    top: calc(100% - 2rem);
+}
+
+.swiper-pagination {
+    bottom: 10px;
+    left: 50%;
+    width: 3rem;
+    transform: translateX(-50%);
+}

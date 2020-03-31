@@ -11,25 +11,24 @@
     padding: 0 0.5em;
 }
 
-// ============================
-$theme-primary: #3f51b5;
-$theme-accent: #ff4081;
-$theme-warn: #850808;
+:root {
+    --light-theme-primary: #1d1d1d;
+    --light-theme-accent: #ff4081;
+    --light-theme-warn: #850808;
+    --light-font-color: #fff;
+}
+
+.page {
+    width: 98vw;
+    max-width: 1200px;
+    min-width: 320px;
+    margin: 0 auto;
+}
 
 .one-line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.icon {
-    $icon-size: 24px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    fill: currentColor;
-    height: 24px;
-    width: 24px;
-    background-position: center;
 }
 
 .mat-tooltip {

@@ -31,7 +31,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { MatSliderModule } from '@angular/material/slider';
-// import { MatSortModule } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 // import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 // import { MatTabsModule } from '@angular/material/tabs';
@@ -74,7 +74,7 @@ const MATERIAL_MODULE = [
     MatTooltipModule,
     // MatProgressSpinnerModule,
     // MatRadioModule,
-    // MatSortModule,
+    MatSortModule,
     // MatNativeDateModule,
     // MatPaginatorModule,
     DragDropModule,

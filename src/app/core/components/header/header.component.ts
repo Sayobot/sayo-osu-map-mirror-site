@@ -1,27 +1,20 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { language } from 'assets/i18n/language';
-import { ServerMangeService } from '@app/core/service';
 import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
-import { AboutDialogComponent } from '../about-dialog/about-dialog.component';
-
-const dialog_common_config = {
-    height: '98%',
-    maxHeight: '98%',
-    width: '700px'
-};
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     language: Array<any>;
 
+    timer = null;
+
     constructor(
-        public serverMange: ServerMangeService,
         private translate: TranslateService,
         private dialog: MatDialog
     ) {}
@@ -35,20 +28,20 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         }
     }
 
-    useLanguage(lang) {
+    useLanguage(lang: string) {
         localStorage.setItem('language', lang);
         this.translate.setDefaultLang(lang);
     }
 
     openHelpDialog() {
-        this.dialog.open(HelpDialogComponent, dialog_common_config);
+        this.dialog.open(HelpDialogComponent, {
+            maxHeight: '98vh',
+            width: '800px',
+            maxWidth: '98vw'
+        });
     }
 
-    openAboutDialog() {
-        this.dialog.open(AboutDialogComponent, dialog_common_config);
-    }
-
-    isShowHelpDialog() {
+    get showHelpDialog() {
         return (
             !localStorage.getItem('isShow') ||
             localStorage.getItem('isShow') === 'false'
@@ -56,10 +49,14 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        if (this.isShowHelpDialog()) {
-            setTimeout(() => {
+        if (this.showHelpDialog) {
+            this.timer = setTimeout(() => {
                 this.openHelpDialog();
             }, 0);
         }
+    }
+
+    ngOnDestroy() {
+        clearTimeout(this.timer);
     }
 }

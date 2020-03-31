@@ -1,0 +1,29 @@
+// 加载动画
+@keyframes loading {
+    0% {
+        height: 5vw;
+    }
+
+    50% {
+        height: 1vw;
+    }
+
+    100% {
+        height: 5vw;
+    }
+}
+
+// 闪烁动画
+@keyframes flicker {
+    0% {
+        box-shadow: 0 0 0px 5px #ddd;
+    }
+
+    50% {
+        box-shadow: 0 0 5px 0px #a5a5a5;
+    }
+
+    100% {
+        box-shadow: 0 0 0px 5px #ddd;
+    }
+}

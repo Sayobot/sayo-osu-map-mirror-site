@@ -28,6 +28,18 @@ const appRoutes: Routes = [
                 (m) => m.SupportModule
             )
     },
+    {
+        path: 'about',
+        loadChildren: () =>
+            import('./pages/about/about.module').then((m) => m.AboutModule)
+    },
+    {
+        path: 'setting',
+        loadChildren: () =>
+            import('./pages/setting/setting.module').then(
+                (m) => m.SettingModule
+            )
+    },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' }
 ];

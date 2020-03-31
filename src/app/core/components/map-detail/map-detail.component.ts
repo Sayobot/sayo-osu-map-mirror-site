@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
@@ -14,7 +14,7 @@ import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
     templateUrl: './map-detail.component.html',
     styleUrls: ['./map-detail.component.scss']
 })
-export class MapDetailComponent implements OnInit {
+export class MapDetailComponent implements OnInit, OnDestroy {
     BASE_URL = 'https://txy1.sayobot.cn/beatmaps/download/';
 
     mapDetail: MapSidDetail; // 铺面详情
@@ -56,7 +56,7 @@ export class MapDetailComponent implements OnInit {
     // 点击下载事件
     onDownLoad(url: string) {
         downloadFile(
-            `${this.BASE_URL}${url}?server=${this.serverMange.currentServer}`
+            `${this.BASE_URL}${url}?server=${this.serverMange.current}`
         );
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
@@ -68,7 +68,7 @@ export class MapDetailComponent implements OnInit {
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
         downloadFile(
-            `${this.BASE_URL}${url}?server=${this.serverMange.currentServer}`
+            `${this.BASE_URL}${url}?server=${this.serverMange.current}`
         );
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
@@ -119,5 +119,10 @@ export class MapDetailComponent implements OnInit {
                 duration: 2000
             });
         });
+    }
+
+    ngOnDestroy() {
+        clearTimeout(this.mapTimer);
+        clearTimeout(this.musicTimer);
     }
 }
