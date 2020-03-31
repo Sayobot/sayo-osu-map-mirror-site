@@ -6,3 +6,4 @@ export * from './map-search-options/map-search-options.component';
 export * from './map-search-quickbar/map-search-quickbar.component';
 export * from './map-search-result-item/map-search-result-item.component';
 export * from './donation-card/donation-card.component';
+export * from './ads-box/ads-box.component';

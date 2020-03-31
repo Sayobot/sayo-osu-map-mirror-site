@@ -1,8 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { SupportDetails, Supports, ResponseBase } from '@app/shared/models';
-
-const supportFrom = ['支付宝', '微信', 'QQ红包', '其他'];
+import { Component, OnInit } from '@angular/core';
+import { SupportDetails, Supports } from '@app/shared/models';
+import { DonationService } from '@app/core/service';
 
 @Component({
     selector: 'app-support',
@@ -10,45 +8,43 @@ const supportFrom = ['支付宝', '微信', 'QQ红包', '其他'];
     styleUrls: ['./support.component.scss']
 })
 export class SupportComponent implements OnInit {
-    // 列表显示行
     displayedColumns: string[] = ['id', 'type', 'money', 'time'];
-
-    // 当前选中显示
     dataSource: SupportDetails[];
-
-    // 支持列表
     supportList: Supports[];
-
-    // 当前选中的年月
     currentLink: string;
 
-    constructor(private http: HttpClient) {}
+    loading: boolean;
+
+    constructor(private donation: DonationService) {
+        this.loading = true;
+    }
 
     ngOnInit() {
-        this.http
-            .get('https://api.sayobot.cn/static/supportlist')
-            .subscribe((res: ResponseBase<Supports[]>) => {
-                this.supportList = res.data;
-                this.currentLink = res.data[0].link;
+        this.donation.getSupperList().subscribe((res: Supports[]) => {
+            const firstLink = res[0].link;
 
-                this.http
-                    .get(res.data[0].link)
-                    .subscribe((detail: ResponseBase<SupportDetails[]>) => {
-                        this.dataSource = detail.data;
-                    });
+            this.supportList = res;
+            this.currentLink = firstLink;
+            this.getSupportDetasil(firstLink);
+        });
+    }
+
+    getSupportDetasil(link: string) {
+        this.loading = true;
+        this.donation
+            .getSupperDetail(link)
+            .subscribe((res: SupportDetails[]) => {
+                this.dataSource = res;
+                this.loading = false;
             });
     }
 
     onSelectLink() {
-        this.http
-            .get(this.currentLink)
-            .subscribe((detail: ResponseBase<SupportDetails[]>) => {
-                this.dataSource = detail.data;
-            });
+        this.getSupportDetasil(this.currentLink);
     }
 
-    // 支持来源
     supportFrom(code: number) {
+        const supportFrom = ['支付宝', '微信', 'QQ红包', '其他'];
         return supportFrom[code];
     }
 

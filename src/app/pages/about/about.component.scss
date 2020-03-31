@@ -1,0 +1,49 @@
+.page {
+    section {
+        padding: 2rem 0px;
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .des {
+            font-size: 0.75rem;
+            color: #4b4b4b;
+        }
+    }
+
+    .about-down {
+        .content {
+            margin-left: 1rem;
+        }
+    }
+
+    .buy {
+        .imgs {
+            display: flex;
+            flex-wrap: wrap;
+
+            .pic {
+                flex: 1;
+            }
+        }
+    }
+}
+
+img {
+    width: 320px;
+}
+
+@media screen and (max-width: 1200px) {
+    .page {
+        padding: 0 1rem;
+
+        .buy {
+            .imgs {
+                .pic {
+                    flex: 0 1 50%;
+                }
+            }
+        }
+    }
+}

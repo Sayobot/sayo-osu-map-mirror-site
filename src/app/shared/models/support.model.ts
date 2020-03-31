@@ -15,7 +15,6 @@ export interface Supports {
     link: string;
     order: number;
     title: string;
-    detail?: SupportDetails[];
 }
 
 /**

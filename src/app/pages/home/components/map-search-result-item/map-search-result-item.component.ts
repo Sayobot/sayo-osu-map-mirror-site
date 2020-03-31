@@ -1,4 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    ChangeDetectionStrategy
+} from '@angular/core';
 import { PreMap, Approved, MapSidDetail } from '@app/shared/models';
 import { downloadFile } from '@app/utils';
 import { PlayMusicService, MusicItem, MapService } from '@app/core/service';
@@ -15,7 +20,8 @@ const MODES_CONFIG = {
 @Component({
     selector: 'map-search-result-item',
     templateUrl: './map-search-result-item.component.html',
-    styleUrls: ['./map-search-result-item.component.scss']
+    styleUrls: ['./map-search-result-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapSearchResultItemComponent implements OnInit {
     @Input() map: PreMap;

@@ -1,9 +1,12 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~swiper/css/swiper.min.css';
 @import './app/theme/reset';
 @import './app/theme/common';
 @import './app/theme/scrollbar';
 @import './app/theme/dialog';
 @import './app/theme/layout';
+@import './app/theme/animation';
+@import './app/theme/icon';
 
 @font-face {
     font-family: 'Titillium Web';

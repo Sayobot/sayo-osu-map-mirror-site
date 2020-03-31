@@ -1,17 +1,8 @@
 <div class="container">
-    <mat-icon class="icon icon-options ab-center-y" (click)="togglePanel()"
-        >menu</mat-icon
-    >
-    <input
-        type="text"
-        class="box"
-        placeholder="在这里输入什么吧"
-        #searchBox
-        (keyup.enter)="onSearch(searchBox.value)"
-    />
-    <mat-icon
-        class="icon icon-search ab-center-y"
-        (click)="onSearch(searchBox.value)"
-        >search</mat-icon
-    >
+    <mat-icon class="icon-m icon-options ab-center-y" (click)="togglePanel()">
+        menu</mat-icon>
+    <input type="text" class="box" placeholder="在这里输入什么吧" #searchBox
+        (keyup.enter)="onSearch(searchBox.value)" />
+    <mat-icon class="icon-m icon-search ab-center-y"
+        (click)="onSearch(searchBox.value)">search</mat-icon>
 </div>

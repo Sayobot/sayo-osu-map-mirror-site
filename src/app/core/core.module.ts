@@ -24,7 +24,6 @@ import { loadSvgIconResources } from '@app/utils';
 import {
     HeaderComponent,
     FooterComponent,
-    AboutDialogComponent,
     HelpDialogComponent,
     MapDetailComponent
 } from './components';
@@ -47,29 +46,20 @@ import {
             }
         })
     ],
-    entryComponents: [
-        AboutDialogComponent,
-        HelpDialogComponent,
-        MapDetailComponent
-    ],
+    entryComponents: [HelpDialogComponent, MapDetailComponent],
     declarations: [
         HeaderComponent,
         FooterComponent,
-        AboutDialogComponent,
         HelpDialogComponent,
         MapDetailComponent
     ],
     exports: [
         SharedModule,
         AppRoutingModule,
-        AboutDialogComponent,
         HelpDialogComponent,
         MapDetailComponent,
         HeaderComponent,
-        FooterComponent,
-        AboutDialogComponent,
-        HelpDialogComponent,
-        MapDetailComponent
+        FooterComponent
     ]
 })
 export class CoreModule {

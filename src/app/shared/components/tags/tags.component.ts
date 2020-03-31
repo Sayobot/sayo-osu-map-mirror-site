@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    Output,
+    EventEmitter,
+    ChangeDetectionStrategy
+} from '@angular/core';
 import { MapDetailComponent } from '@app/core/components';
 import { MatDialog } from '@angular/material/dialog';
 import { MapSidDetail } from '@app/shared/models';
@@ -6,7 +13,8 @@ import { MapSidDetail } from '@app/shared/models';
 @Component({
     selector: 'map-tags',
     templateUrl: './tags.component.html',
-    styleUrls: ['./tags.component.scss']
+    styleUrls: ['./tags.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsComponent implements OnInit {
     @Input() content: string;

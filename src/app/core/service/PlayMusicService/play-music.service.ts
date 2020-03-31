@@ -49,6 +49,7 @@ export class PlayMusicService {
         this.musicEl.preload = 'metadata';
         this.isPlay = false;
         this.playList = [];
+        this.current = null;
     }
 
     play() {
@@ -94,5 +95,9 @@ export class PlayMusicService {
         this.current = item;
         this.musicEl.src = this.current.src;
         this.play();
+    }
+
+    get empty() {
+        return !this.current || this.playList.length <= 0;
     }
 }

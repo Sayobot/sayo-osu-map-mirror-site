@@ -11,7 +11,8 @@ import {
     MapSearchQuickbarComponent,
     MapSearchResultItemComponent,
     MapSearchResultsComponent,
-    DonationCardComponent
+    DonationCardComponent,
+    AdsBoxComponent
 } from './components';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
         MapSearchResultItemComponent,
         MapSearchResultItemComponent,
         MapSearchResultsComponent,
-        DonationCardComponent
+        DonationCardComponent,
+        AdsBoxComponent
     ],
     imports: [SharedModule, HomeRoutingModule]
 })

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayMusicService, MusicItem } from '@app/core/service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { fromEvent } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'music-box',
@@ -13,7 +15,8 @@ export class MusicBoxComponent implements OnInit {
 
     constructor(
         public musicBox: PlayMusicService,
-        private breakPotintObserver: BreakpointObserver
+        private breakPotintObserver: BreakpointObserver,
+        private snackBar: MatSnackBar
     ) {
         this.isOpenList = false;
     }
@@ -24,6 +27,10 @@ export class MusicBoxComponent implements OnInit {
             .subscribe((result) => {
                 this.mode = result.matches ? 'box' : 'mini';
             });
+
+        fromEvent(this.musicBox.musicEl, 'ended').subscribe(() => {
+            this.musicBox.pause();
+        });
     }
 
     get status() {
@@ -32,6 +39,10 @@ export class MusicBoxComponent implements OnInit {
 
     // 切换播放状态
     switchStatus() {
+        if (this.musicBox.empty) {
+            this.snackBar.open('select one music', 'Close', { duration: 2000 });
+            return false;
+        }
         this.musicBox.switch();
     }
 

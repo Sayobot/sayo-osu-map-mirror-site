@@ -1,4 +1,4 @@
-$icon-size: 3rem;
+@import '../../../../theme/icon';
 
 .paginnator {
     display: flex;
@@ -8,12 +8,11 @@ $icon-size: 3rem;
     transform: translateX(-50%);
 
     .mat-icon {
-        width: $icon-size;
-        height: $icon-size;
-        font-size: $icon-size;
         color: #fff;
         background: #1d1d1d;
         border-radius: 50%;
+
+        @extend .icon-xl;
     }
 
     .left {

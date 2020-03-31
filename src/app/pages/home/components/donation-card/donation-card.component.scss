@@ -1,18 +1,17 @@
-$icon-size: 3rem;
+@import '../../../../theme/icon';
 
 .donation-card {
     position: fixed;
     left: 2rem;
     top: 10rem;
     width: 300px;
+    z-index: 999;
 
     .open {
         cursor: pointer;
-        height: $icon-size;
-        width: $icon-size;
-        font-size: $icon-size;
         box-shadow: 0 0 10px 1px #aaa;
         border-radius: 50%;
+        @extend .icon-xl;
     }
 
     .card {
@@ -76,21 +75,6 @@ $icon-size: 3rem;
         left: 15px;
         top: 50%;
         transform: translate(0, -50%);
-    }
-}
-
-// 闪烁动画
-@keyframes flicker {
-    0% {
-        box-shadow: 0 0 0px 5px #ddd;
-    }
-
-    50% {
-        box-shadow: 0 0 5px 0px #a5a5a5;
-    }
-
-    100% {
-        box-shadow: 0 0 0px 5px #ddd;
     }
 }
 

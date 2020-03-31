@@ -125,7 +125,7 @@ export class MapSearchContainerComponent implements OnInit {
                 if (this.offset - this.pageSize <= 0) {
                     this.snackBar.open(
                         'Is already the first pageFirst Page',
-                        'dance',
+                        'Close',
                         { duration: 2000 }
                     );
                 } else {
