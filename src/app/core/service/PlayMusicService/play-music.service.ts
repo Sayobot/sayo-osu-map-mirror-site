@@ -19,22 +19,6 @@ export class MusicItem {
     }
 }
 
-/**
- * TODO:优先级队列
- */
-class Queue<T> {
-    items: T[];
-    head: T;
-
-    constructor(data: T[] = []) {
-        this.items = data;
-    }
-
-    size() {
-        return this.items.length;
-    }
-}
-
 @Injectable({
     providedIn: 'root'
 })

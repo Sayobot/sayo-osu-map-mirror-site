@@ -1,8 +1,7 @@
 <div class="page">
     <div class="options" *ngIf="serveList">
-        <div class="title">服务器</div>
         <mat-form-field>
-            <mat-select [(value)]="serverCode"
+            <mat-select placeholder="请选择服务器" [(value)]="serverCode"
                 (selectionChange)="onServerSelect()">
                 <mat-option *ngFor="let server of serveList"
                     [value]="server.server">

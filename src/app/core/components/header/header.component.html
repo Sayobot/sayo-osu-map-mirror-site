@@ -8,9 +8,11 @@
 
         <!-- 大屏 - 导航菜单 -->
         <div class="menus-bg">
-            <button mat-button [matMenuTriggerFor]="langMenu">
-                {{ 'header.Language' | translate }}
+            <button mat-button [matMenuTriggerFor]="langMenu" matTooltip="选择语言">
+                <mat-icon><img src="{{langIcon}}" />
+                </mat-icon>
             </button>
+
             <button mat-button routerLink="/support">
                 {{ 'header.support' | translate }}
             </button>

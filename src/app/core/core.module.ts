@@ -24,11 +24,20 @@ import { loadSvgIconResources } from '@app/utils';
 import {
     HeaderComponent,
     FooterComponent,
-    HelpDialogComponent,
-    MapDetailComponent
+    HelpDialogComponent
 } from './components';
 
+const translateConfig = {
+    loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+    }
+};
+
 @NgModule({
+    entryComponents: [HelpDialogComponent],
+    declarations: [HeaderComponent, FooterComponent, HelpDialogComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -38,26 +47,12 @@ import {
         AppRoutingModule,
         SharedModule,
         PagesModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        })
-    ],
-    entryComponents: [HelpDialogComponent, MapDetailComponent],
-    declarations: [
-        HeaderComponent,
-        FooterComponent,
-        HelpDialogComponent,
-        MapDetailComponent
+        TranslateModule.forRoot(translateConfig)
     ],
     exports: [
         SharedModule,
         AppRoutingModule,
         HelpDialogComponent,
-        MapDetailComponent,
         HeaderComponent,
         FooterComponent
     ]

@@ -1,0 +1,71 @@
+@mixin float-label($top: 0.5rem, $left: 0.5rem) {
+    position: absolute;
+    left: $left;
+    top: $top;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    color: #fff;
+    z-index: 1;
+    font-size: 0.6em;
+
+    i {
+        font-size: 16px;
+    }
+}
+
+.map-detail-container {
+    .img-box {
+        position: relative;
+        font-size: 0.6em;
+        .status {
+            @include float-label(2.2rem);
+        }
+        .sid-float {
+            @include float-label();
+        }
+        .close-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 0.5rem;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            border-radius: 50%;
+            border: 1px solid #000;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(0, 0, 0, 0);
+        }
+    }
+    .detail {
+        padding: 1em;
+        .actions {
+            margin: 1rem 0;
+            button {
+                margin: 0 0.5em;
+                img {
+                    height: 16px;
+                    width: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .map-detail {
+        .img-box {
+            map-tags {
+                display: none;
+            }
+        }
+        .detail {
+            .actions {
+                .small-hide {
+                    display: none;
+                }
+            }
+        }
+    }
+}
