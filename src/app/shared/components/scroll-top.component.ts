@@ -26,6 +26,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
                 font-size: var(--font-size);
                 background: var(--light-theme-primary);
             }
+
+            @media and screen (max-device-width: 700px) {
+                --font-size: 2rem;
+
+                .scroll-top {
+                    width: var(--font-size);
+                    height: var(--font-size);
+                    font-size: var(--font-size);
+                }
+            }
         `
     ]
 })

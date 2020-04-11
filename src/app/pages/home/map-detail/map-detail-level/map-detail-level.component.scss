@@ -1,0 +1,20 @@
+.difficult-table {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+button {
+    margin: 0 0.3rem;
+}
+
+.mat-raised-button {
+    padding: 0 8px;
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .difficult-table {
+        position: static;
+    }
+}

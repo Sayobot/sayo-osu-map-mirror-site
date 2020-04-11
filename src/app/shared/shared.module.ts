@@ -4,10 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { OwnMaterialModule } from './module/own-material.module';
 
 import {
-    TagsComponent,
-    DetailInfoComponent,
-    DifficultyTableComponent,
-    MapDetailRadarChartComponent,
     MusicBoxComponent,
     ScrollTopComponent,
     LoadingComponent
@@ -22,37 +18,27 @@ export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
 
+const translateConfig = {
+    loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+    }
+};
+
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         OwnMaterialModule,
-
-        TranslateModule.forChild({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        })
+        TranslateModule.forChild(translateConfig)
     ],
-    declarations: [
-        TagsComponent,
-        DetailInfoComponent,
-        DifficultyTableComponent,
-        MapDetailRadarChartComponent,
-        MusicBoxComponent,
-        ScrollTopComponent,
-        LoadingComponent
-    ],
+    declarations: [MusicBoxComponent, ScrollTopComponent, LoadingComponent],
     exports: [
         CommonModule,
         FormsModule,
         OwnMaterialModule,
-        TagsComponent,
-        DetailInfoComponent,
-        DifficultyTableComponent,
-        MapDetailRadarChartComponent,
+        TranslateModule,
         MusicBoxComponent,
         ScrollTopComponent,
         LoadingComponent

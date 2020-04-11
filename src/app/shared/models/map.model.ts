@@ -202,6 +202,7 @@ export interface MapBidDetail {
  * @param artistU 作者英文名
  * @param creator 创作者
  * @param favourite_count 点赞数
+ * @param play_count 被游玩的次数
  * @param lastupdate 最后更新时间
  * @param modes 模式
  * @param order 排序
@@ -228,6 +229,7 @@ export interface PreMap {
     artistU: string;
     creator: string;
     favourite_count: number;
+    play_count: number;
     lastupdate: number;
     modes: number;
     order: number;

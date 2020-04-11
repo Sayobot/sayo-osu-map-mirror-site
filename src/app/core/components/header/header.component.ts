@@ -56,6 +56,14 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
+    get langIcon() {
+        return this.language.filter((lang) => lang.key === this.lang)[0].flag;
+    }
+
+    get lang() {
+        return localStorage.getItem('language') || 'zh';
+    }
+
     ngOnDestroy() {
         clearTimeout(this.timer);
     }

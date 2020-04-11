@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class UpdateData {
     time: string;
@@ -14,15 +16,11 @@ const config = {
     providedIn: 'root'
 })
 export class UpdatedLogService {
-    updateData: UpdateData[];
-
     constructor(private http: HttpClient) {}
 
-    getUpdatedData() {
-        this.http
+    getUpdatedData(): Observable<UpdateData[]> {
+        return this.http
             .get(config.updateUrl)
-            .subscribe((res: { success: boolean; data: UpdateData[] }) => {
-                this.updateData = res.data;
-            });
+            .pipe(map((res: { data: UpdateData[] }) => res.data));
     }
 }

@@ -2,33 +2,13 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@app/shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-
-import {
-    MapSearchBoxComponent,
-    MapSearchContainerComponent,
-    MapSearchPaginnatorComponent,
-    MapSearchOptionsComponent,
-    MapSearchQuickbarComponent,
-    MapSearchResultItemComponent,
-    MapSearchResultsComponent,
-    DonationCardComponent,
-    AdsBoxComponent
-} from './components';
+import { MapSearchModule } from './map-search/map-search.module';
+import { DonationCardComponent } from './donation-card/donation-card.component';
+import { AdsBoxComponent } from './ads-box/ads-box.component';
+import { MapDetailModule } from './map-detail/map-detail.module';
 
 @NgModule({
-    declarations: [
-        HomeComponent,
-        MapSearchBoxComponent,
-        MapSearchContainerComponent,
-        MapSearchPaginnatorComponent,
-        MapSearchOptionsComponent,
-        MapSearchQuickbarComponent,
-        MapSearchResultItemComponent,
-        MapSearchResultItemComponent,
-        MapSearchResultsComponent,
-        DonationCardComponent,
-        AdsBoxComponent
-    ],
-    imports: [SharedModule, HomeRoutingModule]
+    declarations: [HomeComponent, DonationCardComponent, AdsBoxComponent],
+    imports: [SharedModule, HomeRoutingModule, MapSearchModule, MapDetailModule]
 })
 export class HomeModule {}

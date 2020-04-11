@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UpdatedLogService } from '@app/core/service';
+import { UpdatedLogService, UpdateData } from '@app/core/service';
 
 @Component({
     selector: 'app-history',
     template: `
-        <div class="page" *ngIf="updated?.updateData">
+        <div class="page" *ngIf="updateData">
             <mat-list>
-                <ng-container *ngFor="let updata of updated?.updateData">
+                <ng-container *ngFor="let updata of updateData">
                     <div mat-subheader>{{ updata.time }}</div>
                     <mat-list-item *ngFor="let item of updata.detail">
                         <div mat-line>{{ item }}</div>
@@ -18,9 +18,13 @@ import { UpdatedLogService } from '@app/core/service';
     `
 })
 export class HistoryComponent implements OnInit {
-    constructor(public updated: UpdatedLogService) {}
+    updateData: UpdateData[];
+
+    constructor(private updated: UpdatedLogService) {}
 
     ngOnInit() {
-        this.updated.getUpdatedData();
+        this.updated.getUpdatedData().subscribe((res: UpdateData[]) => {
+            this.updateData = res;
+        });
     }
 }

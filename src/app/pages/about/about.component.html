@@ -2,10 +2,11 @@
     <section class="introduce">
         <div class="title">介绍</div>
         <div class="des">
-            小夜是一个基于酷Q、<a href="{{ config.kq }}" target="_block">osu!api open
+            小夜是一个基于酷Q、<a class="link" href="{{ config.kq }}"
+                target="_block">osu!api open
                 beta</a>
             的QQ bot，主要编写语言是C++，辅以脚本语言Ruby、powershell、cmd（批处理），处理图片使用
-            <a href="{{ config.imageMagick }}"
+            <a class="link" href="{{ config.imageMagick }}"
                 target="_block">ImageMagick</a>，数据库目前还是用的目录树和文本文件
         </div>
 
@@ -16,7 +17,7 @@
         <div class="des">
             小夜目前能做的事情还不是很多，但可以帮你查一下osu游戏的基本数据，然后生成一个资料卡。
         </div>
-        <img src="{{ config.useHelper }}" />
+        <div class="pic"><img src="{{ config.useHelper }}" /></div>
     </section>
 
     <section class="about-down">
@@ -50,9 +51,10 @@
 
     <section class="contact">
         <div class="title">联系方式</div>
-        <div>首页开发者：<a href="https://github.com/SoulDee">SoulDee</a></div>
+        <div>首页开发者：<a class="link" href="https://github.com/SoulDee">SoulDee</a>
+        </div>
         <div>Sayobot 交流群：{{ config.qqGroup }}</div>
-        <div>
+        <div class="pic">
             <img src="{{ config.qqGroupPng }}" />
         </div>
     </section>

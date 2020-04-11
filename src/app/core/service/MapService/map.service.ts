@@ -16,7 +16,6 @@ export class MapService {
 
     constructor(private http: HttpClient) {}
 
-    // !TODO
     getMapInfo(sid: number): Observable<MapSidDetail> {
         const params = new HttpParams({ fromString: `0=${sid}` });
         return this.http

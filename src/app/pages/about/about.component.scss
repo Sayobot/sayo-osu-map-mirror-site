@@ -22,11 +22,15 @@
         .imgs {
             display: flex;
             flex-wrap: wrap;
-
-            .pic {
-                flex: 1;
-            }
         }
+    }
+
+    .pic {
+        flex: 1;
+        box-shadow: 0 1px 2px 3px #ddd;
+        padding: 2rem;
+        margin: 1rem;
+        text-align: center;
     }
 }
 
@@ -41,7 +45,8 @@ img {
         .buy {
             .imgs {
                 .pic {
-                    flex: 0 1 50%;
+                    flex: 0 1 calc(50% - 2rem);
+                    padding: 0.5rem;
                 }
             }
         }
