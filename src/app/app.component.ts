@@ -27,6 +27,7 @@ import { TranslateService } from '@ngx-translate/core';
                 <mat-icon
                     class="global-icon mseeage-icon"
                     (click)="sidenav.toggle()"
+                    matTooltip="{{ 'other.openMsg' | translate }}"
                     >message</mat-icon
                 >
             </mat-sidenav-content>

@@ -1,5 +1,11 @@
 <header>
-    <h1 class="logo" routerLink="/" matTooltip="回到首页">Sayobot's Home</h1>
+    <h1
+        class="logo"
+        routerLink="/"
+        matTooltip="{{ 'header.homeTip' | translate }}"
+    >
+        Sayobot's Home
+    </h1>
 
     <div class="menus">
         <div class="menus-sm">
@@ -11,19 +17,19 @@
             <button
                 mat-button
                 [matMenuTriggerFor]="langMenu"
-                matTooltip="选择语言"
+                matTooltip="{{ 'menu.lang.tip' | translate }}"
             >
                 <mat-icon><img src="{{ langIcon }}" /> </mat-icon>
             </button>
 
             <button mat-button routerLink="/support">
-                {{ 'header.support' | translate }}
+                {{ 'menu.support' | translate }}
             </button>
             <button mat-button routerLink="/about">
-                关于
+                {{ 'menu.about' | translate }}
             </button>
             <button mat-button [matMenuTriggerFor]="otherMenu">
-                更多
+                {{ 'menu.more' | translate }}
             </button>
         </div>
     </div>
@@ -32,16 +38,16 @@
 <!-- 小屏 - 导航菜单 -->
 <mat-menu #menu="matMenu">
     <button mat-menu-item [matMenuTriggerFor]="langMenu">
-        {{ 'header.Language' | translate }}
+        {{ 'menu.lang.title' | translate }}
     </button>
     <button mat-menu-item routerLink="/support">
-        {{ 'header.support' | translate }}
+        {{ 'menu.support' | translate }}
     </button>
     <button mat-menu-item routerLink="/about">
-        关于
+        {{ 'menu.about' | translate }}
     </button>
     <button mat-menu-item [matMenuTriggerFor]="otherMenu">
-        更多
+        {{ 'menu.more' | translate }}
     </button>
 </mat-menu>
 
@@ -49,19 +55,19 @@
 <mat-menu #otherMenu="matMenu">
     <button mat-menu-item (click)="openHelpDialog()">
         <mat-icon>help</mat-icon>
-        <span>{{ 'header.help' | translate }}</span>
+        <span>{{ 'menu.help' | translate }}</span>
     </button>
     <button mat-menu-item>
         <mat-icon>update</mat-icon>
-        <span routerLink="/history">{{ 'header.update' | translate }}</span>
+        <span routerLink="/history">{{ 'menu.log' | translate }}</span>
     </button>
     <button mat-menu-item>
         <mat-icon>search</mat-icon>
-        <span routerLink="/touchDisk">{{ 'header.device' | translate }}</span>
+        <span routerLink="/touchDisk">{{ 'menu.device' | translate }}</span>
     </button>
     <button mat-menu-item>
         <mat-icon>settings</mat-icon>
-        <span routerLink="/setting">{{ 'header.setting' | translate }}</span>
+        <span routerLink="/setting">{{ 'menu.setting' | translate }}</span>
     </button>
 </mat-menu>
 

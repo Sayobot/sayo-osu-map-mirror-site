@@ -1,17 +1,31 @@
 <div class="map-wrap" *ngIf="map">
     <div class="img-wrap">
         <img src="{{ imgSrc }}" alt="{{ imgSrc }}" />
-        <div class="overlay" matTooltip="查看详情" (click)="openWithDetail()">
-        </div>
+        <div
+            class="overlay"
+            matTooltip="{{ 'searchCont.panel.lookTip' | translate }}"
+            (click)="openWithDetail()"
+        ></div>
         <div class="title one-line">{{ map.title }}</div>
-        <div class="status" matTooltip="铺面状态">{{ status | uppercase }}</div>
+        <div
+            class="status"
+            matTooltip="{{ 'searchCont.panel.statusTip' | translate }}"
+        >
+            {{ status | uppercase }}
+        </div>
         <div class="play-count flex-center">
             {{ map.play_count
-            }}<mat-icon svgIcon="play-circle" matTooltip="游戏次数"></mat-icon>
+            }}<mat-icon
+                svgIcon="play-circle"
+                matTooltip="{{ 'searchCont.panel.playcountTip' | translate }}"
+            ></mat-icon>
         </div>
         <div class="favorite flex-center">
             {{ map.favourite_count
-            }}<mat-icon svgIcon="favorite" matTooltip="收藏次数"></mat-icon>
+            }}<mat-icon
+                svgIcon="favorite"
+                matTooltip="{{ 'searchCont.panel.favoriteTip' | translate }}"
+            ></mat-icon>
         </div>
     </div>
 
@@ -31,15 +45,27 @@
             {{ map.artist }}
         </div>
         <div class="modes">
-            <i *ngFor="let mode of modes" [ngClass]="['icon-m', mode]"
-                matTooltip="{{ mode }}"></i>
+            <i
+                *ngFor="let mode of modes"
+                [ngClass]="['icon-m', mode]"
+                matTooltip="{{ mode }}"
+            ></i>
         </div>
         <div class="action">
-            <mat-icon (click)="addToMusicQueue()" matTooltip="添加到播放列表">queue
+            <mat-icon
+                (click)="addToMusicQueue()"
+                matTooltip="{{ 'searchCont.panel.add2music' | translate }}"
+                >queue
             </mat-icon>
-            <mat-icon (click)="download()" matTooltip="下载">cloud_download
+            <mat-icon
+                (click)="download()"
+                matTooltip="{{ 'searchCont.panel.download' | translate }}"
+                >cloud_download
             </mat-icon>
-            <mat-icon (click)="openWithDetail()" matTooltip="查看详情">open_in_new
+            <mat-icon
+                (click)="openWithDetail()"
+                matTooltip="{{ 'searchCont.panel.lookTip' | translate }}"
+                >open_in_new
             </mat-icon>
         </div>
     </div>

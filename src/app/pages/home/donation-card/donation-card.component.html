@@ -3,19 +3,23 @@
         class="open"
         *ngIf="!isOpen"
         (click)="toggle()"
-        matTooltip="打开捐助面板"
+        matTooltip="{{ 'donationPanel.openTip' | translate }}"
         >radio_button_checked</mat-icon
     >
 
     <mat-card class="card" *ngIf="isOpen">
-        <mat-icon class="close" (click)="toggle()" matTooltip="关闭捐助面板"
-            >close</mat-icon
-        >
+        <mat-icon class="close" (click)="toggle()">close</mat-icon>
         <mat-card-content>
-            <div class="title">捐助进度</div>
-            <div class="subtitle">点击右上角的支持来捐助小夜</div>
-            <div class="last-date">最后更新时间：{{ donationInfo.date }}</div>
-            <div class="progress-bg" matTooltip="当前捐助进度条">
+            <div class="title">{{ 'donationPanel.title' | translate }}</div>
+            <div class="subtitle">{{ 'donationPanel.des' | translate }}</div>
+            <div class="last-date">
+                {{ 'donationPanel.updateTime' | translate }} :
+                {{ donationInfo.date }}
+            </div>
+            <div
+                class="progress-bg"
+                matTooltip="{{ 'donationPanel.title' | translate }}"
+            >
                 <div
                     class="progress-bar"
                     [ngStyle]="{ width: progressPercent }"

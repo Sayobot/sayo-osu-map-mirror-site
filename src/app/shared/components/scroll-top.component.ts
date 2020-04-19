@@ -7,7 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
         <mat-icon
             class="global-icon scroll-icon"
             (click)="scroll()"
-            matTooltip="滚动到顶部"
+            matTooltip="{{ 'other.scrollTop' | translate }}"
             >unarchive</mat-icon
         >
     `,

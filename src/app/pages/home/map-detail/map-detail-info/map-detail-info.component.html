@@ -1,4 +1,3 @@
-<p>map-detail-info works!</p>
 <h1 class="title one-line">{{ detail.title }}</h1>
 <div class="items">
     <div class="item">
@@ -59,8 +58,11 @@
 
     <div class="item">
         <label class="label one-line">Upload time：</label>
-        <span class="content one-line"
-            *ngIf="detail.approved_date; else noData">{{ getDate(detail.last_update) }}</span>
+        <span
+            class="content one-line"
+            *ngIf="detail.approved_date; else noData"
+            >{{ getDate(detail.last_update) }}</span
+        >
     </div>
 </div>
 
