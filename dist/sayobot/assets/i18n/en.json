@@ -1,39 +1,63 @@
 {
     "header": {
-        "domain": "This Sayobot's Home",
-        "support": "Supprot",
-        "update": "Update Log",
-        "setting": "Setting",
-        "device": "device",
-        "help": "Help",
-        "about": "About Me",
-        "share": "Share map",
-        "Language": "Language",
-        "line": "Switch Line"
+        "homeTip": "back home"
     },
-    "maps": {
-        "newMap": "New Maps",
-        "hotMap": "Hot Maps",
-        "searchMap": "Search Results"
+    "menu": {
+        "support": "Support",
+        "about": "About",
+        "more": "More",
+        "help": "Help",
+        "log": "Log",
+        "device": "Device",
+        "setting": "Setting",
+        "lang": {
+            "title": "Language",
+            "tip": "Choose a language"
+        }
+    },
+    "musicBox": {
+        "placeholder": "Please select the music you want to play..."
+    },
+    "donationPanel": {
+        "title": "Donation progress",
+        "opentip": "Open the donation panel",
+        "des": "Click support in the upper right corner to donate to sayobot",
+        "updateTime": "Last update time"
+    },
+    "searchCont": {
+        "placeholder": "What to enter here...",
+        "quick": {
+            "title": "Quick search",
+            "new": "New",
+            "hot": "Hot"
+        },
+        "box": {
+            "optTip": "Options"
+        },
+        "panel": {
+            "statusTip": "Current status of the pavement",
+            "playcountTip": "Number of games",
+            "favoriteTip": "Favorites",
+            "lookTip": "See details",
+            "add2music": "Add to music playlist",
+            "download": "Download to local"
+        },
+        "opts": {
+
+        }
     },
     "mapDetail": {
-        "try": "Preview",
-        "download": "Download",
-        "backup": "Download(Backup)",
-        "noVideo": "No Video",
-        "share": "Share"
+        "action": {
+            "preListen": "Part",
+            "preview": "Preview",
+            "down": "Download",
+            "downNotVideo": "Not Video",
+            "dewnMini": "Mini",
+            "share": "Share"
+        }
     },
-    "searchInput": {
-        "options": "Filter Options",
-        "search": "Search",
-        "reset": "Reset",
-        "placeholder": "please input something key......"
-    },
-    "support": {
-        "title": "donation progress",
-        "des": "Click on the support in the navigation above to donate to me"
-    },
-    "public": {
-        "name": "Bulletin Board"
+    "other": {
+        "scrollTop": "Scroll to top",
+        "openMsg": "Information"
     }
 }
