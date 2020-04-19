@@ -24,3 +24,12 @@
 .icon-xl {
     @include icon(3rem);
 }
+
+.global-icon {
+    --font-size: 3rem;
+
+    position: fixed;
+    width: var(--font-size);
+    height: var(--font-size);
+    font-size: var(--font-size);
+}

@@ -28,7 +28,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 // import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { MatRadioModule } from '@angular/material/radio';
-// import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { MatSliderModule } from '@angular/material/slider';
 import { MatSortModule } from '@angular/material/sort';
@@ -64,7 +64,7 @@ const MATERIAL_MODULE = [
     // MatButtonToggleModule,
     // MatDividerModule,
     // MatDatepickerModule,
-    // MatSidenavModule,
+    MatSidenavModule,
     // MatStepperModule,
     // MatSnackBarModule,
     // MatSlideToggleModule,
