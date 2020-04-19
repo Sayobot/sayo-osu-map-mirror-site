@@ -12,7 +12,7 @@
                     {{ musicBox.current.title }}
                 </ng-container>
                 <ng-container *ngIf="!musicBox.current">
-                    请选择想要播放的音乐
+                    {{ 'musicBox.placeholder' | translate }}
                 </ng-container>
             </div>
             <div
@@ -52,7 +52,7 @@
                     {{ musicBox.current.title }}
                 </ng-container>
                 <ng-container *ngIf="!musicBox.current">
-                    请选择想要播放的音乐
+                    {{ 'musicBox.placeholder' | translate }}
                 </ng-container>
             </div>
         </div>

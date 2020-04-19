@@ -1,5 +1,11 @@
 <ul class="search-bar">
-    快捷搜索：
-    <li class="quick-search" (click)="onQuickSearch('new')">最新铺面</li>
-    <li class="quick-search" (click)="onQuickSearch('hot')">热门铺面</li>
+    {{
+        'searchCont.quick.title' | translate
+    }}：
+    <li class="quick-search" (click)="onQuickSearch('new')">
+        {{ 'searchCont.quick.new' | translate }}
+    </li>
+    <li class="quick-search" (click)="onQuickSearch('hot')">
+        {{ 'searchCont.quick.hot' | translate }}
+    </li>
 </ul>

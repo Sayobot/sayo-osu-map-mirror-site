@@ -1,41 +1,62 @@
 {
     "header": {
-        "domain": "This Sayobot's Home",
-        "support": "支持",
-        "update": "日志",
-        "setting": "设置",
-        "device": "设备",
-        "help": "帮助",
-        "about": "关于",
-        "share": "图包分享",
-        "Language": "语言",
-        "line": "切换线路",
-        "defaultLine": "国内多线（建议）",
-        "hongkong": "香港（WTT）"
+        "homeTip": "回到首页"
     },
-    "maps": {
-        "newMap": "最新谱面",
-        "hotMap": "热门谱面",
-        "searchMap": "搜索结果"
+    "menu": {
+        "support": "支持",
+        "about": "关于",
+        "more": "更多",
+        "help": "帮助",
+        "log": "日志",
+        "device": "设备",
+        "setting": "设置",
+        "lang": {
+            "title": "语言",
+            "tip": "选择语言"
+        }
+    },
+    "musicBox": {
+        "placeholder": "请选择想要播放的音乐"
+    },
+    "donationPanel": {
+        "title": "捐助进度",
+        "openTip": "打开捐献面板",
+        "des": "点击右上角的支持来捐助小夜",
+        "updateTime": "最后更新时间"
+    },
+    "searchCont": {
+        "placeholder": "在这里输入什么吧",
+        "quick": {
+            "new": "最新",
+            "hot": "热门"
+        },
+        "box": {
+            "optTip": "选项"
+        },
+        "panel": {
+            "statusTip": "铺面当前状态",
+            "playcountTip": "游玩次数",
+            "favoriteTip": "收藏次数",
+            "lookTip": "查看详情",
+            "add2music": "添加到音乐播放列表",
+            "download": "下载到本地"
+        },
+        "opts": {
+
+        }
     },
     "mapDetail": {
-        "try": "试听",
-        "download": "下载",
-        "backup": "下载(备用)",
-        "noVideo": "不带视频",
-        "share": "分享"
+        "action": {
+            "preListen": "试听",
+            "preview": "预览铺面",
+            "down": "下载",
+            "downNotVideo": "无视频",
+            "dewnMini": "mini",
+            "share": "分享"
+        }
     },
-    "searchInput": {
-        "options": "过滤选项",
-        "search": "搜索",
-        "reset": "重置",
-        "placeholder": "在这里输入点什么吧......"
-    },
-    "support": {
-        "title": "当前捐助进度条",
-        "des": "点击上方导航的支持来捐助小夜"
-    },
-    "public": {
-        "name": "公告栏"
+    "other": {
+        "scrollTop": "滚动到顶部",
+        "openMsg": "打开信息侧边栏"
     }
 }
