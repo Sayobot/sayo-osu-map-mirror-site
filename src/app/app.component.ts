@@ -4,14 +4,42 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
     selector: 'app-root',
     template: `
-        <app-header></app-header>
-        <main>
-            <router-outlet></router-outlet>
-        </main>
-        <app-footer></app-footer>
-        <music-box></music-box>
-        <scroll-top></scroll-top>
-    `
+        <mat-sidenav-container class="example-container">
+            <mat-sidenav
+                #sidenav
+                mode="over"
+                position="end"
+                [fixedInViewport]="true"
+                [fixedTopGap]="0"
+                [fixedBottomGap]="0"
+            >
+                <app-announce (close)="sidenav.close()"></app-announce>
+            </mat-sidenav>
+
+            <mat-sidenav-content>
+                <app-header></app-header>
+                <main>
+                    <router-outlet></router-outlet>
+                </main>
+                <app-footer></app-footer>
+                <music-box></music-box>
+                <scroll-top></scroll-top>
+                <mat-icon
+                    class="global-icon mseeage-icon"
+                    (click)="sidenav.toggle()"
+                    >message</mat-icon
+                >
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    `,
+    styles: [
+        `
+            .mseeage-icon {
+                right: 3rem;
+                bottom: 8rem;
+            }
+        `
+    ]
 })
 export class AppComponent {
     constructor(public translate: TranslateService) {

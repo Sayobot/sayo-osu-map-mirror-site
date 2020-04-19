@@ -1,7 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Notice, ResponseBase } from '@app/shared/models';
+import { Notice } from '@app/shared/models';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
+const BASE_URL = 'https://api.sayobot.cn';
 @Injectable({
     providedIn: 'root'
 })
@@ -11,22 +14,9 @@ export class MessageService {
 
     constructor(private http: HttpClient) {}
 
-    // !TODO 重写相关接口
-    // 获取支持详情
-    getSupportTotal() {
-        this.http
-            .get('https://api.sayobot.cn/support')
-            .subscribe((res: ResponseBase<any>) => {
-                this.supportInfo = res.data;
-            });
-    }
-
-    // 新闻列表
-    getNewsList() {
-        this.http
-            .get('https://api.sayobot.cn/notice')
-            .subscribe(
-                (res: ResponseBase<Notice[]>) => (this.notices = res.data)
-            );
+    getNewList(): Observable<Notice[]> {
+        return this.http
+            .get(`${BASE_URL}/notice`)
+            .pipe(map((res: { data: Notice[] }) => res.data));
     }
 }

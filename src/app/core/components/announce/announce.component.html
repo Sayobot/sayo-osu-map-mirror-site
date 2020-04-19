@@ -1,0 +1,23 @@
+<div class="announce-container" [style.width]="screenSize" *ngIf="messages">
+    <div class="header">
+        <span class="title">Message</span>
+        <button mat-stroked-button (click)="closeDrawer()">Close</button>
+    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of messages">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ item.title }}
+                </mat-panel-title>
+                <mat-panel-description>
+                    Time： {{ item.date }}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="content">
+                {{ item.content }}
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

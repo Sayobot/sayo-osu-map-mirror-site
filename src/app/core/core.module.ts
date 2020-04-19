@@ -24,7 +24,8 @@ import { loadSvgIconResources } from '@app/utils';
 import {
     HeaderComponent,
     FooterComponent,
-    HelpDialogComponent
+    HelpDialogComponent,
+    AnnounceComponent
 } from './components';
 
 const translateConfig = {
@@ -35,9 +36,16 @@ const translateConfig = {
     }
 };
 
+const components = [
+    HeaderComponent,
+    FooterComponent,
+    HelpDialogComponent,
+    AnnounceComponent
+];
+
 @NgModule({
     entryComponents: [HelpDialogComponent],
-    declarations: [HeaderComponent, FooterComponent, HelpDialogComponent],
+    declarations: [...components],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -49,13 +57,7 @@ const translateConfig = {
         PagesModule,
         TranslateModule.forRoot(translateConfig)
     ],
-    exports: [
-        SharedModule,
-        AppRoutingModule,
-        HelpDialogComponent,
-        HeaderComponent,
-        FooterComponent
-    ]
+    exports: [SharedModule, AppRoutingModule, ...components]
 })
 export class CoreModule {
     constructor(

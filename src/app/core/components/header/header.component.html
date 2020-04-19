@@ -1,5 +1,5 @@
 <header>
-    <h1 class="logo" routerLink="/">Sayobot's Home</h1>
+    <h1 class="logo" routerLink="/" matTooltip="回到首页">Sayobot's Home</h1>
 
     <div class="menus">
         <div class="menus-sm">
@@ -8,9 +8,12 @@
 
         <!-- 大屏 - 导航菜单 -->
         <div class="menus-bg">
-            <button mat-button [matMenuTriggerFor]="langMenu" matTooltip="选择语言">
-                <mat-icon><img src="{{langIcon}}" />
-                </mat-icon>
+            <button
+                mat-button
+                [matMenuTriggerFor]="langMenu"
+                matTooltip="选择语言"
+            >
+                <mat-icon><img src="{{ langIcon }}" /> </mat-icon>
             </button>
 
             <button mat-button routerLink="/support">
@@ -64,9 +67,12 @@
 
 <!-- 选择语言菜单 -->
 <mat-menu #langMenu="matMenu">
-    <button mat-menu-item *ngFor="let item of language"
-        (click)="useLanguage(item.key)">
-        <mat-icon><img [src]="item.flag" alt="item.key" /></mat-icon>
+    <button
+        mat-menu-item
+        *ngFor="let item of language"
+        (click)="useLanguage(item.key)"
+    >
+        <mat-icon><img [src]="item.flag" alt="item.key"/></mat-icon>
         {{ item.title }}
     </button>
 </mat-menu>
