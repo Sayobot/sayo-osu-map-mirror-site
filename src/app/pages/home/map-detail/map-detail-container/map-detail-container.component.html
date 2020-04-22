@@ -2,6 +2,7 @@
     <div class="img-box">
         <span class="status">{{ approved | uppercase }}</span>
         <span class="sid-float">SID : {{ sid }}</span>
+        <mat-icon class="close-btn" (click)="onClose()">close</mat-icon>
         <map-detail-tags [content]="mapDetail.tags"></map-detail-tags>
         <img [src]="imgUrl" alt="" />
         <map-detail-level

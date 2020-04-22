@@ -4,8 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {
     PlayMusicService,
     ServerMangeService,
-    MusicItem,
-    MapService
+    MusicItem
 } from '@app/core/service';
 import { copy2Clipboard, downloadFile } from '@app/utils';
 import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
@@ -55,6 +54,10 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
 
     get link() {
         return `http://osugame.online/preview.html?sid=${this.mapDetail.sid}&bid=${this.detailInfo.bid}`;
+    }
+
+    onClose() {
+        this.dialogRef.close();
     }
 
     // 点击下载事件
