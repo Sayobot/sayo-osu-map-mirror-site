@@ -31,11 +31,11 @@
             width: 2rem;
             height: 2rem;
             line-height: 2rem;
+            font-size: 2rem;
             border-radius: 50%;
-            border: 1px solid #000;
-            font-size: 1rem;
             outline: none;
-            background: rgba(0, 0, 0, 0);
+            background: #fff;
+            z-index: 10;
         }
     }
     .detail {

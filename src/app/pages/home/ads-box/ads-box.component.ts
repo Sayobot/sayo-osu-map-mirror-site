@@ -48,11 +48,11 @@ export class AdsBoxComponent implements OnInit, AfterViewInit, OnDestroy {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
             }
+            // navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev'
+            // }
         });
     }
 
