@@ -23,8 +23,15 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "./tsconfig.app.json",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": ["src/styles.scss"],
-                        "scripts": []
+                        "styles": [
+                            "./node_modules/swiper/css/swiper.min.css",
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                            "src/styles.scss"
+                        ],
+                        "scripts": [
+                            "./node_modules/swiper/js/swiper.min.js",
+                            "./node_modules/hammerjs/hammer.min.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -70,8 +77,15 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "./tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
-                        "styles": ["src/styles.scss"],
-                        "scripts": [],
+                        "styles": [
+                            "./node_modules/swiper/css/swiper.min.css",
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                            "src/styles.scss"
+                        ],
+                        "scripts": [
+                            "./node_modules/swiper/js/swiper.min.js",
+                            "./node_modules/hammerjs/hammer.min.js"
+                        ],
                         "assets": ["favicon.ico", "./assets"]
                     }
                 },
