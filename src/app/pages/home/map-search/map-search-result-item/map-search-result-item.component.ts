@@ -35,7 +35,7 @@ export class MapSearchResultItemComponent implements OnInit {
     ngOnInit() {}
 
     get imgSrc(): string {
-        return `https://cdn.sayobot.cn:25225/beatmaps/${this.map.sid}/covers/cover.webp?0`;
+        return `https://a.sayobot.cn/beatmaps/${this.map.sid}/covers/cover.webp?0`;
     }
 
     get status(): string {

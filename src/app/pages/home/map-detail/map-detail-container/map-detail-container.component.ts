@@ -42,7 +42,7 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sid = this.data.content.sid;
-        this.imgUrl = `https://cdn.sayobot.cn:25225/beatmaps/${this.sid}/covers/cover.webp?0`;
+        this.imgUrl = `https://a.sayobot.cn/beatmaps/${this.sid}/covers/cover.webp?0`;
 
         this.mapDetail = this.data.content;
         this.detailInfo = this.mapDetail.bid_data[0];
