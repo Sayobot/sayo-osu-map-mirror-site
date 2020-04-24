@@ -4,10 +4,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-// 手势支持
-import 'hammerjs';
-import 'swiper';
-
 if (environment.production) {
     enableProdMode();
 }

@@ -4,9 +4,9 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build --prod",
-        "build:map": "ng build --prod --source-map",
-        "prettier": "prettier --write src/**/*"
+        "build": "ng build --prod --buildOptimizer --optimization --vendorChunk",
+        "prettier": "prettier --write src/**/*",
+        "bundle-report": "ng build --prod --stats-json && webpack-bundle-analyzer dist/sayobot/stats-es2015.json"
     },
     "private": true,
     "dependencies": {
@@ -52,6 +52,7 @@
         "source-map-explorer": "^2.4.2",
         "ts-node": "~8.3.0",
         "tslint": "~5.18.0",
-        "typescript": "3.4.5"
+        "typescript": "3.4.5",
+        "webpack-bundle-analyzer": "^3.7.0"
     }
 }

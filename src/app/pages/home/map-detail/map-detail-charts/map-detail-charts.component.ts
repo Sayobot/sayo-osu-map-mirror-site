@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { radar_option, curve_option } from './models';
-import * as echarts from 'echarts/lib/echarts';
-import 'echarts/lib/chart/radar';
+import { init } from 'echarts/lib/echarts';
 import 'echarts/lib/chart/line';
+import 'echarts/lib/chart/radar';
 
 // TODO 去除 echarts 的动画
 // TODO 拆分成两个表单，通过ng-content插入
@@ -33,10 +33,10 @@ export class MapDetailChartsComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {
-        this.radarEchart = echarts.init(
+        this.radarEchart = init(
             document.getElementById('map-detail-radar-echart') as HTMLDivElement
         );
-        this.curveEchart = echarts.init(
+        this.curveEchart = init(
             document.getElementById('map-detail-curve-echart') as HTMLDivElement
         );
         this.update();
