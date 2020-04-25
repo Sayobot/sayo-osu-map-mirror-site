@@ -62,9 +62,9 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
 
     // 点击下载事件
     onDownLoad(url: string) {
-        downloadFile(
-            `${this.BASE_URL}${url}?server=${this.serverMange.current}`
-        );
+        const server = localStorage.getItem('server');
+        downloadFile(`${this.BASE_URL}${url}/${this.sid}?server=${server}`);
+
         this.isMapDownload = true;
         this.mapTimer = setTimeout(() => {
             this.isMapDownload = false;
@@ -74,9 +74,8 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
 
     // 点击下载不带视频的事件
     onUnvedioDownload(url: string) {
-        downloadFile(
-            `${this.BASE_URL}${url}?server=${this.serverMange.current}`
-        );
+        const server = localStorage.getItem('server');
+        downloadFile(`${this.BASE_URL}${url}/${this.sid}?server=${server}`);
         this.isMapUnvedioDownload = true;
         this.mapUnvedioTimer = setTimeout(() => {
             this.isMapUnvedioDownload = false;
