@@ -1,3 +1,5 @@
+$no-load-ng: '/assets/img/home/nobg.jpg';
+
 :host {
     min-width: 320px;
     flex: 0 1 50%;
@@ -17,12 +19,16 @@ $padding-size: 1rem;
     box-shadow: 0 1px 3px 2px #999;
     border-radius: 5px;
     transition: all 0.3s;
+    height: calc(100% - 10px);
+    display: flex;
+    flex-direction: column;
 
     &:hover {
         box-shadow: 0 1px 10px 1px #999;
     }
 
     .img-wrap {
+        flex: 1;
         position: relative;
         color: #fff;
         font-size: 0;
@@ -122,4 +128,22 @@ $padding-size: 1rem;
 
 .mania {
     background-image: url('/assets/img/common/mode_mania.png');
+}
+
+img {
+    position: relative;
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+img::after {
+    content: ' ';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url($no-load-ng) no-repeat center;
+    background-size: contain;
 }
