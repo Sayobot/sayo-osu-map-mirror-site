@@ -1,3 +1,4 @@
+$no-load-ng: '/assets/img/home/nobg.jpg';
 @mixin float-label($top: 0.5rem, $left: 0.5rem) {
     position: absolute;
     left: $left;
@@ -68,4 +69,22 @@
             }
         }
     }
+}
+
+img {
+    position: relative;
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+img::after {
+    content: ' ';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url($no-load-ng) no-repeat center;
+    background-size: contain;
 }
