@@ -4,15 +4,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {
     PlayMusicService,
     ServerMangeService,
-    MusicItem
+    MusicItem,
 } from '@app/core/service';
-import { copy2Clipboard, downloadFile } from '@app/utils';
+import { downloadFile } from '@app/utils';
 import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
     selector: 'map-detail-container',
     templateUrl: './map-detail-container.component.html',
-    styleUrls: ['./map-detail-container.component.scss']
+    styleUrls: ['./map-detail-container.component.scss'],
 })
 export class MapDetailContainerComponent implements OnInit, OnDestroy {
     BASE_URL = 'https://txy1.sayobot.cn/beatmaps/download/';
@@ -37,7 +38,8 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
         private musicBox: PlayMusicService,
         public serverMange: ServerMangeService,
         private snackBar: MatSnackBar,
-        private dialogRef: MatDialogRef<MapDetailContainerComponent>
+        private dialogRef: MatDialogRef<MapDetailContainerComponent>,
+        private clipboard: Clipboard
     ) {}
 
     ngOnInit() {
@@ -98,7 +100,7 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
         this.musicBox.switchAndPlay(
             new MusicItem({
                 title: this.mapDetail.title,
-                id: this.mapDetail.sid
+                id: this.mapDetail.sid,
             })
         );
         this.parttime =
@@ -120,10 +122,10 @@ export class MapDetailContainerComponent implements OnInit, OnDestroy {
     shared() {
         const sharedInfo = `https://osu.sayobot.cn/?search=${this.sid}`;
 
-        copy2Clipboard(sharedInfo).then(() => {
-            this.snackBar.open('已复制：', sharedInfo, {
-                duration: 2000
-            });
+        this.clipboard.copy(sharedInfo);
+
+        this.snackBar.open('已复制：', sharedInfo, {
+            duration: 2000,
         });
     }
 

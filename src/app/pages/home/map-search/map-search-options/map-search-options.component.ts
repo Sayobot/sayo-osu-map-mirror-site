@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { OPTIONS_META, Options, Option } from './options';
-import { MatCheckboxChange } from '@angular/material';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
     selector: 'map-search-options',
     templateUrl: './map-search-options.component.html',
-    styleUrls: ['./map-search-options.component.scss']
+    styleUrls: ['./map-search-options.component.scss'],
 })
 export class MapSearchOptionsComponent implements OnInit {
     isShow: boolean;

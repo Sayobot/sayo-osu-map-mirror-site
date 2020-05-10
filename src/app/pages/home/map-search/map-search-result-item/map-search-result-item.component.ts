@@ -2,26 +2,26 @@ import {
     Component,
     OnInit,
     Input,
-    ChangeDetectionStrategy
+    ChangeDetectionStrategy,
 } from '@angular/core';
 import { PreMap, Approved, MapSidDetail } from '@app/shared/models';
 import { downloadFile } from '@app/utils';
 import { PlayMusicService, MusicItem, MapService } from '@app/core/service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { MapDetailContainerComponent } from '@pages/home/map-detail/map-detail-container';
 
 const MODES_CONFIG = {
     std: [1, 3, 5, 7, 9, 11, 13, 15],
     taiko: [2, 3, 6, 7, 10, 11, 14, 15],
     catch: [4, 5, 6, 7, 12, 13, 14, 15],
-    mania: [8, 9, 10, 11, 12, 13, 14, 15, 16]
+    mania: [8, 9, 10, 11, 12, 13, 14, 15, 16],
 };
 
 @Component({
     selector: 'map-search-result-item',
     templateUrl: './map-search-result-item.component.html',
     styleUrls: ['./map-search-result-item.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapSearchResultItemComponent implements OnInit {
     @Input() map: PreMap;
@@ -61,7 +61,7 @@ export class MapSearchResultItemComponent implements OnInit {
         this.musicBox.switchAndPlay(
             new MusicItem({
                 title: this.map.title,
-                id: this.map.sid
+                id: this.map.sid,
             })
         );
     }
@@ -72,7 +72,7 @@ export class MapSearchResultItemComponent implements OnInit {
             .subscribe((res: MapSidDetail) => {
                 this.dialog.open(MapDetailContainerComponent, {
                     panelClass: 'common-dialog',
-                    data: { content: res }
+                    data: { content: res },
                 });
             });
     }
