@@ -2,14 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapService } from '@app/core/service';
 import { PreMap, SearchMapResult, MapSidDetail } from '@app/shared/models';
 import { MapSearchOptionsComponent } from '../map-search-options/map-search-options.component';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+
 import { ActivatedRoute, Params } from '@angular/router';
 import { MapDetailContainerComponent } from '../../map-detail/map-detail-container';
 
 @Component({
     selector: 'map-search-container',
     templateUrl: './map-search-container.component.html',
-    styleUrls: ['./map-search-container.component.scss']
+    styleUrls: ['./map-search-container.component.scss'],
 })
 export class MapSearchContainerComponent implements OnInit {
     typeCode: number;
@@ -80,7 +82,7 @@ export class MapSearchContainerComponent implements OnInit {
                     if (res) {
                         this.dialog.open(MapDetailContainerComponent, {
                             panelClass: 'common-dialog',
-                            data: { id: res.sid, content: res }
+                            data: { id: res.sid, content: res },
                         });
                     } else {
                         this.onSearch();
@@ -98,7 +100,7 @@ export class MapSearchContainerComponent implements OnInit {
             `0=${this.pageSize}`,
             `1=${this.offset}`,
             `2=${this.typeCode}`,
-            `3=${this.keywords}`
+            `3=${this.keywords}`,
         ];
 
         if (this.typeCode === 4) {

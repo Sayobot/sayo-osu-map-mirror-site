@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PlayMusicService, MusicItem } from '@app/core/service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { fromEvent } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'music-box',
     templateUrl: './music-box.component.html',
-    styleUrls: ['./music-box.component.scss']
+    styleUrls: ['./music-box.component.scss'],
 })
 export class MusicBoxComponent implements OnInit {
     isOpenList: boolean;

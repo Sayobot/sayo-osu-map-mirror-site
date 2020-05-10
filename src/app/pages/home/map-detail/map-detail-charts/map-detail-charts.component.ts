@@ -10,7 +10,7 @@ import 'echarts/lib/chart/radar';
 @Component({
     selector: 'map-detail-charts',
     templateUrl: './map-detail-charts.component.html',
-    styleUrls: ['./map-detail-charts.component.scss']
+    styleUrls: ['./map-detail-charts.component.scss'],
 })
 export class MapDetailChartsComponent implements OnInit {
     private _mapData: any;

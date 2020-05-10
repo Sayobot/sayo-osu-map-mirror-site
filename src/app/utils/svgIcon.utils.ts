@@ -1,4 +1,4 @@
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
 interface SvgIcon {
@@ -15,7 +15,7 @@ const Icon_Config: SvgIcon[] = [
     { name: 'pause_black', url: '/pause_black.svg' },
     { name: 'search', url: '/search.svg' },
     { name: 'cloud-download', url: '/Download from the Cloud.svg' },
-    { name: 'options', url: '/options.svg' }
+    { name: 'options', url: '/options.svg' },
 ];
 
 export const loadSvgIconResources = (ir: MatIconRegistry, ds: DomSanitizer) => {

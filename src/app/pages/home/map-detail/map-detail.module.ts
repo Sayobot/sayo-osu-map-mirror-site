@@ -7,15 +7,14 @@ import { MapDetailInfoComponent } from './map-detail-info/map-detail-info.compon
 import { MapDetailChartsComponent } from './map-detail-charts/map-detail-charts.component';
 
 @NgModule({
-    entryComponents: [MapDetailContainerComponent],
     declarations: [
         MapDetailContainerComponent,
         MapDetailTagsComponent,
         MapDetailLevelComponent,
         MapDetailInfoComponent,
-        MapDetailChartsComponent
+        MapDetailChartsComponent,
     ],
     imports: [SharedModule],
-    exports: [MapDetailContainerComponent]
+    exports: [MapDetailContainerComponent],
 })
 export class MapDetailModule {}

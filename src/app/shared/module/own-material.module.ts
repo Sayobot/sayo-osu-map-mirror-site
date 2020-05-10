@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 // CDK
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 // import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { MatNativeDateModule } from '@angular/material/core';
@@ -39,6 +40,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // import { MatTreeModule } from '@angular/material/tree';
 // import { MatAutocompleteModule } from '@angular/material/autocomplete';
 // import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+
+const CDK_MODULE = [DragDropModule, LayoutModule, ClipboardModule];
 
 const MATERIAL_MODULE = [
     MatBadgeModule,
@@ -77,14 +80,12 @@ const MATERIAL_MODULE = [
     MatSortModule,
     // MatNativeDateModule,
     // MatPaginatorModule,
-    DragDropModule,
-    LayoutModule
+    ...CDK_MODULE,
 ];
 
 @NgModule({
-    imports: [...MATERIAL_MODULE],
-
-    exports: [...MATERIAL_MODULE]
+    imports: MATERIAL_MODULE,
+    exports: MATERIAL_MODULE,
 })
 export class OwnMaterialModule {
     // !TODO

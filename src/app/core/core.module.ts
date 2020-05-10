@@ -17,7 +17,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 // 注册全局图标
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { loadSvgIconResources } from '@app/utils';
 
@@ -25,26 +25,25 @@ import {
     HeaderComponent,
     FooterComponent,
     HelpDialogComponent,
-    AnnounceComponent
+    AnnounceComponent,
 } from './components';
 
 const translateConfig = {
     loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-    }
+        deps: [HttpClient],
+    },
 };
 
 const components = [
     HeaderComponent,
     FooterComponent,
     HelpDialogComponent,
-    AnnounceComponent
+    AnnounceComponent,
 ];
 
 @NgModule({
-    entryComponents: [HelpDialogComponent],
     declarations: [...components],
     imports: [
         BrowserModule,
@@ -55,9 +54,9 @@ const components = [
         AppRoutingModule,
         SharedModule,
         PagesModule,
-        TranslateModule.forRoot(translateConfig)
+        TranslateModule.forRoot(translateConfig),
     ],
-    exports: [SharedModule, AppRoutingModule, ...components]
+    exports: [SharedModule, AppRoutingModule, ...components],
 })
 export class CoreModule {
     constructor(
