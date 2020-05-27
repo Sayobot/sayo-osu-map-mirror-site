@@ -35,9 +35,11 @@ export class MapSearchContainerComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.activeRoute.queryParamMap.subscribe((params: Params) => {
-            if (params['search']) {
-                this.search(params['search']);
+        this.activeRoute.queryParamMap.subscribe((params) => {
+            console.log(params);
+            console.log(params.get('search'));
+            if (params.get('search')) {
+                this.search(params.get('search'));
             }
         });
 
