@@ -17,8 +17,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
                 right: 3rem;
                 bottom: 5rem;
             }
-        `
-    ]
+        `,
+    ],
 })
 export class ScrollTopComponent implements OnInit {
     constructor() {}
@@ -29,5 +29,5 @@ export class ScrollTopComponent implements OnInit {
         window.scrollTo(0, 0);
     }
 
-    // !TODO 滚动到顶部的流畅动画
+    // TODO 滚动到顶部的动画
 }

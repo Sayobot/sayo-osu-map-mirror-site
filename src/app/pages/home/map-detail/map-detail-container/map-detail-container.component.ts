@@ -10,6 +10,7 @@ import { downloadFile } from '@app/utils';
 import { MapSidDetail, MapBidDetail, Approved } from '@app/shared/models';
 import { Clipboard } from '@angular/cdk/clipboard';
 
+// TODO 考虑将 level tags info 使用更好的写法来取消拆分
 @Component({
     selector: 'map-detail-container',
     templateUrl: './map-detail-container.component.html',

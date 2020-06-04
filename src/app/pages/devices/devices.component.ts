@@ -4,11 +4,11 @@ import { Operate, KeyItem } from '@app/shared/models';
 import { downloadFile } from '@app/utils';
 
 @Component({
-    selector: 'app-touch-disk',
-    templateUrl: './touch-disk.component.html',
-    styleUrls: ['./touch-disk.component.scss']
+    selector: 'app-devices',
+    templateUrl: './devices.component.html',
+    styleUrls: ['./devices.component.scss']
 })
-export class TouchDiskComponent implements OnInit {
+export class DevicesComponent implements OnInit {
     current: number;
     isSelect = false;
 
