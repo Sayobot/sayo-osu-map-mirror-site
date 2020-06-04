@@ -20,7 +20,7 @@ export class MusicItem {
 }
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class PlayMusicService {
     musicEl = new Audio();
@@ -46,10 +46,7 @@ export class PlayMusicService {
         this.isPlay = false;
     }
 
-    /**
-     * TODO:判断是否重复，是的话将这首歌放到队列首并播放
-     * @param item Music
-     */
+    // FIXME 判断是否重复，是的话将这首歌放到队列首并播放
     add(item: Music) {
         this.playList.push(new MusicItem(item));
     }

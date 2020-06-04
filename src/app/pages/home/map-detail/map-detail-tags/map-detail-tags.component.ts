@@ -4,16 +4,15 @@ import {
     Input,
     Output,
     EventEmitter,
-    ChangeDetectionStrategy
+    ChangeDetectionStrategy,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-// !TODO UI 优化
 @Component({
     selector: 'map-detail-tags',
     templateUrl: './map-detail-tags.component.html',
     styleUrls: ['./map-detail-tags.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapDetailTagsComponent implements OnInit {
     @Input() content: string;

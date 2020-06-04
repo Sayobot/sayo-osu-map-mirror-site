@@ -2,6 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { OPTIONS_META, Options, Option } from './options';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
+// TODO 国际化
+// TODO 考虑在设置页面中添加选项的不同模式，select 下拉框，list 列表
+// TODO 将选中的设置保存到 localstorage
 @Component({
     selector: 'map-search-options',
     templateUrl: './map-search-options.component.html',

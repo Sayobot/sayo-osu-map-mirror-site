@@ -5,14 +5,14 @@ const MODE_TIP = {
     0: 'O',
     1: 'T',
     2: 'C',
-    3: 'M'
+    3: 'M',
 };
 
-// !TODO UI进行优化，考虑下拉框或者其他方式
+// TODO UI进行优化，考虑下拉框或者其他方式
 @Component({
     selector: 'map-detail-level',
     templateUrl: './map-detail-level.component.html',
-    styleUrls: ['./map-detail-level.component.scss']
+    styleUrls: ['./map-detail-level.component.scss'],
 })
 export class MapDetailLevelComponent implements OnInit {
     // 铺面难度列表
