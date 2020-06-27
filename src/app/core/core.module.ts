@@ -4,17 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from 'app/shared';
 import { PagesModule } from '@app/pages/pages.module';
-
-// 导入 ng 国际化插件
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
-}
+import { TranslateModule } from '@ngx-translate/core';
+import { translateConfig } from '@shared/translate';
 
 // 注册全局图标
 import { MatIconRegistry } from '@angular/material/icon';
@@ -27,14 +21,6 @@ import {
     HelpDialogComponent,
     AnnounceComponent,
 } from './components';
-
-const translateConfig = {
-    loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-    },
-};
 
 const components = [
     HeaderComponent,

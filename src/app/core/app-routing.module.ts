@@ -5,38 +5,38 @@ const appRoutes: Routes = [
     {
         path: 'home',
         loadChildren: () =>
-            import('./pages/home/home.module').then((m) => m.HomeModule),
+            import('../pages/home/home.module').then((m) => m.HomeModule),
     },
     {
         path: 'history',
         loadChildren: () =>
-            import('./pages/history/history.module').then(
+            import('../pages/history/history.module').then(
                 (m) => m.HistoryModule
             ),
     },
     {
         path: 'touchDisk',
         loadChildren: () =>
-            import('./pages/devices/devices.module').then(
+            import('../pages/devices/devices.module').then(
                 (m) => m.DevicesModule
             ),
     },
     {
         path: 'support',
         loadChildren: () =>
-            import('./pages/support/support.module').then(
+            import('../pages/support/support.module').then(
                 (m) => m.SupportModule
             ),
     },
     {
         path: 'about',
         loadChildren: () =>
-            import('./pages/about/about.module').then((m) => m.AboutModule),
+            import('../pages/about/about.module').then((m) => m.AboutModule),
     },
     {
         path: 'setting',
         loadChildren: () =>
-            import('./pages/setting/setting.module').then(
+            import('../pages/setting/setting.module').then(
                 (m) => m.SettingModule
             ),
     },
