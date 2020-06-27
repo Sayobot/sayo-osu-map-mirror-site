@@ -2,36 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OwnMaterialModule } from './module/own-material.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { translateConfig } from './translate';
 
 import {
     MusicBoxComponent,
     ScrollTopComponent,
-    LoadingComponent
+    LoadingComponent,
 } from './components';
-
-// 导入 ng 国际化插件
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
-
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
-}
-
-const translateConfig = {
-    loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-    }
-};
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         OwnMaterialModule,
-        TranslateModule.forChild(translateConfig)
+        TranslateModule.forChild(translateConfig),
     ],
     declarations: [MusicBoxComponent, ScrollTopComponent, LoadingComponent],
     exports: [
@@ -41,7 +26,7 @@ const translateConfig = {
         TranslateModule,
         MusicBoxComponent,
         ScrollTopComponent,
-        LoadingComponent
-    ]
+        LoadingComponent,
+    ],
 })
 export class SharedModule {}
