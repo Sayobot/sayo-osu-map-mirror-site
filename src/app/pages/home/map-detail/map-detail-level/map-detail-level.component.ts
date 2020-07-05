@@ -1,12 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MapBidDetail } from '@app/shared/models';
-
-const MODE_TIP = {
-    0: 'O',
-    1: 'T',
-    2: 'C',
-    3: 'M',
-};
+import { MODE_TIP_CONFIG } from './mode-tip';
 
 // TODO UI进行优化，考虑下拉框或者其他方式
 @Component({
@@ -36,6 +30,6 @@ export class MapDetailLevelComponent implements OnInit {
     }
 
     modeTip(map: MapBidDetail): string {
-        return MODE_TIP[map.mode];
+        return MODE_TIP_CONFIG[map.mode];
     }
 }
