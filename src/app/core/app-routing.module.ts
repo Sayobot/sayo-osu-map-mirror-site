@@ -15,7 +15,7 @@ const appRoutes: Routes = [
             ),
     },
     {
-        path: 'touchDisk',
+        path: 'device',
         loadChildren: () =>
             import('../pages/devices/devices.module').then(
                 (m) => m.DevicesModule
