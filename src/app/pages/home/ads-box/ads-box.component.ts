@@ -6,7 +6,7 @@ import { AdsService } from '@app/core/service';
 @Component({
     selector: 'ads-box',
     templateUrl: './ads-box.component.html',
-    styleUrls: ['./ads-box.component.scss']
+    styleUrls: ['./ads-box.component.scss'],
 })
 export class AdsBoxComponent implements OnInit, AfterViewInit, OnDestroy {
     swiper: Swiper;
@@ -41,18 +41,14 @@ export class AdsBoxComponent implements OnInit, AfterViewInit, OnDestroy {
             observer: true,
             autoplay: {
                 delay: 5000,
-                disableOnInteraction: false
+                disableOnInteraction: false,
             },
             loop: true,
             initialSlide: 0,
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true
-            }
-            // navigation: {
-            //     nextEl: '.swiper-button-next',
-            //     prevEl: '.swiper-button-prev'
-            // }
+                clickable: true,
+            },
         });
     }
 

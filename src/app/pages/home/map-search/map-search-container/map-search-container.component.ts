@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MapService } from '@app/core/service';
 import { PreMap, SearchMapResult, MapSidDetail } from '@app/shared/models';
-import { MapSearchOptionsComponent } from '../map-search-options/map-search-options.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MapDetailContainerComponent } from '../../map-detail/map-detail-container';
 
 @Component({
@@ -25,7 +23,7 @@ export class MapSearchContainerComponent implements OnInit {
 
     loading: boolean = false;
 
-    @ViewChild('panel', { static: true }) panel: MapSearchOptionsComponent;
+    isShowPanel: boolean = true;
 
     constructor(
         public mapServe: MapService,
@@ -36,8 +34,6 @@ export class MapSearchContainerComponent implements OnInit {
 
     ngOnInit() {
         this.activeRoute.queryParamMap.subscribe((params) => {
-            console.log(params);
-            console.log(params.get('search'));
             if (params.get('search')) {
                 this.search(params.get('search'));
             }
@@ -117,7 +113,7 @@ export class MapSearchContainerComponent implements OnInit {
     }
 
     onTogglePanel() {
-        this.panel.toggle();
+        this.isShowPanel = !this.isShowPanel;
     }
 
     onPagechange(type: string) {

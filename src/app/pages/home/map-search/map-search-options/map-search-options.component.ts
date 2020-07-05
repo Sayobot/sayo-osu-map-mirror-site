@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Output,
+    EventEmitter,
+    Input,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { OPTIONS_META, Options, Option } from './options';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
@@ -9,19 +17,16 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
     selector: 'map-search-options',
     templateUrl: './map-search-options.component.html',
     styleUrls: ['./map-search-options.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapSearchOptionsComponent implements OnInit {
-    isShow: boolean;
+    options: Array<Options> = [];
 
-    @Output() change: EventEmitter<string[]>;
+    @Input() isShow: boolean = true;
 
-    options: Array<Options>;
+    @Output() change: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-    constructor() {
-        this.change = new EventEmitter<string[]>();
-        this.options = [];
-        this.isShow = true;
-
+    constructor(private cdr: ChangeDetectorRef) {
         Object.keys(OPTIONS_META).forEach((value: string) => {
             this.options.push(new Options(OPTIONS_META[value]));
         });
@@ -32,33 +37,14 @@ export class MapSearchOptionsComponent implements OnInit {
     }
 
     optionsAllChange(event: MatCheckboxChange, options: Options) {
-        if (event.checked) {
-            options.allSelect();
-        } else {
-            options.allClose();
-        }
+        event.checked ? options.allSelect() : options.allClose();
+        this.cdr.markForCheck();
     }
 
     select(event: MatCheckboxChange, option: Option) {
         option.select(event.checked);
+        this.cdr.markForCheck();
         this.changeOption();
-    }
-
-    reset() {
-        this.options.forEach((options: Options) => options.reset());
-        this.changeOption();
-    }
-
-    open() {
-        this.isShow = true;
-    }
-
-    close() {
-        this.isShow = false;
-    }
-
-    toggle() {
-        this.isShow = !this.isShow;
     }
 
     changeOption() {
