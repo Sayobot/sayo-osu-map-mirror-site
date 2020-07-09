@@ -25,9 +25,11 @@
                 [(ngModel)]="currentType"
                 (change)="onSelectLink()"
             >
-                <mat-radio-button value="income_details">收入</mat-radio-button>
+                <mat-radio-button value="income_details"
+                    >收入 ( RMB: {{ currentIncome }} )</mat-radio-button
+                >
                 <mat-radio-button value="expense_details"
-                    >支出</mat-radio-button
+                    >支出 ( RMB: {{ currentExpense }} )</mat-radio-button
                 >
             </mat-radio-group>
 
