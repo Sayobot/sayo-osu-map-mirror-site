@@ -28,7 +28,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 // import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { MatSliderModule } from '@angular/material/slider';
@@ -76,7 +76,7 @@ const MATERIAL_MODULE = [
     MatTableModule,
     MatTooltipModule,
     // MatProgressSpinnerModule,
-    // MatRadioModule,
+    MatRadioModule,
     MatSortModule,
     // MatNativeDateModule,
     // MatPaginatorModule,

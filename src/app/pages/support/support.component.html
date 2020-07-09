@@ -8,36 +8,56 @@
         <mat-card-content>
             <mat-form-field *ngIf="supportList">
                 <mat-label>请选择对应的时间段</mat-label>
-                <mat-select [(ngModel)]="currentLink"
-                    (selectionChange)="onSelectLink()">
-                    <mat-option *ngFor="let supports of supportList"
-                        [value]="supports.link">
-                        {{ getSelectListValue(supports.link) }}
+                <mat-select
+                    [(ngModel)]="currentLink"
+                    (selectionChange)="onSelectLink()"
+                >
+                    <mat-option
+                        *ngFor="let supports of supportList"
+                        [value]="supports.title"
+                    >
+                        {{ supports.title }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <app-loading [loading]="loading"></app-loading>
-            <table mat-table [dataSource]="dataSource" *ngIf="!loading">
-                <!-- ID Column -->
-                <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef>ID</th>
-                    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-                </ng-container>
+            <mat-radio-group
+                [(ngModel)]="currentType"
+                (change)="onSelectLink()"
+            >
+                <mat-radio-button value="income_details">收入</mat-radio-button>
+                <mat-radio-button value="expense_details"
+                    >支出</mat-radio-button
+                >
+            </mat-radio-group>
 
-                <!-- type Column -->
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef>Type</th>
+            <app-loading [loading]="loading"></app-loading>
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                *ngIf="!loading && currentType === 'income_details'"
+            >
+                <!-- name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
                     <td mat-cell *matCellDef="let element">
-                        {{ supportFrom(element.type) }}
+                        {{ element.name }}
                     </td>
                 </ng-container>
 
-                <!-- money Column -->
-                <ng-container matColumnDef="money">
-                    <th mat-header-cell *matHeaderCellDef>Money</th>
+                <!-- from Column -->
+                <ng-container matColumnDef="from">
+                    <th mat-header-cell *matHeaderCellDef>From</th>
                     <td mat-cell *matCellDef="let element">
-                        {{ element.money }}
+                        {{ element.from }}
+                    </td>
+                </ng-container>
+
+                <!-- RMB Column -->
+                <ng-container matColumnDef="rmb">
+                    <th mat-header-cell *matHeaderCellDef>RMB</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.rmb }}
                     </td>
                 </ng-container>
 
@@ -49,9 +69,61 @@
                     </td>
                 </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns">
-                </tr>
+                <!-- msg Column -->
+                <ng-container matColumnDef="msg">
+                    <th mat-header-cell *matHeaderCellDef>Message</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.msg }}
+                    </td>
+                </ng-container>
+
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedIncomeColumns"
+                ></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedIncomeColumns"
+                ></tr>
+            </table>
+
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                *ngIf="!loading && currentType === 'expense_details'"
+            >
+                <!-- cost Column -->
+                <ng-container matColumnDef="cost">
+                    <th mat-header-cell *matHeaderCellDef>Cost</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.cost }}
+                    </td>
+                </ng-container>
+
+                <!-- item Column -->
+                <ng-container matColumnDef="item">
+                    <th mat-header-cell *matHeaderCellDef>Item</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.item }}
+                    </td>
+                </ng-container>
+
+                <!-- note Column -->
+                <ng-container matColumnDef="note">
+                    <th mat-header-cell *matHeaderCellDef>Note</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.note }}
+                    </td>
+                </ng-container>
+
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedExpenseColumns"
+                ></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedExpenseColumns"
+                ></tr>
             </table>
         </mat-card-content>
     </mat-card>
