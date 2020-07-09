@@ -1,25 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { DonationService } from '@app/core/service';
-import {
-    DonationInfo,
-    SupportList2,
-    SupportExpense,
-    SupprtIncome,
-} from '@app/shared/models';
+import { SupportList2, SupportExpense, SupprtIncome } from '@app/shared/models';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { sum } from '@app/utils/math.utils';
 
-const sum = (prev: number, current: number) => prev + current;
 @Component({
     selector: 'donation-card',
     templateUrl: './donation-card.component.html',
     styleUrls: ['./donation-card.component.scss'],
 })
 export class DonationCardComponent implements OnInit {
-    donationInfo: DonationInfo;
     isOpen: boolean = true;
-
-    total: number = 0;
-    target: number = 0;
     updateAt: string;
 
     constructor(
@@ -31,11 +22,8 @@ export class DonationCardComponent implements OnInit {
         this.donationServe
             .getSupperV2()
             .subscribe((res: { last_update: string; data: SupportList2[] }) => {
-                this.target = this.getAverage(res.data);
                 this.updateAt = res.last_update;
-                this.total = res.data[0].income_details
-                    .map((item: SupprtIncome) => item.rmb)
-                    .reduce(sum);
+                this.donationServe.setDonationInfo(res.data);
             });
 
         this.breakpointObserver
@@ -47,19 +35,36 @@ export class DonationCardComponent implements OnInit {
             });
     }
 
-    getAverage(data: SupportList2[]): number {
-        return Number(
-            (
-                data
-                    .map((item: SupportList2) => {
-                        if (item.expense_details.length === 0) return 0;
-                        return item.expense_details
-                            .map((item: SupportExpense) => item.cost)
-                            .reduce(sum);
+    getBalance(data: SupportList2[]) {
+        const income = this.getFixed2(this.getTotal(data, 'income_details'));
+        const expense = this.getFixed2(this.getTotal(data, 'expense_details'));
+        return income - expense;
+    }
+
+    getTotal(data: SupportList2[], type: string) {
+        return data
+            .map((item: SupportList2) => {
+                if (item[type].length === 0) return 0;
+                return item[type]
+                    .map((item: SupportExpense | SupprtIncome) => {
+                        if (type === 'income_details') {
+                            return (item as SupprtIncome).rmb;
+                        }
+                        if (type === 'expense_details') {
+                            return (item as SupportExpense).cost;
+                        }
                     })
-                    .reduce(sum) / data.length
-            ).toFixed(2)
-        );
+                    .reduce(sum);
+            })
+            .reduce(sum);
+    }
+
+    getAverage(data: SupportList2[]): number {
+        return this.getTotal(data, 'expense_details') / data.length;
+    }
+
+    getFixed2(n: number) {
+        return Number(n.toFixed(2));
     }
 
     toggle() {
@@ -67,12 +72,18 @@ export class DonationCardComponent implements OnInit {
     }
 
     get supportProgress() {
-        return `RMB ${this.total} / ${this.target}`;
+        return `RMB ${this.donationServe.total} / ${this.donationServe.target}`;
     }
 
     get progressPercent() {
-        const percentage = this.total / this.target;
+        const percentage = this.donationServe.total / this.donationServe.target;
         const num = percentage > 100 ? 100 : percentage;
         return Math.floor(num * 100) + '%';
+    }
+
+    get progressWidth() {
+        const percentage = this.donationServe.total / this.donationServe.target;
+        const num = percentage > 100 ? 100 : percentage;
+        return percentage > 0 ? Math.floor(num * 100) + '%' : 0;
     }
 }

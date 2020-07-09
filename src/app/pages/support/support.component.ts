@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SupportList2, SupportExpense, SupprtIncome } from '@app/shared/models';
 import { DonationService } from '@app/core/service';
+import { sum } from '@app/utils/math.utils';
 
 @Component({
     selector: 'app-support',
@@ -18,6 +19,9 @@ export class SupportComponent implements OnInit {
 
     loading: boolean;
 
+    currentIncome: number = 0;
+    currentExpense: number = 0;
+
     constructor(private donation: DonationService) {
         this.loading = true;
     }
@@ -26,16 +30,44 @@ export class SupportComponent implements OnInit {
         this.donation
             .getSupperV2()
             .subscribe((res: { data: SupportList2[] }) => {
+                const firstMonth = res.data[0];
                 this.supportList = res.data;
-                this.currentLink = res.data[0].title;
-                this.dataSource = res.data[0][this.currentType];
+                this.currentLink = firstMonth.title;
+                this.dataSource = firstMonth[this.currentType];
+                this.changeCurrentData(firstMonth);
                 this.loading = false;
             });
     }
 
+    changeCurrentData(data: SupportList2) {
+        console.log(data);
+
+        this.currentExpense =
+            data.expense_details.length > 0
+                ? Number(
+                      data.expense_details
+                          .map((item: SupportExpense) => item.cost)
+                          .reduce(sum)
+                          .toFixed(2)
+                  )
+                : 0;
+
+        this.currentIncome =
+            data.income_details.length > 0
+                ? Number(
+                      data.income_details
+                          .map((item: SupprtIncome) => item.rmb)
+                          .reduce(sum)
+                          .toFixed(2)
+                  )
+                : 0;
+    }
+
     onSelectLink() {
-        this.dataSource = this.supportList.filter(
+        const match = this.supportList.filter(
             (item: SupportList2) => item.title === this.currentLink
-        )[0][this.currentType];
+        )[0];
+        this.dataSource = match[this.currentType];
+        this.changeCurrentData(match);
     }
 }
