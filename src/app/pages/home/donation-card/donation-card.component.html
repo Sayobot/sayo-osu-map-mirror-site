@@ -1,4 +1,4 @@
-<div class="donation-card" *ngIf="donationInfo">
+<div class="donation-card">
     <mat-icon
         class="open"
         *ngIf="!isOpen"
@@ -14,7 +14,7 @@
             <div class="subtitle">{{ 'donationPanel.des' | translate }}</div>
             <div class="last-date">
                 {{ 'donationPanel.updateTime' | translate }} :
-                {{ donationInfo.date }}
+                {{ updateAt }}
             </div>
             <div
                 class="progress-bg"

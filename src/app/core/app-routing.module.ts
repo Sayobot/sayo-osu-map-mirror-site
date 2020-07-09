@@ -15,13 +15,6 @@ const appRoutes: Routes = [
             ),
     },
     {
-        path: 'device',
-        loadChildren: () =>
-            import('../pages/devices/devices.module').then(
-                (m) => m.DevicesModule
-            ),
-    },
-    {
         path: 'support',
         loadChildren: () =>
             import('../pages/support/support.module').then(

@@ -2,6 +2,13 @@
     padding: 2rem;
     display: flex;
 
+    mat-radio-group {
+        margin-left: 24px;
+        mat-radio-button {
+            margin-right: 8px;
+        }
+    }
+
     mat-card {
         flex: 1;
 

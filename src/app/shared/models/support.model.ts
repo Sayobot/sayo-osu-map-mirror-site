@@ -41,3 +41,49 @@ export interface SupportDetails {
     time: Date;
     type: number;
 }
+
+/**
+ * ==============================================================
+ * 投喂列表 V2
+ * ==============================================================
+ * @param string 日期
+ * @param expense_details 出账列表
+ * @param income_details 进账列表
+ */
+export interface SupportList2 {
+    title: string;
+    expense_details: SupportExpense[];
+    income_details: SupprtIncome[];
+}
+
+/**
+ * ==============================================================
+ * 出账详情 V2
+ * ==============================================================
+ * @param cost 花费
+ * @param item 出账项
+ * @param note 备注
+ */
+export interface SupportExpense {
+    cost: number;
+    item: string;
+    note: string;
+}
+
+/**
+ * ==============================================================
+ * 入账详情 V2
+ * ==============================================================
+ * @param from 来源
+ * @param msg 捐助备注
+ * @param name 姓名
+ * @param rmb rmb
+ * @param time 日期
+ */
+export interface SupprtIncome {
+    from: string;
+    msg: string;
+    name: string;
+    rmb: number;
+    time: string;
+}

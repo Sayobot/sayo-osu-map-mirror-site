@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { SupportDetails, Supports } from '@app/shared/models';
+import { SupportList2, SupportExpense, SupprtIncome } from '@app/shared/models';
 import { DonationService } from '@app/core/service';
 
 @Component({
     selector: 'app-support',
     templateUrl: './support.component.html',
-    styleUrls: ['./support.component.scss']
+    styleUrls: ['./support.component.scss'],
 })
 export class SupportComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'type', 'money', 'time'];
-    dataSource: SupportDetails[];
-    supportList: Supports[];
+    displayedIncomeColumns: string[] = ['name', 'from', 'rmb', 'time', 'msg'];
+    displayedExpenseColumns: string[] = ['item', 'cost', 'note'];
+    dataSource: SupportExpense[] | SupprtIncome[] = [];
+    supportList: SupportList2[];
+
     currentLink: string;
+    currentType: string = 'income_details';
 
     loading: boolean;
 
@@ -20,36 +23,19 @@ export class SupportComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.donation.getSupperList().subscribe((res: Supports[]) => {
-            const firstLink = res[0].link;
-
-            this.supportList = res;
-            this.currentLink = firstLink;
-            this.getSupportDetasil(firstLink);
-        });
-    }
-
-    getSupportDetasil(link: string) {
-        this.loading = true;
         this.donation
-            .getSupperDetail(link)
-            .subscribe((res: SupportDetails[]) => {
-                this.dataSource = res;
+            .getSupperV2()
+            .subscribe((res: { data: SupportList2[] }) => {
+                this.supportList = res.data;
+                this.currentLink = res.data[0].title;
+                this.dataSource = res.data[0][this.currentType];
                 this.loading = false;
             });
     }
 
     onSelectLink() {
-        this.getSupportDetasil(this.currentLink);
-    }
-
-    supportFrom(code: number) {
-        const supportFrom = ['支付宝', '微信', 'QQ红包', '其他'];
-        return supportFrom[code];
-    }
-
-    getSelectListValue(link: string) {
-        const arr = link.split('/');
-        return arr[arr.length - 1];
+        this.dataSource = this.supportList.filter(
+            (item: SupportList2) => item.title === this.currentLink
+        )[0][this.currentType];
     }
 }
