@@ -6,7 +6,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
     selector: 'app-announce',
     templateUrl: './announce.component.html',
-    styleUrls: ['./announce.component.scss']
+    styleUrls: ['./announce.component.scss'],
 })
 export class AnnounceComponent implements OnInit {
     messages: Notice[];

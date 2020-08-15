@@ -28,6 +28,9 @@
             <button mat-button routerLink="/about">
                 {{ 'menu.about' | translate }}
             </button>
+            <a mat-button href="https://osu.sayobot.cn/download/">
+                {{ 'menu.downloadCenter' | translate }}
+            </a>
             <button mat-button [matMenuTriggerFor]="otherMenu">
                 {{ 'menu.more' | translate }}
             </button>
@@ -46,6 +49,9 @@
     <button mat-menu-item routerLink="/about">
         {{ 'menu.about' | translate }}
     </button>
+    <a mat-menu-item href="https://osu.sayobot.cn/download/">
+        {{ 'menu.downloadCenter' | translate }}
+    </a>
     <button mat-menu-item [matMenuTriggerFor]="otherMenu">
         {{ 'menu.more' | translate }}
     </button>
