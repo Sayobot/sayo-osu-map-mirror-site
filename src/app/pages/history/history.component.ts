@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UpdatedLogService, UpdateData } from '@app/core/service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-history',
@@ -15,16 +16,23 @@ import { UpdatedLogService, UpdateData } from '@app/core/service';
                 </ng-container>
             </mat-list>
         </div>
-    `
+    `,
 })
 export class HistoryComponent implements OnInit {
     updateData: UpdateData[];
 
-    constructor(private updated: UpdatedLogService) {}
+    constructor(
+        private updated: UpdatedLogService,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.updated.getUpdatedData().subscribe((res: UpdateData[]) => {
             this.updateData = res;
+        });
+
+        this.route.data.subscribe((res) => {
+            console.log(res);
         });
     }
 }

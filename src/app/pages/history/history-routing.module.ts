@@ -6,13 +6,13 @@ const routes: Routes = [
     {
         path: '',
         component: HistoryComponent,
-        data: { title: '更新日志' }
-    }
+        data: { title: '更新日志' },
+    },
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-    providers: []
+    providers: [],
 })
 export class HistoryRoutingModule {}

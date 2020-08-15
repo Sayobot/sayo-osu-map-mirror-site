@@ -10,6 +10,7 @@
         "log": "ログ",
         "device": "装備",
         "setting": "セットアップ",
+        "downloadCenter": "ダウンロードセンター",
         "lang": {
             "title": "言語",
             "tip": "言語を選択してください"
