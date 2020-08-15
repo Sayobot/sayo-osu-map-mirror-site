@@ -10,6 +10,7 @@
         "log": "日志",
         "device": "设备",
         "setting": "设置",
+        "downloadCenter": "下载中心",
         "lang": {
             "title": "语言",
             "tip": "选择语言"
