@@ -52,7 +52,12 @@ export class AdsBoxComponent implements OnInit, AfterViewInit, OnDestroy {
         });
     }
 
+    navTo(url: string) {
+        window.open(url);
+    }
+
     ngOnDestroy() {
         clearTimeout(this.timer);
+        this.timer = null;
     }
 }
