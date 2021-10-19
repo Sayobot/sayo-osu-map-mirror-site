@@ -48,11 +48,10 @@
                         "tsConfig": "./tsconfig.app.json",
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
-                            "./node_modules/swiper/css/swiper.min.css",
+                            "./node_modules/swiper/swiper-bundle.min.css",
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
                         ],
-                        "scripts": ["./node_modules/swiper/js/swiper.min.js"],
                         "aot": false,
                         "vendorChunk": true,
                         "extractLicenses": false,
@@ -105,13 +104,6 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "./tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
-                        "styles": [
-                            "./node_modules/swiper/css/swiper.min.css",
-                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                            "src/styles.scss"
-                        ],
-                        "scripts": [],
-                        "assets": ["favicon.ico", "./assets"]
                     }
                 },
                 "lint": {
