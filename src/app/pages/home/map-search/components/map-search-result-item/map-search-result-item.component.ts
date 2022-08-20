@@ -11,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MapDetailContainerComponent } from '@pages/home/map-detail/map-detail-container';
 import { MODES_CONFIG } from './modes.meta';
 import { MusicPlayerService } from '@app/shared/ui/music-player/music-player.service';
+import { StorageService } from '@app/core/service/storage.service';
+import { SETTING_DEFAULT_SERVER, SETTING_KEY } from '@app/core/config';
 
 @Component({
     selector: 'map-search-result-item',
@@ -24,7 +26,8 @@ export class MapSearchResultItemComponent implements OnInit {
     constructor(
         private player: MusicPlayerService,
         private dialog: MatDialog,
-        private mapServe: MapService
+        private mapServe: MapService,
+        private storage: StorageService
     ) {}
 
     ngOnInit() {}
@@ -46,7 +49,9 @@ export class MapSearchResultItemComponent implements OnInit {
     }
 
     download(): void {
-        const server = localStorage.getItem('server');
+        const server = this.storage.getChild(SETTING_KEY, 'server')  ||
+        SETTING_DEFAULT_SERVER;
+
         downloadFile(
             `https://txy1.sayobot.cn/beatmaps/download/full/${this.map.sid}?server=${server}`
         );
