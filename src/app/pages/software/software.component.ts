@@ -29,6 +29,15 @@ export class SoftwareComponent {
             download: 'https://dl.sayobot.cn/setting_v2.zip',
         },
         {
+            icon: {
+                type: 'icon',
+                name: 'assets/img/common/device_setting_v3.png',
+            },
+            title: 'Sayo Device PC(v3)',
+            des: '桌面端，支持更全面的功能，改进的 UI 和交互',
+            download: 'https://dl.sayobot.cn/setting_v3.zip',
+        },
+        {
             icon: { type: 'icon', name: 'assets/img/common/osu-icon.png' },
             title: 'osu! 离线客户端',
             des: 'osu! 官方客户端的打包，包括几张地图',
