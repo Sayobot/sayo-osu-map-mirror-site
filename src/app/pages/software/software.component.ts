@@ -31,6 +31,15 @@ export class SoftwareComponent {
         {
             icon: {
                 type: 'icon',
+                name: "assets/img/common/firmware.jpg"
+            },
+            title: "O3C 固件包",
+            des: "如题",
+            download: "https://dl.sayobot.cn/firmware/CH32x_firmware.zip"
+        },
+        {
+            icon: {
+                type: 'icon',
                 name: 'assets/img/common/device_setting_v3.png',
             },
             title: 'Sayo Device PC(v3)',
@@ -60,7 +69,7 @@ export class SoftwareComponent {
         },
     ];
 
-    constructor(private dialog: MatDialog) {}
+    constructor(private dialog: MatDialog) { }
 
     download(url: string) {
         downloadFile(url);
