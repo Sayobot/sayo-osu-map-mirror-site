@@ -127,7 +127,6 @@
             }
         }
     },
-    "defaultProject": "sayobot",
     "cli": {
         "analytics": false
     }
