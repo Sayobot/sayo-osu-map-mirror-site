@@ -10,8 +10,8 @@
 
 ```bash 
 git clone git@github.com:SoulDee/sayobot.git;
-cd sayo-osu-map-mirror-site && npm i;
-npm start。
+cd sayo-osu-map-mirror-site && pnpm i;
+pnpm start。
 ```
 
 
