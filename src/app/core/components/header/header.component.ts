@@ -1,7 +1,6 @@
 import {
     Component,
     OnInit,
-    AfterViewInit,
     OnDestroy,
     ChangeDetectionStrategy,
 } from '@angular/core';
@@ -17,7 +16,7 @@ import { SEARCH_SLIDER_KEY, SEARCH_CHECKED_KEY } from '@core/config';
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
     language: Array<any>;
 
     timer = null;
@@ -51,21 +50,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
             width: '800px',
             maxWidth: '98vw',
         });
-    }
-
-    get showHelpDialog() {
-        return (
-            !localStorage.getItem('isShow') ||
-            localStorage.getItem('isShow') === 'false'
-        );
-    }
-
-    ngAfterViewInit() {
-        if (this.showHelpDialog) {
-            this.timer = setTimeout(() => {
-                this.openHelpDialog();
-            }, 0);
-        }
     }
 
     get langIcon() {

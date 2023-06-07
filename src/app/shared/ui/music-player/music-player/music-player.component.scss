@@ -1,7 +1,7 @@
 $music-box-width: 300px;
 $music-box-height: 70px;
-$bg-proportion: 250 / 900;
-$bg-size: $music-box-width * 2 / 3;
+$bg-proportion: 0.2777;
+$bg-size: 100px;
 
 :host {
     display: block;
@@ -134,7 +134,7 @@ mat-icon {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: $wrapper-max-size / 10;
+            height: 40px;
             width: 100%;
             padding: 0.5rem;
             font-size: 14px;
