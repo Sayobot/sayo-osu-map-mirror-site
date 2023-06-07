@@ -21,10 +21,9 @@
     "@angular/platform-browser": "^15.2.9",
     "@angular/platform-browser-dynamic": "^15.2.9",
     "@angular/router": "^15.2.9",
-    "@ngx-translate/core": "^12.1.2",
-    "@ngx-translate/http-loader": "^4.0.0",
-    "echarts": "^5.0.1",
-    "ngx-echarts": "^6.0.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
+    "ngx-echarts": "^15.0.3",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "^6.5.5",
     "swiper": "^7.0.9",
@@ -36,14 +35,13 @@
     "@angular/cli": "^15.2.8",
     "@angular/compiler-cli": "^15.2.9",
     "@angular/language-service": "^15.2.9",
-    "@types/echarts": "^4.6.0",
     "@types/node": "^13.13.5",
     "@types/swiper": "^5.4.3",
     "prettier": "^2.0.5",
     "protractor": "~7.0.0",
     "ts-node": "^8.10.1",
     "tslint": "~6.1.0",
-    "typescript": "4.8.4"
+    "typescript": "^4.9.3"
   },
   "resolutions": {
     "webpack": "^5.0.0"
