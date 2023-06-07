@@ -38,6 +38,9 @@ import { TranslateService } from '@ngx-translate/core';
             .mseeage-icon {
                 right: 3rem;
                 bottom: 8rem;
+                width: 32px;
+                height: 32px;
+                font-size: 32px;
             }
             mat-sidenav-container {
                 height: 100%;

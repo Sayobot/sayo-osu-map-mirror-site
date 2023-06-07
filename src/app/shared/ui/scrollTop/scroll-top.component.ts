@@ -16,6 +16,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
             .scroll-icon {
                 right: 3rem;
                 bottom: 5rem;
+                width: 32px;
+                height: 32px;
+                font-size: 32px;
             }
         `,
     ],
