@@ -4,9 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "prettier": "prettier --write src/**/*",
-    "bundle-report": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/sayobot/stats-es2015.json"
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +21,7 @@
     "@angular/router": "^15.2.9",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "echarts": "^5.4.2",
     "ngx-echarts": "^15.0.3",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "^6.5.5",
@@ -35,10 +34,10 @@
     "@angular/cli": "^15.2.8",
     "@angular/compiler-cli": "^15.2.9",
     "@angular/language-service": "^15.2.9",
+    "@types/echarts": "^4.9.18",
     "@types/node": "^13.13.5",
     "@types/swiper": "^5.4.3",
     "prettier": "^2.0.5",
-    "protractor": "~7.0.0",
     "ts-node": "^8.10.1",
     "tslint": "~6.1.0",
     "typescript": "^4.9.3"
